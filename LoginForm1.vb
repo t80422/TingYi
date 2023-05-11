@@ -9,9 +9,19 @@ Public Class LoginForm1
     ' 例如使用者名稱、顯示名稱等。
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
-        frmMain.Show()
-        frmMain.TabControl1.SelectedTab = frmMain.tpCustomer
-        Me.Hide()
+        If txtUsername.Text = "user" And txtPassword.Text = "user" Then
+            frmMain.Show()
+            frmMain.TabControl1.SelectedTab = frmMain.tpCustomer
+            Me.Hide()
+        Else
+            MsgBox("帳號密碼錯誤")
+        End If
+
+        txtUsername.Clear()
+        txtPassword.Clear()
     End Sub
 
+    Private Sub Cancel_Click(sender As Object, e As EventArgs) Handles Cancel.Click
+        Close()
+    End Sub
 End Class
