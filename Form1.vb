@@ -5,8 +5,6 @@ Imports MySql.Data.MySqlClient
 
 Public Class frmMain
     Dim conn As MySqlConnection
-    Dim msSQL As String
-    Dim mSQLCmd As MySqlCommand
     Dim mAdapter As MySqlDataAdapter
     'Dim dt As New System.Data.DataTable()
 
@@ -60,10 +58,12 @@ Public Class frmMain
     'End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        InitDataGrid()
         '設定連線
-        Dim myConnectionString As String = ConfigurationSettings.AppSettings("myConnectionString").ToString
+        Dim myConnectionString As String = ConfigurationManager.AppSettings("myConnectionString").ToString
         conn = New MySqlConnection(myConnectionString)
+
+        InitDataGrid()
+
         '初始化商品管理的商品分類
         Dim items() As String = {"套餐", "單點"}
         cmbProdType_product.Items.AddRange(items)
@@ -189,36 +189,45 @@ Public Class frmMain
     '初始化DataGrid欄位
     Private Sub InitDataGrid()
         '客戶管理
-        With dgCustomer
-            .Columns.Add("", "編號")
-            .Columns.Add("", "姓名")
-            .Columns.Add("", "電話")
-            .Columns.Add("", "手機")
-            .Columns.Add("", "公司電話")
-            .Columns.Add("", "地址")
-            .Columns.Add("", "早餐送餐地址")
-            .Columns.Add("", "午餐送餐地址")
-            .Columns.Add("", "晚餐送餐地址")
-            .Columns.Add("", "床號")
-            .Columns.Add("", "備註")
-            .Rows.Add("1", "陳小姐", "05-1234567", "0918-123123", "05-5885888", "嘉義縣大林鎮中山路1號", "嘉義縣大林鎮中正路123號", "嘉義縣大林鎮中山路1號", "嘉義縣大林鎮中山路1號", "B01")
-            .Rows.Add("2", "李小姐", "05-2222222", "0918-456456", "05-5456456", "嘉義縣東區世賢路二段567號", "", "嘉義縣東區世賢路二段567號", "嘉義縣東區世賢路二段567號", "", "到達前10分鐘請電話通知")
-            .Rows.Add("3", "王太太", "05-3852852", "0918-852852", "05-5852258", "雲林縣斗六市大學路52號", "嘉義縣大林鎮中正路123號", "嘉義縣東區世賢路二段567號", "雲林縣斗六市大學路52號", "A01", "到達前10分鐘請電話通知")
-            .Rows.Add("4", "張女士", "05-5147741", "0918-147147", "05-5456741", "嘉義縣太保市市政路23號", "", "嘉義縣太保市市政路23號", "嘉義縣太保市市政路23號")
-            .Rows.Add("5", "高小姐", "05-6951159", "0918-369369", "05-5951159", "雲林縣虎尾鎮中正路100號", "", "雲林縣虎尾鎮中正路100號", "雲林縣虎尾鎮中正路100號")
+        'With dgvCustomer
+        '    .Columns.Add("", "編號")
+        '    .Columns.Add("", "姓名")
+        '    .Columns.Add("", "電話")
+        '    .Columns.Add("", "手機")
+        '    .Columns.Add("", "公司電話")
+        '    .Columns.Add("", "地址")
+        '    .Columns.Add("", "早餐送餐地址")
+        '    .Columns.Add("", "午餐送餐地址")
+        '    .Columns.Add("", "晚餐送餐地址")
+        '    .Columns.Add("", "床號")
+        '    .Columns.Add("", "備註")
+        '    .AutoResizeColumnHeadersHeight()
+        'End With
+
+        'todo 顯示所有客戶資料
+        '將table資料塞到dgv
+        Dim cmd As New MySqlCommand("SELECT * FROM customer", conn)
+        Dim dtData As New DataTable()
+        conn.Open()
+        Dim adapter As New MySqlDataAdapter(cmd)
+        adapter.Fill(dtData)
+        With dgvCustomer
+            .DataSource = dtData
             .AutoResizeColumnHeadersHeight()
         End With
 
-        txtCusName_cus.Text = "李小姐"
-        txtTelHom_cus.Text = "05-2222222"
-        txtPhone_cus.Text = "0918-456456"
-        txtTelCom_cus.Text = "05-5456456"
-        txtAddr_cus.Text = "嘉義縣東區世賢路二段567號"
-        txtAddrBla_cus.Text = ""
-        txtAddrLun_cus.Text = "嘉義縣東區世賢路二段567號"
-        txtAddrDin_cus.Text = "嘉義縣東區世賢路二段567號"
-        txtBedNo_cus.Text = ""
-        txtMemo_cus.Text = "到達前10分鐘請電話通知"
+        '用table欄位的備註將dgv的欄位改名
+        cmd = New MySqlCommand("SELECT COLUMN_NAME, COLUMN_COMMENT FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'tingyi' AND TABLE_NAME = 'customer'", conn)
+        adapter = New MySqlDataAdapter(cmd)
+        Dim dtColName As New DataTable()
+        adapter.Fill(dtColName)
+        For Each col As DataGridViewColumn In dgvCustomer.Columns
+            Dim row As DataRow = dtColName.AsEnumerable().FirstOrDefault(Function(dr) dr("COLUMN_NAME").ToString() = col.Name)
+            If row IsNot Nothing Then
+                col.HeaderText = row("COLUMN_COMMENT").ToString()
+            End If
+        Next
+        conn.Close()
 
         '商品管理
         With dgProduct
@@ -226,18 +235,20 @@ Public Class frmMain
             .Columns.Add("", "商品群組")
             .Columns.Add("", "商品分類")
             .Columns.Add("", "品名")
+            .Columns.Add("", "餐種")
             .Columns.Add("", "售價")
             .Columns.Add("", "成本")
             .Columns.Add("", "備註")
-            .Rows.Add("1", "月子餐", "套餐", "經典月子餐", "3200", "1700")
-            .Rows.Add("2", "月子餐", "套餐", "溫馨月子餐", "3990", "3000")
-            .Rows.Add("3", "調養餐", "套餐", "小產調養餐", "2900", "1400")
-            .Rows.Add("4", "月子餐", "單點", "經典月子早餐", "1000", "500")
-            .Rows.Add("5", "月子餐", "單點", "經典月子午餐", "1100", "600")
-            .Rows.Add("6", "月子餐", "單點", "經典月子晚餐", "1100", "600")
-            .Rows.Add("7", "調養餐", "單點", "小產調養早餐", "900", "400")
-            .Rows.Add("8", "調養餐", "單點", "小產調養午餐", "1000", "500")
-            .Rows.Add("9", "調養餐", "單點", "小產調養晚餐", "1000", "500")
+            .Rows.Add("1", "月子餐", "套餐", "經典月子餐", "早,午,晚", "3200", "1700")
+            .Rows.Add("2", "月子餐_優惠", "套餐", "經典月子餐_優惠", "早,午,晚", "3990", "3000", "7日以上")
+            .Rows.Add("3", "調養餐", "套餐", "小產調養餐", "早,午,晚", "2900", "1400")
+            .Rows.Add("4", "月子餐", "單點", "經典月子早餐", "早", "1000", "500")
+            .Rows.Add("5", "月子餐", "單點", "經典月子午餐", "午", "1100", "600")
+            .Rows.Add("6", "月子餐", "單點", "經典月子晚餐", "晚", "1100", "600")
+            .Rows.Add("7", "調養餐", "單點", "小產調養早餐", "早", "900", "400")
+            .Rows.Add("8", "調養餐", "單點", "小產調養午餐", "午", "1000", "500")
+            .Rows.Add("9", "調養餐", "單點", "小產調養晚餐", "晚", "1000", "500")
+            .Rows.Add("10", "月子餐_優惠", "單點", "經典月子早餐_優惠", "晚", "1000", "500")
         End With
 
         txtProdName_product.Text = "經典月子餐"
@@ -245,6 +256,9 @@ Public Class frmMain
         cmbProdGroup_product.Text = "月子餐"
         txtProdPrice_product.Text = "3200"
         txtProdCost_product.Text = "1700"
+        chkBleak_product.Checked = True
+        chkLunch_product.Checked = True
+        chkDinner_product.Checked = True
 
         '菜單管理
         With DGV_Menu
@@ -332,15 +346,20 @@ Public Class frmMain
             .Columns.Add("", "訂單編號")
             .Columns.Add("", "客戶姓名")
             .Columns.Add("", "手機")
+            .Columns.Add("", "訂單日期")
             .Columns.Add("", "商品名稱")
-            .Columns.Add("", "售價")
-            .Columns.Add("", "禁忌食物")
-            .Columns.Add("", "餐數")
+            .Columns.Add("", "早餐")
+            .Columns.Add("", "午餐")
+            .Columns.Add("", "晚餐")
+            .Columns.Add("", "折讓金額")
+            .Columns.Add("", "金額")
             .Columns.Add("", "預計送餐日")
+            .Columns.Add("", "禁忌食物")
             .Columns.Add("", "備註")
-            .Rows.Add("1", "陳小姐", "0918-123123", "調養餐30日", "54000", "蝦,花生", "90")
-            .Rows.Add("李小姐", "0918-456456", "孕期餐7日", "36888", "21")
-            .Rows.Add("王太太", "0918-852852", "月子早餐", "2688", "1")
+
+            .Rows.Add("1", "陳小姐", "0918-123123", "2023/5/5", "小產調養餐", "10", "10", "10", "0", "29000", "2023/5/11", "蝦,花生")
+            .Rows.Add("2", "李小姐", "0918-456456", "2023/5/6", "經典月子餐", "10", "10", "0", "0", "21000", "2023/5/21")
+            .Rows.Add("3", "王太太", "0918-852852", "2023/5/7", "月子早餐", "2688", "1")
         End With
 
         txtCusName_order.Text = "陳小姐"
@@ -353,9 +372,6 @@ Public Class frmMain
         '配餐管理
         txtCusName_dist.Text = "陳小姐"
         txtPhone_dist.Text = "0918-123123"
-        Dim list As New List(Of String) From {"月子餐30日", "調養午餐"}
-        cmbProdName_dist.DataSource = list
-
 
         '財務管理
         With dgMoney
@@ -461,37 +477,60 @@ Public Class frmMain
         MsgBox("是否更改後續配置?", vbYesNo)
     End Sub
 
-    Private Sub btn_CusAdd_Click(sender As Object, e As EventArgs) Handles btn_CusAdd.Click
-        'msSQL = "INSERT INTO customer (cus_name,cus_tel_hom,cus_tel_com,cus_phone,cus_addr_hom,cus_addr_bla,cus_addr_lun,cus_addr_din,cus_bed,cus_memo)"
-        'mSQLCmd = New MySqlCommand(msSQL, conn)
+    Private Sub btnCusInsert_Click(sender As Object, e As EventArgs) Handles btnCusInsert.Click
+        '檢查不能空值的欄位
+        Dim txts As New Collection
+        txts.Add(txtCusName_cus)
+        txts.Add(txtPhone_cus)
+        If Empty_Textbox(txts) Then Exit Sub
 
-        'With mSQLCmd
-        '    .Parameters.AddWithValue("@cus_name", txtName_cus.Text)
-        '    .Parameters.AddWithValue("@cus_tel_hom", txtTelHom_cus.Text)
-        '    .Parameters.AddWithValue("@cus_tel_com", txtTelCom_cus.Text)
-        '    .Parameters.AddWithValue("@cus_phone", txtPhone_cus.Text)
-        '    .Parameters.AddWithValue("@cus_addr_hom", txtAddr_cus.Text)
-        '    .Parameters.AddWithValue("@cus_addr_bla", txtAddrBla_cus.Text)
-        '    .Parameters.AddWithValue("@cus_addr_lun", txtAddrLun_cus.Text)
-        '    .Parameters.AddWithValue("@cus_addr_din", txtAddrDin_cus.Text)
-        '    .Parameters.AddWithValue("@cus_bed", txtBedNo_cus.Text)
-        '    .Parameters.AddWithValue("@cus_memo", txtMemo_cus.Text)
-        'End With
+        '去頭尾空白
+        btnCusInsert.Parent.Controls.OfType(Of TextBox).ToList().ForEach(Sub(txt) txt.Text = Trim(txt.Text))
 
-        'Try
-        '    conn.Open()
+        '塞資料
+        Dim dicData As New Dictionary(Of String, String)
 
-        '    If mSQLCmd.ExecuteNonQuery() > 0 Then
-        '        MsgBox("新增成功")
-        '        '清空textbox
-        '    End If
-        '    '重新搜尋新增目標
-        'Catch ex As Exception
-        '    MsgBox(ex.Message)
-        'End Try
+        With dicData
+            .Add("cus_name", txtCusName_cus.Text) '客戶姓名
+            .Add("cus_phone", txtPhone_cus.Text) '客戶手機
+            .Add("cus_tel_home", txtTelHome.Text) '客戶住家電話
+            .Add("cus_tel_comp", txtTelComp.Text) '客戶公司電話
+            .Add("cus_addr_home", txtAddrHome.Text) '客戶住家地址
+            .Add("cus_addr_break", txtAddrBreak.Text) '早餐地址
+            .Add("cus_addr_lunch", txtAddrLunch.Text) '午餐地址
+            .Add("cus_addr_dinner", txtAddrDinner.Text) '晚餐地址
+            .Add("cus_bed", txtBed.Text) '床號
+            .Add("cus_memo", txtMemo_cus.Text)
+        End With
+        InserTable("customer", dicData)
+    End Sub
+    '檢查textbox是否為空
+    Private Function Empty_Textbox(ctrls As Collection) As Boolean
+        For Each ctrl As TextBox In ctrls
+            If String.IsNullOrWhiteSpace(ctrl.Text) Then
+                MsgBox(ctrl.Tag + "不能空白")
+                ctrl.Focus()
+                Return True
+            End If
+        Next
 
-        'conn.Close()
-        MsgBox("新增成功")
+        Return False
+    End Function
+
+    Private Sub InserTable(sTableName As String, dicData As Dictionary(Of String, String))
+        Dim cmd As New MySqlCommand($"INSERT INTO {sTableName} ({String.Join(",", dicData.Keys)}) VALUES ({String.Join(",", dicData.Values.Select(Function(x) $"'{x}'"))})", conn)
+        Try
+            conn.Open()
+            If cmd.ExecuteNonQuery() > 0 Then
+                MsgBox("新增成功")
+                btnCusCancel.PerformClick()
+                'todo 重新搜尋新增目標
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        conn.Close()
     End Sub
 
     Private Sub btnCusModify_Click(sender As Object, e As EventArgs) Handles btnCusModify.Click
@@ -518,22 +557,24 @@ Public Class frmMain
     End Sub
     '客戶管理-查詢
     Private Sub btnCusQuery_Click(sender As Object, e As EventArgs) Handles btnCusQuery.Click
-        msSQL = "SELECT * FROM test"
-        mSQLCmd = New MySqlCommand(msSQL, conn)
+        'msSQL = "SELECT * FROM customer"
+        'mSQLCmd = New MySqlCommand(msSQL, conn)
 
-        Try
-            conn.Open()
-            mAdapter = New MySqlDataAdapter(mSQLCmd)
-            Dim dt As New DataTable()
-            mAdapter.Fill(dt)
-            Dim row As Object
-            Dim i As Int16
-            For Each row In dt.Rows
-                dgCustomer.Rows.Add(row(i))
-            Next
+        'Try
+        '    conn.Open()
+        '    mAdapter = New MySqlDataAdapter(mSQLCmd)
+        '    Dim dt As New DataTable()
+        '    mAdapter.Fill(dt)
+        '    Dim row As Object
+        '    Dim i As Int16
+        '    For Each row In dt.Rows
+        '        dgCustomer.Rows.Add(row(i))
+        '    Next
 
-        Catch ex As Exception
-        End Try
+        'Catch ex As Exception
+        '    Debug.Print(ex.Message)
+        'End Try
+        'conn.Close()
     End Sub
     '清除鍵,清除畫面
     Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles btnCusCancel.Click, btnProdCancel.Click, btnMenuCancel.Click, btnOrdCancel.Click, btnMonCancel.Click, btnEmpCancel.Click, btnTaboCancel.Click, btnPermCancel.Click, btnDistCancel.Click
@@ -598,7 +639,9 @@ Public Class frmMain
     End Sub
     '更改月曆時間,有訂單就找訂單月份,沒訂單就用現在月份
     Private Sub btnDistQuery_Click(sender As Object, e As EventArgs) Handles btnDistQuery.Click
-
+        tlpCalendar.Visible = False
+        '程式碼
+        tlpCalendar.Visible = True
     End Sub
 
     Private Sub btnMenuExcel_Click(sender As Object, e As EventArgs) Handles btnMenuExcel.Click
@@ -616,6 +659,12 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        End
+        LoginForm1.Close()
+    End Sub
+
+    Private Sub cmdProdName_order_SelectedValueChanged(sender As Object, e As EventArgs) Handles cmdProdName_order.SelectedValueChanged
+        '更新商品分類
+        '若商品分類是套餐則顯示"三餐"
+
     End Sub
 End Class
