@@ -1,12 +1,9 @@
 ﻿Imports System.Configuration
-Imports System.IO
-Imports Microsoft.Office.Interop
+Imports System.Text
 Imports MySql.Data.MySqlClient
 
 Public Class frmMain
-    Dim conn As MySqlConnection
-    Dim mAdapter As MySqlDataAdapter
-    'Dim dt As New System.Data.DataTable()
+    Dim mConn As MySqlConnection
 
     Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
         If Me.TabControl1.SelectedTab.Name = "TP_Logout" Then
@@ -19,48 +16,10 @@ Public Class frmMain
         End If
     End Sub
 
-    'Sub ReadDataGridWidth(dgv As String)
-    '    Dim myObject As Object
-
-    '    Select Case dgv
-    '        Case "DGV_Customer"
-    '            myObject = Me.DGV_Customer
-    '        Case "DGV_Product"
-    '            myObject = Me.DGV_Product
-    '        Case "DGV_Staff"
-    '            myObject = Me.DGV_Staff
-    '        Case "DGV_Order"
-    '            myObject = Me.DGV_Order
-    '        Case "DGV_Taboo"
-    '            myObject = Me.DGV_Taboo
-    '        Case "DGV_TabooClass"
-    '            myObject = Me.DGV_TabooClass
-    '        Case "DGV_ProductClass"
-    '            myObject = Me.DGV_ProductClass
-    '        Case "DGV_Parameter"
-    '            myObject = Me.DGV_Parameter
-    '    End Select
-    '    With myObject
-    '        Dim tmpWidth As String
-    '        Dim objStreamReader As StreamReader
-    '        Try
-    '            objStreamReader = New StreamReader(dgv + ".set", False)
-    '            tmpWidth = objStreamReader.ReadLine()
-    '            objStreamReader.Close()
-    '            Dim tmpW() = Split(tmpWidth, ",")
-    '            For j = 1 To .ColumnCount
-    '                .Columns(j - 1).Width = tmpW(j - 1)
-    '            Next
-    '        Catch ex As Exception
-
-    '        End Try
-    '    End With
-    'End Sub
-
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '設定連線
         Dim myConnectionString As String = ConfigurationManager.AppSettings("myConnectionString").ToString
-        conn = New MySqlConnection(myConnectionString)
+        mConn = New MySqlConnection(myConnectionString)
 
         InitDataGrid()
 
@@ -81,156 +40,15 @@ Public Class frmMain
         'sSQL = "INSERT INTO PERMISSION ()"
     End Sub
 
-
-    'Private Sub Setup_retrieve()
-    '    'DGV_Parameter.Rows.Clear()
-    '    'SQL STMT
-    '    Dim sql As String = "SELECT * FROM sys_para"
-    '    cmd = New MySqlCommand(sql, conn)
-    '    'OPEN CON,RETRIEVE,FILL,DGVIEW
-    '    Try
-    '        conn.Open()
-    '        adapter = New MySqlDataAdapter(cmd)
-    '        Dim mydt As New System.Data.DataTable()
-    '        adapter.Fill(mydt)
-    '        'FILL DGVIEW
-    '        For Each row In mydt.Rows
-    '            Setup_Populate(row(0), row(1), row(2), row(3))
-    '        Next
-    '        conn.Close()
-    '        'CLEAR DT
-    '        mydt.Rows.Clear()
-    '    Catch ex As Exception
-    '        MsgBox(ex.Message)
-    '        conn.Close()
-    '    End Try
-
-    'End Sub
-
-    'Private Sub Setup_Populate(sp_sn As String, sp_name As String, sp_type As String, sp_option As String)
-    '    Dim row As String() = New String() {sp_sn, sp_name, sp_type, sp_option}
-
-    '    'ADD ROW TO ROWS COLLEC
-    '    'DGV_Parameter.Rows.Add(row)
-    'End Sub
-
-    'Private Sub DGV_Setup_ColumnWidthChanged(sender As Object, e As DataGridViewColumnEventArgs)
-    '    SaveDataGridWidth(sender.name)
-    'End Sub
-
-    'Sub SaveDataGridWidth(dgv As String)
-    '    Dim myObject As Object
-
-    '    Select Case dgv
-    '        Case "DGV_Customer"
-    '            myObject = Me.DGV_Customer
-    '        Case "DGV_Product"
-    '            myObject = Me.DGV_Product
-    '        Case "DGV_Staff"
-    '            myObject = Me.DGV_Staff
-    '        Case "DGV_Order"
-    '            myObject = Me.DGV_Order
-    '        Case "DGV_Taboo"
-    '            myObject = Me.DGV_Taboo
-    '        Case "DGV_TabooClass"
-    '            myObject = Me.DGV_TabooClass
-    '        Case "DGV_ProductClass"
-    '            myObject = Me.DGV_ProductClass
-    '        Case "DGV_Parameter"
-    '            myObject = Me.DGV_Parameter
-
-    '    End Select
-    '    With myObject
-    '        Dim tmpWidth As String
-    '        tmpWidth = .Columns(0).Width.ToString
-    '        For j = 2 To .ColumnCount
-    '            tmpWidth = tmpWidth + "," + .Columns(j - 1).Width.ToString
-    '        Next
-    '        Dim objStreamWriter As StreamWriter
-    '        objStreamWriter = New StreamWriter(dgv + ".set", False)
-    '        objStreamWriter.WriteLine(tmpWidth)
-    '        objStreamWriter.Close()
-    '    End With
-    'End Sub
-
-    'Private Sub DGV_Customer_ColumnWidthChanged(sender As Object, e As DataGridViewColumnEventArgs) Handles DGV_Customer.ColumnWidthChanged
-    '    SaveDataGridWidth(sender.name)
-    'End Sub
-
-    'Private Sub DGV_Product_ColumnWidthChanged(sender As Object, e As DataGridViewColumnEventArgs) Handles DGV_Product.ColumnWidthChanged
-    '    SaveDataGridWidth(sender.name)
-    'End Sub
-
-    'Private Sub DGV_Staff_ColumnWidthChanged(sender As Object, e As DataGridViewColumnEventArgs) Handles DGV_Staff.ColumnWidthChanged
-    '    SaveDataGridWidth(sender.name)
-    'End Sub
-
-    'Private Sub DGV_Order_ColumnWidthChanged(sender As Object, e As DataGridViewColumnEventArgs) Handles DGV_Order.ColumnWidthChanged
-    '    SaveDataGridWidth(sender.name)
-    'End Sub
-
-    'Private Sub DGV_Parameter_ColumnWidthChanged(sender As Object, e As DataGridViewColumnEventArgs)
-    '    SaveDataGridWidth(sender.name)
-    'End Sub
-
-    'Private Sub DGV_ProductClass_ColumnWidthChanged(sender As Object, e As DataGridViewColumnEventArgs)
-    '    SaveDataGridWidth(sender.name)
-    'End Sub
-
-    'Private Sub DGV_TabooClass_ColumnWidthChanged(sender As Object, e As DataGridViewColumnEventArgs) Handles DGV_TabooClass.ColumnWidthChanged
-    '    SaveDataGridWidth(sender.name)
-    'End Sub
-
-    'Private Sub DGV_Taboo_ColumnWidthChanged(sender As Object, e As DataGridViewColumnEventArgs)
-    '    SaveDataGridWidth(sender.name)
-    'End Sub
-
-
     '初始化DataGrid欄位
     Private Sub InitDataGrid()
         '客戶管理
-        'With dgvCustomer
-        '    .Columns.Add("", "編號")
-        '    .Columns.Add("", "姓名")
-        '    .Columns.Add("", "電話")
-        '    .Columns.Add("", "手機")
-        '    .Columns.Add("", "公司電話")
-        '    .Columns.Add("", "地址")
-        '    .Columns.Add("", "早餐送餐地址")
-        '    .Columns.Add("", "午餐送餐地址")
-        '    .Columns.Add("", "晚餐送餐地址")
-        '    .Columns.Add("", "床號")
-        '    .Columns.Add("", "備註")
-        '    .AutoResizeColumnHeadersHeight()
-        'End With
-
-        'todo 顯示所有客戶資料
-        '將table資料塞到dgv
-        Dim cmd As New MySqlCommand("SELECT * FROM customer", conn)
-        Dim dtData As New DataTable()
-        conn.Open()
-        Dim adapter As New MySqlDataAdapter(cmd)
-        adapter.Fill(dtData)
-        With dgvCustomer
-            .DataSource = dtData
-            .AutoResizeColumnHeadersHeight()
-        End With
-
-        '用table欄位的備註將dgv的欄位改名
-        cmd = New MySqlCommand("SELECT COLUMN_NAME, COLUMN_COMMENT FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'tingyi' AND TABLE_NAME = 'customer'", conn)
-        adapter = New MySqlDataAdapter(cmd)
-        Dim dtColName As New DataTable()
-        adapter.Fill(dtColName)
-        For Each col As DataGridViewColumn In dgvCustomer.Columns
-            Dim row As DataRow = dtColName.AsEnumerable().FirstOrDefault(Function(dr) dr("COLUMN_NAME").ToString() = col.Name)
-            If row IsNot Nothing Then
-                col.HeaderText = row("COLUMN_COMMENT").ToString()
-            End If
-        Next
-        conn.Close()
+        Dim sTable As String
+        sTable = "customer"
+        DataToDgv(SelectFromTable(sTable, "*"), sTable, dgvCustomer)
 
         '商品管理
-        With dgProduct
+        With dgvProduct
             .Columns.Add("", "編號")
             .Columns.Add("", "商品群組")
             .Columns.Add("", "商品分類")
@@ -261,7 +79,7 @@ Public Class frmMain
         chkDinner_product.Checked = True
 
         '菜單管理
-        With DGV_Menu
+        With dgvMenu
             .Columns.Add("", "編號")
             .Columns.Add("", "版本")
             .Columns.Add("", "日期")
@@ -342,7 +160,7 @@ Public Class frmMain
         txtNS3.Text = "八珍干貝鮮雞湯"
 
         '訂單管理
-        With dgOrder
+        With dgvOrder
             .Columns.Add("", "訂單編號")
             .Columns.Add("", "客戶姓名")
             .Columns.Add("", "手機")
@@ -374,7 +192,7 @@ Public Class frmMain
         txtPhone_dist.Text = "0918-123123"
 
         '財務管理
-        With dgMoney
+        With dgvMoney
             .Columns.Add("", "編號")
             .Columns.Add("", "日期")
             .Columns.Add("", "客戶姓名")
@@ -397,7 +215,7 @@ Public Class frmMain
         txtMonMemo.Text = "123"
 
         '員工管理
-        With DGV_Staff
+        With dgvEmployee
             .Columns.Add("", "編號")
             .Columns.Add("", "姓名")
             .Columns.Add("", "電話")
@@ -424,7 +242,7 @@ Public Class frmMain
         cmbEmpPos_emp.Text = "系統管理員"
 
         '禁忌食物管理
-        With dgTaboo
+        With dgvTaboo
             .Columns.Add("", "編號")
             .Columns.Add("", "分類")
             .Columns.Add("", "名稱")
@@ -437,7 +255,7 @@ Public Class frmMain
         txtTaboName.Text = "雞屁股"
 
         '權限管理
-        With dgPermission
+        With dgvPermission
             .Columns.Add("", "編號")
             .Columns.Add("", "職位")
             .Columns.Add("", "客戶管理")
@@ -464,7 +282,22 @@ Public Class frmMain
         chkPermission.Checked = True
         chkDistr.Checked = True
     End Sub
+    '將搜尋資料塞到dgv
+    Private Sub DataToDgv(dt As DataTable, sTable As String, dgv As DataGridView)
+        With dgv
+            .DataSource = dt
+            .AutoResizeColumnHeadersHeight()
+        End With
 
+        '用table欄位的備註將dgv的欄位改名
+        Dim TableCol As DataTable = SelectFromTable("INFORMATION_SCHEMA.COLUMNS", "COLUMN_NAME, COLUMN_COMMENT", $"WHERE TABLE_SCHEMA = 'tingyi' AND TABLE_NAME = '{sTable}'")
+        For Each col As DataGridViewColumn In dgv.Columns
+            Dim row As DataRow = TableCol.AsEnumerable().FirstOrDefault(Function(x) x("COLUMN_NAME").ToString() = col.Name)
+            If row IsNot Nothing Then
+                col.HeaderText = row("COLUMN_COMMENT").ToString()
+            End If
+        Next
+    End Sub
     Private Sub Button27_Click(sender As Object, e As EventArgs) Handles btnDistDel.Click
         MsgBox("是否往後延一餐?", vbYesNo)
     End Sub
@@ -478,18 +311,39 @@ Public Class frmMain
     End Sub
 
     Private Sub btnCusInsert_Click(sender As Object, e As EventArgs) Handles btnCusInsert.Click
-        '檢查不能空值的欄位
-        Dim txts As New Collection
-        txts.Add(txtCusName_cus)
-        txts.Add(txtPhone_cus)
-        If Empty_Textbox(txts) Then Exit Sub
+        Dim sTable As String
+        Cursor = Cursors.WaitCursor
+        Dim tp As TabPage = CType(sender, Button).Parent
 
-        '去頭尾空白
-        btnCusInsert.Parent.Controls.OfType(Of TextBox).ToList().ForEach(Sub(txt) txt.Text = Trim(txt.Text))
+        sTable = "customer"
+        If CheckTextNull(sTable, tp) Then GoTo Finish
+        If CheckDataDuplication(sTable) Then GoTo Finish
 
-        '塞資料
+        InserData("customer", SqlData(), dgvCustomer)
+
+        '列出所有客戶資料
+        DataToDgv(SelectFromTable(sTable, "*"), sTable, dgvCustomer)
+Finish:
+        Me.Cursor = Cursors.Default
+    End Sub
+    ''' <summary>
+    ''' 檢查欲新增或修改的資料是否有重複
+    ''' </summary>
+    Private Function CheckDataDuplication(sTable As String) As Boolean
+        Dim bResult As Boolean
+        Dim dt As DataTable = SelectFromTable(sTable, "*", $"WHERE cus_name = '{txtCusName_cus.Text}'AND cus_phone = '{txtPhone_cus.Text}'")
+        If dt.Rows.Count > 0 Then
+            MsgBox("重複資料")
+            DataToDgv(dt, sTable, dgvCustomer)
+            bResult = True
+        End If
+        Return bResult
+    End Function
+    ''' <summary>
+    ''' 整合Sql資料內容,用在insert,update
+    ''' </summary>
+    Private Function SqlData() As Dictionary(Of String, String)
         Dim dicData As New Dictionary(Of String, String)
-
         With dicData
             .Add("cus_name", txtCusName_cus.Text) '客戶姓名
             .Add("cus_phone", txtPhone_cus.Text) '客戶手機
@@ -502,86 +356,189 @@ Public Class frmMain
             .Add("cus_bed", txtBed.Text) '床號
             .Add("cus_memo", txtMemo_cus.Text)
         End With
-        InserTable("customer", dicData)
-    End Sub
-    '檢查textbox是否為空
-    Private Function Empty_Textbox(ctrls As Collection) As Boolean
-        For Each ctrl As TextBox In ctrls
-            If String.IsNullOrWhiteSpace(ctrl.Text) Then
-                MsgBox(ctrl.Tag + "不能空白")
-                ctrl.Focus()
-                Return True
+        Return dicData
+    End Function
+    ''' <summary>
+    ''' 去頭尾空白後,檢查txtbox是否為空值,或空白
+    ''' </summary>
+    ''' <param name="sTable">資料表</param>
+    ''' <param name="tp">TabPage</param>
+    ''' <returns>True:是空的;False:有文字</returns>
+    Private Function CheckTextNull(sTable As String, tp As TabPage) As Boolean
+        '去頭尾空白
+        tp.Parent.Controls.OfType(Of TextBox).ToList().ForEach(Sub(txt) txt.Text = Trim(txt.Text))
+
+        '找出資料表不能為空值的欄位
+        Dim dt As DataTable = SelectFromTable("information_schema.columns", "COLUMN_COMMENT", $"WHERE table_schema = 'tingyi' AND TABLE_NAME='{sTable}' AND is_nullable = 'NO' AND column_key != 'PRI'")
+
+        '比較當前父控制項裡的txtbox.tag是否相符
+        For Each txt As TextBox In tp.Controls.OfType(Of TextBox)()
+            Dim row As DataRow = dt.AsEnumerable().FirstOrDefault(Function(x) x("COLUMN_COMMENT").ToString() = txt.Tag)
+            If row IsNot Nothing Then
+                If String.IsNullOrWhiteSpace(txt.Text) Then
+                    MsgBox(txt.Tag + "不能空白")
+                    txt.Focus()
+                    Return True
+                End If
             End If
         Next
+        Return False
+    End Function
+    '檢查textbox是否為空
+    Private Function CheckEmpty_Textbox(txt As TextBox) As Boolean
+        If String.IsNullOrWhiteSpace(txt.Text) Then
+            MsgBox(txt.Tag + "不能空白")
+            txt.Focus()
+            Return True
+        End If
 
         Return False
     End Function
 
-    Private Sub InserTable(sTableName As String, dicData As Dictionary(Of String, String))
-        Dim cmd As New MySqlCommand($"INSERT INTO {sTableName} ({String.Join(",", dicData.Keys)}) VALUES ({String.Join(",", dicData.Values.Select(Function(x) $"'{x}'"))})", conn)
+    Private Sub InserData(sTable As String, dicData As Dictionary(Of String, String), dgv As DataGridView)
+        Dim cmd As New MySqlCommand($"INSERT INTO {sTable} ({String.Join(",", dicData.Keys)}) VALUES ({String.Join(",", dicData.Values.Select(Function(x) $"'{x}'"))})", mConn)
         Try
-            conn.Open()
-            If cmd.ExecuteNonQuery() > 0 Then
-                MsgBox("新增成功")
-                btnCusCancel.PerformClick()
-                'todo 重新搜尋新增目標
-            End If
-
+            mConn.Open()
+            If cmd.ExecuteNonQuery() > 0 Then MsgBox("新增成功")
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-        conn.Close()
+        mConn.Close()
+        btnCusCancel.PerformClick()
     End Sub
 
     Private Sub btnCusModify_Click(sender As Object, e As EventArgs) Handles btnCusModify.Click
-        MsgBox("修改成功")
+        Dim sTable As String
+        Cursor = Cursors.WaitCursor
+        '檢查txt
+        Dim tp As TabPage = CType(sender, Button).Parent
+        sTable = "customer"
+        If CheckTextNull(sTable, tp) Then GoTo Finish
+
+        UpdateData(sTable, SqlData(), $"cus_id = '{txtCusID.Text}'")
+
+        '列出所有資料
+        DataToDgv(SelectFromTable(sTable, "*"), sTable, dgvCustomer)
+Finish:
+        Cursor = Cursors.Default
+    End Sub
+    ''' <summary>
+    ''' 查詢資料表
+    ''' </summary>
+    ''' <param name="sTable">資料表</param>
+    ''' <param name="sColumn">欲搜尋的欄位</param>
+    ''' <param name="whereClause">條件 "Where..."</param>
+    ''' <returns></returns>
+    Public Function SelectFromTable(sTable As String, sColumn As String, Optional whereClause As String = "") As DataTable
+        Dim dt As New DataTable()
+        Dim cmdText As String = $"SELECT {sColumn} FROM {sTable} {whereClause}"
+
+        Try
+            mConn.Open()
+            Using cmd As New MySqlCommand(cmdText, mConn)
+                Dim adapter As New MySqlDataAdapter(cmd)
+                adapter.Fill(dt)
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        mConn.Close()
+        Return dt
+    End Function
+    ''' <summary>
+    ''' 更新表格
+    ''' </summary>
+    ''' <param name="sTable">表格名稱</param>
+    ''' <param name="dicFields">更新對象集合</param>
+    ''' <param name="sCondition">Where</param>
+    Public Sub UpdateData(sTable As String, dicFields As Dictionary(Of String, String), sCondition As String)
+        Try
+            mConn.Open()
+
+            '建立 UPDATE SQL 陳述式
+            Dim sb As New StringBuilder()
+            sb.AppendFormat("UPDATE {0} SET ", sTable)
+
+            '取得更新的欄位名稱與值
+            Dim lstFields As New List(Of String)
+            For Each kvp As KeyValuePair(Of String, String) In dicFields
+                lstFields.Add(String.Format("{0} = @{0}", kvp.Key))
+            Next
+            sb.Append(String.Join(", ", lstFields))
+
+            '加上 WHERE 條件式
+            If Not String.IsNullOrWhiteSpace(sCondition) Then
+                sb.AppendFormat(" WHERE {0}", sCondition)
+            End If
+
+            '執行 SQL 陳述式
+            Dim cmd As New MySqlCommand(sb.ToString(), mConn)
+            For Each kvp As KeyValuePair(Of String, String) In dicFields
+                cmd.Parameters.AddWithValue(String.Format("@{0}", kvp.Key), kvp.Value)
+            Next
+            If cmd.ExecuteNonQuery() > 0 Then
+                MsgBox("修改成功")
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        mConn.Close()
     End Sub
 
     Private Sub btnCusDelete_Click(sender As Object, e As EventArgs) Handles btnCusDelete.Click
-        If MsgBox("確定要刪除?", vbYesNo, "警告") = MsgBoxResult.Yes Then
-            MsgBox("刪除成功")
+        'todo 刪除作業
+        If String.IsNullOrEmpty(txtCusID.Text) Then
+            MsgBox("請選擇刪除對象", Title:="提醒")
+            Exit Sub
         End If
-
+        If MsgBox("確定要刪除?", vbYesNo, "警告") = MsgBoxResult.No Then Exit Sub
+        Dim id = CType(sender, Button).Parent.Controls.OfType(Of TextBox)().Where(Function(x) x.Tag.ToString = "編號").FirstOrDefault
+        Dim sTable As String = "customer"
+        Dim col As String = "cus_id"
+        Dim sWhere = $"{col} = '{id.Text}'"
+        If DeleteData(sTable, sWhere) Then
+            MsgBox("刪除成功")
+            DataToDgv(SelectFromTable(sTable, "*"), sTable, dgvCustomer)
+        End If
     End Sub
-
-    Private Sub btnProdAdd_Click(sender As Object, e As EventArgs) Handles btnProdAdd.Click
-        MsgBox("新增成功")
-    End Sub
-
-    Private Sub btnProdModify_Click(sender As Object, e As EventArgs) Handles btnProdModify.Click
-        MsgBox("修改成功")
-    End Sub
-
-    Private Sub btnProdDelete_Click(sender As Object, e As EventArgs) Handles btnProdDelete.Click
-        MsgBox("刪除成功")
-    End Sub
+    ''' <summary>
+    ''' MySQL Delete
+    ''' </summary>
+    ''' <param name="sTable">資料表</param>
+    ''' <param name="sWhere">條件</param>
+    ''' <returns></returns>
+    Public Function DeleteData(sTable As String, sWhere As String) As Boolean
+        Dim rowsAffected As Integer
+        Dim cmd As New MySqlCommand($"DELETE FROM {sTable} WHERE {sWhere}", mConn)
+        Try
+            mConn.Open()
+            rowsAffected = cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox(ex.Message, Title:="警告")
+        End Try
+        mConn.Close()
+        Return rowsAffected > 0
+    End Function
     '客戶管理-查詢
     Private Sub btnCusQuery_Click(sender As Object, e As EventArgs) Handles btnCusQuery.Click
-        'msSQL = "SELECT * FROM customer"
-        'mSQLCmd = New MySqlCommand(msSQL, conn)
+        Cursor = Cursors.WaitCursor
 
-        'Try
-        '    conn.Open()
-        '    mAdapter = New MySqlDataAdapter(mSQLCmd)
-        '    Dim dt As New DataTable()
-        '    mAdapter.Fill(dt)
-        '    Dim row As Object
-        '    Dim i As Int16
-        '    For Each row In dt.Rows
-        '        dgCustomer.Rows.Add(row(i))
-        '    Next
+        Dim sTable As String = "customer"
+        Dim sTxt As String = txtCusQuery.Text
+        DataToDgv(SelectFromTable(sTable, "*", $"WHERE cus_name LIKE '%{sTxt}%' or cus_phone LIKE '%{sTxt}%'"), sTable, dgvCustomer)
+        MsgBox("搜尋完畢")
 
-        'Catch ex As Exception
-        '    Debug.Print(ex.Message)
-        'End Try
-        'conn.Close()
+        Cursor = Cursors.Default
     End Sub
     '清除鍵,清除畫面
     Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles btnCusCancel.Click, btnProdCancel.Click, btnMenuCancel.Click, btnOrdCancel.Click, btnMonCancel.Click, btnEmpCancel.Click, btnTaboCancel.Click, btnPermCancel.Click, btnDistCancel.Click
-
         Dim btn As Button = CType(sender, Button)
-
         ClearTabPage(btn.Parent)
+
+        '顯示所有資料
+        Dim sTable As String
+        sTable = "customer"
+        DataToDgv(SelectFromTable(sTable, "*"), sTable, dgvCustomer)
     End Sub
     '清除TabPage裡的控制項內容
     Private Sub ClearTabPage(tabpage As TabPage)
@@ -666,5 +623,20 @@ Public Class frmMain
         '更新商品分類
         '若商品分類是套餐則顯示"三餐"
 
+    End Sub
+    Private Sub txtCusQuery_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCusQuery.KeyPress
+        If e.KeyChar = vbCr Then
+            btnCusQuery_Click(btnCusQuery, e)
+        End If
+    End Sub
+
+    Private Sub dgvCustomer_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCustomer.CellClick
+        Dim dgv = CType(sender, DataGridView)
+        For Each txt As TextBox In dgv.Parent.Controls.OfType(Of TextBox)()
+            Dim colName = dgv.Columns.Cast(Of DataGridViewColumn)().FirstOrDefault(Function(x) x.HeaderText = txt.Tag)?.Name
+            If Not String.IsNullOrEmpty(colName) Then
+                txt.Text = dgv(colName, e.RowIndex).Value
+            End If
+        Next
     End Sub
 End Class
