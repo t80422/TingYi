@@ -28,7 +28,7 @@ Public Class frmMain
 
         InitMySQL()
         InitDataGrid()
-        InitProduct()
+        InitProductGroup()
         InitTabooType()
         InitPosition()
         '初始化收款方式
@@ -65,14 +65,14 @@ Public Class frmMain
     ''' <summary>
     ''' 初始化商品ComboBox
     ''' </summary>
-    Private Sub InitProduct()
+    Private Sub InitProductGroup()
         '初始化商品
-        With cmbProdName_order
-            .DataSource = SelectFromTable("SELECT * FROM product")
-            .DisplayMember = "prod_name"
-            .ValueMember = "prod_id"
-            .SelectedIndex = -1
-        End With
+        'With cmbProdName_order
+        '    .DataSource = SelectFromTable("SELECT * FROM product")
+        '    .DisplayMember = "prod_name"
+        '    .ValueMember = "prod_id"
+        '    .SelectedIndex = -1
+        'End With
         '初始化商品群組
         Dim col As New Collection From {
         cmbProdGrp_product,
@@ -108,10 +108,7 @@ Public Class frmMain
     ''' 初始化職位ComboBox
     ''' </summary>
     Private Sub InitPosition()
-
         '初始化商品
-
-
         Dim col As New Collection From {
             cmbPosition_perm,
             cmbPosition_emp
@@ -376,9 +373,8 @@ Public Class frmMain
     '客戶管理-新增
     Private Sub btnCusInsert_Click(sender As Object, e As EventArgs) Handles btnCusInsert.Click
         Cursor = Cursors.WaitCursor
-
         Dim table = "customer"
-        If Not CheckCustomerData(table) Then GoTo Finish
+        If Not CheckCustomerData() Then GoTo Finish
 
         '檢查重複資料
         Dim dic As New Dictionary(Of String, String) From {
@@ -404,13 +400,75 @@ Finish:
     Private Sub btnCusModify_Click(sender As Object, e As EventArgs) Handles btnCusModify.Click
         Cursor = Cursors.WaitCursor
         Dim table = "customer"
-        If Not CheckCustomerData(table) Then GoTo Finish
+        If Not CheckCustomerData() Then GoTo Finish
         UpdateData(table, Bind_TableTextBox(table), $"cus_id = '{txtCusID.Text}'")
 
         btnCusCancel.PerformClick()
 Finish:
         Cursor = Cursors.Default
     End Sub
+
+    ''' <summary>
+    ''' 檢查Customer即將上傳的內容是否有誤
+    ''' </summary>
+    ''' <returns>True:正確 False:錯誤</returns>
+    Private Function CheckCustomerData() As Boolean
+        '去txt頭尾空白
+        tpBasic_cus.Controls.OfType(Of TextBox).ToList.ForEach(Sub(txt) txt.Text = Trim(txt.Text))
+        tpConsult_cus.Controls.OfType(Of TextBox).ToList.ForEach(Sub(txt) txt.Text = Trim(txt.Text))
+
+        '檢查必填欄位
+        If String.IsNullOrWhiteSpace(txtCusName_cus.Text) Then
+            MsgBox("姓名 不能空白")
+            txtCusName_cus.Focus()
+            Return False
+        End If
+        If String.IsNullOrWhiteSpace(txtPhone_cus.Text) Then
+            MsgBox("手機 不能空白")
+            txtPhone_cus.Focus()
+            Return False
+        End If
+
+        '檢查日期格式
+        If Not String.IsNullOrWhiteSpace(txtBirthday.Text) Then
+            Dim day As DateTime
+            If Not DateTime.TryParse(txtBirthday.Text, day) Then
+                MsgBox("生日日期格式錯誤")
+                txtBirthday.Focus()
+                Return False
+            End If
+        End If
+        If Not String.IsNullOrWhiteSpace(txtDueDate.Text) Then
+            Dim day As DateTime
+            If Not DateTime.TryParse(txtDueDate.Text, day) Then
+                MsgBox("預產期 日期格式錯誤")
+                tcCustomer.SelectedTab = tpConsult_cus
+                txtDueDate.Focus()
+                Return False
+            End If
+        End If
+
+        '檢查數字
+        Dim dic As New Dictionary(Of TextBox, String) From {
+            {txtChildren, "子女"},
+            {txtManyChild, "第幾胎"},
+            {txtConfDay, "月子天數"},
+            {txtConfBuy, "欲購買月子餐天數"},
+            {txtHeight, "身高"},
+            {txtBornWeight, "產前體重"},
+            {txtWeight, "目前體重"}
+        }
+        For Each txt In dic.Keys
+            If Not String.IsNullOrEmpty(txtPrice.Text) AndAlso Not IsNumeric(txtPrice.Text) Then
+                Dim tp As TabPage = If(TypeOf txtPrice.Parent Is TabPage, txtPrice.Parent, txtPrice.Parent.Parent)
+                tcCustomer.SelectedTab = tp
+                MsgBox($"{dic(txtPrice)} 請輸入數字")
+                txtPrice.Focus()
+                Return False
+            End If
+        Next
+        Return True
+    End Function
 
     '客戶管理-刪除
     Private Sub btnCusDelete_Click(sender As Object, e As EventArgs) Handles btnCusDelete.Click
@@ -495,76 +553,257 @@ Finish:
         '計算未收帳款
         Dim dt = SelectFromTable($"SELECT mon_income FROM money WHERE mon_ord_id = '{txtOrdID_order.Text}'")
         If dt.Rows.Count = 0 Then
-            txtUnpay.Text = txtPrice_order.Text
+            txtUnpay.Text = txtTotalPrice.Text
             Exit Sub
         End If
         Dim dr As DataRow = dt.Rows(0)
-        txtUnpay.Text = txtPrice_order.Text - dr("mon_income").ToString
+        txtUnpay.Text = txtTotalPrice.Text - dr("mon_income").ToString
         'todo 要再驗算 如果有兩筆財務的話
     End Sub
 
+    '訂單管理-新增
+    Private Sub btnOrdInsert_Click(sender As Object, e As EventArgs) Handles btnOrdInsert.Click
+        Cursor = Cursors.WaitCursor
+        Dim tp As TabPage = CType(sender, Button).Parent
+        dtOrdDate.Value = Now
+        If Not CheckOrderData() Then GoTo Finish
+        If MsgBox("請確認金額是否正確", MsgBoxStyle.YesNo) = MsgBoxResult.No Then GoTo Finish
+        Dim table = "orders"
+
+        '更新customer特定欄位
+        Dim dic As New Dictionary(Of String, String) From {
+            {"cus_email", txtEmail.Text},
+            {"cus_emer_cont", txtEmerCont.Text},
+            {"cus_emer_phone", txtEmerPhone.Text}
+        }
+        Dim dt = SelectFromTable($"SELECT cus_id FROM customer WHERE cus_name = '{txtCusName_order.Text}' AND cus_phone = '{txtPhone_order.Text}'")
+        Dim rowCusID As String
+        If dt.Rows.Count > 0 Then
+            rowCusID = dt.Rows(0)("cus_id").ToString
+        Else
+            MsgBox("找不到客戶資料")
+            GoTo Finish
+        End If
+
+        UpdateData("customer", dic, $"cus_id = '{rowCusID}'")
+
+        InserData(table, Bind_TableTextBox(table))
+
+        '列出所有表格資料
+        Dim sql = "SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id"
+        DataToDgv(SelectFromTable(sql), "customer,orders", dgvOrder)
+        ClearTabPage(tp)
+Finish:
+        Cursor = Cursors.Default
+    End Sub
+
+    '訂單管理-修改
+    Private Sub btnOrdModify_Click(sender As Object, e As EventArgs) Handles btnOrdModify.Click
+        Cursor = Cursors.WaitCursor
+        Dim tp As TabPage = CType(sender, Button).Parent
+        Dim sTable = tp.Tag.ToString
+        If Not CheckOrderData() Then GoTo Finish
+
+        '更新customer特定欄位
+        Dim dic As New Dictionary(Of String, String) From {
+            {"cus_email", txtEmail.Text},
+            {"cus_emer_cont", txtEmerCont.Text},
+            {"cus_emer_phone", txtEmerPhone.Text}
+        }
+        Dim dt = SelectFromTable($"SELECT cus_id FROM customer WHERE cus_name = '{txtCusName_order.Text}' AND cus_phone = '{txtPhone_order.Text}'")
+        Dim rowCusID As String
+        If dt.Rows.Count > 0 Then
+            rowCusID = dt.Rows(0)("cus_id").ToString
+        Else
+            MsgBox("找不到客戶資料")
+            GoTo Finish
+        End If
+        UpdateData("customer", dic, $"cus_id = '{rowCusID}'")
+        UpdateData(sTable, Bind_TableTextBox(sTable), $"ord_id  = '{txtOrdID_order.Text}'")
+
+        '列出所有資料
+        Dim sql = "SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id"
+        DataToDgv(SelectFromTable(sql), "customer,orders", dgvOrder)
+        ClearTabPage(tp)
+Finish:
+        Cursor = Cursors.Default
+    End Sub
+
+    '訂單管理-刪除
+    Private Sub btnOrdDelete_Click(sender As Object, e As EventArgs) Handles btnOrdDelete.Click
+        Dim tp As TabPage = CType(sender, Button).Parent
+        '取得編號
+        Dim id As TextBox = txtOrdID_order
+        If String.IsNullOrEmpty(id.Text) Then
+            MsgBox("請選擇刪除對象", Title:="提醒")
+            Exit Sub
+        End If
+
+        If MsgBox("確定要刪除?", vbYesNo, "警告") = MsgBoxResult.No Then Exit Sub
+
+        Dim sTable As String = tp.Tag
+        If DeleteData(sTable, $"ord_id  = '{id.Text}'") Then
+            MsgBox("刪除成功")
+
+            '列出所有資料
+            Dim sql = "SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id"
+            DataToDgv(SelectFromTable(sql), "customer,orders", dgvOrder)
+            ClearTabPage(tp)
+        End If
+    End Sub
+
+    '訂單管理-取消
+    Private Sub btnOrdCancel_Click(sender As Object, e As EventArgs) Handles btnOrdCancel.Click
+        Dim tp As TabPage = CType(sender, Button).Parent
+
+        '列出所有資料
+        Dim sql = "SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id"
+        DataToDgv(SelectFromTable(sql), "customer,orders", dgvOrder)
+        ClearTabPage(tp)
+    End Sub
+
+    '訂單管理-查詢
+    Private Sub btnOrderQuery_Click(sender As Object, e As EventArgs) Handles btnOrderQuery.Click
+        Cursor = Cursors.WaitCursor
+        Dim sql = $"SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id WHERE b.cus_name LIKE '%{txtOrdQuery.Text}%' OR b.cus_phone LIKE '%{txtOrdQuery.Text}%' ORDER BY a.ord_date DESC"
+        DataToDgv(SelectFromTable(sql), "customer,orders", dgvOrder)
+        ClearTabPage(tpOrder)
+        MsgBox("搜尋完畢")
+        Cursor = Cursors.Default
+    End Sub
+
     ''' <summary>
-    ''' 檢查Customer即將上傳的內容是否有誤
+    ''' 檢查Orders即將上傳的內容是否有誤
     ''' </summary>
     ''' <returns>True:正確 False:錯誤</returns>
-    Private Function CheckCustomerData(table As String) As Boolean
+    Private Function CheckOrderData() As Boolean
         '去txt頭尾空白
-        tpBasic_cus.Controls.OfType(Of TextBox).ToList.ForEach(Sub(txt) txt.Text = Trim(txt.Text))
-        tpConsult_cus.Controls.OfType(Of TextBox).ToList.ForEach(Sub(txt) txt.Text = Trim(txt.Text))
+        tpOrder.Controls.OfType(Of TextBox).ToList.ForEach(Sub(txt) txt.Text = Trim(txt.Text))
 
         '檢查必填欄位
-        If String.IsNullOrWhiteSpace(txtCusName_cus.Text) Then
-            MsgBox("姓名不能空白")
-            txtCusName_cus.Focus()
+        If String.IsNullOrWhiteSpace(txtCusName_order.Text) Then
+            MsgBox("姓名 不能空白")
+            txtCusName_order.Focus()
             Return False
         End If
-        If String.IsNullOrWhiteSpace(txtPhone_cus.Text) Then
-            MsgBox("手機不能空白")
-            txtPhone_cus.Focus()
+        If String.IsNullOrWhiteSpace(txtPhone_order.Text) Then
+            MsgBox("手機 不能空白")
+            txtPhone_order.Focus()
             Return False
         End If
-
-        '檢查日期格式
-        If Not String.IsNullOrWhiteSpace(txtBirthday.Text) Then
-            Dim day As DateTime
-            If Not DateTime.TryParse(txtBirthday.Text, day) Then
-                MsgBox("生日日期格式錯誤")
-                txtBirthday.Focus()
-                Return False
-            End If
+        If String.IsNullOrWhiteSpace(cmbProdGrp_order.Text) Then
+            MsgBox("請選擇 商品群組")
+            cmbProdGrp_order.Focus()
+            Return False
         End If
-        If Not String.IsNullOrWhiteSpace(txtDueDate.Text) Then
-            Dim day As DateTime
-            If Not DateTime.TryParse(txtDueDate.Text, day) Then
-                MsgBox("預產期日期格式錯誤")
-                tcCustomer.SelectedTab = tpConsult_cus
-                txtDueDate.Focus()
-                Return False
-            End If
+        If String.IsNullOrWhiteSpace(cmbProdName_order.Text) Then
+            MsgBox("請選擇 商品名稱")
+            cmbProdName_order.Focus()
+            Return False
+        End If
+        If String.IsNullOrWhiteSpace(txtCount.Text) Then
+            MsgBox("數量(天) 不能空白")
+            txtCount.Focus()
+            Return False
         End If
 
         '檢查數字
         Dim dic As New Dictionary(Of TextBox, String) From {
-            {txtChildren, "子女"},
-            {txtManyChild, "第幾胎"},
-            {txtConfDay, "月子天數"},
-            {txtConfBuy, "欲購買月子餐天數"},
-            {txtHeight, "身高"},
-            {txtBornWeight, "產前體重"},
-            {txtWeight, "目前體重"}
+            {txtCount, "數量"},
+            {txtTotalPrice, "金額"},
+            {txtDiscount, "折扣金額"},
+            {txtTaste, "試吃費"},
+            {txtTableware, "押餐具費"}
         }
         For Each txt In dic.Keys
-            If Not String.IsNullOrEmpty(txt.Text) AndAlso Not IsNumeric(txt.Text) Then
-                Dim tp As TabPage = If(TypeOf txt.Parent Is TabPage, txt.Parent, txt.Parent.Parent)
-                tcCustomer.SelectedTab = tp
-                MsgBox($"{dic(txt)} 請輸入數字")
-                txt.Focus()
+            If Not String.IsNullOrEmpty(txtPrice.Text) AndAlso Not IsNumeric(txtPrice.Text) Then
+                Dim tp As TabPage = If(TypeOf txtPrice.Parent Is TabPage, txtPrice.Parent, txtPrice.Parent.Parent)
+                MsgBox($"{dic(txtPrice)} 請輸入數字")
+                txtPrice.Focus()
                 Return False
             End If
         Next
 
         Return True
     End Function
+
+    '訂單管理-商品群組選擇後過濾商品名稱
+    Private Sub cmbProdGrp_order_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbProdGrp_order.SelectedIndexChanged
+        If cmbProdGrp_order.SelectedIndex < 0 Then Exit Sub
+        Dim prodGrpID = cmbProdGrp_order.SelectedValue.ToString
+        With cmbProdName_order
+            .DataSource = SelectFromTable($"SELECT * FROM product WHERE prod_prod_grp_id = '{prodGrpID}'")
+            .DisplayMember = "prod_name"
+            .ValueMember = "prod_id"
+            .SelectedIndex = -1
+        End With
+    End Sub
+
+    '訂單管理-金額有關的TextBox離開焦點後
+    Private Sub txtMoney_Leave(sender As Object, e As EventArgs) Handles txtCount.Leave, txtPrice.Leave, txtDiscount.Leave, txtTaste.Leave, txtTableware.Leave
+        MoneyCalculate()
+    End Sub
+
+    ''' <summary>
+    ''' 金額計算
+    ''' </summary>
+    Private Sub MoneyCalculate()
+        '算式:單價*數量(天)-折讓金額+試吃費+押餐具費
+        If String.IsNullOrWhiteSpace(txtPrice.Text) Or String.IsNullOrWhiteSpace(txtCount.Text) Then Exit Sub
+        Dim price As Int32 = If(String.IsNullOrWhiteSpace(txtPrice.Text), 0, txtPrice.Text)
+        Dim count As Int32 = If(String.IsNullOrWhiteSpace(txtCount.Text), 0, txtCount.Text)
+        Dim discount As Int32 = If(String.IsNullOrWhiteSpace(txtDiscount.Text), 0, txtDiscount.Text)
+        Dim taste As Int32 = If(String.IsNullOrWhiteSpace(txtTaste.Text), 0, txtTaste.Text)
+        Dim tableware As Int32 = If(String.IsNullOrWhiteSpace(txtTableware.Text), 0, txtTableware.Text)
+        txtTotalPrice.Text = price * count - discount + taste + tableware
+    End Sub
+
+    '訂單管理-商品名稱
+    Private Sub cmbProdName_order_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbProdName_order.SelectedIndexChanged
+        If cmbProdName_order.SelectedIndex = -1 Then Exit Sub
+        Dim selectedRow As DataRowView = DirectCast(cmbProdName_order.SelectedItem, DataRowView)
+        Dim prodId As Integer = selectedRow("prod_id")
+        Dim row = SelectFromTable($"SELECT prod_type, prod_price, prod_meal FROM product WHERE prod_id = {prodId}").Rows(0)
+        '如果是套餐,顯示餐種供客製勾選
+        If row("prod_type") = "套餐" Then
+            grpMeal_order.Enabled = True
+        Else
+            grpMeal_order.Enabled = False
+        End If
+        '顯示商品價格
+        txtPrice.Text = row("prod_price")
+
+        Dim chks As IEnumerable(Of CheckBox) = grpMeal_order.Controls.OfType(Of CheckBox)()
+        Dim chk As CheckBox
+        '初始化checkbox
+        For Each chk In chks
+            chk.Checked = False
+        Next
+        For Each name As String In row("prod_meal").Split(",")
+            chk = chks.FirstOrDefault(Function(x) x.Text = name)
+            If chk IsNot Nothing Then
+                chk.Checked = True
+            End If
+        Next
+    End Sub
+
+    '訂單管理-午餐地址-同上
+    Private Sub chkLunchAddr_CheckedChanged(sender As Object, e As EventArgs) Handles chkLunchAddr.Click
+        If chkLunchAddr.Checked Then
+            txtAddrLunch.Text = txtAddrBreak.Text
+        Else
+            txtAddrLunch.Text = ""
+        End If
+    End Sub
+
+    '訂單管理-晚餐地址-同上
+    Private Sub chkDinnerAddr_CheckedChanged(sender As Object, e As EventArgs) Handles chkDinnerAddr.Click
+        If chkDinnerAddr.Checked Then
+            txtAddrDinner.Text = txtAddrLunch.Text
+        Else
+            txtAddrDinner.Text = ""
+        End If
+    End Sub
 
     ''' <summary>
     ''' 檢查Table是否有重複資料
@@ -717,18 +956,29 @@ Finish:
 
                 Case "orders"
                     row = SelectFromTable($"SELECT cus_id FROM customer WHERE cus_name = '{txtCusName_order.Text}' AND cus_phone = '{txtPhone_order.Text}'").Rows(0)
-                    .Add("ord_cus_id", row("cus_id"))
+                    .Add("ord_cus_id", row("cus_id")) '客戶編號
                     row = SelectFromTable($"SELECT prod_id FROM product WHERE prod_name = '{cmbProdName_order.Text}'").Rows(0)
-                    .Add("ord_prod_id", row("prod_id"))
-                    .Add("ord_date", dtOrdDate.Value.ToString("d"))
-                    .Add("ord_count", txtCount.Text)
-                    .Add("ord_price", txtPrice_order.Text)
-                    .Add("ord_discount", txtDiscount.Text)
-                    .Add("ord_breakfast", IIf(chkBreak_order.Checked, txtCount.Text, "0"))
-                    .Add("ord_lunch", IIf(chkLunch_order.Checked, txtCount.Text, "0"))
-                    .Add("ord_dinner", IIf(chkDinner_order.Checked, txtCount.Text, "0"))
-                    .Add("ord_delivery", dtDelivery.Value.ToString("d"))
+                    .Add("ord_prod_id", row("prod_id")) '商品編號
+                    .Add("ord_date", dtOrdDate.Value.ToString("d")) '訂單日期
+                    .Add("ord_count", txtCount.Text) '數量(天)
+                    .Add("ord_price", txtTotalPrice.Text) '金額
+                    .Add("ord_discount", txtDiscount.Text) '折讓金額
+                    .Add("ord_breakfast", If(chkBreak_order.Checked, txtCount.Text, "0")) '早餐份數
+                    .Add("ord_lunch", If(chkLunch_order.Checked, txtCount.Text, "0")) '午餐份數
+                    .Add("ord_dinner", If(chkDinner_order.Checked, txtCount.Text, "0")) '晚餐份數
+                    .Add("ord_delivery", dtDelivery.Value.ToString("d")) '預計送餐日
                     .Add("ord_memo", txtMemo_order.Text)
+                    .Add("ord_deli_hosp", txtDeliHosp.Text) '生產醫院
+                    .Add("ord_taste", txtTaste.Text) '試吃費
+                    .Add("ord_tableware", txtTableware.Text) '押餐具費
+                    .Add("ord_break_addr", txtAddrBreak.Text) '早餐地址
+                    .Add("ord_lunch_addr", txtAddrLunch.Text) '午餐地址
+                    .Add("ord_dinner_addr", txtAddrDinner.Text) '晚餐地址
+                    rdo = grpEatType.Controls.OfType(Of RadioButton)().FirstOrDefault(Function(x) x.Checked)
+                    If rdo IsNot Nothing Then
+                        .Add("ord_eat_type", rdo.Text) '葷素
+                        rdo = Nothing
+                    End If
 
                 Case "money"
                     row = SelectFromTable($"SELECT cus_id FROM customer WHERE cus_name = '{txtCusName_money.Text}' AND cus_phone = '{txtPhone_money.Text}'").Rows(0)
@@ -844,6 +1094,9 @@ Finish:
     ''' </summary>
     ''' <param name="tp"></param>
     Private Sub ClearTabPage(tp As TabPage)
+        '刷新商品群組 商品名稱
+        InitProductGroup()
+
         For Each ctrl As Control In tp.Controls
             If TypeOf ctrl Is GroupBox Then
                 ClearGroupBox(CType(ctrl, GroupBox))
@@ -854,6 +1107,7 @@ Finish:
             End If
             ClearControl(ctrl)
         Next
+
     End Sub
 
     '搜尋欄位按下"Enter"即可搜尋
@@ -909,6 +1163,7 @@ Finish:
         '程式碼
         tlpCalendar.Visible = True
     End Sub
+
     ''' <summary>
     ''' 將資料放到DataGridView
     ''' </summary>
@@ -1171,22 +1426,6 @@ Finish:
         Cursor = Cursors.Default
     End Sub
 
-    '訂單管理-新增
-    Private Sub btnOrdInsert_Click(sender As Object, e As EventArgs) Handles btnOrdInsert.Click
-        Cursor = Cursors.WaitCursor
-        Dim tp As TabPage = CType(sender, Button).Parent
-        Dim sTable = tp.Tag.ToString 'Table名稱寫在TabPage的Tag裡
-        If Not CheckInsert(sTable, tp) Then GoTo Finish
-        InserData(sTable, Bind_TableTextBox(sTable))
-        '列出所有表格資料
-        Dim sql = "SELECT ord.ord_id, cus.cus_name, cus.cus_phone, ord.ord_date, prd.prod_name, pg.prod_grp_name, ord.ord_count, ord.ord_delivery, ord.ord_price, ord.ord_discount, ord.ord_breakfast, ord.ord_lunch,ord. ord_dinner, ord.ord_memo FROM `orders` ord LEFT JOIN customer cus ON ord.ord_cus_id=cus.cus_id LEFT JOIN product prd ON ord.ord_prod_id=prd.prod_id LEFT JOIN product_group pg ON prd.prod_prod_grp_id=pg.prod_grp_id"
-        DataToDgv(SelectFromTable(sql), "customer,product,product_group,orders", dgvOrder)
-        ClearTabPage(tp)
-        InitProduct()
-Finish:
-        Cursor = Cursors.Default
-    End Sub
-
     '財務管理-新增
     Private Sub btnMonInsert_Click(sender As Object, e As EventArgs) Handles btnMonInsert.Click
         Cursor = Cursors.WaitCursor
@@ -1329,7 +1568,7 @@ Finish:
         '列出所有資料
         DataToDgv(SelectFromTable($"SELECT * FROM {sTable}"), sTable, tp.Controls.OfType(Of DataGridView).FirstOrDefault)
         ClearTabPage(tp)
-        InitProduct()
+        InitProductGroup()
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -1359,22 +1598,6 @@ Finish:
         DataToDgv(SelectFromTable("SELECT * FROM taboo"), "taboo", dgvTaboo)
         ClearTabPage(tp)
         InitTabooType()
-Finish:
-        Cursor = Cursors.Default
-    End Sub
-
-    '訂單管理-修改
-    Private Sub btnOrdModify_Click(sender As Object, e As EventArgs) Handles btnOrdModify.Click
-        Cursor = Cursors.WaitCursor
-        Dim tp As TabPage = CType(sender, Button).Parent
-        Dim sTable = tp.Tag.ToString
-        If CheckTextNull(sTable, tp) Then GoTo Finish
-        UpdateData(sTable, Bind_TableTextBox(sTable), $"ord_id  = '{txtOrdID_order.Text}'")
-        '列出所有資料
-        Dim sql = "SELECT ord.ord_id, cus.cus_name, cus.cus_phone, ord.ord_date, prd.prod_name, pg.prod_grp_name, ord.ord_count, ord.ord_delivery, ord.ord_price, ord.ord_discount, ord.ord_breakfast, ord.ord_lunch,ord. ord_dinner, ord.ord_memo FROM `orders` ord LEFT JOIN customer cus ON ord.ord_cus_id=cus.cus_id LEFT JOIN product prd ON ord.ord_prod_id=prd.prod_id LEFT JOIN product_group pg ON prd.prod_prod_grp_id=pg.prod_grp_id"
-        DataToDgv(SelectFromTable(sql), "customer,product,product_group,orders", dgvOrder)
-        ClearTabPage(tp)
-        InitProduct()
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -1444,7 +1667,7 @@ Finish:
             '顯示table所有資料
             DataToDgv(SelectFromTable($"SELECT * FROM {sTable}"), sTable, dgvProdgroup)
             ClearTabPage(tp)
-            InitProduct()
+            InitProductGroup()
         End If
     End Sub
 
@@ -1516,30 +1739,6 @@ Finish:
         End If
     End Sub
 
-    '訂單管理-刪除
-    Private Sub btnOrdDelete_Click(sender As Object, e As EventArgs) Handles btnOrdDelete.Click
-        Dim tp As TabPage = CType(sender, Button).Parent
-        '取得編號
-        Dim id As TextBox = tp.Controls.OfType(Of TextBox)().FirstOrDefault(Function(x) x.Tag = "訂單編號")
-        If String.IsNullOrEmpty(id.Text) Then
-            MsgBox("請選擇刪除對象", Title:="提醒")
-            Exit Sub
-        End If
-
-        If MsgBox("確定要刪除?", vbYesNo, "警告") = MsgBoxResult.No Then Exit Sub
-
-        Dim sTable As String = tp.Tag
-        If DeleteData(sTable, $"ord_id  = '{id.Text}'") Then
-            MsgBox("刪除成功")
-
-            '顯示table所有資料
-            Dim sql = "SELECT ord.ord_id, cus.cus_name, cus.cus_phone, ord.ord_date, prd.prod_name, pg.prod_grp_name, ord.ord_count, ord.ord_delivery, ord.ord_price, ord.ord_discount, ord.ord_breakfast, ord.ord_lunch,ord. ord_dinner, ord.ord_memo FROM `orders` ord LEFT JOIN customer cus ON ord.ord_cus_id=cus.cus_id LEFT JOIN product prd ON ord.ord_prod_id=prd.prod_id LEFT JOIN product_group pg ON prd.prod_prod_grp_id=pg.prod_grp_id"
-            DataToDgv(SelectFromTable(sql), "customer,product,product_group,orders", dgvOrder)
-            ClearTabPage(tp)
-            InitProduct()
-        End If
-    End Sub
-
     '權限管理-刪除
     Private Sub btnPermDel_Click(sender As Object, e As EventArgs) Handles btnPermDel.Click
         Dim tp As TabPage = CType(sender, Button).Parent
@@ -1594,7 +1793,7 @@ Finish:
         '顯示所有資料
         Dim sTable As String = tp.Tag.ToString
         DataToDgv(SelectFromTable($"SELECT * FROM {sTable}"), sTable, tp.Controls.OfType(Of DataGridView).FirstOrDefault)
-        InitProduct()
+        InitProductGroup()
     End Sub
 
     '商品管理-取消
@@ -1615,21 +1814,11 @@ Finish:
         DataToDgv(SelectFromTable(sql), "taboo", dgvTaboo)
     End Sub
 
-    '訂單管理-取消
-    Private Sub btnOrdCancel_Click(sender As Object, e As EventArgs) Handles btnOrdCancel.Click
-        Dim tp As TabPage = CType(sender, Button).Parent
-        ClearTabPage(tp)
-        InitProduct()
-        '顯示所有資料
-        Dim sql = "SELECT ord.ord_id, cus.cus_name, cus.cus_phone, ord.ord_date, prd.prod_name, pg.prod_grp_name, ord.ord_count, ord.ord_delivery, ord.ord_price, ord.ord_discount, ord.ord_breakfast, ord.ord_lunch,ord. ord_dinner, ord.ord_memo FROM `orders` ord LEFT JOIN customer cus ON ord.ord_cus_id=cus.cus_id LEFT JOIN product prd ON ord.ord_prod_id=prd.prod_id LEFT JOIN product_group pg ON prd.prod_prod_grp_id=pg.prod_grp_id"
-        DataToDgv(SelectFromTable(sql), "customer,product,product_group,orders", dgvOrder)
-    End Sub
-
     '財務管理-取消
     Private Sub btnMonCancel_Click(sender As Object, e As EventArgs) Handles btnMonCancel.Click
         Dim tp As TabPage = CType(sender, Button).Parent
         ClearTabPage(tp)
-        InitProduct()
+        InitProductGroup()
         '顯示所有資料
         Dim Sql = "SELECT a.mon_id, b.cus_name, b.cus_phone, c.ord_id, a.mon_date, a.mon_type, a.mon_Income, a.mon_memo FROM money a LEFT JOIN customer b ON a.mon_cus_id=b.cus_id LEFT JOIN orders c on a.mon_ord_id=c.ord_id"
         DataToDgv(SelectFromTable(Sql), "customer,orders,money", dgvMoney)
@@ -1662,7 +1851,7 @@ Finish:
         Dim sql = $"SELECT * FROM {sTable} WHERE prod_grp_name LIKE '%{txtProdGrpName.Text}%'"
         DataToDgv(SelectFromTable(sql), sTable, tp.Controls.OfType(Of DataGridView).FirstOrDefault)
         ClearTabPage(tp)
-        InitProduct()
+        InitProductGroup()
         MsgBox("搜尋完畢")
 
         Cursor = Cursors.Default
@@ -1686,17 +1875,6 @@ Finish:
         Dim sTable As String = "taboo"
         Dim sql = $"SELECT * FROM {sTable} WHERE tabo_type LIKE '%{txtTaboQuery.Text}%' OR tabo_name LIKE '%{txtTaboQuery.Text}%'"
         DataToDgv(SelectFromTable(sql), sTable, tp.Controls.OfType(Of DataGridView).FirstOrDefault)
-        MsgBox("搜尋完畢")
-        Cursor = Cursors.Default
-    End Sub
-
-    '訂單管理-查詢
-    Private Sub btnOrderQuery_Click(sender As Object, e As EventArgs) Handles btnOrderQuery.Click
-        Cursor = Cursors.WaitCursor
-        Dim tp = CType(sender, Button).Parent
-        Dim sTable As String = "taboo"
-        Dim sql = $"SELECT ord.ord_id, cus.cus_name, cus.cus_phone, ord.ord_date, prd.prod_name, pg.prod_grp_name, ord.ord_count, ord.ord_delivery, ord.ord_price, ord.ord_discount, ord.ord_breakfast, ord.ord_lunch,ord. ord_dinner, ord.ord_memo FROM `orders` ord LEFT JOIN customer cus ON ord.ord_cus_id=cus.cus_id LEFT JOIN product prd ON ord.ord_prod_id=prd.prod_id LEFT JOIN product_group pg ON prd.prod_prod_grp_id=pg.prod_grp_id WHERE cus.cus_name LIKE '%{txtOrdQuery.Text}%' OR cus.cus_phone LIKE '%{txtOrdQuery.Text}%'"
-        DataToDgv(SelectFromTable(sql), "customer,product,product_group,orders", dgvOrder)
         MsgBox("搜尋完畢")
         Cursor = Cursors.Default
     End Sub
@@ -1725,51 +1903,6 @@ Finish:
         Cursor = Cursors.Default
     End Sub
 
-    '訂單管理,選擇商品與數量後自動計算價格
-    Private Sub txtCount_Leave(sender As Object, e As EventArgs) Handles txtCount.Leave
-        If String.IsNullOrWhiteSpace(txtPrice_order.Text) Or String.IsNullOrWhiteSpace(txtCount.Text) Then Exit Sub
-        txtPrice_order.Text = CInt(txtPrice_order.Text) * CInt(txtCount.Text)
-    End Sub
-
-    Private Sub cmbProdName_order_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbProdName_order.SelectionChangeCommitted
-        Dim cmb As ComboBox = CType(sender, ComboBox)
-        'todo 群組要跟商品名稱對應
-        If cmb.SelectedIndex = -1 Then Exit Sub
-        Dim selectedRow As DataRowView = DirectCast(cmb.SelectedItem, DataRowView)
-        Dim prodId As Integer = CInt(selectedRow("prod_id"))
-        Dim row = SelectFromTable($"SELECT prod_type, prod_price, prod_meal FROM product WHERE prod_id = {prodId}").Rows(0)
-        '如果是套餐,顯示餐種供客製勾選
-        If row("prod_type") = "套餐" Then
-            grpMeal_order.Enabled = True
-        Else
-            grpMeal_order.Enabled = False
-        End If
-        '顯示商品價格
-        txtPrice_order.Text = row("prod_price")
-
-        Dim chks As IEnumerable(Of CheckBox) = grpMeal_order.Controls.OfType(Of CheckBox)()
-        Dim chk As CheckBox
-        '初始化checkbox
-        For Each chk In chks
-            chk.Checked = False
-        Next
-
-        For Each name As String In row("prod_meal").Split(",")
-            chk = chks.FirstOrDefault(Function(x) x.Text = name)
-            If chk IsNot Nothing Then
-                chk.Checked = True
-            End If
-        Next
-    End Sub
-
-    Private Sub chkLunchAddr_CheckedChanged(sender As Object, e As EventArgs)
-        If chkLunchAddr.Checked Then txtAddrLunch.Text = txtAddress.Text
-    End Sub
-
-    Private Sub chkDinnerAddr_CheckedChanged(sender As Object, e As EventArgs)
-        If chkDinnerAddr.Checked Then txtAddrDinner.Text = txtAddress.Text
-    End Sub
-
     Private Sub btnTaboo_Click(sender As Object, e As EventArgs)
         frmTaboo.Show()
     End Sub
@@ -1777,5 +1910,4 @@ Finish:
     Private Sub btnTaboo_Click_1(sender As Object, e As EventArgs) Handles btnTaboo.Click
         frmTaboo.Show()
     End Sub
-
 End Class
