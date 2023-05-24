@@ -6,9 +6,6 @@ Public Class frmMain
     Friend dtTaboo As DataTable
     'todo 1.登入頁的 大底圖，可以 800*600 px，或是左邊這區塊 320*360 px檔案格式為JPG
     '2.舊會員資料使用EXCEL轉入
-    '4.合約書
-    '7.訂單加上業務人員，員工資料要有業務員身分別
-    '8.客戶頁多顯示歷史訂單紀錄
     '9.菜單管理可以產生，美工要貼lineat的每週餐點內容
     Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
         If Me.TabControl1.SelectedTab.Name = "TP_Logout" Then
@@ -31,6 +28,7 @@ Public Class frmMain
         InitProductGroup()
         InitTabooType()
         InitPosition()
+        InitSales()
         '初始化收款方式
         cmbMonType.Items.Add("全款")
         cmbMonType.Items.Add("訂金")
@@ -66,13 +64,6 @@ Public Class frmMain
     ''' 初始化商品ComboBox
     ''' </summary>
     Private Sub InitProductGroup()
-        '初始化商品
-        'With cmbProdName_order
-        '    .DataSource = SelectFromTable("SELECT * FROM product")
-        '    .DisplayMember = "prod_name"
-        '    .ValueMember = "prod_id"
-        '    .SelectedIndex = -1
-        'End With
         '初始化商品群組
         Dim col As New Collection From {
         cmbProdGrp_product,
@@ -108,7 +99,6 @@ Public Class frmMain
     ''' 初始化職位ComboBox
     ''' </summary>
     Private Sub InitPosition()
-        '初始化商品
         Dim col As New Collection From {
             cmbPosition_perm,
             cmbPosition_emp
@@ -117,9 +107,22 @@ Public Class frmMain
             With col(i)
                 .DataSource = SelectFromTable("SELECT * FROM permissions")
                 .DisplayMember = "perm_name"
+                .ValueMember = "perm_id"
                 .SelectedIndex = -1
             End With
         Next
+    End Sub
+
+    ''' <summary>
+    ''' 初始化業務人員
+    ''' </summary>
+    Private Sub InitSales()
+        With cmbSales
+            .DataSource = SelectFromTable("SELECT a.emp_name,a.emp_id FROM employee a LEFT JOIN permissions b ON a.emp_perm_id=b.perm_id WHERE perm_name = '業務'")
+            .DisplayMember = "emp_name"
+            .ValueMember = "emp_id"
+            .SelectedIndex = -1
+        End With
     End Sub
 
     ''' <summary>
@@ -140,7 +143,7 @@ Public Class frmMain
         sql = "SELECT * FROM taboo"
         DataToDgv(SelectFromTable(sql), "taboo", dgvTaboo)
         '訂單管理
-        sql = "SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id"
+        sql = "SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id"
         DataToDgv(SelectFromTable(sql), "customer,orders", dgvOrder)
         '財務管理
         sql = "SELECT a.mon_id, b.cus_name, b.cus_phone, c.ord_id, a.mon_date, a.mon_type, a.mon_income, a.mon_memo FROM money a LEFT JOIN customer b ON a.mon_cus_id=b.cus_id LEFT JOIN orders c on a.mon_ord_id=c.ord_id"
@@ -149,7 +152,7 @@ Public Class frmMain
         sql = "SELECT * FROM permissions"
         DataToDgv(SelectFromTable(sql), "permissions", dgvPermissions)
         '員工管理
-        sql = "SELECT a.emp_id, a.emp_name, a.emp_phone, a.emp_tel, a.emp_address, b.perm_name, a.emp_acct, a.emp_psw, a.emp_memo FROM employee a LEFT JOIN permissions b ON a.emp_pos_id = b.perm_id"
+        sql = "SELECT a.emp_id, a.emp_name, a.emp_phone, a.emp_tel, a.emp_address, b.perm_name, a.emp_acct, a.emp_psw, a.emp_memo FROM employee a LEFT JOIN permissions b ON a.emp_perm_id = b.perm_id"
         DataToDgv(SelectFromTable(sql), "permissions,employee", dgvEmployee)
 
         '菜單管理
@@ -252,14 +255,9 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub cmdProdName_order_SelectedValueChanged(sender As Object, e As EventArgs) Handles cmbProdName_order.SelectedValueChanged
-        '更新商品分類
-        '若商品分類是套餐則顯示"三餐"
-
-    End Sub
-
     '客戶管理-dgv點擊
     Private Sub dgvCustomer_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvCustomer.CellMouseClick
+        'todo 參考訂單管理來簡化
         Dim dgv = CType(sender, DataGridView)
         If dgv.SelectedRows.Count > 0 Then
             ClearTabPage(tpConsult_cus)
@@ -367,6 +365,9 @@ Public Class frmMain
             txtDietPerp.Text = rowCus("cus_diet_prep").ToString
             txtNutrCons.Text = rowCus("cus_nutr_cons").ToString
             txtMemo_cus.Text = rowCus("cus_memo").ToString
+
+            Dim sql = $"SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id WHERE b.cus_id = '{txtCusID.Text}' ORDER BY a.ord_date DESC"
+            DataToDgv(SelectFromTable(sql), "customer,orders", dgvOrder_cus)
         End If
     End Sub
 
@@ -518,7 +519,7 @@ Finish:
 
         Dim row = dgv.SelectedRows(0)
         Dim colName As String
-        Dim rowData = SelectFromTable($"SELECT * FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id WHERE ord_id = '{row.Cells("ord_id").Value}'").Rows(0)
+        Dim rowData = SelectFromTable($"SELECT * FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id LEFT JOIN employee e ON a.ord_emp_id=e.emp_id WHERE ord_id = '{row.Cells("ord_id").Value}'").Rows(0)
         For Each ctrl As Control In dgv.Parent.Controls
             colName = ctrl.Tag 'TextBox的Tag對應表格的名稱
             If TypeOf ctrl Is TextBox Then
@@ -531,7 +532,7 @@ Finish:
                 End If
 
             ElseIf TypeOf ctrl Is ComboBox Then
-                If Not String.IsNullOrEmpty(colName) Then
+                If Not String.IsNullOrEmpty(colName) And String.IsNullOrEmpty(rowData(colName).ToString) = False Then
                     Dim cmb = CType(ctrl, ComboBox)
                     cmb.SelectedIndex = cmb.FindStringExact(rowData(colName))
                 End If
@@ -556,9 +557,9 @@ Finish:
             txtUnpay.Text = txtTotalPrice.Text
             Exit Sub
         End If
+        'todo 如果有兩筆財務的話要改算法
         Dim dr As DataRow = dt.Rows(0)
         txtUnpay.Text = txtTotalPrice.Text - dr("mon_income").ToString
-        'todo 要再驗算 如果有兩筆財務的話
     End Sub
 
     '訂單管理-新增
@@ -589,10 +590,7 @@ Finish:
 
         InserData(table, Bind_TableTextBox(table))
 
-        '列出所有表格資料
-        Dim sql = "SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id"
-        DataToDgv(SelectFromTable(sql), "customer,orders", dgvOrder)
-        ClearTabPage(tp)
+        btnOrdCancel.PerformClick()
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -621,10 +619,7 @@ Finish:
         UpdateData("customer", dic, $"cus_id = '{rowCusID}'")
         UpdateData(sTable, Bind_TableTextBox(sTable), $"ord_id  = '{txtOrdID_order.Text}'")
 
-        '列出所有資料
-        Dim sql = "SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id"
-        DataToDgv(SelectFromTable(sql), "customer,orders", dgvOrder)
-        ClearTabPage(tp)
+        btnOrdCancel.PerformClick()
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -644,11 +639,7 @@ Finish:
         Dim sTable As String = tp.Tag
         If DeleteData(sTable, $"ord_id  = '{id.Text}'") Then
             MsgBox("刪除成功")
-
-            '列出所有資料
-            Dim sql = "SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id"
-            DataToDgv(SelectFromTable(sql), "customer,orders", dgvOrder)
-            ClearTabPage(tp)
+            btnOrdCancel.PerformClick()
         End If
     End Sub
 
@@ -660,6 +651,7 @@ Finish:
         Dim sql = "SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id"
         DataToDgv(SelectFromTable(sql), "customer,orders", dgvOrder)
         ClearTabPage(tp)
+        InitSales()
     End Sub
 
     '訂單管理-查詢
@@ -803,6 +795,103 @@ Finish:
         Else
             txtAddrDinner.Text = ""
         End If
+    End Sub
+
+    '員工管理-dgv點擊
+    Private Sub dgvEmployee_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvEmployee.CellMouseClick
+        Dim dgv = CType(sender, DataGridView)
+        If dgv.SelectedRows.Count > 0 Then
+            Dim row = dgv.SelectedRows(0)
+            Dim colName As String
+            For Each ctrl As Control In dgv.Parent.Controls
+                'TextBox的Tag對應表格的備註
+                If TypeOf ctrl Is TextBox Then
+                    colName = dgv.Columns.Cast(Of DataGridViewColumn)().FirstOrDefault(Function(x) x.HeaderText = ctrl.Tag)?.Name
+                    If Not String.IsNullOrEmpty(colName) Then
+                        ctrl.Text = row.Cells(colName).Value.ToString()
+                    End If
+
+                ElseIf TypeOf ctrl Is ComboBox Then
+                    colName = dgv.Columns.Cast(Of DataGridViewColumn)().FirstOrDefault(Function(x) x.HeaderText = ctrl.Tag)?.Name
+                    If Not String.IsNullOrEmpty(colName) Then
+                        Dim cmb = CType(ctrl, ComboBox)
+                        cmb.SelectedIndex = cmb.FindStringExact(row.Cells(colName).Value.ToString)
+                    End If
+                End If
+            Next
+        End If
+    End Sub
+
+    '員工管理-新增
+    Private Sub btnEmpInsert_Click(sender As Object, e As EventArgs) Handles btnEmpInsert.Click
+        Cursor = Cursors.WaitCursor
+        Dim tp As TabPage = CType(sender, Button).Parent
+        Dim sTable = tp.Tag.ToString 'Table名稱寫在TabPage的Tag裡
+        If Not CheckInsert(sTable, tp) Then GoTo Finish
+        If Not InputBox("確認密碼").Equals(txtPsw.Text) Then
+            MsgBox("輸入的密碼與先前不同,請再確認")
+            GoTo Finish
+        End If
+        InserData(sTable, Bind_TableTextBox(sTable))
+        btnEmpCancel.PerformClick()
+        InitSales()
+Finish:
+        Cursor = Cursors.Default
+    End Sub
+
+    '員工管理-修改
+    Private Sub btnEmpModify_Click(sender As Object, e As EventArgs) Handles btnEmpModify.Click
+        Cursor = Cursors.WaitCursor
+        Dim tp As TabPage = CType(sender, Button).Parent
+        Dim sTable = tp.Tag.ToString
+        If CheckTextNull(sTable, tp) Then GoTo Finish
+        UpdateData(sTable, Bind_TableTextBox(sTable), $"emp_id  = '{txtEmpID.Text}'")
+        btnEmpCancel.PerformClick()
+        InitSales()
+Finish:
+        Cursor = Cursors.Default
+    End Sub
+
+    '員工管理-刪除
+    Private Sub btnEmpDelete_Click(sender As Object, e As EventArgs) Handles btnEmpDelete.Click
+        Dim tp As TabPage = CType(sender, Button).Parent
+        '取得編號
+        Dim id As TextBox = tp.Controls.OfType(Of TextBox)().FirstOrDefault(Function(x) x.Tag = "員工編號")
+        If String.IsNullOrEmpty(id.Text) Then
+            MsgBox("請選擇刪除對象", Title:="提醒")
+            Exit Sub
+        End If
+
+        If MsgBox("確定要刪除?", vbYesNo, "警告") = MsgBoxResult.No Then Exit Sub
+
+        Dim sTable As String = tp.Tag
+        If DeleteData(sTable, $"emp_id  = '{id.Text}'") Then
+            MsgBox("刪除成功")
+
+            btnEmpCancel.PerformClick()
+            InitSales()
+        End If
+    End Sub
+
+    '員工管理-取消
+    Private Sub btnEmpCancel_Click(sender As Object, e As EventArgs) Handles btnEmpCancel.Click
+        Dim tp As TabPage = CType(sender, Button).Parent
+        '列出所有表格資料
+        Dim sql = "SELECT a.emp_id, a.emp_name, a.emp_phone, a.emp_tel, a.emp_address, b.perm_name, a.emp_acct, a.emp_psw, a.emp_memo FROM employee a LEFT JOIN permissions b ON a.emp_perm_id = b.perm_id"
+        DataToDgv(SelectFromTable(sql), "permissions,employee", dgvEmployee)
+        ClearTabPage(tp)
+    End Sub
+
+    '員工管理-查詢
+    Private Sub btnEmpQuery_Click(sender As Object, e As EventArgs) Handles btnEmpQuery.Click
+        Cursor = Cursors.WaitCursor
+        Dim tp = CType(sender, Button).Parent
+        Dim sTable As String = tp.Tag.ToString
+
+        Dim Sql = $"SELECT a.emp_id, a.emp_name, a.emp_phone, a.emp_tel, a.emp_address, b.perm_name, a.emp_acct, a.emp_psw, a.emp_memo FROM employee a LEFT JOIN permissions b ON a.emp_perm_id = b.perm_id WHERE emp_name LIKE '%{txtEmpQuery.Text}%' OR emp_phone LIKE '%{txtEmpQuery.Text}%'"
+        DataToDgv(SelectFromTable(Sql), "permissions,employee", dgvEmployee)
+        MsgBox("搜尋完畢")
+        Cursor = Cursors.Default
     End Sub
 
     ''' <summary>
@@ -979,6 +1068,7 @@ Finish:
                         .Add("ord_eat_type", rdo.Text) '葷素
                         rdo = Nothing
                     End If
+                    .Add("ord_emp_id", cmbSales.SelectedValue.ToString)
 
                 Case "money"
                     row = SelectFromTable($"SELECT cus_id FROM customer WHERE cus_name = '{txtCusName_money.Text}' AND cus_phone = '{txtPhone_money.Text}'").Rows(0)
@@ -1008,8 +1098,7 @@ Finish:
                     .Add("emp_phone", txtEmpPhone.Text)
                     .Add("emp_tel", txtEmpTel.Text)
                     .Add("emp_address", txtEmpAddr.Text)
-                    row = SelectFromTable($"SELECT perm_id FROM permissions WHERE perm_name = '{cmbPosition_emp.Text}'").Rows(0)
-                    .Add("emp_pos_id", row("perm_id"))
+                    .Add("emp_perm_id", cmbPosition_emp.SelectedValue.ToString)
                     .Add("emp_acct", txtAcct.Text)
                     .Add("emp_psw", txtPsw.Text)
                     .Add("emp_memo", txtEmpMemo.Text)
@@ -1071,6 +1160,66 @@ Finish:
     End Sub
 
     ''' <summary>
+    ''' Insert前檢查
+    ''' </summary>
+    ''' <param name="sTable">資料表</param>
+    ''' <returns></returns>
+    Private Function CheckInsert(sTable As String, tp As TabPage) As Boolean
+        Dim bResult As Boolean
+        If CheckTextNull(sTable, tp) Then GoTo Finish
+
+        '不可重複的欄位
+        Dim dic As New Dictionary(Of String, String)
+        With dic
+            Select Case sTable
+                Case "product_group"
+                    .Add("prod_grp_name", txtProdGrpName.Text)
+                Case "product"
+                    .Add("prod_name", txtProdName.Text)
+                Case "taboo"
+                    .Add("tabo_name", txtTaboName.Text)
+                Case Else
+                    GoTo Pass
+            End Select
+        End With
+        Dim lst As List(Of String) = dic.Select(Function(x) $"{x.Key} = '{x.Value}'").ToList
+        Dim sWhere = String.Join(" AND ", lst)
+        Dim dgv = tp.Controls.OfType(Of DataGridView).FirstOrDefault
+        If CheckDataDuplication(sTable, sWhere, dgv) Then GoTo Finish
+Pass:
+        bResult = True
+Finish:
+        Return bResult
+    End Function
+
+    ''' <summary>
+    ''' 去頭尾空白後,檢查必填的欄位
+    ''' </summary>
+    ''' <param name="sTable">資料表</param>
+    ''' <param name="tp">TabPage</param>
+    ''' <returns>True:是空的;False:有文字</returns>
+    Private Function CheckTextNull(sTable As String, tp As TabPage) As Boolean
+        '去頭尾空白
+        tp.Controls.OfType(Of TextBox).ToList().ForEach(Sub(txt) txt.Text = Trim(txt.Text))
+
+        '找出資料表不能為空值的欄位註解名稱
+        Dim dt As DataTable = SelectFromTable($"SELECT COLUMN_COMMENT FROM information_schema.columns WHERE table_schema = 'tingyi' AND TABLE_NAME='{sTable}' AND is_nullable = 'NO' AND column_key != 'PRI'")
+
+        '比較與當前控制項.tag是否相符
+        For Each ctrl As Control In tp.Controls
+            Dim row As DataRow = dt.AsEnumerable().FirstOrDefault(Function(x) x("COLUMN_COMMENT").ToString() = ctrl.Tag)
+            If row IsNot Nothing Then
+                If String.IsNullOrWhiteSpace(ctrl.Text) Then
+                    MsgBox(ctrl.Tag + "不能空白")
+                    ctrl.Focus()
+                    Return True
+                End If
+            End If
+        Next
+        Return False
+    End Function
+
+    ''' <summary>
     ''' MySQL Delete
     ''' </summary>
     ''' <param name="sTable">資料表</param>
@@ -1094,9 +1243,6 @@ Finish:
     ''' </summary>
     ''' <param name="tp"></param>
     Private Sub ClearTabPage(tp As TabPage)
-        '刷新商品群組 商品名稱
-        InitProductGroup()
-
         For Each ctrl As Control In tp.Controls
             If TypeOf ctrl Is GroupBox Then
                 ClearGroupBox(CType(ctrl, GroupBox))
@@ -1128,14 +1274,14 @@ Finish:
 
     '清空控制項內容
     Private Sub ClearControl(ctrl As Control)
-        If (TypeOf ctrl Is TextBox) Or (TypeOf ctrl Is ComboBox) Then
+        If TypeOf ctrl Is TextBox Then
             ctrl.Text = ""
         ElseIf TypeOf ctrl Is CheckBox Then
-            Dim chk As CheckBox = CType(ctrl, CheckBox)
-            chk.Checked = False
+            CType(ctrl, CheckBox).Checked = False
         ElseIf TypeOf ctrl Is RadioButton Then
-            Dim rdo As RadioButton = CType(ctrl, RadioButton)
-            rdo.Checked = False
+            CType(ctrl, RadioButton).Checked = False
+        ElseIf TypeOf ctrl Is ComboBox Then
+            CType(ctrl, ComboBox).SelectedIndex = -1
         End If
     End Sub
 
@@ -1346,31 +1492,6 @@ Finish:
         End If
     End Sub
 
-    '員工管理-dgv點擊
-    Private Sub dgvEmployee_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvEmployee.CellMouseClick
-        Dim dgv = CType(sender, DataGridView)
-        If dgv.SelectedRows.Count > 0 Then
-            Dim row = dgv.SelectedRows(0)
-            Dim colName As String
-            For Each ctrl As Control In dgv.Parent.Controls
-                'TextBox的Tag對應表格的備註
-                If TypeOf ctrl Is TextBox Then
-                    colName = dgv.Columns.Cast(Of DataGridViewColumn)().FirstOrDefault(Function(x) x.HeaderText = ctrl.Tag)?.Name
-                    If Not String.IsNullOrEmpty(colName) Then
-                        ctrl.Text = row.Cells(colName).Value.ToString()
-                    End If
-
-                ElseIf TypeOf ctrl Is ComboBox Then
-                    colName = dgv.Columns.Cast(Of DataGridViewColumn)().FirstOrDefault(Function(x) x.HeaderText = ctrl.Tag)?.Name
-                    If Not String.IsNullOrEmpty(colName) Then
-                        Dim cmb = CType(ctrl, ComboBox)
-                        cmb.SelectedIndex = cmb.FindStringExact(row.Cells(colName).Value.ToString)
-                    End If
-                End If
-            Next
-        End If
-    End Sub
-
     '商品群組管理-新增
     Private Sub btnProdGrpInsert_Click(sender As Object, e As EventArgs) Handles btnProdGrpInsert.Click
         Cursor = Cursors.WaitCursor
@@ -1457,106 +1578,6 @@ Finish:
         Cursor = Cursors.Default
     End Sub
 
-    '員工管理-新增
-    Private Sub btnEmpInsert_Click(sender As Object, e As EventArgs) Handles btnEmpInsert.Click
-        Cursor = Cursors.WaitCursor
-        Dim tp As TabPage = CType(sender, Button).Parent
-        Dim sTable = tp.Tag.ToString 'Table名稱寫在TabPage的Tag裡
-        If Not CheckInsert(sTable, tp) Then GoTo Finish
-        If Not InputBox("確認密碼").Equals(txtPsw.Text) Then
-            MsgBox("輸入的密碼與先前不同,請再確認")
-            GoTo Finish
-        End If
-        InserData(sTable, Bind_TableTextBox(sTable))
-        '列出所有表格資料
-        Dim Sql = "SELECT a.emp_id, a.emp_name, a.emp_phone, a.emp_tel, a.emp_address, b.perm_name, a.emp_acct, a.emp_psw, a.emp_memo FROM employee a LEFT JOIN permissions b ON a.emp_pos_id = b.perm_id"
-        DataToDgv(SelectFromTable(Sql), "permissions,employee", dgvEmployee)
-        ClearTabPage(tp)
-Finish:
-        Cursor = Cursors.Default
-    End Sub
-
-    ''' <summary>
-    ''' Insert前檢查
-    ''' </summary>
-    ''' <param name="sTable">資料表</param>
-    ''' <returns></returns>
-    Private Function CheckInsert(sTable As String, tp As TabPage) As Boolean
-        Dim bResult As Boolean
-        If CheckTextNull(sTable, tp) Then GoTo Finish
-
-        '不可重複的欄位
-        Dim dic As New Dictionary(Of String, String)
-        With dic
-            Select Case sTable
-                Case "customer"
-                    '.Add("cus_name", txtCusName_cus.Text)
-                    '.Add("cus_phone", txtPhone_cus.Text)
-                    'If Not String.IsNullOrWhiteSpace(txtBirthday.Text) Then
-                    '    Dim day As DateTime
-                    '    If Not DateTime.TryParse(txtBirthday.Text, day) Then
-                    '        MsgBox("生日日期格式錯誤")
-                    '        txtBirthday.Focus()
-                    '        GoTo Finish
-                    '    End If
-                    'End If
-                    'If Not String.IsNullOrWhiteSpace(txtDueDate.Text) Then
-                    '    Dim day As DateTime
-                    '    If Not DateTime.TryParse(txtDueDate.Text, day) Then
-                    '        MsgBox("預產期日期格式錯誤")
-                    '        tcCustomer.SelectedTab = tpConsult_cus
-                    '        txtDueDate.Focus()
-                    '        GoTo Finish
-                    '    End If
-                    'End If
-                Case "product_group"
-                    .Add("prod_grp_name", txtProdGrpName.Text)
-                Case "product"
-                    .Add("prod_name", txtProdName.Text)
-                Case "taboo"
-                    .Add("tabo_name", txtTaboName.Text)
-                Case Else
-                    GoTo Pass
-            End Select
-        End With
-        Dim lst As List(Of String) = dic.Select(Function(x) $"{x.Key} = '{x.Value}'").ToList
-        Dim sWhere = String.Join(" AND ", lst)
-        Dim dgv = tp.Controls.OfType(Of DataGridView).FirstOrDefault
-        If CheckDataDuplication(sTable, sWhere, dgv) Then GoTo Finish
-Pass:
-        bResult = True
-Finish:
-        Return bResult
-    End Function
-
-    ''' <summary>
-    ''' 去頭尾空白後,檢查不能空值的欄位
-    ''' </summary>
-    ''' <param name="sTable">資料表</param>
-    ''' <param name="tp">TabPage</param>
-    ''' <returns>True:是空的;False:有文字</returns>
-    Private Function CheckTextNull(sTable As String, tp As TabPage) As Boolean
-        '去頭尾空白
-        tp.Controls.OfType(Of TextBox).ToList().ForEach(Sub(txt) txt.Text = Trim(txt.Text))
-
-        '找出資料表不能為空值的欄位 
-        Dim dt As DataTable = SelectFromTable($"SELECT COLUMN_COMMENT FROM information_schema.columns WHERE table_schema = 'tingyi' AND TABLE_NAME='{sTable}' AND is_nullable = 'NO' AND column_key != 'PRI'")
-
-        '比較當前父控制項裡的txtbox.tag是否相符
-        For Each txt As TextBox In tp.Controls.OfType(Of TextBox)()
-            Dim row As DataRow = dt.AsEnumerable().FirstOrDefault(Function(x) x("COLUMN_COMMENT").ToString() = txt.Tag)
-            If row IsNot Nothing Then
-                If String.IsNullOrWhiteSpace(txt.Text) Then
-                    MsgBox(txt.Tag + "不能空白")
-                    txt.Focus()
-                    Return True
-                End If
-            End If
-        Next
-        'todo combobox也要檢查
-        Return False
-    End Function
-
     '商品群組管理-修改
     Private Sub btnProdGrpModify_Click(sender As Object, e As EventArgs) Handles btnProdGrpModify.Click
         Cursor = Cursors.WaitCursor
@@ -1629,21 +1650,6 @@ Finish:
         DataToDgv(SelectFromTable(Sql), "permissions", dgvPermissions)
         ClearTabPage(tp)
         InitPosition()
-Finish:
-        Cursor = Cursors.Default
-    End Sub
-
-    '員工管理-修改
-    Private Sub btnEmpModify_Click(sender As Object, e As EventArgs) Handles btnEmpModify.Click
-        Cursor = Cursors.WaitCursor
-        Dim tp As TabPage = CType(sender, Button).Parent
-        Dim sTable = tp.Tag.ToString
-        If CheckTextNull(sTable, tp) Then GoTo Finish
-        UpdateData(sTable, Bind_TableTextBox(sTable), $"emp_id  = '{txtEmpID.Text}'")
-        '列出所有資料
-        Dim Sql = "SELECT a.emp_id, a.emp_name, a.emp_phone, a.emp_tel, a.emp_address, b.perm_name, a.emp_acct, a.emp_psw, a.emp_memo FROM employee a LEFT JOIN permissions b ON a.emp_pos_id = b.perm_id"
-        DataToDgv(SelectFromTable(Sql), "permissions,employee", dgvEmployee)
-        ClearTabPage(tp)
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -1763,29 +1769,6 @@ Finish:
         End If
     End Sub
 
-    '員工管理-刪除
-    Private Sub btnEmpDelete_Click(sender As Object, e As EventArgs) Handles btnEmpDelete.Click
-        Dim tp As TabPage = CType(sender, Button).Parent
-        '取得編號
-        Dim id As TextBox = tp.Controls.OfType(Of TextBox)().FirstOrDefault(Function(x) x.Tag = "員工編號")
-        If String.IsNullOrEmpty(id.Text) Then
-            MsgBox("請選擇刪除對象", Title:="提醒")
-            Exit Sub
-        End If
-
-        If MsgBox("確定要刪除?", vbYesNo, "警告") = MsgBoxResult.No Then Exit Sub
-
-        Dim sTable As String = tp.Tag
-        If DeleteData(sTable, $"emp_id  = '{id.Text}'") Then
-            MsgBox("刪除成功")
-
-            '顯示table所有資料
-            Dim Sql = "SELECT a.emp_id, a.emp_name, a.emp_phone, a.emp_tel, a.emp_address, b.perm_name, a.emp_acct, a.emp_psw, a.emp_memo FROM employee a LEFT JOIN permissions b ON a.emp_pos_id = b.perm_id"
-            DataToDgv(SelectFromTable(Sql), "permissions,employee", dgvEmployee)
-            ClearTabPage(tp)
-        End If
-    End Sub
-
     '商品群組管理-取消
     Private Sub btnProdGrpCancel_Click(sender As Object, e As EventArgs) Handles btnProdGrpCancel.Click
         Dim tp As TabPage = CType(sender, Button).Parent
@@ -1834,15 +1817,6 @@ Finish:
         InitPosition()
     End Sub
 
-    '員工管理-取消
-    Private Sub btnEmpCancel_Click(sender As Object, e As EventArgs) Handles btnEmpCancel.Click
-        Dim tp As TabPage = CType(sender, Button).Parent
-        '顯示所有資料
-        Dim Sql = "SELECT a.emp_id, a.emp_name, a.emp_phone, a.emp_tel, a.emp_address, b.perm_name, a.emp_acct, a.emp_psw, a.emp_memo FROM employee a LEFT JOIN permissions b ON a.emp_pos_id = b.perm_id"
-        DataToDgv(SelectFromTable(Sql), "permissions,employee", dgvEmployee)
-        ClearTabPage(tp)
-    End Sub
-
     '商品群組管理-查詢
     Private Sub btnProdGrpQuery_Click(sender As Object, e As EventArgs) Handles btnProdGrpQuery.Click
         Cursor = Cursors.WaitCursor
@@ -1887,18 +1861,6 @@ Finish:
 
         Dim Sql = $"SELECT a.mon_id, b.cus_name, b.cus_phone, c.ord_id, a.mon_date, a.mon_type, a.mon_Income, a.mon_memo FROM money a LEFT JOIN customer b ON a.mon_cus_id=b.cus_id LEFT JOIN orders c on a.mon_ord_id=c.ord_id WHERE b.cus_name LIKE '%{txtMonQuery.Text}%' OR b.cus_phone LIKE '%{txtMonQuery.Text}%'"
         DataToDgv(SelectFromTable(Sql), "customer,money,orders", dgvMoney)
-        MsgBox("搜尋完畢")
-        Cursor = Cursors.Default
-    End Sub
-
-    '員工管理-查詢
-    Private Sub btnEmpQuery_Click(sender As Object, e As EventArgs) Handles btnEmpQuery.Click
-        Cursor = Cursors.WaitCursor
-        Dim tp = CType(sender, Button).Parent
-        Dim sTable As String = tp.Tag.ToString
-
-        Dim Sql = $"SELECT a.emp_id, a.emp_name, a.emp_phone, a.emp_tel, a.emp_address, b.perm_name, a.emp_acct, a.emp_psw, a.emp_memo FROM employee a LEFT JOIN permissions b ON a.emp_pos_id = b.perm_id WHERE emp_name LIKE '%{txtEmpQuery.Text}%' OR emp_phone LIKE '%{txtEmpQuery.Text}%'"
-        DataToDgv(SelectFromTable(Sql), "permissions,employee", dgvEmployee)
         MsgBox("搜尋完畢")
         Cursor = Cursors.Default
     End Sub
