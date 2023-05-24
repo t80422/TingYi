@@ -9,6 +9,7 @@ Module modMySQL
         Dim myConnectionString As String = ConfigurationManager.AppSettings("myConnectionString").ToString
         mConn = New MySqlConnection(myConnectionString)
     End Sub
+
     ''' <summary>
     ''' 查詢資料表
     ''' </summary>
