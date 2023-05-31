@@ -1,6 +1,6 @@
 ﻿Imports System.Configuration
 Imports MySql.Data.MySqlClient
-
+'MySQL相關
 Module modMySQL
     Friend mConn As MySqlConnection
 

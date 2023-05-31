@@ -4,6 +4,7 @@ Imports MySql.Data.MySqlClient
 
 Public Class frmMain
     Friend dtTaboo As DataTable
+    Private tempDistDay As Button '配餐管理月曆所選日期暫存
     'todo 1.登入頁的 大底圖，可以 800*600 px，或是左邊這區塊 320*360 px檔案格式為JPG
     '2.舊會員資料使用EXCEL轉入
     '9.菜單管理可以產生，美工要貼lineat的每週餐點內容
@@ -29,12 +30,17 @@ Public Class frmMain
         InitTabooType()
         InitPosition()
         InitSales()
+
         '初始化收款方式
         cmbMonType.Items.Add("全款")
         cmbMonType.Items.Add("訂金")
         '初始化禁忌清單
         dtTaboo = SelectFromTable("SELECT * FROM taboo")
-
+        '初始化配餐管理 月曆
+        txtDistCalendar.Text = DateTime.Now.ToString("Y")
+        'todo 未完成區-----
+        tpMenu.Parent = Nothing
+        TP_Report.Parent = Nothing
     End Sub
 
     Private Sub frmMain_Closed(sender As Object, e As EventArgs) Handles Me.Closed
@@ -129,31 +135,24 @@ Public Class frmMain
     '''初始化DataGrid欄位
     ''' </summary>
     Private Sub InitDataGrid()
-        Dim sql As String
         '客戶管理
-        sql = "SELECT cus_id, cus_name, cus_gender, cus_phone FROM customer"
-        DataToDgv(SelectFromTable(sql), "customer", dgvCustomer)
+        DataToDgv(SelectFromTable(sqlCustomer), "customer", dgvCustomer)
         '商品群組管理
-        sql = "SELECT * FROM product_group"
-        DataToDgv(SelectFromTable(sql), "product_group", dgvProdgroup)
-        '商品管理
-        sql = "SELECT a.prod_id,a.prod_name,b.prod_grp_name,a.prod_price,a.prod_cost,a.prod_type,a.prod_meal,a.prod_memo FROM product a LEFT JOIN product_group b on a.prod_prod_grp_id=b.prod_grp_id"
-        DataToDgv(SelectFromTable(sql), "product,product_group", dgvProduct)
+        DataToDgv(SelectFromTable(sqlProductGroup), "product_group", dgvProdgroup)
+        '商品管理        
+        DataToDgv(SelectFromTable(sqlProduct), "product,product_group", dgvProduct)
         '禁忌管理
-        sql = "SELECT * FROM taboo"
-        DataToDgv(SelectFromTable(sql), "taboo", dgvTaboo)
+        DataToDgv(SelectFromTable(sqlTaboo), "taboo", dgvTaboo)
         '訂單管理
-        sql = "SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id"
-        DataToDgv(SelectFromTable(sql), "customer,orders", dgvOrder)
-        '財務管理
-        sql = "SELECT a.mon_id, b.cus_name, b.cus_phone, c.ord_id, a.mon_date, a.mon_type, a.mon_income, a.mon_memo FROM money a LEFT JOIN customer b ON a.mon_cus_id=b.cus_id LEFT JOIN orders c on a.mon_ord_id=c.ord_id"
-        DataToDgv(SelectFromTable(sql), "customer,orders,money", dgvMoney)
+        DataToDgv(SelectFromTable(sqlOrder), "customer,orders,product", dgvOrder)
+        '財務管理       
+        DataToDgv(SelectFromTable(sqlMoney), "customer,orders,money", dgvMoney)
         '權限管理
-        sql = "SELECT * FROM permissions"
-        DataToDgv(SelectFromTable(sql), "permissions", dgvPermissions)
-        '員工管理
-        sql = "SELECT a.emp_id, a.emp_name, a.emp_phone, a.emp_tel, a.emp_address, b.perm_name, a.emp_acct, a.emp_psw, a.emp_memo FROM employee a LEFT JOIN permissions b ON a.emp_perm_id = b.perm_id"
-        DataToDgv(SelectFromTable(sql), "permissions,employee", dgvEmployee)
+        DataToDgv(SelectFromTable(sqlPermision), "permissions", dgvPermissions)
+        '員工管理        
+        DataToDgv(SelectFromTable(sqlEmployee), "permissions,employee", dgvEmployee)
+        '配餐管理        
+        DataToDgv(SelectFromTable(sqlDistribute), "distribute,orders,customer,product", dgvDistribute)
 
         '菜單管理
         With dgvMenu
@@ -237,8 +236,8 @@ Public Class frmMain
         txtNS3.Text = "八珍干貝鮮雞湯"
 
         '配餐管理
-        txtCusName_dist.Text = "陳小姐"
-        txtPhone_dist.Text = "0918-123123"
+        'txtCusName_dist.Text = "陳小姐"
+        'txtPhone_dist.Text = "0918-123123"
     End Sub
 
     Private Sub btnMenuExcel_Click(sender As Object, e As EventArgs) Handles btnMenuExcel.Click
@@ -366,6 +365,7 @@ Public Class frmMain
             txtNutrCons.Text = rowCus("cus_nutr_cons").ToString
             txtMemo_cus.Text = rowCus("cus_memo").ToString
 
+            '顯示歷史訂單
             Dim sql = $"SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id WHERE b.cus_id = '{txtCusID.Text}' ORDER BY a.ord_date DESC"
             DataToDgv(SelectFromTable(sql), "customer,orders", dgvOrder_cus)
         End If
@@ -491,9 +491,7 @@ Finish:
 
     '客戶管理-取消
     Private Sub btnCusCancel_Click(sender As Object, e As EventArgs) Handles btnCusCancel.Click
-        Dim table = "customer"
-        Dim sql = $"SELECT cus_id, cus_name, cus_gender, cus_phone FROM {table}"
-        DataToDgv(SelectFromTable(sql), table, dgvCustomer)
+        DataToDgv(SelectFromTable(sqlCustomer), "customer", dgvCustomer)
         ClearTabPage(tpBasic_cus)
         ClearTabPage(tpConsult_cus)
     End Sub
@@ -501,9 +499,8 @@ Finish:
     '客戶管理-查詢
     Private Sub btnCusQuery_Click(sender As Object, e As EventArgs) Handles btnCusQuery.Click
         Cursor = Cursors.WaitCursor
-        Dim table = "customer"
-        Dim sql = $"SELECT cus_id, cus_name, cus_gender, cus_phone FROM {table} WHERE cus_name LIKE '%{txtCusQuery.Text}%' or cus_phone LIKE '%{txtCusQuery.Text}%'"
-        DataToDgv(SelectFromTable(sql), table, dgvCustomer)
+        Dim sql = sqlCustomer + $" WHERE cus_name LIKE '%{txtCusQuery.Text}%' or cus_phone LIKE '%{txtCusQuery.Text}%'"
+        DataToDgv(SelectFromTable(sql), "customer", dgvCustomer)
         ClearTabPage(tpBasic_cus)
         ClearTabPage(tpConsult_cus)
         MsgBox("搜尋完畢")
@@ -557,9 +554,12 @@ Finish:
             txtUnpay.Text = txtTotalPrice.Text
             Exit Sub
         End If
-        'todo 如果有兩筆財務的話要改算法
-        Dim dr As DataRow = dt.Rows(0)
-        txtUnpay.Text = txtTotalPrice.Text - dr("mon_income").ToString
+        Dim list = dt.AsEnumerable.Select(Function(x) x.Field(Of Int32)("mon_income")).ToList
+        Dim sum As Int32
+        For Each money In list
+            sum += money
+        Next
+        txtUnpay.Text = txtTotalPrice.Text - sum
     End Sub
 
     '訂單管理-新增
@@ -648,8 +648,7 @@ Finish:
         Dim tp As TabPage = CType(sender, Button).Parent
 
         '列出所有資料
-        Dim sql = "SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id"
-        DataToDgv(SelectFromTable(sql), "customer,orders", dgvOrder)
+        DataToDgv(SelectFromTable(sqlOrder), "customer,orders", dgvOrder)
         ClearTabPage(tp)
         InitSales()
     End Sub
@@ -657,7 +656,7 @@ Finish:
     '訂單管理-查詢
     Private Sub btnOrderQuery_Click(sender As Object, e As EventArgs) Handles btnOrderQuery.Click
         Cursor = Cursors.WaitCursor
-        Dim sql = $"SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id WHERE b.cus_name LIKE '%{txtOrdQuery.Text}%' OR b.cus_phone LIKE '%{txtOrdQuery.Text}%' ORDER BY a.ord_date DESC"
+        Dim sql = sqlOrder + $" WHERE b.cus_name LIKE '%{txtOrdQuery.Text}%' OR b.cus_phone LIKE '%{txtOrdQuery.Text}%' ORDER BY a.ord_date DESC"
         DataToDgv(SelectFromTable(sql), "customer,orders", dgvOrder)
         ClearTabPage(tpOrder)
         MsgBox("搜尋完畢")
@@ -876,9 +875,8 @@ Finish:
     '員工管理-取消
     Private Sub btnEmpCancel_Click(sender As Object, e As EventArgs) Handles btnEmpCancel.Click
         Dim tp As TabPage = CType(sender, Button).Parent
-        '列出所有表格資料
-        Dim sql = "SELECT a.emp_id, a.emp_name, a.emp_phone, a.emp_tel, a.emp_address, b.perm_name, a.emp_acct, a.emp_psw, a.emp_memo FROM employee a LEFT JOIN permissions b ON a.emp_perm_id = b.perm_id"
-        DataToDgv(SelectFromTable(sql), "permissions,employee", dgvEmployee)
+        '列出所有表格資料        
+        DataToDgv(SelectFromTable(sqlEmployee), "permissions,employee", dgvEmployee)
         ClearTabPage(tp)
     End Sub
 
@@ -888,11 +886,377 @@ Finish:
         Dim tp = CType(sender, Button).Parent
         Dim sTable As String = tp.Tag.ToString
 
-        Dim Sql = $"SELECT a.emp_id, a.emp_name, a.emp_phone, a.emp_tel, a.emp_address, b.perm_name, a.emp_acct, a.emp_psw, a.emp_memo FROM employee a LEFT JOIN permissions b ON a.emp_perm_id = b.perm_id WHERE emp_name LIKE '%{txtEmpQuery.Text}%' OR emp_phone LIKE '%{txtEmpQuery.Text}%'"
+        Dim Sql = sqlEmployee + $" WHERE emp_name LIKE '%{txtEmpQuery.Text}%' OR emp_phone LIKE '%{txtEmpQuery.Text}%'"
         DataToDgv(SelectFromTable(Sql), "permissions,employee", dgvEmployee)
         MsgBox("搜尋完畢")
         Cursor = Cursors.Default
     End Sub
+
+    '配餐管理-dgv點擊
+    Private Sub dgvDistribute_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvDistribute.CellMouseClick
+        ClearTabPage(tpDistribute)
+
+        Dim dgv As DataGridView = dgvDistribute
+        If dgv.SelectedRows.Count < 0 Then Exit Sub
+        '點dgv後將對象資料傳至各控制項
+        Dim dgvRow = dgv.SelectedRows(0)
+        Dim colName As String
+        Dim rowData = SelectFromTable($"SELECT a.ord_id,b.cus_name,b.cus_phone,c.prod_name,a.ord_delivery,a.ord_breakfast,a.ord_lunch,a.ord_dinner FROM orders a LEFT JOIN customer b ON a.ord_cus_id=b.cus_id LEFT JOIN product c ON a.ord_prod_id=c.prod_id WHERE a.ord_id = '{dgvRow.Cells("ord_id").Value}'").Rows(0)
+        For Each ctrl As Control In dgv.Parent.Controls
+            colName = ctrl.Tag 'TextBox的Tag對應表格欄位名稱
+            If TypeOf ctrl Is TextBox Then
+                If Not String.IsNullOrEmpty(colName) Then ctrl.Text = rowData(colName).ToString
+
+            ElseIf TypeOf ctrl Is DateTimePicker Then
+                If Not String.IsNullOrEmpty(colName) Then
+                    Dim dtp = CType(ctrl, DateTimePicker)
+                    dtp.Value = rowData(colName)
+                End If
+            End If
+        Next
+        '刷新月曆
+        SetCalender()
+        SetCalenderData()
+
+        CountNotConfigured()
+    End Sub
+
+    ''' <summary>
+    ''' 設定所選訂單的月曆資料
+    ''' </summary>
+    Private Sub SetCalenderData()
+        If txtOrdID_dist.Text = "" Then Exit Sub
+        Dim d As Date = Date.Parse(txtDistCalendar.Text)
+        '以當前月曆月份搜尋訂單配餐
+        Dim dt = SelectFromTable($"SELECT * FROM distribute WHERE YEAR(dist_date) = {d.Year} AND MONTH(dist_date) = {d.Month} AND dist_ord_id = {txtOrdID_dist.Text}")
+        For Each row As DataRow In dt.Rows
+            '配餐日期
+            d = row.Field(Of Date)("dist_date")
+            '取得配餐日的panel
+            Dim pnl = tlpCalendar.Controls.OfType(Of Panel).FirstOrDefault(Function(x) CInt(x.Tag) = d.Day)
+            '將對應的餐種打包進按鈕的tag並改變顏色
+            Dim btn = pnl?.Controls.OfType(Of Button).FirstOrDefault(Function(x) x.Text = row.Field(Of String)("dist_meal"))
+            If btn IsNot Nothing Then
+                btn.Tag = row
+                btn.BackColor = Color.LightGreen
+            End If
+        Next
+    End Sub
+
+    ''' <summary>
+    ''' 計算未配置餐
+    ''' </summary>
+    Private Sub CountNotConfigured()
+        '使用時機 dgv點取 新刪修後
+        '計算餐種的數量扣掉未配置餐
+        Dim dtOrder = SelectFromTable($"SELECT ord_breakfast, ord_lunch, ord_dinner FROM orders WHERE ord_id = '{txtOrdID_dist.Text}'")
+        Dim d As Date = Date.Parse(txtDistCalendar.Text)
+        Dim dt = SelectFromTable($"SELECT * FROM distribute WHERE YEAR(dist_date) = {d.Year} AND MONTH(dist_date) = {d.Month} AND dist_ord_id = {txtOrdID_dist.Text}")
+        txtBreak.Text = If(dtOrder.Rows(0)("ord_breakfast") > 0, dtOrder.Rows(0)("ord_breakfast") - dt.Select("dist_meal='早'").Count, 0)
+        txtLunch.Text = If(dtOrder.Rows(0)("ord_lunch") > 0, dtOrder.Rows(0)("ord_lunch") - dt.Select("dist_meal='午'").Count, 0)
+        txtDinner.Text = If(dtOrder.Rows(0)("ord_dinner") > 0, dtOrder.Rows(0)("ord_dinner") - dt.Select("dist_meal='晚'").Count, 0)
+    End Sub
+
+    '配餐管理-新增
+    Private Sub distInsert_Click(sender As Object, e As EventArgs) Handles distInsert.Click
+        If txtOrdID_dist.Text = "" Then Exit Sub
+
+        Cursor = Cursors.WaitCursor
+        '若沒勾 改變後續設定 就只新增一天
+        Dim count As Integer
+
+        '檢查未配置餐來insert
+        Dim checkInsert As Boolean
+
+        If tempDistDay.Text = "早" And txtBreak.Text <> 0 Then
+            checkInsert = True
+            count = txtBreak.Text
+        ElseIf tempDistDay.Text = "午" And txtLunch.Text <> 0 Then
+            checkInsert = True
+            count = txtLunch.Text
+        ElseIf tempDistDay.Text = "晚" And txtDinner.Text <> 0 Then
+            checkInsert = True
+            count = txtDinner.Text
+        End If
+        If chkContinue.Checked = False Then count = 1
+        If checkInsert Then
+            Dim day = tempDistDay.Parent.Controls.OfType(Of Label).FirstOrDefault.Text
+            Dim d = Date.Parse(txtDistCalendar.Text + day + "日")
+            d = d.AddDays(-1)
+            Dim dic As New Dictionary(Of String, String)
+            With dic
+                .Add("dist_ord_id", txtOrdID_dist.Text)
+                .Add("dist_meal", tempDistDay.Text) '早午晚餐
+                For i As Integer = count To 1 Step -1
+                    d = d.AddDays(1)
+                    .Add("dist_date", d) '送餐日期
+                    Dim table = "distribute"
+                    Dim conditions As List(Of String) = dic.Select(Function(kvp) $"{kvp.Key} = '{kvp.Value}'").ToList()
+                    If SelectFromTable($"SELECT * FROM {table} WHERE " + String.Join(" And ", conditions)).Rows.Count > 0 Then
+                        MsgBox("重複資料")
+                        GoTo Finish
+                    End If
+                    InserData(table, dic)
+                    UpdateData(table, Bind_TableTextBox(table), String.Join(" and ", conditions))
+                    dic.Remove("dist_date")
+                Next
+            End With
+            SetCalender()
+            SetCalenderData()
+            CountNotConfigured()
+            MsgBox("新增成功")
+        End If
+Finish:
+        Cursor = Cursors.Default
+    End Sub
+
+    '配餐管理-修改
+    Private Sub btnDistModify_Click(sender As Object, e As EventArgs) Handles btnDistModify.Click
+        If txtOrdID_dist.Text = "" Then Exit Sub
+
+        Cursor = Cursors.WaitCursor
+        Dim table = "distribute"
+        '抓出所選的天
+        If tempDistDay.BackColor = Color.LightGreen Then
+            Dim day = tempDistDay.Parent.Controls.OfType(Of Label).FirstOrDefault.Text
+            Dim d = Date.Parse(txtDistCalendar.Text + day + "日")
+            Dim dic As New Dictionary(Of String, String)
+            With dic
+                .Add("dist_ord_id", txtOrdID_dist.Text)
+                .Add("dist_meal", tempDistDay.Text) '早午晚餐
+                '若沒勾 改變後續設定 就只新增一天
+                Dim count As Integer = 1
+                If chkContinue.Checked Then
+                    count = SelectFromTable($"SELECT * FROM {table} WHERE dist_ord_id = '{txtOrdID_dist.Text}' AND dist_date >= '{d}'").Rows.Count
+                End If
+                d = d.AddDays(-1)
+                For i As Integer = count To 1 Step -1
+                    d = d.AddDays(1)
+                    .Add("dist_date", d) '送餐日期
+
+                    Dim conditions As List(Of String) = dic.Select(Function(kvp) $"{kvp.Key} = '{kvp.Value}'").ToList()
+                    UpdateData(table, Bind_TableTextBox(table), String.Join(" and ", conditions))
+                    dic.Remove("dist_date")
+                Next
+            End With
+        Else
+            MsgBox("請選擇已新增的日期")
+        End If
+
+        SetCalender()
+        SetCalenderData()
+        CountNotConfigured()
+        MsgBox("修改成功")
+
+Finish:
+        Cursor = Cursors.Default
+    End Sub
+
+    '配餐管理-刪除
+    Private Sub btnDistDel_Click(sender As Object, e As EventArgs) Handles btnDistDel.Click
+        If txtOrdID_dist.Text = "" Then Exit Sub
+
+        Cursor = Cursors.WaitCursor
+        Dim table = "distribute"
+        '抓出所選的天
+        If tempDistDay.BackColor = Color.LightGreen Then
+            Dim day = tempDistDay.Parent.Controls.OfType(Of Label).FirstOrDefault.Text
+            Dim d = Date.Parse(txtDistCalendar.Text + day + "日")
+            Dim dic As New Dictionary(Of String, String)
+            With dic
+                .Add("dist_ord_id", txtOrdID_dist.Text)
+                .Add("dist_meal", tempDistDay.Text) '早午晚餐
+                '若沒勾 改變後續設定 就只新增一天
+                Dim count As Integer = 1
+                If chkContinue.Checked Then
+                    count = SelectFromTable($"SELECT * FROM {table} WHERE dist_ord_id = '{txtOrdID_dist.Text}' AND dist_date >= '{d}'").Rows.Count
+                End If
+                d = d.AddDays(-1)
+                For i As Integer = count To 1 Step -1
+                    d = d.AddDays(1)
+                    .Add("dist_date", d) '送餐日期
+
+                    Dim conditions As List(Of String) = dic.Select(Function(kvp) $"{kvp.Key} = '{kvp.Value}'").ToList()
+                    DeleteData(table, String.Join(" and ", conditions))
+                    dic.Remove("dist_date")
+                Next
+            End With
+        Else
+            MsgBox("請選擇已新增的日期")
+        End If
+
+        SetCalender()
+        SetCalenderData()
+        CountNotConfigured()
+        MsgBox("刪除成功")
+Finish:
+        Cursor = Cursors.Default
+    End Sub
+
+    '配餐管理-取消
+    Private Sub btnDistCancel_Click(sender As Object, e As EventArgs) Handles btnDistCancel.Click
+        Dim tp As TabPage = CType(sender, Button).Parent
+        '列出所有表格資料        
+        DataToDgv(SelectFromTable(sqlDistribute), "distribute,orders,customer,product", dgvDistribute)
+        ClearTabPage(tp)
+        SetCalender()
+    End Sub
+
+    '配餐管理-搜尋
+    Private Sub btnDistQuery_Click(sender As Object, e As EventArgs) Handles btnDistQuery.Click
+        Dim sql = sqlDistribute + $" WHERE b.cus_name LIKE '%{txtDistQuery.Text}%' OR b.cus_phone LIKE '%{txtDistQuery.Text}%'"
+        DataToDgv(SelectFromTable(sql), "distribute,orders,customer,product", dgvDistribute)
+    End Sub
+
+    ''' <summary>
+    ''' 製作月曆一日的物件
+    ''' </summary>
+    ''' <param name="i">日</param>
+    ''' <returns></returns>
+    Private Function DayMaker(i As Int16) As Panel
+        '框架
+        Dim panel As New Panel With {
+            .Dock = DockStyle.Fill,
+            .BorderStyle = BorderStyle.FixedSingle,
+            .Tag = i'存日期供搜尋用
+        }
+        '日期
+        Dim font As New Font("Arial", 12, FontStyle.Bold)
+        Dim point As Point
+        point = New Point(0, 0)
+        Dim lbl As New Label With {.Text = i, .Parent = panel, .Font = font, .AutoSize = True, .Location = point}
+        '早中晚的按鈕式CheckBox
+        With panel
+            .Controls.Add(Setbtn_Dist(New Point(27, 0), "早"))
+            .Controls.Add(Setbtn_Dist(New Point(2, 25), "午"))
+            .Controls.Add(Setbtn_Dist(New Point(27, 25), "晚"))
+        End With
+
+        Return panel
+    End Function
+
+    ''' <summary>
+    ''' 設定配餐管理月曆裡的按鈕
+    ''' </summary>
+    ''' <param name="point">在Panel裡的位置</param>
+    ''' <param name="txt">顯示的文字</param>
+    ''' <returns></returns>
+    Private Function Setbtn_Dist(point As Point, txt As String) As Button
+        Dim btn As New Button With
+        {
+            .Text = txt,
+            .AutoSize = False,
+            .Location = point,
+            .Font = New Font("標楷體", 10, FontStyle.Bold),
+            .Height = 25,
+            .Width = 25,
+            .TextAlign = ContentAlignment.MiddleCenter
+        }
+        AddHandler btn.Click, AddressOf DistBtnClick
+        Return btn
+    End Function
+
+    '配餐管理-月曆日期內按鈕點擊事件
+    Private Sub DistBtnClick(sender As Object, e As EventArgs)
+        '刷新grp
+        For Each grp In tpDistribute.Controls.OfType(Of GroupBox)()
+            For Each chk In grp.Controls.OfType(Of CheckBox)()
+                chk.Checked = False
+            Next
+            For Each rdo In grp.Controls.OfType(Of RadioButton)()
+                rdo.Checked = False
+            Next
+        Next
+
+        tempDistDay = sender
+        '標示現在選取的日期
+        Dim day = tempDistDay.Parent.Controls.OfType(Of Label).FirstOrDefault.Text
+        Dim d = Date.Parse(txtDistCalendar.Text + day + "日")
+        txtSelectDate.Text = d + " " + tempDistDay.Text
+
+        '將btn.tag裡的物件資料送至各grp
+        Dim rowData As DataRow = tempDistDay.Tag
+        If rowData Is Nothing Then Exit Sub
+
+        Dim dic As New Dictionary(Of String, String)
+        With dic
+            .Add("dist_soup", "湯盅")
+            .Add("dist_oil", "麻油")
+            .Add("dist_wine", "酒")
+            .Add("dist_vege", "素")
+            .Add("dist_other", "其他")
+            .Add("dist_customized", "客製需求")
+            .Add("dist_tableware", "餐具")
+        End With
+
+        For Each kvp In dic
+            Dim grp = tpDistribute.Controls.OfType(Of GroupBox)().FirstOrDefault(Function(x) x.Text = kvp.Value)
+            If grp IsNot Nothing Then
+                If Not rowData.IsNull(kvp.Key) Then
+                    Dim lst As List(Of String) = Split(rowData(kvp.Key), ",").ToList
+                    For Each check In grp.Controls.OfType(Of CheckBox)
+                        If lst.Contains(check.Text) Then
+                            check.Checked = True
+                        End If
+                    Next
+                    For Each rdo In grp.Controls.OfType(Of RadioButton)
+                        If lst.Contains(rdo.Text) Then
+                            rdo.Checked = True
+                        End If
+                    Next
+                    lst.Clear()
+                End If
+            End If
+        Next
+    End Sub
+
+    '對配餐管理的月曆加減月份
+    Private Sub BtnMonth_Click(sender As Object, e As EventArgs) Handles btnAddMonth.Click, btnMinusMonth.Click
+        If txtDistCalendar.Text = "" Then Exit Sub
+
+        Dim dt As Date = Date.Parse(txtDistCalendar.Text)
+        Dim btn As Button = CType(sender, Button)
+        Dim newDt As Date
+
+        Select Case btn.Name
+            Case "btnAddMonth"
+                newDt = dt.AddMonths(1)
+            Case "btnMinusMonth"
+                newDt = dt.AddMonths(-1)
+        End Select
+
+        txtDistCalendar.Text = newDt.ToString("yyyy年MM月")
+        SetCalenderData()
+    End Sub
+
+    '配餐管理-月曆時間一改變就設置日期內的物件
+    Private Sub txtDistCalendar_TextChanged(sender As Object, e As EventArgs) Handles txtDistCalendar.TextChanged
+        SetCalender()
+    End Sub
+
+    ''' <summary>
+    ''' 設置配餐管理月曆
+    ''' </summary>
+    Private Sub SetCalender()
+        tlpCalendar.Visible = False
+        tlpCalendar.Controls.Clear()
+        Dim i, j As Short
+        Dim d = Date.Parse(txtDistCalendar.Text)
+        Dim days As Short = Date.DaysInMonth(d.Year, d.Month)
+        Dim firstDateOfWeek As Short = New DateTime(d.Year, d.Month, 1).DayOfWeek
+
+        For i = 1 To days
+            tlpCalendar.Controls.Add(DayMaker(i), firstDateOfWeek, j)
+            firstDateOfWeek += 1
+            If firstDateOfWeek = 7 Then
+                firstDateOfWeek = 0
+                j += 1
+            End If
+        Next
+        tlpCalendar.Visible = True
+    End Sub
+
+    'todo 更改月曆時間,有訂單就找訂單月份,沒訂單就用現在月份
 
     ''' <summary>
     ''' 檢查Table是否有重複資料
@@ -1102,22 +1466,51 @@ Finish:
                     .Add("emp_acct", txtAcct.Text)
                     .Add("emp_psw", txtPsw.Text)
                     .Add("emp_memo", txtEmpMemo.Text)
+
+                Case "distribute"
+                    Dim txt As String
+                    For Each grp In tpDistribute.Controls.OfType(Of GroupBox)
+                        Select Case grp.Text
+                            Case "湯盅"
+                                txt = grp.Controls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault()
+                                .Add("dist_soup", txt)
+                            Case "麻油"
+                                txt = grp.Controls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault()
+                                .Add("dist_oil", txt)
+                            Case "酒"
+                                txt = grp.Controls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault()
+                                .Add("dist_wine", txt)
+                            Case "素"
+                                txt = grp.Controls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault()
+                                .Add("dist_vege", txt)
+                            Case "其他"
+                                chk = grp.Controls.OfType(Of CheckBox).Where(Function(x) x.Checked = True)
+                                .Add("dist_other", String.Join(",", chk.Select(Function(x) x.Text)))
+                            Case "客製需求"
+                                chk = grp.Controls.OfType(Of CheckBox).Where(Function(x) x.Checked = True)
+                                .Add("dist_customized", String.Join(",", chk.Select(Function(x) x.Text)))
+                            Case "餐具"
+                                chk = grp.Controls.OfType(Of CheckBox).Where(Function(x) x.Checked = True)
+                                .Add("dist_tableware", String.Join(",", chk.Select(Function(x) x.Text)))
+                        End Select
+                    Next
             End Select
         End With
         Return dicData
     End Function
 
-    Private Sub InserData(sTable As String, dicData As Dictionary(Of String, String))
+    Private Function InserData(sTable As String, dicData As Dictionary(Of String, String)) As Boolean
+        Dim result As Boolean
         Dim cmd As New MySqlCommand($"INSERT INTO {sTable} ({String.Join(",", dicData.Keys)}) VALUES ({String.Join(",", dicData.Values.Select(Function(x) $"'{x}'"))})", mConn)
         Try
             mConn.Open()
-            If cmd.ExecuteNonQuery() > 0 Then MsgBox("新增成功")
+            If cmd.ExecuteNonQuery() > 0 Then result = True
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
         mConn.Close()
-        btnCusCancel.PerformClick()
-    End Sub
+        Return result
+    End Function
 
     ''' <summary>
     ''' 更新表格
@@ -1125,7 +1518,8 @@ Finish:
     ''' <param name="sTable">表格名稱</param>
     ''' <param name="dicFields">更新對象集合</param>
     ''' <param name="sCondition">Where</param>
-    Public Sub UpdateData(sTable As String, dicFields As Dictionary(Of String, String), sCondition As String)
+    Public Function UpdateData(sTable As String, dicFields As Dictionary(Of String, String), sCondition As String) As Boolean
+        Dim result As Boolean
         Try
             mConn.Open()
 
@@ -1150,14 +1544,13 @@ Finish:
             For Each kvp As KeyValuePair(Of String, String) In dicFields
                 cmd.Parameters.AddWithValue(String.Format("@{0}", kvp.Key), kvp.Value)
             Next
-            If cmd.ExecuteNonQuery() > 0 Then
-                MsgBox("修改成功")
-            End If
+            If cmd.ExecuteNonQuery() > 0 Then result = True
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
         mConn.Close()
-    End Sub
+        Return result
+    End Function
 
     ''' <summary>
     ''' Insert前檢查
@@ -1257,7 +1650,7 @@ Finish:
     End Sub
 
     '搜尋欄位按下"Enter"即可搜尋
-    Private Sub txtQuery_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtProdGrpName.KeyPress, txtProdQuery.KeyPress, txtTaboQuery.KeyPress, txtMonQuery.KeyPress, txtEmpQuery.KeyPress, txtOrdQuery.KeyPress, txtCusQuery.KeyPress
+    Private Sub txtQuery_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtProdGrpName.KeyPress, txtProdQuery.KeyPress, txtTaboQuery.KeyPress, txtMonQuery.KeyPress, txtEmpQuery.KeyPress, txtOrdQuery.KeyPress, txtCusQuery.KeyPress, txtDistQuery.KeyPress
         If e.KeyChar = vbCr Then
             Dim btn As Button = CType(sender, TextBox).Parent.Controls.OfType(Of Button).FirstOrDefault(Function(x) x.Text = "查詢")
             btn.PerformClick()
@@ -1283,31 +1676,6 @@ Finish:
         ElseIf TypeOf ctrl Is ComboBox Then
             CType(ctrl, ComboBox).SelectedIndex = -1
         End If
-    End Sub
-
-    '對配餐管理的月曆加減月份
-    Private Sub BtnMonth_Click(sender As Object, e As EventArgs) Handles btnAddMonth.Click, btnMinusMonth.Click
-        If txtDistCalendar.Text = "" Then Exit Sub
-
-        Dim dt As Date = Date.Parse(txtDistCalendar.Text)
-        Dim btn As Button = CType(sender, Button)
-        Dim newDt As Date
-
-        Select Case btn.Name
-            Case "btnAddMonth"
-                newDt = dt.AddMonths(1)
-            Case "btnMinusMonth"
-                newDt = dt.AddMonths(-1)
-        End Select
-
-        txtDistCalendar.Text = newDt.ToString("yyyy年MM月")
-    End Sub
-
-    '更改月曆時間,有訂單就找訂單月份,沒訂單就用現在月份
-    Private Sub btnDistQuery_Click(sender As Object, e As EventArgs) Handles btnDistQuery.Click
-        tlpCalendar.Visible = False
-        '程式碼
-        tlpCalendar.Visible = True
     End Sub
 
     ''' <summary>
@@ -1504,8 +1872,7 @@ Finish:
         InserData(sTable, Bind_TableTextBox(sTable))
 
         '列出所有表格資料
-        DataToDgv(SelectFromTable($"SELECT * FROM {sTable}"), sTable, dgvProdgroup)
-        ClearTabPage(tp)
+        btnProdGrpCancel.PerformClick()
 Finish:
         Me.Cursor = Cursors.Default
     End Sub
@@ -1522,9 +1889,7 @@ Finish:
         InserData(sTable, Bind_TableTextBox(sTable))
 
         '列出所有表格資料
-        DataToDgv(SelectFromTable("SELECT a.prod_id,a.prod_name,b.prod_grp_name,a.prod_price,a.prod_cost,a.prod_type,a.prod_meal,a.prod_memo FROM product a LEFT JOIN product_group b on a.prod_prod_grp_id=b.prod_grp_id;"), "product,product_group", dgvProduct)
-        ClearTabPage(tp)
-
+        btnProdCancel.PerformClick()
 Finish:
         Me.Cursor = Cursors.Default
     End Sub
@@ -1540,8 +1905,7 @@ Finish:
         InserData(sTable, Bind_TableTextBox(sTable))
 
         '列出所有表格資料
-        DataToDgv(SelectFromTable("SELECT * FROM taboo"), "taboo", dgvTaboo)
-        ClearTabPage(tp)
+        btnTaboCancel.PerformClick()
         InitTabooType()
 Finish:
         Cursor = Cursors.Default
@@ -1555,9 +1919,7 @@ Finish:
         If Not CheckInsert(sTable, tp) Then GoTo Finish
         InserData(sTable, Bind_TableTextBox(sTable))
         '列出所有表格資料
-        Dim Sql = "SELECT a.mon_id, b.cus_name, b.cus_phone, c.ord_id, a.mon_date, a.mon_type, a.mon_Income, a.mon_memo FROM money a LEFT JOIN customer b ON a.mon_cus_id=b.cus_id LEFT JOIN orders c on a.mon_ord_id=c.ord_id"
-        DataToDgv(SelectFromTable(Sql), "customer,orders,money", dgvMoney)
-        ClearTabPage(tp)
+        btnMonCancel.PerformClick()
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -1570,10 +1932,7 @@ Finish:
         If Not CheckInsert(sTable, tp) Then GoTo Finish
         InserData(sTable, Bind_TableTextBox(sTable))
         '列出所有表格資料
-        Dim Sql = "SELECT * FROM permissions"
-        DataToDgv(SelectFromTable(Sql), "permissions", dgvPermissions)
-        ClearTabPage(tp)
-        InitPosition()
+        btnPermCancel.PerformClick()
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -1587,9 +1946,7 @@ Finish:
         UpdateData(sTable, Bind_TableTextBox(sTable), $"prod_grp_id = '{txtProdGrpID.Text}'")
 
         '列出所有資料
-        DataToDgv(SelectFromTable($"SELECT * FROM {sTable}"), sTable, tp.Controls.OfType(Of DataGridView).FirstOrDefault)
-        ClearTabPage(tp)
-        InitProductGroup()
+        btnProdGrpCancel.PerformClick()
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -1601,9 +1958,9 @@ Finish:
         Dim sTable = tp.Tag.ToString
         If CheckTextNull(sTable, tp) Then GoTo Finish
         UpdateData(sTable, Bind_TableTextBox(sTable), $"prod_id  = '{txtProdID.Text}'")
+
         '列出所有資料
-        DataToDgv(SelectFromTable("SELECT a.prod_id,a.prod_name,b.prod_grp_name,a.prod_price,a.prod_cost,a.prod_type,a.prod_meal,a.prod_memo FROM product a LEFT JOIN product_group b on a.prod_prod_grp_id=b.prod_grp_id;"), "product,product_group", dgvProduct)
-        ClearTabPage(tp)
+        btnProdCancel.PerformClick()
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -1616,8 +1973,7 @@ Finish:
         If CheckTextNull(sTable, tp) Then GoTo Finish
         UpdateData(sTable, Bind_TableTextBox(sTable), $"tabo_id  = '{txtTaboID.Text}'")
         '列出所有資料
-        DataToDgv(SelectFromTable("SELECT * FROM taboo"), "taboo", dgvTaboo)
-        ClearTabPage(tp)
+        btnTaboCancel.PerformClick()
         InitTabooType()
 Finish:
         Cursor = Cursors.Default
@@ -1631,9 +1987,7 @@ Finish:
         If CheckTextNull(sTable, tp) Then GoTo Finish
         UpdateData(sTable, Bind_TableTextBox(sTable), $"mon_id  = '{txtMonID.Text}'")
         '列出所有資料
-        Dim Sql = "SELECT a.mon_id, b.cus_name, b.cus_phone, c.ord_id, a.mon_date, a.mon_type, a.mon_Income, a.mon_memo FROM money a LEFT JOIN customer b ON a.mon_cus_id=b.cus_id LEFT JOIN orders c on a.mon_ord_id=c.ord_id"
-        DataToDgv(SelectFromTable(Sql), "customer,orders,money", dgvMoney)
-        ClearTabPage(tp)
+        btnMonCancel.PerformClick()
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -1646,10 +2000,7 @@ Finish:
         If CheckTextNull(sTable, tp) Then GoTo Finish
         UpdateData(sTable, Bind_TableTextBox(sTable), $"perm_id  = '{txtPermID.Text}'")
         '列出所有資料
-        Dim Sql = "SELECT * FROM permissions"
-        DataToDgv(SelectFromTable(Sql), "permissions", dgvPermissions)
-        ClearTabPage(tp)
-        InitPosition()
+        btnPermCancel.PerformClick()
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -1670,10 +2021,7 @@ Finish:
         If DeleteData(sTable, $"prod_grp_id = '{id.Text}'") Then
             MsgBox("刪除成功")
 
-            '顯示table所有資料
-            DataToDgv(SelectFromTable($"SELECT * FROM {sTable}"), sTable, dgvProdgroup)
-            ClearTabPage(tp)
-            InitProductGroup()
+            btnProdGrpCancel.PerformClick()
         End If
     End Sub
 
@@ -1694,8 +2042,7 @@ Finish:
             MsgBox("刪除成功")
 
             '顯示table所有資料
-            DataToDgv(SelectFromTable("SELECT a.prod_id,a.prod_name,b.prod_grp_name,a.prod_price,a.prod_cost,a.prod_type,a.prod_meal,a.prod_memo FROM product a LEFT JOIN product_group b on a.prod_prod_grp_id=b.prod_grp_id;"), "product,product_group", dgvProduct)
-            ClearTabPage(tp)
+            btnProdCancel.PerformClick()
         End If
     End Sub
 
@@ -1716,8 +2063,7 @@ Finish:
             MsgBox("刪除成功")
 
             '顯示table所有資料
-            DataToDgv(SelectFromTable("SELECT * FROM taboo"), "taboo", dgvTaboo)
-            ClearTabPage(tp)
+            btnTaboCancel.PerformClick()
             InitTabooType()
         End If
     End Sub
@@ -1739,9 +2085,7 @@ Finish:
             MsgBox("刪除成功")
 
             '顯示table所有資料
-            Dim Sql = "SELECT a.mon_id, b.cus_name, b.cus_phone, c.ord_id, a.mon_date, a.mon_type, a.mon_Income, a.mon_memo FROM money a LEFT JOIN customer b ON a.mon_cus_id=b.cus_id LEFT JOIN orders c on a.mon_ord_id=c.ord_id"
-            DataToDgv(SelectFromTable(Sql), "customer,orders,money", dgvMoney)
-            ClearTabPage(tp)
+            btnMonCancel.PerformClick()
         End If
     End Sub
 
@@ -1762,10 +2106,7 @@ Finish:
             MsgBox("刪除成功")
 
             '顯示table所有資料
-            Dim Sql = "SELECT * FROM permissions"
-            DataToDgv(SelectFromTable(Sql), "permissions", dgvPermissions)
-            ClearTabPage(tp)
-            InitPosition()
+            btnPermCancel.PerformClick()
         End If
     End Sub
 
@@ -1775,7 +2116,7 @@ Finish:
         ClearTabPage(tp)
         '顯示所有資料
         Dim sTable As String = tp.Tag.ToString
-        DataToDgv(SelectFromTable($"SELECT * FROM {sTable}"), sTable, tp.Controls.OfType(Of DataGridView).FirstOrDefault)
+        DataToDgv(SelectFromTable(sqlProductGroup), sTable, tp.Controls.OfType(Of DataGridView).FirstOrDefault)
         InitProductGroup()
     End Sub
 
@@ -1783,36 +2124,31 @@ Finish:
     Private Sub btnProdCancel_Click(sender As Object, e As EventArgs) Handles btnProdCancel.Click
         Dim tp As TabPage = CType(sender, Button).Parent
         ClearTabPage(tp)
-        Dim sql = "SELECT a.prod_id,a.prod_name,b.prod_grp_name,a.prod_price,a.prod_cost,a.prod_type,a.prod_meal,a.prod_memo FROM product a LEFT JOIN product_group b on a.prod_prod_grp_id=b.prod_grp_id"
         '顯示所有資料
-        DataToDgv(SelectFromTable(sql), "product", dgvProduct)
+        DataToDgv(SelectFromTable(sqlProduct), "product", dgvProduct)
     End Sub
 
     '禁忌管理-取消
     Private Sub btnTaboCancel_Click(sender As Object, e As EventArgs) Handles btnTaboCancel.Click
         Dim tp As TabPage = CType(sender, Button).Parent
         ClearTabPage(tp)
-        Dim sql = "SELECT * FROM taboo"
         '顯示所有資料
-        DataToDgv(SelectFromTable(sql), "taboo", dgvTaboo)
+        DataToDgv(SelectFromTable(sqlTaboo), "taboo", dgvTaboo)
     End Sub
 
     '財務管理-取消
     Private Sub btnMonCancel_Click(sender As Object, e As EventArgs) Handles btnMonCancel.Click
         Dim tp As TabPage = CType(sender, Button).Parent
         ClearTabPage(tp)
-        InitProductGroup()
-        '顯示所有資料
-        Dim Sql = "SELECT a.mon_id, b.cus_name, b.cus_phone, c.ord_id, a.mon_date, a.mon_type, a.mon_Income, a.mon_memo FROM money a LEFT JOIN customer b ON a.mon_cus_id=b.cus_id LEFT JOIN orders c on a.mon_ord_id=c.ord_id"
-        DataToDgv(SelectFromTable(Sql), "customer,orders,money", dgvMoney)
+        '顯示所有資料       
+        DataToDgv(SelectFromTable(sqlMoney), "customer,orders,money", dgvMoney)
     End Sub
 
     '權限管理-取消
     Private Sub btnPermCancel_Click(sender As Object, e As EventArgs) Handles btnPermCancel.Click
         Dim tp As TabPage = CType(sender, Button).Parent
         '顯示所有資料
-        Dim Sql = "SELECT * FROM permissions"
-        DataToDgv(SelectFromTable(Sql), "permissions", dgvPermissions)
+        DataToDgv(SelectFromTable(sqlPermision), "permissions", dgvPermissions)
         ClearTabPage(tp)
         InitPosition()
     End Sub
@@ -1822,7 +2158,7 @@ Finish:
         Cursor = Cursors.WaitCursor
         Dim tp = CType(sender, Button).Parent
         Dim sTable As String = tp.Tag
-        Dim sql = $"SELECT * FROM {sTable} WHERE prod_grp_name LIKE '%{txtProdGrpName.Text}%'"
+        Dim sql = sqlProductGroup + $" WHERE prod_grp_name LIKE '%{txtProdGrpName.Text}%'"
         DataToDgv(SelectFromTable(sql), sTable, tp.Controls.OfType(Of DataGridView).FirstOrDefault)
         ClearTabPage(tp)
         InitProductGroup()
@@ -1836,7 +2172,7 @@ Finish:
         Cursor = Cursors.WaitCursor
         Dim tp = CType(sender, Button).Parent
         Dim sTable As String = "product,product_group"
-        Dim sql = $"SELECT a.prod_id,a.prod_name,b.prod_grp_name,a.prod_price,a.prod_cost,a.prod_type,a.prod_meal,a.prod_memo FROM product a LEFT JOIN product_group b on a.prod_prod_grp_id = b.prod_grp_id WHERE a.prod_name LIKE '%{txtProdQuery.Text}%'"
+        Dim sql = sqlProduct + $" WHERE a.prod_name LIKE '%{txtProdQuery.Text}%'"
         DataToDgv(SelectFromTable(sql), sTable, tp.Controls.OfType(Of DataGridView).FirstOrDefault)
         MsgBox("搜尋完畢")
         Cursor = Cursors.Default
@@ -1846,9 +2182,8 @@ Finish:
     Private Sub btnTaboQuery_Click(sender As Object, e As EventArgs) Handles btnTaboQuery.Click
         Cursor = Cursors.WaitCursor
         Dim tp = CType(sender, Button).Parent
-        Dim sTable As String = "taboo"
-        Dim sql = $"SELECT * FROM {sTable} WHERE tabo_type LIKE '%{txtTaboQuery.Text}%' OR tabo_name LIKE '%{txtTaboQuery.Text}%'"
-        DataToDgv(SelectFromTable(sql), sTable, tp.Controls.OfType(Of DataGridView).FirstOrDefault)
+        Dim sql = sqlTaboo + $" WHERE tabo_type LIKE '%{txtTaboQuery.Text}%' OR tabo_name LIKE '%{txtTaboQuery.Text}%'"
+        DataToDgv(SelectFromTable(sql), "taboo", tp.Controls.OfType(Of DataGridView).FirstOrDefault)
         MsgBox("搜尋完畢")
         Cursor = Cursors.Default
     End Sub
@@ -1857,9 +2192,7 @@ Finish:
     Private Sub btnMonQuery_Click(sender As Object, e As EventArgs) Handles btnMonQuery.Click
         Cursor = Cursors.WaitCursor
         Dim tp = CType(sender, Button).Parent
-        Dim sTable As String = "taboo"
-
-        Dim Sql = $"SELECT a.mon_id, b.cus_name, b.cus_phone, c.ord_id, a.mon_date, a.mon_type, a.mon_Income, a.mon_memo FROM money a LEFT JOIN customer b ON a.mon_cus_id=b.cus_id LEFT JOIN orders c on a.mon_ord_id=c.ord_id WHERE b.cus_name LIKE '%{txtMonQuery.Text}%' OR b.cus_phone LIKE '%{txtMonQuery.Text}%'"
+        Dim Sql = sqlMoney + $" WHERE b.cus_name LIKE '%{txtMonQuery.Text}%' OR b.cus_phone LIKE '%{txtMonQuery.Text}%'"
         DataToDgv(SelectFromTable(Sql), "customer,money,orders", dgvMoney)
         MsgBox("搜尋完畢")
         Cursor = Cursors.Default
@@ -1872,4 +2205,5 @@ Finish:
     Private Sub btnTaboo_Click_1(sender As Object, e As EventArgs) Handles btnTaboo.Click
         frmTaboo.Show()
     End Sub
+
 End Class

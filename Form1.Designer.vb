@@ -22,26 +22,28 @@ Partial Class frmMain
     '請勿使用程式碼編輯器進行修改。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tpCustomer = New System.Windows.Forms.TabPage()
         Me.tcCustomer = New System.Windows.Forms.TabControl()
@@ -211,10 +213,50 @@ Partial Class frmMain
         Me.Label31 = New System.Windows.Forms.Label()
         Me.btnOrderQuery = New System.Windows.Forms.Button()
         Me.tpDistribute = New System.Windows.Forms.TabPage()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtSelectDate = New System.Windows.Forms.TextBox()
+        Me.Label88 = New System.Windows.Forms.Label()
+        Me.GroupBox23 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox73 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox74 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox81 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox88 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox89 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox90 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox91 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox92 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox93 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox94 = New System.Windows.Forms.CheckBox()
+        Me.GroupBox24 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton34 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton35 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton36 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton37 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton38 = New System.Windows.Forms.RadioButton()
+        Me.GroupBox25 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton39 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton40 = New System.Windows.Forms.RadioButton()
+        Me.GroupBox26 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton41 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton42 = New System.Windows.Forms.RadioButton()
+        Me.GroupBox27 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton43 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton44 = New System.Windows.Forms.RadioButton()
+        Me.GroupBox28 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox95 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox96 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox97 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox98 = New System.Windows.Forms.CheckBox()
+        Me.GroupBox29 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox99 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox100 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox101 = New System.Windows.Forms.CheckBox()
+        Me.txtOrdID_dist = New System.Windows.Forms.TextBox()
+        Me.Label136 = New System.Windows.Forms.Label()
+        Me.dtpDistribute = New System.Windows.Forms.DateTimePicker()
+        Me.dgvDistribute = New System.Windows.Forms.DataGridView()
+        Me.txtProdName_dist = New System.Windows.Forms.TextBox()
         Me.Label111 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtDistQuery = New System.Windows.Forms.TextBox()
         Me.GroupBox10 = New System.Windows.Forms.GroupBox()
         Me.Label52 = New System.Windows.Forms.Label()
         Me.txtDinner = New System.Windows.Forms.TextBox()
@@ -222,119 +264,6 @@ Partial Class frmMain
         Me.txtLunch = New System.Windows.Forms.TextBox()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.txtBreak = New System.Windows.Forms.TextBox()
-        Me.TabControl3 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox6 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox7 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox8 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox61 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox62 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox63 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox64 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox65 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox66 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox67 = New System.Windows.Forms.CheckBox()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton5 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton4 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton8 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton9 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton7 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton10 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton11 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton12 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox9 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox26 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox27 = New System.Windows.Forms.CheckBox()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.GroupBox17 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox34 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox35 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox36 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox54 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox55 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox56 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox57 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox58 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox59 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox60 = New System.Windows.Forms.CheckBox()
-        Me.GroupBox9 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton20 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton21 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton22 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox11 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton23 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton24 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton25 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox12 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton26 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton27 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox13 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton28 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton29 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox14 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton30 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton31 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox15 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox5 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox28 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox29 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox30 = New System.Windows.Forms.CheckBox()
-        Me.GroupBox16 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox31 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox32 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox33 = New System.Windows.Forms.CheckBox()
-        Me.TabPage5 = New System.Windows.Forms.TabPage()
-        Me.GroupBox18 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton39 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton40 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton41 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox19 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton42 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton43 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton44 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox20 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton45 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton46 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox21 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton47 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton48 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox22 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton49 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton50 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox23 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox37 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox38 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox39 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox40 = New System.Windows.Forms.CheckBox()
-        Me.GroupBox24 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox41 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox42 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox43 = New System.Windows.Forms.CheckBox()
-        Me.GroupBox25 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox53 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox52 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox51 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox50 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox49 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox48 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox47 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox44 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox45 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox46 = New System.Windows.Forms.CheckBox()
         Me.Label126 = New System.Windows.Forms.Label()
         Me.pnlCalendar = New System.Windows.Forms.Panel()
         Me.btnMinusMonth = New System.Windows.Forms.Button()
@@ -354,9 +283,7 @@ Partial Class frmMain
         Me.btnDistCancel = New System.Windows.Forms.Button()
         Me.btnDistDel = New System.Windows.Forms.Button()
         Me.btnDistModify = New System.Windows.Forms.Button()
-        Me.btnDistAdd = New System.Windows.Forms.Button()
-        Me.txtDistMemo = New System.Windows.Forms.TextBox()
-        Me.Label88 = New System.Windows.Forms.Label()
+        Me.distInsert = New System.Windows.Forms.Button()
         Me.btnDistQuery = New System.Windows.Forms.Button()
         Me.Label83 = New System.Windows.Forms.Label()
         Me.txtCusName_dist = New System.Windows.Forms.TextBox()
@@ -614,34 +541,15 @@ Partial Class frmMain
         Me.grpMeal_order.SuspendLayout()
         CType(Me.dgvOrder, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tpDistribute.SuspendLayout()
-        Me.GroupBox10.SuspendLayout()
-        Me.TabControl3.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
-        Me.GroupBox7.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
-        Me.GroupBox6.SuspendLayout()
-        Me.GroupBox8.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
-        Me.GroupBox17.SuspendLayout()
-        Me.GroupBox9.SuspendLayout()
-        Me.GroupBox11.SuspendLayout()
-        Me.GroupBox12.SuspendLayout()
-        Me.GroupBox13.SuspendLayout()
-        Me.GroupBox14.SuspendLayout()
-        Me.GroupBox15.SuspendLayout()
-        Me.GroupBox16.SuspendLayout()
-        Me.TabPage5.SuspendLayout()
-        Me.GroupBox18.SuspendLayout()
-        Me.GroupBox19.SuspendLayout()
-        Me.GroupBox20.SuspendLayout()
-        Me.GroupBox21.SuspendLayout()
-        Me.GroupBox22.SuspendLayout()
         Me.GroupBox23.SuspendLayout()
         Me.GroupBox24.SuspendLayout()
         Me.GroupBox25.SuspendLayout()
+        Me.GroupBox26.SuspendLayout()
+        Me.GroupBox27.SuspendLayout()
+        Me.GroupBox28.SuspendLayout()
+        Me.GroupBox29.SuspendLayout()
+        CType(Me.dgvDistribute, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox10.SuspendLayout()
         Me.pnlCalendar.SuspendLayout()
         Me.tpProduct.SuspendLayout()
         Me.grpMeal.SuspendLayout()
@@ -752,8 +660,9 @@ Partial Class frmMain
         '
         'GroupBox31
         '
+        Me.GroupBox31.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox31.Controls.Add(Me.dgvOrder_cus)
-        Me.GroupBox31.Location = New System.Drawing.Point(1042, 192)
+        Me.GroupBox31.Location = New System.Drawing.Point(1042, 246)
         Me.GroupBox31.Name = "GroupBox31"
         Me.GroupBox31.Size = New System.Drawing.Size(523, 505)
         Me.GroupBox31.TabIndex = 265
@@ -765,18 +674,18 @@ Partial Class frmMain
         Me.dgvOrder_cus.AllowUserToAddRows = False
         Me.dgvOrder_cus.AllowUserToDeleteRows = False
         Me.dgvOrder_cus.AllowUserToOrderColumns = True
-        DataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvOrder_cus.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvOrder_cus.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvOrder_cus.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle24.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvOrder_cus.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvOrder_cus.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgvOrder_cus.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvOrder_cus.Location = New System.Drawing.Point(3, 29)
         Me.dgvOrder_cus.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
@@ -789,8 +698,9 @@ Partial Class frmMain
         '
         'GroupBox30
         '
+        Me.GroupBox30.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.GroupBox30.Controls.Add(Me.dgvCustomer)
-        Me.GroupBox30.Location = New System.Drawing.Point(559, 192)
+        Me.GroupBox30.Location = New System.Drawing.Point(559, 246)
         Me.GroupBox30.Name = "GroupBox30"
         Me.GroupBox30.Size = New System.Drawing.Size(477, 505)
         Me.GroupBox30.TabIndex = 264
@@ -802,18 +712,18 @@ Partial Class frmMain
         Me.dgvCustomer.AllowUserToAddRows = False
         Me.dgvCustomer.AllowUserToDeleteRows = False
         Me.dgvCustomer.AllowUserToOrderColumns = True
-        DataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvCustomer.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvCustomer.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dgvCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
-        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle26.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvCustomer.DefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvCustomer.DefaultCellStyle = DataGridViewCellStyle4
         Me.dgvCustomer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvCustomer.Location = New System.Drawing.Point(3, 29)
         Me.dgvCustomer.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
@@ -2451,27 +2361,27 @@ Partial Class frmMain
         '
         Me.dgvOrder.AllowUserToAddRows = False
         Me.dgvOrder.AllowUserToDeleteRows = False
-        DataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvOrder.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle27
-        Me.dgvOrder.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvOrder.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        Me.dgvOrder.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
-        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle28.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvOrder.DefaultCellStyle = DataGridViewCellStyle28
-        Me.dgvOrder.Location = New System.Drawing.Point(970, 346)
+        Me.dgvOrder.ColumnHeadersHeight = 25
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvOrder.DefaultCellStyle = DataGridViewCellStyle6
+        Me.dgvOrder.Location = New System.Drawing.Point(623, 346)
         Me.dgvOrder.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvOrder.Name = "dgvOrder"
         Me.dgvOrder.ReadOnly = True
         Me.dgvOrder.RowTemplate.Height = 24
         Me.dgvOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvOrder.Size = New System.Drawing.Size(607, 393)
+        Me.dgvOrder.Size = New System.Drawing.Size(954, 393)
         Me.dgvOrder.TabIndex = 180
         '
         'Label31
@@ -2496,12 +2406,23 @@ Partial Class frmMain
         '
         'tpDistribute
         '
-        Me.tpDistribute.Controls.Add(Me.TextBox2)
+        Me.tpDistribute.Controls.Add(Me.txtSelectDate)
+        Me.tpDistribute.Controls.Add(Me.Label88)
+        Me.tpDistribute.Controls.Add(Me.GroupBox23)
+        Me.tpDistribute.Controls.Add(Me.GroupBox24)
+        Me.tpDistribute.Controls.Add(Me.GroupBox25)
+        Me.tpDistribute.Controls.Add(Me.GroupBox26)
+        Me.tpDistribute.Controls.Add(Me.GroupBox27)
+        Me.tpDistribute.Controls.Add(Me.GroupBox28)
+        Me.tpDistribute.Controls.Add(Me.GroupBox29)
+        Me.tpDistribute.Controls.Add(Me.txtOrdID_dist)
+        Me.tpDistribute.Controls.Add(Me.Label136)
+        Me.tpDistribute.Controls.Add(Me.dtpDistribute)
+        Me.tpDistribute.Controls.Add(Me.dgvDistribute)
+        Me.tpDistribute.Controls.Add(Me.txtProdName_dist)
         Me.tpDistribute.Controls.Add(Me.Label111)
-        Me.tpDistribute.Controls.Add(Me.TextBox5)
-        Me.tpDistribute.Controls.Add(Me.TextBox1)
+        Me.tpDistribute.Controls.Add(Me.txtDistQuery)
         Me.tpDistribute.Controls.Add(Me.GroupBox10)
-        Me.tpDistribute.Controls.Add(Me.TabControl3)
         Me.tpDistribute.Controls.Add(Me.Label126)
         Me.tpDistribute.Controls.Add(Me.pnlCalendar)
         Me.tpDistribute.Controls.Add(Me.chkContinue)
@@ -2510,9 +2431,7 @@ Partial Class frmMain
         Me.tpDistribute.Controls.Add(Me.btnDistCancel)
         Me.tpDistribute.Controls.Add(Me.btnDistDel)
         Me.tpDistribute.Controls.Add(Me.btnDistModify)
-        Me.tpDistribute.Controls.Add(Me.btnDistAdd)
-        Me.tpDistribute.Controls.Add(Me.txtDistMemo)
-        Me.tpDistribute.Controls.Add(Me.Label88)
+        Me.tpDistribute.Controls.Add(Me.distInsert)
         Me.tpDistribute.Controls.Add(Me.btnDistQuery)
         Me.tpDistribute.Controls.Add(Me.Label83)
         Me.tpDistribute.Controls.Add(Me.txtCusName_dist)
@@ -2525,1005 +2444,290 @@ Partial Class frmMain
         Me.tpDistribute.Text = "配餐管理"
         Me.tpDistribute.UseVisualStyleBackColor = True
         '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(574, 16)
-        Me.TextBox2.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(193, 33)
-        Me.TextBox2.TabIndex = 271
-        '
-        'Label111
-        '
-        Me.Label111.AutoSize = True
-        Me.Label111.Location = New System.Drawing.Point(474, 21)
-        Me.Label111.Name = "Label111"
-        Me.Label111.Size = New System.Drawing.Size(102, 21)
-        Me.Label111.TabIndex = 270
-        Me.Label111.Text = "商品名稱"
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Location = New System.Drawing.Point(1227, 19)
-        Me.TextBox5.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(193, 33)
-        Me.TextBox5.TabIndex = 269
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(627, 63)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(181, 33)
-        Me.TextBox1.TabIndex = 228
-        '
-        'GroupBox10
-        '
-        Me.GroupBox10.Controls.Add(Me.Label52)
-        Me.GroupBox10.Controls.Add(Me.txtDinner)
-        Me.GroupBox10.Controls.Add(Me.Label40)
-        Me.GroupBox10.Controls.Add(Me.txtLunch)
-        Me.GroupBox10.Controls.Add(Me.Label29)
-        Me.GroupBox10.Controls.Add(Me.txtBreak)
-        Me.GroupBox10.Location = New System.Drawing.Point(1329, 320)
-        Me.GroupBox10.Name = "GroupBox10"
-        Me.GroupBox10.Size = New System.Drawing.Size(153, 178)
-        Me.GroupBox10.TabIndex = 224
-        Me.GroupBox10.TabStop = False
-        Me.GroupBox10.Text = "未配置餐"
-        '
-        'Label52
-        '
-        Me.Label52.AutoSize = True
-        Me.Label52.Location = New System.Drawing.Point(6, 126)
-        Me.Label52.Name = "Label52"
-        Me.Label52.Size = New System.Drawing.Size(56, 21)
-        Me.Label52.TabIndex = 5
-        Me.Label52.Text = "晚餐"
-        '
-        'txtDinner
-        '
-        Me.txtDinner.Location = New System.Drawing.Point(68, 123)
-        Me.txtDinner.Name = "txtDinner"
-        Me.txtDinner.Size = New System.Drawing.Size(71, 33)
-        Me.txtDinner.TabIndex = 4
-        '
-        'Label40
-        '
-        Me.Label40.AutoSize = True
-        Me.Label40.Location = New System.Drawing.Point(6, 85)
-        Me.Label40.Name = "Label40"
-        Me.Label40.Size = New System.Drawing.Size(56, 21)
-        Me.Label40.TabIndex = 3
-        Me.Label40.Text = "午餐"
-        '
-        'txtLunch
-        '
-        Me.txtLunch.Location = New System.Drawing.Point(68, 82)
-        Me.txtLunch.Name = "txtLunch"
-        Me.txtLunch.Size = New System.Drawing.Size(71, 33)
-        Me.txtLunch.TabIndex = 2
-        '
-        'Label29
-        '
-        Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(6, 35)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(56, 21)
-        Me.Label29.TabIndex = 1
-        Me.Label29.Text = "早餐"
-        '
-        'txtBreak
-        '
-        Me.txtBreak.Location = New System.Drawing.Point(68, 32)
-        Me.txtBreak.Name = "txtBreak"
-        Me.txtBreak.Size = New System.Drawing.Size(71, 33)
-        Me.txtBreak.TabIndex = 0
-        '
-        'TabControl3
-        '
-        Me.TabControl3.Controls.Add(Me.TabPage1)
-        Me.TabControl3.Controls.Add(Me.TabPage2)
-        Me.TabControl3.Controls.Add(Me.TabPage5)
-        Me.TabControl3.Location = New System.Drawing.Point(507, 114)
-        Me.TabControl3.Name = "TabControl3"
-        Me.TabControl3.SelectedIndex = 0
-        Me.TabControl3.Size = New System.Drawing.Size(816, 389)
-        Me.TabControl3.TabIndex = 227
-        '
-        'TabPage1
-        '
-        Me.TabPage1.Controls.Add(Me.GroupBox7)
-        Me.TabPage1.Controls.Add(Me.GroupBox1)
-        Me.TabPage1.Controls.Add(Me.GroupBox3)
-        Me.TabPage1.Controls.Add(Me.GroupBox4)
-        Me.TabPage1.Controls.Add(Me.GroupBox5)
-        Me.TabPage1.Controls.Add(Me.GroupBox6)
-        Me.TabPage1.Controls.Add(Me.GroupBox8)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 31)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(808, 354)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "早餐"
-        Me.TabPage1.UseVisualStyleBackColor = True
-        '
-        'GroupBox7
-        '
-        Me.GroupBox7.Controls.Add(Me.CheckBox6)
-        Me.GroupBox7.Controls.Add(Me.CheckBox7)
-        Me.GroupBox7.Controls.Add(Me.CheckBox8)
-        Me.GroupBox7.Controls.Add(Me.CheckBox61)
-        Me.GroupBox7.Controls.Add(Me.CheckBox62)
-        Me.GroupBox7.Controls.Add(Me.CheckBox63)
-        Me.GroupBox7.Controls.Add(Me.CheckBox64)
-        Me.GroupBox7.Controls.Add(Me.CheckBox65)
-        Me.GroupBox7.Controls.Add(Me.CheckBox66)
-        Me.GroupBox7.Controls.Add(Me.CheckBox67)
-        Me.GroupBox7.Location = New System.Drawing.Point(6, 143)
-        Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(310, 186)
-        Me.GroupBox7.TabIndex = 216
-        Me.GroupBox7.TabStop = False
-        Me.GroupBox7.Text = "客製需求"
-        '
-        'CheckBox6
-        '
-        Me.CheckBox6.AutoSize = True
-        Me.CheckBox6.Location = New System.Drawing.Point(110, 96)
-        Me.CheckBox6.Name = "CheckBox6"
-        Me.CheckBox6.Size = New System.Drawing.Size(75, 25)
-        Me.CheckBox6.TabIndex = 213
-        Me.CheckBox6.Text = "不冰"
-        Me.CheckBox6.UseVisualStyleBackColor = True
-        '
-        'CheckBox7
-        '
-        Me.CheckBox7.AutoSize = True
-        Me.CheckBox7.Location = New System.Drawing.Point(6, 96)
-        Me.CheckBox7.Name = "CheckBox7"
-        Me.CheckBox7.Size = New System.Drawing.Size(75, 25)
-        Me.CheckBox7.TabIndex = 212
-        Me.CheckBox7.Text = "要冰"
-        Me.CheckBox7.UseVisualStyleBackColor = True
-        '
-        'CheckBox8
-        '
-        Me.CheckBox8.AutoSize = True
-        Me.CheckBox8.Location = New System.Drawing.Point(214, 63)
-        Me.CheckBox8.Name = "CheckBox8"
-        Me.CheckBox8.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox8.TabIndex = 211
-        Me.CheckBox8.Text = "全糙米"
-        Me.CheckBox8.UseVisualStyleBackColor = True
-        '
-        'CheckBox61
-        '
-        Me.CheckBox61.AutoSize = True
-        Me.CheckBox61.Location = New System.Drawing.Point(110, 65)
-        Me.CheckBox61.Name = "CheckBox61"
-        Me.CheckBox61.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox61.TabIndex = 210
-        Me.CheckBox61.Text = "混糙米"
-        Me.CheckBox61.UseVisualStyleBackColor = True
-        '
-        'CheckBox62
-        '
-        Me.CheckBox62.AutoSize = True
-        Me.CheckBox62.Location = New System.Drawing.Point(6, 65)
-        Me.CheckBox62.Name = "CheckBox62"
-        Me.CheckBox62.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox62.TabIndex = 209
-        Me.CheckBox62.Text = "換粥品"
-        Me.CheckBox62.UseVisualStyleBackColor = True
-        '
-        'CheckBox63
-        '
-        Me.CheckBox63.AutoSize = True
-        Me.CheckBox63.Location = New System.Drawing.Point(110, 32)
-        Me.CheckBox63.Name = "CheckBox63"
-        Me.CheckBox63.Size = New System.Drawing.Size(75, 25)
-        Me.CheckBox63.TabIndex = 208
-        Me.CheckBox63.Text = "加飯"
-        Me.CheckBox63.UseVisualStyleBackColor = True
-        '
-        'CheckBox64
-        '
-        Me.CheckBox64.AutoSize = True
-        Me.CheckBox64.Location = New System.Drawing.Point(6, 32)
-        Me.CheckBox64.Name = "CheckBox64"
-        Me.CheckBox64.Size = New System.Drawing.Size(88, 25)
-        Me.CheckBox64.TabIndex = 207
-        Me.CheckBox64.Text = "1/2飯"
-        Me.CheckBox64.UseVisualStyleBackColor = True
-        '
-        'CheckBox65
-        '
-        Me.CheckBox65.AutoSize = True
-        Me.CheckBox65.Location = New System.Drawing.Point(6, 127)
-        Me.CheckBox65.Name = "CheckBox65"
-        Me.CheckBox65.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox65.TabIndex = 6
-        Me.CheckBox65.Text = "禁甜湯"
-        Me.CheckBox65.UseVisualStyleBackColor = True
-        '
-        'CheckBox66
-        '
-        Me.CheckBox66.AutoSize = True
-        Me.CheckBox66.Location = New System.Drawing.Point(6, 158)
-        Me.CheckBox66.Name = "CheckBox66"
-        Me.CheckBox66.Size = New System.Drawing.Size(144, 25)
-        Me.CheckBox66.TabIndex = 5
-        Me.CheckBox66.Text = "半葷換青菜"
-        Me.CheckBox66.UseVisualStyleBackColor = True
-        '
-        'CheckBox67
-        '
-        Me.CheckBox67.AutoSize = True
-        Me.CheckBox67.Location = New System.Drawing.Point(110, 127)
-        Me.CheckBox67.Name = "CheckBox67"
-        Me.CheckBox67.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox67.TabIndex = 4
-        Me.CheckBox67.Text = "加青菜"
-        Me.CheckBox67.UseVisualStyleBackColor = True
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.RadioButton5)
-        Me.GroupBox1.Controls.Add(Me.RadioButton4)
-        Me.GroupBox1.Controls.Add(Me.RadioButton3)
-        Me.GroupBox1.Controls.Add(Me.RadioButton2)
-        Me.GroupBox1.Controls.Add(Me.RadioButton1)
-        Me.GroupBox1.Location = New System.Drawing.Point(336, 143)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(98, 188)
-        Me.GroupBox1.TabIndex = 201
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "湯盅"
-        '
-        'RadioButton5
-        '
-        Me.RadioButton5.AutoSize = True
-        Me.RadioButton5.Location = New System.Drawing.Point(7, 153)
-        Me.RadioButton5.Name = "RadioButton5"
-        Me.RadioButton5.Size = New System.Drawing.Size(63, 25)
-        Me.RadioButton5.TabIndex = 204
-        Me.RadioButton5.Text = "4期"
-        Me.RadioButton5.UseVisualStyleBackColor = True
-        '
-        'RadioButton4
-        '
-        Me.RadioButton4.AutoSize = True
-        Me.RadioButton4.Location = New System.Drawing.Point(17, 94)
-        Me.RadioButton4.Name = "RadioButton4"
-        Me.RadioButton4.Size = New System.Drawing.Size(63, 25)
-        Me.RadioButton4.TabIndex = 203
-        Me.RadioButton4.Text = "2期"
-        Me.RadioButton4.UseVisualStyleBackColor = True
-        '
-        'RadioButton3
-        '
-        Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.Location = New System.Drawing.Point(17, 126)
-        Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.Size = New System.Drawing.Size(63, 25)
-        Me.RadioButton3.TabIndex = 202
-        Me.RadioButton3.Text = "3期"
-        Me.RadioButton3.UseVisualStyleBackColor = True
-        '
-        'RadioButton2
-        '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(18, 63)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(63, 25)
-        Me.RadioButton2.TabIndex = 201
-        Me.RadioButton2.Text = "1期"
-        Me.RadioButton2.UseVisualStyleBackColor = True
-        '
-        'RadioButton1
-        '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(18, 32)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton1.TabIndex = 200
-        Me.RadioButton1.Text = "清湯"
-        Me.RadioButton1.UseVisualStyleBackColor = True
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.RadioButton8)
-        Me.GroupBox3.Controls.Add(Me.RadioButton9)
-        Me.GroupBox3.Location = New System.Drawing.Point(214, 6)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(98, 131)
-        Me.GroupBox3.TabIndex = 204
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "麻油"
-        '
-        'RadioButton8
-        '
-        Me.RadioButton8.AutoSize = True
-        Me.RadioButton8.Location = New System.Drawing.Point(18, 63)
-        Me.RadioButton8.Name = "RadioButton8"
-        Me.RadioButton8.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton8.TabIndex = 201
-        Me.RadioButton8.Text = "禁麻"
-        Me.RadioButton8.UseVisualStyleBackColor = True
-        '
-        'RadioButton9
-        '
-        Me.RadioButton9.AutoSize = True
-        Me.RadioButton9.Location = New System.Drawing.Point(18, 32)
-        Me.RadioButton9.Name = "RadioButton9"
-        Me.RadioButton9.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton9.TabIndex = 200
-        Me.RadioButton9.Text = "加麻"
-        Me.RadioButton9.UseVisualStyleBackColor = True
-        '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.RadioButton7)
-        Me.GroupBox4.Controls.Add(Me.RadioButton10)
-        Me.GroupBox4.Location = New System.Drawing.Point(318, 6)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(98, 131)
-        Me.GroupBox4.TabIndex = 205
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "酒"
-        '
-        'RadioButton7
-        '
-        Me.RadioButton7.AutoSize = True
-        Me.RadioButton7.Location = New System.Drawing.Point(18, 63)
-        Me.RadioButton7.Name = "RadioButton7"
-        Me.RadioButton7.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton7.TabIndex = 201
-        Me.RadioButton7.Text = "禁酒"
-        Me.RadioButton7.UseVisualStyleBackColor = True
-        '
-        'RadioButton10
-        '
-        Me.RadioButton10.AutoSize = True
-        Me.RadioButton10.Location = New System.Drawing.Point(18, 32)
-        Me.RadioButton10.Name = "RadioButton10"
-        Me.RadioButton10.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton10.TabIndex = 200
-        Me.RadioButton10.Text = "加酒"
-        Me.RadioButton10.UseVisualStyleBackColor = True
-        '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.RadioButton11)
-        Me.GroupBox5.Controls.Add(Me.RadioButton12)
-        Me.GroupBox5.Location = New System.Drawing.Point(422, 6)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(98, 131)
-        Me.GroupBox5.TabIndex = 206
-        Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "素"
-        '
-        'RadioButton11
-        '
-        Me.RadioButton11.AutoSize = True
-        Me.RadioButton11.Location = New System.Drawing.Point(18, 63)
-        Me.RadioButton11.Name = "RadioButton11"
-        Me.RadioButton11.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton11.TabIndex = 201
-        Me.RadioButton11.TabStop = True
-        Me.RadioButton11.Text = "蛋奶"
-        Me.RadioButton11.UseVisualStyleBackColor = True
-        '
-        'RadioButton12
-        '
-        Me.RadioButton12.AutoSize = True
-        Me.RadioButton12.Location = New System.Drawing.Point(18, 32)
-        Me.RadioButton12.Name = "RadioButton12"
-        Me.RadioButton12.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton12.TabIndex = 200
-        Me.RadioButton12.TabStop = True
-        Me.RadioButton12.Text = "全素"
-        Me.RadioButton12.UseVisualStyleBackColor = True
-        '
-        'GroupBox6
-        '
-        Me.GroupBox6.Controls.Add(Me.CheckBox4)
-        Me.GroupBox6.Controls.Add(Me.CheckBox3)
-        Me.GroupBox6.Controls.Add(Me.CheckBox2)
-        Me.GroupBox6.Controls.Add(Me.CheckBox1)
-        Me.GroupBox6.Location = New System.Drawing.Point(665, 9)
-        Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(130, 163)
-        Me.GroupBox6.TabIndex = 207
-        Me.GroupBox6.TabStop = False
-        Me.GroupBox6.Text = "餐具"
-        '
-        'CheckBox4
-        '
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.Location = New System.Drawing.Point(6, 126)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox4.TabIndex = 3
-        Me.CheckBox4.Text = "附餐具"
-        Me.CheckBox4.UseVisualStyleBackColor = True
-        '
-        'CheckBox3
-        '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(6, 95)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox3.TabIndex = 2
-        Me.CheckBox3.Text = "加紙袋"
-        Me.CheckBox3.UseVisualStyleBackColor = True
-        '
-        'CheckBox2
-        '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(6, 64)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(121, 25)
-        Me.CheckBox2.TabIndex = 1
-        Me.CheckBox2.Text = "免洗宅配"
-        Me.CheckBox2.UseVisualStyleBackColor = True
-        '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(6, 33)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(121, 25)
-        Me.CheckBox1.TabIndex = 0
-        Me.CheckBox1.Text = "免洗餐具"
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
-        'GroupBox8
-        '
-        Me.GroupBox8.Controls.Add(Me.CheckBox9)
-        Me.GroupBox8.Controls.Add(Me.CheckBox26)
-        Me.GroupBox8.Controls.Add(Me.CheckBox27)
-        Me.GroupBox8.Location = New System.Drawing.Point(526, 9)
-        Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Size = New System.Drawing.Size(133, 128)
-        Me.GroupBox8.TabIndex = 208
-        Me.GroupBox8.TabStop = False
-        Me.GroupBox8.Text = "其他"
-        '
-        'CheckBox9
-        '
-        Me.CheckBox9.AutoSize = True
-        Me.CheckBox9.Location = New System.Drawing.Point(6, 95)
-        Me.CheckBox9.Name = "CheckBox9"
-        Me.CheckBox9.Size = New System.Drawing.Size(121, 25)
-        Me.CheckBox9.TabIndex = 2
-        Me.CheckBox9.Text = "最後一餐"
-        Me.CheckBox9.UseVisualStyleBackColor = True
-        '
-        'CheckBox26
-        '
-        Me.CheckBox26.AutoSize = True
-        Me.CheckBox26.Location = New System.Drawing.Point(6, 64)
-        Me.CheckBox26.Name = "CheckBox26"
-        Me.CheckBox26.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox26.TabIndex = 1
-        Me.CheckBox26.Text = "滿月禮"
-        Me.CheckBox26.UseVisualStyleBackColor = True
-        '
-        'CheckBox27
-        '
-        Me.CheckBox27.AutoSize = True
-        Me.CheckBox27.Location = New System.Drawing.Point(6, 33)
-        Me.CheckBox27.Name = "CheckBox27"
-        Me.CheckBox27.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox27.TabIndex = 0
-        Me.CheckBox27.Text = "入門禮"
-        Me.CheckBox27.UseVisualStyleBackColor = True
-        '
-        'TabPage2
-        '
-        Me.TabPage2.Controls.Add(Me.GroupBox17)
-        Me.TabPage2.Controls.Add(Me.GroupBox9)
-        Me.TabPage2.Controls.Add(Me.GroupBox11)
-        Me.TabPage2.Controls.Add(Me.GroupBox12)
-        Me.TabPage2.Controls.Add(Me.GroupBox13)
-        Me.TabPage2.Controls.Add(Me.GroupBox14)
-        Me.TabPage2.Controls.Add(Me.GroupBox15)
-        Me.TabPage2.Controls.Add(Me.GroupBox16)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 31)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(808, 354)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "午餐"
-        Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'GroupBox17
-        '
-        Me.GroupBox17.Controls.Add(Me.CheckBox34)
-        Me.GroupBox17.Controls.Add(Me.CheckBox35)
-        Me.GroupBox17.Controls.Add(Me.CheckBox36)
-        Me.GroupBox17.Controls.Add(Me.CheckBox54)
-        Me.GroupBox17.Controls.Add(Me.CheckBox55)
-        Me.GroupBox17.Controls.Add(Me.CheckBox56)
-        Me.GroupBox17.Controls.Add(Me.CheckBox57)
-        Me.GroupBox17.Controls.Add(Me.CheckBox58)
-        Me.GroupBox17.Controls.Add(Me.CheckBox59)
-        Me.GroupBox17.Controls.Add(Me.CheckBox60)
-        Me.GroupBox17.Location = New System.Drawing.Point(6, 143)
-        Me.GroupBox17.Name = "GroupBox17"
-        Me.GroupBox17.Size = New System.Drawing.Size(310, 186)
-        Me.GroupBox17.TabIndex = 216
-        Me.GroupBox17.TabStop = False
-        Me.GroupBox17.Text = "客製需求"
-        '
-        'CheckBox34
-        '
-        Me.CheckBox34.AutoSize = True
-        Me.CheckBox34.Location = New System.Drawing.Point(110, 96)
-        Me.CheckBox34.Name = "CheckBox34"
-        Me.CheckBox34.Size = New System.Drawing.Size(75, 25)
-        Me.CheckBox34.TabIndex = 213
-        Me.CheckBox34.Text = "不冰"
-        Me.CheckBox34.UseVisualStyleBackColor = True
-        '
-        'CheckBox35
-        '
-        Me.CheckBox35.AutoSize = True
-        Me.CheckBox35.Location = New System.Drawing.Point(6, 96)
-        Me.CheckBox35.Name = "CheckBox35"
-        Me.CheckBox35.Size = New System.Drawing.Size(75, 25)
-        Me.CheckBox35.TabIndex = 212
-        Me.CheckBox35.Text = "要冰"
-        Me.CheckBox35.UseVisualStyleBackColor = True
-        '
-        'CheckBox36
-        '
-        Me.CheckBox36.AutoSize = True
-        Me.CheckBox36.Location = New System.Drawing.Point(214, 63)
-        Me.CheckBox36.Name = "CheckBox36"
-        Me.CheckBox36.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox36.TabIndex = 211
-        Me.CheckBox36.Text = "全糙米"
-        Me.CheckBox36.UseVisualStyleBackColor = True
-        '
-        'CheckBox54
-        '
-        Me.CheckBox54.AutoSize = True
-        Me.CheckBox54.Location = New System.Drawing.Point(110, 65)
-        Me.CheckBox54.Name = "CheckBox54"
-        Me.CheckBox54.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox54.TabIndex = 210
-        Me.CheckBox54.Text = "混糙米"
-        Me.CheckBox54.UseVisualStyleBackColor = True
-        '
-        'CheckBox55
-        '
-        Me.CheckBox55.AutoSize = True
-        Me.CheckBox55.Location = New System.Drawing.Point(6, 65)
-        Me.CheckBox55.Name = "CheckBox55"
-        Me.CheckBox55.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox55.TabIndex = 209
-        Me.CheckBox55.Text = "換粥品"
-        Me.CheckBox55.UseVisualStyleBackColor = True
-        '
-        'CheckBox56
-        '
-        Me.CheckBox56.AutoSize = True
-        Me.CheckBox56.Location = New System.Drawing.Point(110, 32)
-        Me.CheckBox56.Name = "CheckBox56"
-        Me.CheckBox56.Size = New System.Drawing.Size(75, 25)
-        Me.CheckBox56.TabIndex = 208
-        Me.CheckBox56.Text = "加飯"
-        Me.CheckBox56.UseVisualStyleBackColor = True
-        '
-        'CheckBox57
-        '
-        Me.CheckBox57.AutoSize = True
-        Me.CheckBox57.Location = New System.Drawing.Point(6, 32)
-        Me.CheckBox57.Name = "CheckBox57"
-        Me.CheckBox57.Size = New System.Drawing.Size(88, 25)
-        Me.CheckBox57.TabIndex = 207
-        Me.CheckBox57.Text = "1/2飯"
-        Me.CheckBox57.UseVisualStyleBackColor = True
-        '
-        'CheckBox58
-        '
-        Me.CheckBox58.AutoSize = True
-        Me.CheckBox58.Location = New System.Drawing.Point(6, 127)
-        Me.CheckBox58.Name = "CheckBox58"
-        Me.CheckBox58.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox58.TabIndex = 6
-        Me.CheckBox58.Text = "禁甜湯"
-        Me.CheckBox58.UseVisualStyleBackColor = True
-        '
-        'CheckBox59
-        '
-        Me.CheckBox59.AutoSize = True
-        Me.CheckBox59.Location = New System.Drawing.Point(6, 158)
-        Me.CheckBox59.Name = "CheckBox59"
-        Me.CheckBox59.Size = New System.Drawing.Size(144, 25)
-        Me.CheckBox59.TabIndex = 5
-        Me.CheckBox59.Text = "半葷換青菜"
-        Me.CheckBox59.UseVisualStyleBackColor = True
-        '
-        'CheckBox60
-        '
-        Me.CheckBox60.AutoSize = True
-        Me.CheckBox60.Location = New System.Drawing.Point(110, 127)
-        Me.CheckBox60.Name = "CheckBox60"
-        Me.CheckBox60.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox60.TabIndex = 4
-        Me.CheckBox60.Text = "加青菜"
-        Me.CheckBox60.UseVisualStyleBackColor = True
-        '
-        'GroupBox9
-        '
-        Me.GroupBox9.Controls.Add(Me.RadioButton20)
-        Me.GroupBox9.Controls.Add(Me.RadioButton21)
-        Me.GroupBox9.Controls.Add(Me.RadioButton22)
-        Me.GroupBox9.Location = New System.Drawing.Point(6, 6)
-        Me.GroupBox9.Name = "GroupBox9"
-        Me.GroupBox9.Size = New System.Drawing.Size(98, 131)
-        Me.GroupBox9.TabIndex = 209
-        Me.GroupBox9.TabStop = False
-        Me.GroupBox9.Text = "全酒"
-        '
-        'RadioButton20
-        '
-        Me.RadioButton20.AutoSize = True
-        Me.RadioButton20.Location = New System.Drawing.Point(18, 94)
-        Me.RadioButton20.Name = "RadioButton20"
-        Me.RadioButton20.Size = New System.Drawing.Size(63, 25)
-        Me.RadioButton20.TabIndex = 202
-        Me.RadioButton20.Text = "3期"
-        Me.RadioButton20.UseVisualStyleBackColor = True
-        '
-        'RadioButton21
-        '
-        Me.RadioButton21.AutoSize = True
-        Me.RadioButton21.Location = New System.Drawing.Point(18, 63)
-        Me.RadioButton21.Name = "RadioButton21"
-        Me.RadioButton21.Size = New System.Drawing.Size(63, 25)
-        Me.RadioButton21.TabIndex = 201
-        Me.RadioButton21.Text = "1期"
-        Me.RadioButton21.UseVisualStyleBackColor = True
-        '
-        'RadioButton22
-        '
-        Me.RadioButton22.AutoSize = True
-        Me.RadioButton22.Location = New System.Drawing.Point(18, 32)
-        Me.RadioButton22.Name = "RadioButton22"
-        Me.RadioButton22.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton22.TabIndex = 200
-        Me.RadioButton22.Text = "清湯"
-        Me.RadioButton22.UseVisualStyleBackColor = True
-        '
-        'GroupBox11
-        '
-        Me.GroupBox11.Controls.Add(Me.RadioButton23)
-        Me.GroupBox11.Controls.Add(Me.RadioButton24)
-        Me.GroupBox11.Controls.Add(Me.RadioButton25)
-        Me.GroupBox11.Location = New System.Drawing.Point(110, 6)
-        Me.GroupBox11.Name = "GroupBox11"
-        Me.GroupBox11.Size = New System.Drawing.Size(98, 131)
-        Me.GroupBox11.TabIndex = 210
-        Me.GroupBox11.TabStop = False
-        Me.GroupBox11.Text = "半酒"
-        '
-        'RadioButton23
-        '
-        Me.RadioButton23.AutoSize = True
-        Me.RadioButton23.Location = New System.Drawing.Point(18, 94)
-        Me.RadioButton23.Name = "RadioButton23"
-        Me.RadioButton23.Size = New System.Drawing.Size(63, 25)
-        Me.RadioButton23.TabIndex = 202
-        Me.RadioButton23.Text = "3期"
-        Me.RadioButton23.UseVisualStyleBackColor = True
-        '
-        'RadioButton24
-        '
-        Me.RadioButton24.AutoSize = True
-        Me.RadioButton24.Location = New System.Drawing.Point(18, 63)
-        Me.RadioButton24.Name = "RadioButton24"
-        Me.RadioButton24.Size = New System.Drawing.Size(63, 25)
-        Me.RadioButton24.TabIndex = 201
-        Me.RadioButton24.Text = "1期"
-        Me.RadioButton24.UseVisualStyleBackColor = True
-        '
-        'RadioButton25
-        '
-        Me.RadioButton25.AutoSize = True
-        Me.RadioButton25.Location = New System.Drawing.Point(18, 32)
-        Me.RadioButton25.Name = "RadioButton25"
-        Me.RadioButton25.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton25.TabIndex = 200
-        Me.RadioButton25.Text = "清湯"
-        Me.RadioButton25.UseVisualStyleBackColor = True
-        '
-        'GroupBox12
-        '
-        Me.GroupBox12.Controls.Add(Me.RadioButton26)
-        Me.GroupBox12.Controls.Add(Me.RadioButton27)
-        Me.GroupBox12.Location = New System.Drawing.Point(214, 6)
-        Me.GroupBox12.Name = "GroupBox12"
-        Me.GroupBox12.Size = New System.Drawing.Size(98, 131)
-        Me.GroupBox12.TabIndex = 211
-        Me.GroupBox12.TabStop = False
-        Me.GroupBox12.Text = "麻油"
-        '
-        'RadioButton26
-        '
-        Me.RadioButton26.AutoSize = True
-        Me.RadioButton26.Location = New System.Drawing.Point(18, 63)
-        Me.RadioButton26.Name = "RadioButton26"
-        Me.RadioButton26.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton26.TabIndex = 201
-        Me.RadioButton26.Text = "禁麻"
-        Me.RadioButton26.UseVisualStyleBackColor = True
-        '
-        'RadioButton27
-        '
-        Me.RadioButton27.AutoSize = True
-        Me.RadioButton27.Location = New System.Drawing.Point(18, 32)
-        Me.RadioButton27.Name = "RadioButton27"
-        Me.RadioButton27.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton27.TabIndex = 200
-        Me.RadioButton27.Text = "加麻"
-        Me.RadioButton27.UseVisualStyleBackColor = True
-        '
-        'GroupBox13
-        '
-        Me.GroupBox13.Controls.Add(Me.RadioButton28)
-        Me.GroupBox13.Controls.Add(Me.RadioButton29)
-        Me.GroupBox13.Location = New System.Drawing.Point(318, 6)
-        Me.GroupBox13.Name = "GroupBox13"
-        Me.GroupBox13.Size = New System.Drawing.Size(98, 131)
-        Me.GroupBox13.TabIndex = 212
-        Me.GroupBox13.TabStop = False
-        Me.GroupBox13.Text = "酒"
-        '
-        'RadioButton28
-        '
-        Me.RadioButton28.AutoSize = True
-        Me.RadioButton28.Location = New System.Drawing.Point(18, 63)
-        Me.RadioButton28.Name = "RadioButton28"
-        Me.RadioButton28.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton28.TabIndex = 201
-        Me.RadioButton28.Text = "禁酒"
-        Me.RadioButton28.UseVisualStyleBackColor = True
-        '
-        'RadioButton29
-        '
-        Me.RadioButton29.AutoSize = True
-        Me.RadioButton29.Location = New System.Drawing.Point(18, 32)
-        Me.RadioButton29.Name = "RadioButton29"
-        Me.RadioButton29.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton29.TabIndex = 200
-        Me.RadioButton29.Text = "加酒"
-        Me.RadioButton29.UseVisualStyleBackColor = True
-        '
-        'GroupBox14
-        '
-        Me.GroupBox14.Controls.Add(Me.RadioButton30)
-        Me.GroupBox14.Controls.Add(Me.RadioButton31)
-        Me.GroupBox14.Location = New System.Drawing.Point(422, 6)
-        Me.GroupBox14.Name = "GroupBox14"
-        Me.GroupBox14.Size = New System.Drawing.Size(98, 131)
-        Me.GroupBox14.TabIndex = 213
-        Me.GroupBox14.TabStop = False
-        Me.GroupBox14.Text = "素"
-        '
-        'RadioButton30
-        '
-        Me.RadioButton30.AutoSize = True
-        Me.RadioButton30.Location = New System.Drawing.Point(18, 63)
-        Me.RadioButton30.Name = "RadioButton30"
-        Me.RadioButton30.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton30.TabIndex = 201
-        Me.RadioButton30.TabStop = True
-        Me.RadioButton30.Text = "蛋奶"
-        Me.RadioButton30.UseVisualStyleBackColor = True
-        '
-        'RadioButton31
-        '
-        Me.RadioButton31.AutoSize = True
-        Me.RadioButton31.Location = New System.Drawing.Point(18, 32)
-        Me.RadioButton31.Name = "RadioButton31"
-        Me.RadioButton31.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton31.TabIndex = 200
-        Me.RadioButton31.TabStop = True
-        Me.RadioButton31.Text = "全素"
-        Me.RadioButton31.UseVisualStyleBackColor = True
-        '
-        'GroupBox15
-        '
-        Me.GroupBox15.Controls.Add(Me.CheckBox5)
-        Me.GroupBox15.Controls.Add(Me.CheckBox28)
-        Me.GroupBox15.Controls.Add(Me.CheckBox29)
-        Me.GroupBox15.Controls.Add(Me.CheckBox30)
-        Me.GroupBox15.Location = New System.Drawing.Point(665, 9)
-        Me.GroupBox15.Name = "GroupBox15"
-        Me.GroupBox15.Size = New System.Drawing.Size(130, 163)
-        Me.GroupBox15.TabIndex = 214
-        Me.GroupBox15.TabStop = False
-        Me.GroupBox15.Text = "餐具"
-        '
-        'CheckBox5
-        '
-        Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.Location = New System.Drawing.Point(6, 126)
-        Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox5.TabIndex = 3
-        Me.CheckBox5.Text = "附餐具"
-        Me.CheckBox5.UseVisualStyleBackColor = True
-        '
-        'CheckBox28
-        '
-        Me.CheckBox28.AutoSize = True
-        Me.CheckBox28.Location = New System.Drawing.Point(6, 95)
-        Me.CheckBox28.Name = "CheckBox28"
-        Me.CheckBox28.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox28.TabIndex = 2
-        Me.CheckBox28.Text = "加紙袋"
-        Me.CheckBox28.UseVisualStyleBackColor = True
-        '
-        'CheckBox29
-        '
-        Me.CheckBox29.AutoSize = True
-        Me.CheckBox29.Location = New System.Drawing.Point(6, 64)
-        Me.CheckBox29.Name = "CheckBox29"
-        Me.CheckBox29.Size = New System.Drawing.Size(121, 25)
-        Me.CheckBox29.TabIndex = 1
-        Me.CheckBox29.Text = "免洗宅配"
-        Me.CheckBox29.UseVisualStyleBackColor = True
-        '
-        'CheckBox30
-        '
-        Me.CheckBox30.AutoSize = True
-        Me.CheckBox30.Location = New System.Drawing.Point(6, 33)
-        Me.CheckBox30.Name = "CheckBox30"
-        Me.CheckBox30.Size = New System.Drawing.Size(121, 25)
-        Me.CheckBox30.TabIndex = 0
-        Me.CheckBox30.Text = "免洗餐具"
-        Me.CheckBox30.UseVisualStyleBackColor = True
-        '
-        'GroupBox16
-        '
-        Me.GroupBox16.Controls.Add(Me.CheckBox31)
-        Me.GroupBox16.Controls.Add(Me.CheckBox32)
-        Me.GroupBox16.Controls.Add(Me.CheckBox33)
-        Me.GroupBox16.Location = New System.Drawing.Point(526, 9)
-        Me.GroupBox16.Name = "GroupBox16"
-        Me.GroupBox16.Size = New System.Drawing.Size(133, 128)
-        Me.GroupBox16.TabIndex = 216
-        Me.GroupBox16.TabStop = False
-        Me.GroupBox16.Text = "其他"
-        '
-        'CheckBox31
-        '
-        Me.CheckBox31.AutoSize = True
-        Me.CheckBox31.Location = New System.Drawing.Point(6, 95)
-        Me.CheckBox31.Name = "CheckBox31"
-        Me.CheckBox31.Size = New System.Drawing.Size(121, 25)
-        Me.CheckBox31.TabIndex = 2
-        Me.CheckBox31.Text = "最後一餐"
-        Me.CheckBox31.UseVisualStyleBackColor = True
-        '
-        'CheckBox32
-        '
-        Me.CheckBox32.AutoSize = True
-        Me.CheckBox32.Location = New System.Drawing.Point(6, 64)
-        Me.CheckBox32.Name = "CheckBox32"
-        Me.CheckBox32.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox32.TabIndex = 1
-        Me.CheckBox32.Text = "滿月禮"
-        Me.CheckBox32.UseVisualStyleBackColor = True
-        '
-        'CheckBox33
-        '
-        Me.CheckBox33.AutoSize = True
-        Me.CheckBox33.Location = New System.Drawing.Point(6, 33)
-        Me.CheckBox33.Name = "CheckBox33"
-        Me.CheckBox33.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox33.TabIndex = 0
-        Me.CheckBox33.Text = "入門禮"
-        Me.CheckBox33.UseVisualStyleBackColor = True
-        '
-        'TabPage5
-        '
-        Me.TabPage5.Controls.Add(Me.GroupBox18)
-        Me.TabPage5.Controls.Add(Me.GroupBox19)
-        Me.TabPage5.Controls.Add(Me.GroupBox20)
-        Me.TabPage5.Controls.Add(Me.GroupBox21)
-        Me.TabPage5.Controls.Add(Me.GroupBox22)
-        Me.TabPage5.Controls.Add(Me.GroupBox23)
-        Me.TabPage5.Controls.Add(Me.GroupBox24)
-        Me.TabPage5.Controls.Add(Me.GroupBox25)
-        Me.TabPage5.Location = New System.Drawing.Point(4, 31)
-        Me.TabPage5.Name = "TabPage5"
-        Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage5.Size = New System.Drawing.Size(808, 354)
-        Me.TabPage5.TabIndex = 2
-        Me.TabPage5.Text = "晚餐"
-        Me.TabPage5.UseVisualStyleBackColor = True
-        '
-        'GroupBox18
-        '
-        Me.GroupBox18.Controls.Add(Me.RadioButton39)
-        Me.GroupBox18.Controls.Add(Me.RadioButton40)
-        Me.GroupBox18.Controls.Add(Me.RadioButton41)
-        Me.GroupBox18.Location = New System.Drawing.Point(6, 6)
-        Me.GroupBox18.Name = "GroupBox18"
-        Me.GroupBox18.Size = New System.Drawing.Size(98, 131)
-        Me.GroupBox18.TabIndex = 209
-        Me.GroupBox18.TabStop = False
-        Me.GroupBox18.Text = "全酒"
+        'txtSelectDate
+        '
+        Me.txtSelectDate.Location = New System.Drawing.Point(586, 55)
+        Me.txtSelectDate.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.txtSelectDate.Name = "txtSelectDate"
+        Me.txtSelectDate.ReadOnly = True
+        Me.txtSelectDate.Size = New System.Drawing.Size(193, 33)
+        Me.txtSelectDate.TabIndex = 283
+        Me.txtSelectDate.Tag = ""
+        '
+        'Label88
+        '
+        Me.Label88.AutoSize = True
+        Me.Label88.Location = New System.Drawing.Point(475, 58)
+        Me.Label88.Name = "Label88"
+        Me.Label88.Size = New System.Drawing.Size(102, 21)
+        Me.Label88.TabIndex = 284
+        Me.Label88.Text = "目前選取"
+        '
+        'GroupBox23
+        '
+        Me.GroupBox23.Controls.Add(Me.CheckBox73)
+        Me.GroupBox23.Controls.Add(Me.CheckBox74)
+        Me.GroupBox23.Controls.Add(Me.CheckBox81)
+        Me.GroupBox23.Controls.Add(Me.CheckBox88)
+        Me.GroupBox23.Controls.Add(Me.CheckBox89)
+        Me.GroupBox23.Controls.Add(Me.CheckBox90)
+        Me.GroupBox23.Controls.Add(Me.CheckBox91)
+        Me.GroupBox23.Controls.Add(Me.CheckBox92)
+        Me.GroupBox23.Controls.Add(Me.CheckBox93)
+        Me.GroupBox23.Controls.Add(Me.CheckBox94)
+        Me.GroupBox23.Location = New System.Drawing.Point(476, 245)
+        Me.GroupBox23.Name = "GroupBox23"
+        Me.GroupBox23.Size = New System.Drawing.Size(310, 186)
+        Me.GroupBox23.TabIndex = 282
+        Me.GroupBox23.TabStop = False
+        Me.GroupBox23.Text = "客製需求"
+        '
+        'CheckBox73
+        '
+        Me.CheckBox73.AutoSize = True
+        Me.CheckBox73.Location = New System.Drawing.Point(110, 96)
+        Me.CheckBox73.Name = "CheckBox73"
+        Me.CheckBox73.Size = New System.Drawing.Size(75, 25)
+        Me.CheckBox73.TabIndex = 213
+        Me.CheckBox73.Text = "不冰"
+        Me.CheckBox73.UseVisualStyleBackColor = True
+        '
+        'CheckBox74
+        '
+        Me.CheckBox74.AutoSize = True
+        Me.CheckBox74.Location = New System.Drawing.Point(6, 96)
+        Me.CheckBox74.Name = "CheckBox74"
+        Me.CheckBox74.Size = New System.Drawing.Size(75, 25)
+        Me.CheckBox74.TabIndex = 212
+        Me.CheckBox74.Text = "要冰"
+        Me.CheckBox74.UseVisualStyleBackColor = True
+        '
+        'CheckBox81
+        '
+        Me.CheckBox81.AutoSize = True
+        Me.CheckBox81.Location = New System.Drawing.Point(214, 63)
+        Me.CheckBox81.Name = "CheckBox81"
+        Me.CheckBox81.Size = New System.Drawing.Size(98, 25)
+        Me.CheckBox81.TabIndex = 211
+        Me.CheckBox81.Text = "全糙米"
+        Me.CheckBox81.UseVisualStyleBackColor = True
+        '
+        'CheckBox88
+        '
+        Me.CheckBox88.AutoSize = True
+        Me.CheckBox88.Location = New System.Drawing.Point(110, 65)
+        Me.CheckBox88.Name = "CheckBox88"
+        Me.CheckBox88.Size = New System.Drawing.Size(98, 25)
+        Me.CheckBox88.TabIndex = 210
+        Me.CheckBox88.Text = "混糙米"
+        Me.CheckBox88.UseVisualStyleBackColor = True
+        '
+        'CheckBox89
+        '
+        Me.CheckBox89.AutoSize = True
+        Me.CheckBox89.Location = New System.Drawing.Point(6, 65)
+        Me.CheckBox89.Name = "CheckBox89"
+        Me.CheckBox89.Size = New System.Drawing.Size(98, 25)
+        Me.CheckBox89.TabIndex = 209
+        Me.CheckBox89.Text = "換粥品"
+        Me.CheckBox89.UseVisualStyleBackColor = True
+        '
+        'CheckBox90
+        '
+        Me.CheckBox90.AutoSize = True
+        Me.CheckBox90.Location = New System.Drawing.Point(110, 32)
+        Me.CheckBox90.Name = "CheckBox90"
+        Me.CheckBox90.Size = New System.Drawing.Size(75, 25)
+        Me.CheckBox90.TabIndex = 208
+        Me.CheckBox90.Text = "加飯"
+        Me.CheckBox90.UseVisualStyleBackColor = True
+        '
+        'CheckBox91
+        '
+        Me.CheckBox91.AutoSize = True
+        Me.CheckBox91.Location = New System.Drawing.Point(6, 32)
+        Me.CheckBox91.Name = "CheckBox91"
+        Me.CheckBox91.Size = New System.Drawing.Size(88, 25)
+        Me.CheckBox91.TabIndex = 207
+        Me.CheckBox91.Text = "1/2飯"
+        Me.CheckBox91.UseVisualStyleBackColor = True
+        '
+        'CheckBox92
+        '
+        Me.CheckBox92.AutoSize = True
+        Me.CheckBox92.Location = New System.Drawing.Point(6, 127)
+        Me.CheckBox92.Name = "CheckBox92"
+        Me.CheckBox92.Size = New System.Drawing.Size(98, 25)
+        Me.CheckBox92.TabIndex = 6
+        Me.CheckBox92.Text = "禁甜湯"
+        Me.CheckBox92.UseVisualStyleBackColor = True
+        '
+        'CheckBox93
+        '
+        Me.CheckBox93.AutoSize = True
+        Me.CheckBox93.Location = New System.Drawing.Point(6, 158)
+        Me.CheckBox93.Name = "CheckBox93"
+        Me.CheckBox93.Size = New System.Drawing.Size(144, 25)
+        Me.CheckBox93.TabIndex = 5
+        Me.CheckBox93.Text = "半葷換青菜"
+        Me.CheckBox93.UseVisualStyleBackColor = True
+        '
+        'CheckBox94
+        '
+        Me.CheckBox94.AutoSize = True
+        Me.CheckBox94.Location = New System.Drawing.Point(110, 127)
+        Me.CheckBox94.Name = "CheckBox94"
+        Me.CheckBox94.Size = New System.Drawing.Size(98, 25)
+        Me.CheckBox94.TabIndex = 4
+        Me.CheckBox94.Text = "加青菜"
+        Me.CheckBox94.UseVisualStyleBackColor = True
+        '
+        'GroupBox24
+        '
+        Me.GroupBox24.Controls.Add(Me.RadioButton34)
+        Me.GroupBox24.Controls.Add(Me.RadioButton35)
+        Me.GroupBox24.Controls.Add(Me.RadioButton36)
+        Me.GroupBox24.Controls.Add(Me.RadioButton37)
+        Me.GroupBox24.Controls.Add(Me.RadioButton38)
+        Me.GroupBox24.Location = New System.Drawing.Point(476, 108)
+        Me.GroupBox24.Name = "GroupBox24"
+        Me.GroupBox24.Size = New System.Drawing.Size(149, 131)
+        Me.GroupBox24.TabIndex = 276
+        Me.GroupBox24.TabStop = False
+        Me.GroupBox24.Text = "湯盅"
+        '
+        'RadioButton34
+        '
+        Me.RadioButton34.AutoSize = True
+        Me.RadioButton34.Location = New System.Drawing.Point(87, 63)
+        Me.RadioButton34.Name = "RadioButton34"
+        Me.RadioButton34.Size = New System.Drawing.Size(63, 25)
+        Me.RadioButton34.TabIndex = 204
+        Me.RadioButton34.Text = "4期"
+        Me.RadioButton34.UseVisualStyleBackColor = True
+        '
+        'RadioButton35
+        '
+        Me.RadioButton35.AutoSize = True
+        Me.RadioButton35.Location = New System.Drawing.Point(6, 94)
+        Me.RadioButton35.Name = "RadioButton35"
+        Me.RadioButton35.Size = New System.Drawing.Size(63, 25)
+        Me.RadioButton35.TabIndex = 203
+        Me.RadioButton35.Text = "2期"
+        Me.RadioButton35.UseVisualStyleBackColor = True
+        '
+        'RadioButton36
+        '
+        Me.RadioButton36.AutoSize = True
+        Me.RadioButton36.Location = New System.Drawing.Point(87, 32)
+        Me.RadioButton36.Name = "RadioButton36"
+        Me.RadioButton36.Size = New System.Drawing.Size(63, 25)
+        Me.RadioButton36.TabIndex = 202
+        Me.RadioButton36.Text = "3期"
+        Me.RadioButton36.UseVisualStyleBackColor = True
+        '
+        'RadioButton37
+        '
+        Me.RadioButton37.AutoSize = True
+        Me.RadioButton37.Location = New System.Drawing.Point(6, 63)
+        Me.RadioButton37.Name = "RadioButton37"
+        Me.RadioButton37.Size = New System.Drawing.Size(63, 25)
+        Me.RadioButton37.TabIndex = 201
+        Me.RadioButton37.Text = "1期"
+        Me.RadioButton37.UseVisualStyleBackColor = True
+        '
+        'RadioButton38
+        '
+        Me.RadioButton38.AutoSize = True
+        Me.RadioButton38.Location = New System.Drawing.Point(6, 32)
+        Me.RadioButton38.Name = "RadioButton38"
+        Me.RadioButton38.Size = New System.Drawing.Size(74, 25)
+        Me.RadioButton38.TabIndex = 200
+        Me.RadioButton38.Text = "清湯"
+        Me.RadioButton38.UseVisualStyleBackColor = True
+        '
+        'GroupBox25
+        '
+        Me.GroupBox25.Controls.Add(Me.RadioButton39)
+        Me.GroupBox25.Controls.Add(Me.RadioButton40)
+        Me.GroupBox25.Location = New System.Drawing.Point(632, 108)
+        Me.GroupBox25.Name = "GroupBox25"
+        Me.GroupBox25.Size = New System.Drawing.Size(98, 131)
+        Me.GroupBox25.TabIndex = 277
+        Me.GroupBox25.TabStop = False
+        Me.GroupBox25.Text = "麻油"
         '
         'RadioButton39
         '
         Me.RadioButton39.AutoSize = True
-        Me.RadioButton39.Location = New System.Drawing.Point(18, 94)
+        Me.RadioButton39.Location = New System.Drawing.Point(18, 63)
         Me.RadioButton39.Name = "RadioButton39"
-        Me.RadioButton39.Size = New System.Drawing.Size(63, 25)
-        Me.RadioButton39.TabIndex = 202
-        Me.RadioButton39.Text = "3期"
+        Me.RadioButton39.Size = New System.Drawing.Size(74, 25)
+        Me.RadioButton39.TabIndex = 201
+        Me.RadioButton39.Text = "禁麻"
         Me.RadioButton39.UseVisualStyleBackColor = True
         '
         'RadioButton40
         '
         Me.RadioButton40.AutoSize = True
-        Me.RadioButton40.Location = New System.Drawing.Point(18, 63)
+        Me.RadioButton40.Location = New System.Drawing.Point(18, 32)
         Me.RadioButton40.Name = "RadioButton40"
-        Me.RadioButton40.Size = New System.Drawing.Size(63, 25)
-        Me.RadioButton40.TabIndex = 201
-        Me.RadioButton40.Text = "1期"
+        Me.RadioButton40.Size = New System.Drawing.Size(74, 25)
+        Me.RadioButton40.TabIndex = 200
+        Me.RadioButton40.Text = "加麻"
         Me.RadioButton40.UseVisualStyleBackColor = True
+        '
+        'GroupBox26
+        '
+        Me.GroupBox26.Controls.Add(Me.RadioButton41)
+        Me.GroupBox26.Controls.Add(Me.RadioButton42)
+        Me.GroupBox26.Location = New System.Drawing.Point(736, 108)
+        Me.GroupBox26.Name = "GroupBox26"
+        Me.GroupBox26.Size = New System.Drawing.Size(98, 131)
+        Me.GroupBox26.TabIndex = 278
+        Me.GroupBox26.TabStop = False
+        Me.GroupBox26.Text = "酒"
         '
         'RadioButton41
         '
         Me.RadioButton41.AutoSize = True
-        Me.RadioButton41.Location = New System.Drawing.Point(18, 32)
+        Me.RadioButton41.Location = New System.Drawing.Point(18, 63)
         Me.RadioButton41.Name = "RadioButton41"
         Me.RadioButton41.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton41.TabIndex = 200
-        Me.RadioButton41.Text = "清湯"
+        Me.RadioButton41.TabIndex = 201
+        Me.RadioButton41.Text = "禁酒"
         Me.RadioButton41.UseVisualStyleBackColor = True
-        '
-        'GroupBox19
-        '
-        Me.GroupBox19.Controls.Add(Me.RadioButton42)
-        Me.GroupBox19.Controls.Add(Me.RadioButton43)
-        Me.GroupBox19.Controls.Add(Me.RadioButton44)
-        Me.GroupBox19.Location = New System.Drawing.Point(110, 6)
-        Me.GroupBox19.Name = "GroupBox19"
-        Me.GroupBox19.Size = New System.Drawing.Size(98, 131)
-        Me.GroupBox19.TabIndex = 210
-        Me.GroupBox19.TabStop = False
-        Me.GroupBox19.Text = "半酒"
         '
         'RadioButton42
         '
         Me.RadioButton42.AutoSize = True
-        Me.RadioButton42.Location = New System.Drawing.Point(18, 94)
+        Me.RadioButton42.Location = New System.Drawing.Point(18, 32)
         Me.RadioButton42.Name = "RadioButton42"
-        Me.RadioButton42.Size = New System.Drawing.Size(63, 25)
-        Me.RadioButton42.TabIndex = 202
-        Me.RadioButton42.Text = "3期"
+        Me.RadioButton42.Size = New System.Drawing.Size(74, 25)
+        Me.RadioButton42.TabIndex = 200
+        Me.RadioButton42.Text = "加酒"
         Me.RadioButton42.UseVisualStyleBackColor = True
+        '
+        'GroupBox27
+        '
+        Me.GroupBox27.Controls.Add(Me.RadioButton43)
+        Me.GroupBox27.Controls.Add(Me.RadioButton44)
+        Me.GroupBox27.Location = New System.Drawing.Point(840, 108)
+        Me.GroupBox27.Name = "GroupBox27"
+        Me.GroupBox27.Size = New System.Drawing.Size(98, 131)
+        Me.GroupBox27.TabIndex = 279
+        Me.GroupBox27.TabStop = False
+        Me.GroupBox27.Text = "素"
         '
         'RadioButton43
         '
         Me.RadioButton43.AutoSize = True
         Me.RadioButton43.Location = New System.Drawing.Point(18, 63)
         Me.RadioButton43.Name = "RadioButton43"
-        Me.RadioButton43.Size = New System.Drawing.Size(63, 25)
+        Me.RadioButton43.Size = New System.Drawing.Size(74, 25)
         Me.RadioButton43.TabIndex = 201
-        Me.RadioButton43.Text = "1期"
+        Me.RadioButton43.TabStop = True
+        Me.RadioButton43.Text = "蛋奶"
         Me.RadioButton43.UseVisualStyleBackColor = True
         '
         'RadioButton44
@@ -3533,322 +2737,260 @@ Partial Class frmMain
         Me.RadioButton44.Name = "RadioButton44"
         Me.RadioButton44.Size = New System.Drawing.Size(74, 25)
         Me.RadioButton44.TabIndex = 200
-        Me.RadioButton44.Text = "清湯"
+        Me.RadioButton44.TabStop = True
+        Me.RadioButton44.Text = "全素"
         Me.RadioButton44.UseVisualStyleBackColor = True
         '
-        'GroupBox20
+        'GroupBox28
         '
-        Me.GroupBox20.Controls.Add(Me.RadioButton45)
-        Me.GroupBox20.Controls.Add(Me.RadioButton46)
-        Me.GroupBox20.Location = New System.Drawing.Point(214, 6)
-        Me.GroupBox20.Name = "GroupBox20"
-        Me.GroupBox20.Size = New System.Drawing.Size(98, 131)
-        Me.GroupBox20.TabIndex = 211
-        Me.GroupBox20.TabStop = False
-        Me.GroupBox20.Text = "麻油"
+        Me.GroupBox28.Controls.Add(Me.CheckBox95)
+        Me.GroupBox28.Controls.Add(Me.CheckBox96)
+        Me.GroupBox28.Controls.Add(Me.CheckBox97)
+        Me.GroupBox28.Controls.Add(Me.CheckBox98)
+        Me.GroupBox28.Location = New System.Drawing.Point(792, 245)
+        Me.GroupBox28.Name = "GroupBox28"
+        Me.GroupBox28.Size = New System.Drawing.Size(130, 183)
+        Me.GroupBox28.TabIndex = 280
+        Me.GroupBox28.TabStop = False
+        Me.GroupBox28.Text = "餐具"
         '
-        'RadioButton45
+        'CheckBox95
         '
-        Me.RadioButton45.AutoSize = True
-        Me.RadioButton45.Location = New System.Drawing.Point(18, 63)
-        Me.RadioButton45.Name = "RadioButton45"
-        Me.RadioButton45.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton45.TabIndex = 201
-        Me.RadioButton45.Text = "禁麻"
-        Me.RadioButton45.UseVisualStyleBackColor = True
+        Me.CheckBox95.AutoSize = True
+        Me.CheckBox95.Location = New System.Drawing.Point(6, 126)
+        Me.CheckBox95.Name = "CheckBox95"
+        Me.CheckBox95.Size = New System.Drawing.Size(98, 25)
+        Me.CheckBox95.TabIndex = 3
+        Me.CheckBox95.Text = "附餐具"
+        Me.CheckBox95.UseVisualStyleBackColor = True
         '
-        'RadioButton46
+        'CheckBox96
         '
-        Me.RadioButton46.AutoSize = True
-        Me.RadioButton46.Location = New System.Drawing.Point(18, 32)
-        Me.RadioButton46.Name = "RadioButton46"
-        Me.RadioButton46.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton46.TabIndex = 200
-        Me.RadioButton46.Text = "加麻"
-        Me.RadioButton46.UseVisualStyleBackColor = True
+        Me.CheckBox96.AutoSize = True
+        Me.CheckBox96.Location = New System.Drawing.Point(6, 95)
+        Me.CheckBox96.Name = "CheckBox96"
+        Me.CheckBox96.Size = New System.Drawing.Size(98, 25)
+        Me.CheckBox96.TabIndex = 2
+        Me.CheckBox96.Text = "加紙袋"
+        Me.CheckBox96.UseVisualStyleBackColor = True
         '
-        'GroupBox21
+        'CheckBox97
         '
-        Me.GroupBox21.Controls.Add(Me.RadioButton47)
-        Me.GroupBox21.Controls.Add(Me.RadioButton48)
-        Me.GroupBox21.Location = New System.Drawing.Point(318, 6)
-        Me.GroupBox21.Name = "GroupBox21"
-        Me.GroupBox21.Size = New System.Drawing.Size(98, 131)
-        Me.GroupBox21.TabIndex = 212
-        Me.GroupBox21.TabStop = False
-        Me.GroupBox21.Text = "酒"
+        Me.CheckBox97.AutoSize = True
+        Me.CheckBox97.Location = New System.Drawing.Point(6, 64)
+        Me.CheckBox97.Name = "CheckBox97"
+        Me.CheckBox97.Size = New System.Drawing.Size(121, 25)
+        Me.CheckBox97.TabIndex = 1
+        Me.CheckBox97.Text = "免洗宅配"
+        Me.CheckBox97.UseVisualStyleBackColor = True
         '
-        'RadioButton47
+        'CheckBox98
         '
-        Me.RadioButton47.AutoSize = True
-        Me.RadioButton47.Location = New System.Drawing.Point(18, 63)
-        Me.RadioButton47.Name = "RadioButton47"
-        Me.RadioButton47.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton47.TabIndex = 201
-        Me.RadioButton47.Text = "禁酒"
-        Me.RadioButton47.UseVisualStyleBackColor = True
+        Me.CheckBox98.AutoSize = True
+        Me.CheckBox98.Location = New System.Drawing.Point(6, 33)
+        Me.CheckBox98.Name = "CheckBox98"
+        Me.CheckBox98.Size = New System.Drawing.Size(121, 25)
+        Me.CheckBox98.TabIndex = 0
+        Me.CheckBox98.Text = "免洗餐具"
+        Me.CheckBox98.UseVisualStyleBackColor = True
         '
-        'RadioButton48
+        'GroupBox29
         '
-        Me.RadioButton48.AutoSize = True
-        Me.RadioButton48.Location = New System.Drawing.Point(18, 32)
-        Me.RadioButton48.Name = "RadioButton48"
-        Me.RadioButton48.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton48.TabIndex = 200
-        Me.RadioButton48.Text = "加酒"
-        Me.RadioButton48.UseVisualStyleBackColor = True
+        Me.GroupBox29.Controls.Add(Me.CheckBox99)
+        Me.GroupBox29.Controls.Add(Me.CheckBox100)
+        Me.GroupBox29.Controls.Add(Me.CheckBox101)
+        Me.GroupBox29.Location = New System.Drawing.Point(944, 111)
+        Me.GroupBox29.Name = "GroupBox29"
+        Me.GroupBox29.Size = New System.Drawing.Size(133, 128)
+        Me.GroupBox29.TabIndex = 281
+        Me.GroupBox29.TabStop = False
+        Me.GroupBox29.Text = "其他"
         '
-        'GroupBox22
+        'CheckBox99
         '
-        Me.GroupBox22.Controls.Add(Me.RadioButton49)
-        Me.GroupBox22.Controls.Add(Me.RadioButton50)
-        Me.GroupBox22.Location = New System.Drawing.Point(422, 6)
-        Me.GroupBox22.Name = "GroupBox22"
-        Me.GroupBox22.Size = New System.Drawing.Size(98, 131)
-        Me.GroupBox22.TabIndex = 213
-        Me.GroupBox22.TabStop = False
-        Me.GroupBox22.Text = "素"
+        Me.CheckBox99.AutoSize = True
+        Me.CheckBox99.Location = New System.Drawing.Point(6, 95)
+        Me.CheckBox99.Name = "CheckBox99"
+        Me.CheckBox99.Size = New System.Drawing.Size(121, 25)
+        Me.CheckBox99.TabIndex = 2
+        Me.CheckBox99.Text = "最後一餐"
+        Me.CheckBox99.UseVisualStyleBackColor = True
         '
-        'RadioButton49
+        'CheckBox100
         '
-        Me.RadioButton49.AutoSize = True
-        Me.RadioButton49.Location = New System.Drawing.Point(18, 63)
-        Me.RadioButton49.Name = "RadioButton49"
-        Me.RadioButton49.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton49.TabIndex = 201
-        Me.RadioButton49.TabStop = True
-        Me.RadioButton49.Text = "蛋奶"
-        Me.RadioButton49.UseVisualStyleBackColor = True
+        Me.CheckBox100.AutoSize = True
+        Me.CheckBox100.Location = New System.Drawing.Point(6, 64)
+        Me.CheckBox100.Name = "CheckBox100"
+        Me.CheckBox100.Size = New System.Drawing.Size(98, 25)
+        Me.CheckBox100.TabIndex = 1
+        Me.CheckBox100.Text = "滿月禮"
+        Me.CheckBox100.UseVisualStyleBackColor = True
         '
-        'RadioButton50
+        'CheckBox101
         '
-        Me.RadioButton50.AutoSize = True
-        Me.RadioButton50.Location = New System.Drawing.Point(18, 32)
-        Me.RadioButton50.Name = "RadioButton50"
-        Me.RadioButton50.Size = New System.Drawing.Size(74, 25)
-        Me.RadioButton50.TabIndex = 200
-        Me.RadioButton50.TabStop = True
-        Me.RadioButton50.Text = "全素"
-        Me.RadioButton50.UseVisualStyleBackColor = True
+        Me.CheckBox101.AutoSize = True
+        Me.CheckBox101.Location = New System.Drawing.Point(6, 33)
+        Me.CheckBox101.Name = "CheckBox101"
+        Me.CheckBox101.Size = New System.Drawing.Size(98, 25)
+        Me.CheckBox101.TabIndex = 0
+        Me.CheckBox101.Text = "入門禮"
+        Me.CheckBox101.UseVisualStyleBackColor = True
         '
-        'GroupBox23
+        'txtOrdID_dist
         '
-        Me.GroupBox23.Controls.Add(Me.CheckBox37)
-        Me.GroupBox23.Controls.Add(Me.CheckBox38)
-        Me.GroupBox23.Controls.Add(Me.CheckBox39)
-        Me.GroupBox23.Controls.Add(Me.CheckBox40)
-        Me.GroupBox23.Location = New System.Drawing.Point(665, 9)
-        Me.GroupBox23.Name = "GroupBox23"
-        Me.GroupBox23.Size = New System.Drawing.Size(130, 163)
-        Me.GroupBox23.TabIndex = 214
-        Me.GroupBox23.TabStop = False
-        Me.GroupBox23.Text = "餐具"
+        Me.txtOrdID_dist.Location = New System.Drawing.Point(117, 5)
+        Me.txtOrdID_dist.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.txtOrdID_dist.Name = "txtOrdID_dist"
+        Me.txtOrdID_dist.ReadOnly = True
+        Me.txtOrdID_dist.Size = New System.Drawing.Size(107, 33)
+        Me.txtOrdID_dist.TabIndex = 274
+        Me.txtOrdID_dist.Tag = "ord_id"
         '
-        'CheckBox37
+        'Label136
         '
-        Me.CheckBox37.AutoSize = True
-        Me.CheckBox37.Location = New System.Drawing.Point(6, 126)
-        Me.CheckBox37.Name = "CheckBox37"
-        Me.CheckBox37.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox37.TabIndex = 3
-        Me.CheckBox37.Text = "附餐具"
-        Me.CheckBox37.UseVisualStyleBackColor = True
+        Me.Label136.AutoSize = True
+        Me.Label136.ForeColor = System.Drawing.Color.Black
+        Me.Label136.Location = New System.Drawing.Point(6, 8)
+        Me.Label136.Name = "Label136"
+        Me.Label136.Size = New System.Drawing.Size(102, 21)
+        Me.Label136.TabIndex = 275
+        Me.Label136.Text = "訂單編號"
         '
-        'CheckBox38
+        'dtpDistribute
         '
-        Me.CheckBox38.AutoSize = True
-        Me.CheckBox38.Location = New System.Drawing.Point(6, 95)
-        Me.CheckBox38.Name = "CheckBox38"
-        Me.CheckBox38.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox38.TabIndex = 2
-        Me.CheckBox38.Text = "加紙袋"
-        Me.CheckBox38.UseVisualStyleBackColor = True
+        Me.dtpDistribute.Location = New System.Drawing.Point(160, 52)
+        Me.dtpDistribute.Name = "dtpDistribute"
+        Me.dtpDistribute.Size = New System.Drawing.Size(184, 33)
+        Me.dtpDistribute.TabIndex = 273
+        Me.dtpDistribute.Tag = "ord_delivery"
         '
-        'CheckBox39
+        'dgvDistribute
         '
-        Me.CheckBox39.AutoSize = True
-        Me.CheckBox39.Location = New System.Drawing.Point(6, 64)
-        Me.CheckBox39.Name = "CheckBox39"
-        Me.CheckBox39.Size = New System.Drawing.Size(121, 25)
-        Me.CheckBox39.TabIndex = 1
-        Me.CheckBox39.Text = "免洗宅配"
-        Me.CheckBox39.UseVisualStyleBackColor = True
+        Me.dgvDistribute.AllowUserToAddRows = False
+        Me.dgvDistribute.AllowUserToDeleteRows = False
+        Me.dgvDistribute.AllowUserToOrderColumns = True
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvDistribute.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        Me.dgvDistribute.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
+        Me.dgvDistribute.ColumnHeadersHeight = 25
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvDistribute.DefaultCellStyle = DataGridViewCellStyle8
+        Me.dgvDistribute.Location = New System.Drawing.Point(931, 342)
+        Me.dgvDistribute.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.dgvDistribute.Name = "dgvDistribute"
+        Me.dgvDistribute.ReadOnly = True
+        Me.dgvDistribute.RowTemplate.Height = 24
+        Me.dgvDistribute.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvDistribute.Size = New System.Drawing.Size(646, 394)
+        Me.dgvDistribute.TabIndex = 272
         '
-        'CheckBox40
+        'txtProdName_dist
         '
-        Me.CheckBox40.AutoSize = True
-        Me.CheckBox40.Location = New System.Drawing.Point(6, 33)
-        Me.CheckBox40.Name = "CheckBox40"
-        Me.CheckBox40.Size = New System.Drawing.Size(121, 25)
-        Me.CheckBox40.TabIndex = 0
-        Me.CheckBox40.Text = "免洗餐具"
-        Me.CheckBox40.UseVisualStyleBackColor = True
+        Me.txtProdName_dist.Location = New System.Drawing.Point(792, 8)
+        Me.txtProdName_dist.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.txtProdName_dist.Name = "txtProdName_dist"
+        Me.txtProdName_dist.ReadOnly = True
+        Me.txtProdName_dist.Size = New System.Drawing.Size(227, 33)
+        Me.txtProdName_dist.TabIndex = 271
+        Me.txtProdName_dist.Tag = "prod_name"
         '
-        'GroupBox24
+        'Label111
         '
-        Me.GroupBox24.Controls.Add(Me.CheckBox41)
-        Me.GroupBox24.Controls.Add(Me.CheckBox42)
-        Me.GroupBox24.Controls.Add(Me.CheckBox43)
-        Me.GroupBox24.Location = New System.Drawing.Point(526, 9)
-        Me.GroupBox24.Name = "GroupBox24"
-        Me.GroupBox24.Size = New System.Drawing.Size(133, 128)
-        Me.GroupBox24.TabIndex = 216
-        Me.GroupBox24.TabStop = False
-        Me.GroupBox24.Text = "其他"
+        Me.Label111.AutoSize = True
+        Me.Label111.Location = New System.Drawing.Point(681, 11)
+        Me.Label111.Name = "Label111"
+        Me.Label111.Size = New System.Drawing.Size(102, 21)
+        Me.Label111.TabIndex = 270
+        Me.Label111.Text = "商品名稱"
         '
-        'CheckBox41
+        'txtDistQuery
         '
-        Me.CheckBox41.AutoSize = True
-        Me.CheckBox41.Location = New System.Drawing.Point(6, 95)
-        Me.CheckBox41.Name = "CheckBox41"
-        Me.CheckBox41.Size = New System.Drawing.Size(121, 25)
-        Me.CheckBox41.TabIndex = 2
-        Me.CheckBox41.Text = "最後一餐"
-        Me.CheckBox41.UseVisualStyleBackColor = True
+        Me.txtDistQuery.Location = New System.Drawing.Point(1268, 205)
+        Me.txtDistQuery.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.txtDistQuery.Name = "txtDistQuery"
+        Me.txtDistQuery.Size = New System.Drawing.Size(160, 33)
+        Me.txtDistQuery.TabIndex = 269
         '
-        'CheckBox42
+        'GroupBox10
         '
-        Me.CheckBox42.AutoSize = True
-        Me.CheckBox42.Location = New System.Drawing.Point(6, 64)
-        Me.CheckBox42.Name = "CheckBox42"
-        Me.CheckBox42.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox42.TabIndex = 1
-        Me.CheckBox42.Text = "滿月禮"
-        Me.CheckBox42.UseVisualStyleBackColor = True
+        Me.GroupBox10.Controls.Add(Me.Label52)
+        Me.GroupBox10.Controls.Add(Me.txtDinner)
+        Me.GroupBox10.Controls.Add(Me.Label40)
+        Me.GroupBox10.Controls.Add(Me.txtLunch)
+        Me.GroupBox10.Controls.Add(Me.Label29)
+        Me.GroupBox10.Controls.Add(Me.txtBreak)
+        Me.GroupBox10.Location = New System.Drawing.Point(19, 591)
+        Me.GroupBox10.Name = "GroupBox10"
+        Me.GroupBox10.Size = New System.Drawing.Size(144, 145)
+        Me.GroupBox10.TabIndex = 224
+        Me.GroupBox10.TabStop = False
+        Me.GroupBox10.Text = "未配置餐"
         '
-        'CheckBox43
+        'Label52
         '
-        Me.CheckBox43.AutoSize = True
-        Me.CheckBox43.Location = New System.Drawing.Point(6, 33)
-        Me.CheckBox43.Name = "CheckBox43"
-        Me.CheckBox43.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox43.TabIndex = 0
-        Me.CheckBox43.Text = "入門禮"
-        Me.CheckBox43.UseVisualStyleBackColor = True
+        Me.Label52.AutoSize = True
+        Me.Label52.Location = New System.Drawing.Point(3, 107)
+        Me.Label52.Name = "Label52"
+        Me.Label52.Size = New System.Drawing.Size(56, 21)
+        Me.Label52.TabIndex = 5
+        Me.Label52.Text = "晚餐"
         '
-        'GroupBox25
+        'txtDinner
         '
-        Me.GroupBox25.Controls.Add(Me.CheckBox53)
-        Me.GroupBox25.Controls.Add(Me.CheckBox52)
-        Me.GroupBox25.Controls.Add(Me.CheckBox51)
-        Me.GroupBox25.Controls.Add(Me.CheckBox50)
-        Me.GroupBox25.Controls.Add(Me.CheckBox49)
-        Me.GroupBox25.Controls.Add(Me.CheckBox48)
-        Me.GroupBox25.Controls.Add(Me.CheckBox47)
-        Me.GroupBox25.Controls.Add(Me.CheckBox44)
-        Me.GroupBox25.Controls.Add(Me.CheckBox45)
-        Me.GroupBox25.Controls.Add(Me.CheckBox46)
-        Me.GroupBox25.Location = New System.Drawing.Point(6, 143)
-        Me.GroupBox25.Name = "GroupBox25"
-        Me.GroupBox25.Size = New System.Drawing.Size(310, 186)
-        Me.GroupBox25.TabIndex = 215
-        Me.GroupBox25.TabStop = False
-        Me.GroupBox25.Text = "客製需求"
+        Me.txtDinner.Location = New System.Drawing.Point(65, 104)
+        Me.txtDinner.Name = "txtDinner"
+        Me.txtDinner.ReadOnly = True
+        Me.txtDinner.Size = New System.Drawing.Size(71, 33)
+        Me.txtDinner.TabIndex = 4
+        Me.txtDinner.Tag = "ord_dinner"
         '
-        'CheckBox53
+        'Label40
         '
-        Me.CheckBox53.AutoSize = True
-        Me.CheckBox53.Location = New System.Drawing.Point(110, 96)
-        Me.CheckBox53.Name = "CheckBox53"
-        Me.CheckBox53.Size = New System.Drawing.Size(75, 25)
-        Me.CheckBox53.TabIndex = 213
-        Me.CheckBox53.Text = "不冰"
-        Me.CheckBox53.UseVisualStyleBackColor = True
+        Me.Label40.AutoSize = True
+        Me.Label40.Location = New System.Drawing.Point(3, 68)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(56, 21)
+        Me.Label40.TabIndex = 3
+        Me.Label40.Text = "午餐"
         '
-        'CheckBox52
+        'txtLunch
         '
-        Me.CheckBox52.AutoSize = True
-        Me.CheckBox52.Location = New System.Drawing.Point(6, 96)
-        Me.CheckBox52.Name = "CheckBox52"
-        Me.CheckBox52.Size = New System.Drawing.Size(75, 25)
-        Me.CheckBox52.TabIndex = 212
-        Me.CheckBox52.Text = "要冰"
-        Me.CheckBox52.UseVisualStyleBackColor = True
+        Me.txtLunch.Location = New System.Drawing.Point(65, 65)
+        Me.txtLunch.Name = "txtLunch"
+        Me.txtLunch.ReadOnly = True
+        Me.txtLunch.Size = New System.Drawing.Size(71, 33)
+        Me.txtLunch.TabIndex = 2
+        Me.txtLunch.Tag = "ord_lunch"
         '
-        'CheckBox51
+        'Label29
         '
-        Me.CheckBox51.AutoSize = True
-        Me.CheckBox51.Location = New System.Drawing.Point(214, 63)
-        Me.CheckBox51.Name = "CheckBox51"
-        Me.CheckBox51.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox51.TabIndex = 211
-        Me.CheckBox51.Text = "全糙米"
-        Me.CheckBox51.UseVisualStyleBackColor = True
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(3, 29)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(56, 21)
+        Me.Label29.TabIndex = 1
+        Me.Label29.Text = "早餐"
         '
-        'CheckBox50
+        'txtBreak
         '
-        Me.CheckBox50.AutoSize = True
-        Me.CheckBox50.Location = New System.Drawing.Point(110, 65)
-        Me.CheckBox50.Name = "CheckBox50"
-        Me.CheckBox50.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox50.TabIndex = 210
-        Me.CheckBox50.Text = "混糙米"
-        Me.CheckBox50.UseVisualStyleBackColor = True
-        '
-        'CheckBox49
-        '
-        Me.CheckBox49.AutoSize = True
-        Me.CheckBox49.Location = New System.Drawing.Point(6, 65)
-        Me.CheckBox49.Name = "CheckBox49"
-        Me.CheckBox49.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox49.TabIndex = 209
-        Me.CheckBox49.Text = "換粥品"
-        Me.CheckBox49.UseVisualStyleBackColor = True
-        '
-        'CheckBox48
-        '
-        Me.CheckBox48.AutoSize = True
-        Me.CheckBox48.Location = New System.Drawing.Point(110, 32)
-        Me.CheckBox48.Name = "CheckBox48"
-        Me.CheckBox48.Size = New System.Drawing.Size(75, 25)
-        Me.CheckBox48.TabIndex = 208
-        Me.CheckBox48.Text = "加飯"
-        Me.CheckBox48.UseVisualStyleBackColor = True
-        '
-        'CheckBox47
-        '
-        Me.CheckBox47.AutoSize = True
-        Me.CheckBox47.Location = New System.Drawing.Point(6, 32)
-        Me.CheckBox47.Name = "CheckBox47"
-        Me.CheckBox47.Size = New System.Drawing.Size(88, 25)
-        Me.CheckBox47.TabIndex = 207
-        Me.CheckBox47.Text = "1/2飯"
-        Me.CheckBox47.UseVisualStyleBackColor = True
-        '
-        'CheckBox44
-        '
-        Me.CheckBox44.AutoSize = True
-        Me.CheckBox44.Location = New System.Drawing.Point(6, 127)
-        Me.CheckBox44.Name = "CheckBox44"
-        Me.CheckBox44.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox44.TabIndex = 6
-        Me.CheckBox44.Text = "禁甜湯"
-        Me.CheckBox44.UseVisualStyleBackColor = True
-        '
-        'CheckBox45
-        '
-        Me.CheckBox45.AutoSize = True
-        Me.CheckBox45.Location = New System.Drawing.Point(6, 158)
-        Me.CheckBox45.Name = "CheckBox45"
-        Me.CheckBox45.Size = New System.Drawing.Size(144, 25)
-        Me.CheckBox45.TabIndex = 5
-        Me.CheckBox45.Text = "半葷換青菜"
-        Me.CheckBox45.UseVisualStyleBackColor = True
-        '
-        'CheckBox46
-        '
-        Me.CheckBox46.AutoSize = True
-        Me.CheckBox46.Location = New System.Drawing.Point(110, 127)
-        Me.CheckBox46.Name = "CheckBox46"
-        Me.CheckBox46.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox46.TabIndex = 4
-        Me.CheckBox46.Text = "加青菜"
-        Me.CheckBox46.UseVisualStyleBackColor = True
+        Me.txtBreak.Location = New System.Drawing.Point(65, 26)
+        Me.txtBreak.Name = "txtBreak"
+        Me.txtBreak.ReadOnly = True
+        Me.txtBreak.Size = New System.Drawing.Size(71, 33)
+        Me.txtBreak.TabIndex = 0
+        Me.txtBreak.Tag = "ord_breakfast"
         '
         'Label126
         '
         Me.Label126.AutoSize = True
-        Me.Label126.Location = New System.Drawing.Point(473, 66)
+        Me.Label126.Location = New System.Drawing.Point(6, 55)
         Me.Label126.Name = "Label126"
         Me.Label126.Size = New System.Drawing.Size(148, 21)
         Me.Label126.TabIndex = 226
@@ -3868,9 +3010,9 @@ Partial Class frmMain
         Me.pnlCalendar.Controls.Add(Me.Label86)
         Me.pnlCalendar.Controls.Add(Me.Label89)
         Me.pnlCalendar.Controls.Add(Me.Label90)
-        Me.pnlCalendar.Location = New System.Drawing.Point(24, 114)
+        Me.pnlCalendar.Location = New System.Drawing.Point(19, 108)
         Me.pnlCalendar.Name = "pnlCalendar"
-        Me.pnlCalendar.Size = New System.Drawing.Size(451, 391)
+        Me.pnlCalendar.Size = New System.Drawing.Size(451, 456)
         Me.pnlCalendar.TabIndex = 6
         '
         'btnMinusMonth
@@ -3919,92 +3061,92 @@ Partial Class frmMain
         Me.tlpCalendar.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572!))
         Me.tlpCalendar.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572!))
         Me.tlpCalendar.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.tlpCalendar.Location = New System.Drawing.Point(0, 79)
+        Me.tlpCalendar.Location = New System.Drawing.Point(0, 67)
         Me.tlpCalendar.Name = "tlpCalendar"
-        Me.tlpCalendar.RowCount = 5
-        Me.tlpCalendar.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.tlpCalendar.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.tlpCalendar.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.tlpCalendar.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.tlpCalendar.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.tlpCalendar.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.tlpCalendar.Size = New System.Drawing.Size(449, 310)
+        Me.tlpCalendar.RowCount = 6
+        Me.tlpCalendar.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
+        Me.tlpCalendar.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
+        Me.tlpCalendar.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
+        Me.tlpCalendar.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
+        Me.tlpCalendar.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
+        Me.tlpCalendar.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
+        Me.tlpCalendar.Size = New System.Drawing.Size(449, 387)
         Me.tlpCalendar.TabIndex = 10
         '
         'Label60
         '
         Me.Label60.AutoSize = True
-        Me.Label60.Font = New System.Drawing.Font("標楷體", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label60.Location = New System.Drawing.Point(3, 60)
+        Me.Label60.Font = New System.Drawing.Font("標楷體", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label60.Location = New System.Drawing.Point(19, 45)
         Me.Label60.Name = "Label60"
-        Me.Label60.Size = New System.Drawing.Size(59, 16)
+        Me.Label60.Size = New System.Drawing.Size(30, 19)
         Me.Label60.TabIndex = 6
-        Me.Label60.Text = "星期日"
+        Me.Label60.Text = "日"
         '
         'Label72
         '
         Me.Label72.AutoSize = True
-        Me.Label72.Font = New System.Drawing.Font("標楷體", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label72.Location = New System.Drawing.Point(193, 60)
+        Me.Label72.Font = New System.Drawing.Font("標楷體", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label72.Location = New System.Drawing.Point(211, 45)
         Me.Label72.Name = "Label72"
-        Me.Label72.Size = New System.Drawing.Size(59, 16)
+        Me.Label72.Size = New System.Drawing.Size(30, 19)
         Me.Label72.TabIndex = 2
-        Me.Label72.Text = "星期三"
+        Me.Label72.Text = "三"
         '
         'Label73
         '
         Me.Label73.AutoSize = True
-        Me.Label73.Font = New System.Drawing.Font("標楷體", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label73.Location = New System.Drawing.Point(388, 60)
+        Me.Label73.Font = New System.Drawing.Font("標楷體", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label73.Location = New System.Drawing.Point(403, 45)
         Me.Label73.Name = "Label73"
-        Me.Label73.Size = New System.Drawing.Size(59, 16)
+        Me.Label73.Size = New System.Drawing.Size(30, 19)
         Me.Label73.TabIndex = 5
-        Me.Label73.Text = "星期六"
+        Me.Label73.Text = "六"
         '
         'Label85
         '
         Me.Label85.AutoSize = True
-        Me.Label85.Font = New System.Drawing.Font("標楷體", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label85.Location = New System.Drawing.Point(258, 60)
+        Me.Label85.Font = New System.Drawing.Font("標楷體", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label85.Location = New System.Drawing.Point(275, 45)
         Me.Label85.Name = "Label85"
-        Me.Label85.Size = New System.Drawing.Size(59, 16)
+        Me.Label85.Size = New System.Drawing.Size(30, 19)
         Me.Label85.TabIndex = 3
-        Me.Label85.Text = "星期四"
+        Me.Label85.Text = "四"
         '
         'Label86
         '
         Me.Label86.AutoSize = True
-        Me.Label86.Font = New System.Drawing.Font("標楷體", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label86.Location = New System.Drawing.Point(323, 60)
+        Me.Label86.Font = New System.Drawing.Font("標楷體", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label86.Location = New System.Drawing.Point(339, 45)
         Me.Label86.Name = "Label86"
-        Me.Label86.Size = New System.Drawing.Size(59, 16)
+        Me.Label86.Size = New System.Drawing.Size(30, 19)
         Me.Label86.TabIndex = 4
-        Me.Label86.Text = "星期五"
+        Me.Label86.Text = "五"
         '
         'Label89
         '
         Me.Label89.AutoSize = True
-        Me.Label89.Font = New System.Drawing.Font("標楷體", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label89.Location = New System.Drawing.Point(128, 60)
+        Me.Label89.Font = New System.Drawing.Font("標楷體", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label89.Location = New System.Drawing.Point(147, 45)
         Me.Label89.Name = "Label89"
-        Me.Label89.Size = New System.Drawing.Size(59, 16)
+        Me.Label89.Size = New System.Drawing.Size(30, 19)
         Me.Label89.TabIndex = 1
-        Me.Label89.Text = "星期二"
+        Me.Label89.Text = "二"
         '
         'Label90
         '
         Me.Label90.AutoSize = True
-        Me.Label90.Font = New System.Drawing.Font("標楷體", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label90.Location = New System.Drawing.Point(63, 60)
+        Me.Label90.Font = New System.Drawing.Font("標楷體", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label90.Location = New System.Drawing.Point(83, 45)
         Me.Label90.Name = "Label90"
-        Me.Label90.Size = New System.Drawing.Size(59, 16)
+        Me.Label90.Size = New System.Drawing.Size(30, 19)
         Me.Label90.TabIndex = 0
-        Me.Label90.Text = "星期一"
+        Me.Label90.Text = "一"
         '
         'chkContinue
         '
         Me.chkContinue.AutoSize = True
-        Me.chkContinue.Location = New System.Drawing.Point(833, 33)
+        Me.chkContinue.Location = New System.Drawing.Point(999, 258)
         Me.chkContinue.Name = "chkContinue"
         Me.chkContinue.Size = New System.Drawing.Size(167, 25)
         Me.chkContinue.TabIndex = 223
@@ -4013,16 +3155,18 @@ Partial Class frmMain
         '
         'txtPhone_dist
         '
-        Me.txtPhone_dist.Location = New System.Drawing.Point(262, 16)
+        Me.txtPhone_dist.Location = New System.Drawing.Point(479, 8)
         Me.txtPhone_dist.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtPhone_dist.Name = "txtPhone_dist"
+        Me.txtPhone_dist.ReadOnly = True
         Me.txtPhone_dist.Size = New System.Drawing.Size(193, 33)
         Me.txtPhone_dist.TabIndex = 219
+        Me.txtPhone_dist.Tag = "cus_phone"
         '
         'Label27
         '
         Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(197, 19)
+        Me.Label27.Location = New System.Drawing.Point(414, 11)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(56, 21)
         Me.Label27.TabIndex = 220
@@ -4031,7 +3175,7 @@ Partial Class frmMain
         'btnDistCancel
         '
         Me.btnDistCancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnDistCancel.Location = New System.Drawing.Point(1269, 64)
+        Me.btnDistCancel.Location = New System.Drawing.Point(1437, 289)
         Me.btnDistCancel.Name = "btnDistCancel"
         Me.btnDistCancel.Size = New System.Drawing.Size(140, 44)
         Me.btnDistCancel.TabIndex = 217
@@ -4041,7 +3185,7 @@ Partial Class frmMain
         'btnDistDel
         '
         Me.btnDistDel.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnDistDel.Location = New System.Drawing.Point(1123, 64)
+        Me.btnDistDel.Location = New System.Drawing.Point(1291, 289)
         Me.btnDistDel.Name = "btnDistDel"
         Me.btnDistDel.Size = New System.Drawing.Size(140, 44)
         Me.btnDistDel.TabIndex = 216
@@ -4051,44 +3195,27 @@ Partial Class frmMain
         'btnDistModify
         '
         Me.btnDistModify.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnDistModify.Location = New System.Drawing.Point(977, 64)
+        Me.btnDistModify.Location = New System.Drawing.Point(1145, 289)
         Me.btnDistModify.Name = "btnDistModify"
         Me.btnDistModify.Size = New System.Drawing.Size(140, 44)
         Me.btnDistModify.TabIndex = 215
         Me.btnDistModify.Text = "修  改"
         Me.btnDistModify.UseVisualStyleBackColor = False
         '
-        'btnDistAdd
+        'distInsert
         '
-        Me.btnDistAdd.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnDistAdd.Location = New System.Drawing.Point(833, 64)
-        Me.btnDistAdd.Name = "btnDistAdd"
-        Me.btnDistAdd.Size = New System.Drawing.Size(140, 44)
-        Me.btnDistAdd.TabIndex = 214
-        Me.btnDistAdd.Text = "新  增"
-        Me.btnDistAdd.UseVisualStyleBackColor = False
-        '
-        'txtDistMemo
-        '
-        Me.txtDistMemo.Location = New System.Drawing.Point(81, 63)
-        Me.txtDistMemo.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
-        Me.txtDistMemo.Name = "txtDistMemo"
-        Me.txtDistMemo.Size = New System.Drawing.Size(374, 33)
-        Me.txtDistMemo.TabIndex = 212
-        '
-        'Label88
-        '
-        Me.Label88.AutoSize = True
-        Me.Label88.Location = New System.Drawing.Point(16, 75)
-        Me.Label88.Name = "Label88"
-        Me.Label88.Size = New System.Drawing.Size(56, 21)
-        Me.Label88.TabIndex = 213
-        Me.Label88.Text = "備註"
+        Me.distInsert.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.distInsert.Location = New System.Drawing.Point(999, 289)
+        Me.distInsert.Name = "distInsert"
+        Me.distInsert.Size = New System.Drawing.Size(140, 44)
+        Me.distInsert.TabIndex = 214
+        Me.distInsert.Text = "新  增"
+        Me.distInsert.UseVisualStyleBackColor = False
         '
         'btnDistQuery
         '
         Me.btnDistQuery.BackColor = System.Drawing.Color.Lime
-        Me.btnDistQuery.Location = New System.Drawing.Point(1429, 16)
+        Me.btnDistQuery.Location = New System.Drawing.Point(1437, 202)
         Me.btnDistQuery.Name = "btnDistQuery"
         Me.btnDistQuery.Size = New System.Drawing.Size(140, 44)
         Me.btnDistQuery.TabIndex = 203
@@ -4098,24 +3225,26 @@ Partial Class frmMain
         'Label83
         '
         Me.Label83.AutoSize = True
-        Me.Label83.Location = New System.Drawing.Point(1116, 22)
+        Me.Label83.Location = New System.Drawing.Point(1155, 208)
         Me.Label83.Name = "Label83"
-        Me.Label83.Size = New System.Drawing.Size(102, 21)
+        Me.Label83.Size = New System.Drawing.Size(104, 21)
         Me.Label83.TabIndex = 196
-        Me.Label83.Text = "訂單編號"
+        Me.Label83.Text = "搜    尋"
         '
         'txtCusName_dist
         '
-        Me.txtCusName_dist.Location = New System.Drawing.Point(81, 16)
+        Me.txtCusName_dist.Location = New System.Drawing.Point(298, 8)
         Me.txtCusName_dist.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtCusName_dist.Name = "txtCusName_dist"
+        Me.txtCusName_dist.ReadOnly = True
         Me.txtCusName_dist.Size = New System.Drawing.Size(107, 33)
         Me.txtCusName_dist.TabIndex = 188
+        Me.txtCusName_dist.Tag = "cus_name"
         '
         'Label82
         '
         Me.Label82.AutoSize = True
-        Me.Label82.Location = New System.Drawing.Point(16, 19)
+        Me.Label82.Location = New System.Drawing.Point(233, 11)
         Me.Label82.Name = "Label82"
         Me.Label82.Size = New System.Drawing.Size(56, 21)
         Me.Label82.TabIndex = 189
@@ -4403,20 +3532,21 @@ Partial Class frmMain
         '
         Me.dgvProduct.AllowUserToAddRows = False
         Me.dgvProduct.AllowUserToDeleteRows = False
-        DataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvProduct.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle29
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvProduct.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
         Me.dgvProduct.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
-        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle30.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvProduct.DefaultCellStyle = DataGridViewCellStyle30
+        Me.dgvProduct.ColumnHeadersHeight = 25
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvProduct.DefaultCellStyle = DataGridViewCellStyle10
         Me.dgvProduct.Location = New System.Drawing.Point(9, 170)
         Me.dgvProduct.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvProduct.Name = "dgvProduct"
@@ -5137,19 +4267,19 @@ Partial Class frmMain
         '
         Me.dgvMenu.AllowUserToAddRows = False
         Me.dgvMenu.AllowUserToDeleteRows = False
-        DataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvMenu.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle31
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvMenu.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
         Me.dgvMenu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle32.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvMenu.DefaultCellStyle = DataGridViewCellStyle32
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvMenu.DefaultCellStyle = DataGridViewCellStyle12
         Me.dgvMenu.Location = New System.Drawing.Point(8, 411)
         Me.dgvMenu.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvMenu.Name = "dgvMenu"
@@ -5467,10 +4597,11 @@ Partial Class frmMain
         '
         Me.TabControl4.Controls.Add(Me.tpMoney)
         Me.TabControl4.Controls.Add(Me.TabPage4)
-        Me.TabControl4.Location = New System.Drawing.Point(11, 10)
+        Me.TabControl4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TabControl4.Location = New System.Drawing.Point(0, 0)
         Me.TabControl4.Name = "TabControl4"
         Me.TabControl4.SelectedIndex = 0
-        Me.TabControl4.Size = New System.Drawing.Size(1565, 724)
+        Me.TabControl4.Size = New System.Drawing.Size(1585, 744)
         Me.TabControl4.TabIndex = 206
         '
         'tpMoney
@@ -5502,7 +4633,7 @@ Partial Class frmMain
         Me.tpMoney.Location = New System.Drawing.Point(4, 31)
         Me.tpMoney.Name = "tpMoney"
         Me.tpMoney.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpMoney.Size = New System.Drawing.Size(1557, 689)
+        Me.tpMoney.Size = New System.Drawing.Size(1577, 709)
         Me.tpMoney.TabIndex = 1
         Me.tpMoney.Tag = "money"
         Me.tpMoney.Text = "收款作業"
@@ -5724,28 +4855,28 @@ Partial Class frmMain
         '
         Me.dgvMoney.AllowUserToAddRows = False
         Me.dgvMoney.AllowUserToDeleteRows = False
-        DataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvMoney.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle33
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvMoney.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
         Me.dgvMoney.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvMoney.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvMoney.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle34.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvMoney.DefaultCellStyle = DataGridViewCellStyle34
-        Me.dgvMoney.Location = New System.Drawing.Point(22, 302)
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvMoney.DefaultCellStyle = DataGridViewCellStyle14
+        Me.dgvMoney.Location = New System.Drawing.Point(9, 220)
         Me.dgvMoney.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvMoney.Name = "dgvMoney"
         Me.dgvMoney.ReadOnly = True
         Me.dgvMoney.RowTemplate.Height = 24
         Me.dgvMoney.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvMoney.Size = New System.Drawing.Size(1526, 539)
+        Me.dgvMoney.Size = New System.Drawing.Size(1559, 535)
         Me.dgvMoney.TabIndex = 205
         '
         'TabPage4
@@ -5753,7 +4884,7 @@ Partial Class frmMain
         Me.TabPage4.Location = New System.Drawing.Point(4, 31)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(1557, 689)
+        Me.TabPage4.Size = New System.Drawing.Size(1577, 709)
         Me.TabPage4.TabIndex = 0
         Me.TabPage4.Text = "營業收入查詢"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -6035,21 +5166,21 @@ Partial Class frmMain
         '
         Me.dgvEmployee.AllowUserToAddRows = False
         Me.dgvEmployee.AllowUserToDeleteRows = False
-        DataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvEmployee.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvEmployee.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle15
         Me.dgvEmployee.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle22.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvEmployee.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvEmployee.DefaultCellStyle = DataGridViewCellStyle16
         Me.dgvEmployee.Location = New System.Drawing.Point(8, 189)
         Me.dgvEmployee.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvEmployee.Name = "dgvEmployee"
@@ -6221,20 +5352,22 @@ Partial Class frmMain
         '
         Me.dgvTaboo.AllowUserToAddRows = False
         Me.dgvTaboo.AllowUserToDeleteRows = False
-        DataGridViewCellStyle35.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvTaboo.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle35
+        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvTaboo.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle17
+        Me.dgvTaboo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvTaboo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvTaboo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle36.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvTaboo.DefaultCellStyle = DataGridViewCellStyle36
-        Me.dgvTaboo.Location = New System.Drawing.Point(6, 108)
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvTaboo.DefaultCellStyle = DataGridViewCellStyle18
+        Me.dgvTaboo.Location = New System.Drawing.Point(6, 162)
         Me.dgvTaboo.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvTaboo.Name = "dgvTaboo"
         Me.dgvTaboo.ReadOnly = True
@@ -6463,20 +5596,22 @@ Partial Class frmMain
         '
         Me.dgvPermissions.AllowUserToAddRows = False
         Me.dgvPermissions.AllowUserToDeleteRows = False
-        DataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle37.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvPermissions.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle37
+        DataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvPermissions.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle19
+        Me.dgvPermissions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvPermissions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvPermissions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle38.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPermissions.DefaultCellStyle = DataGridViewCellStyle38
-        Me.dgvPermissions.Location = New System.Drawing.Point(16, 120)
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle20.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPermissions.DefaultCellStyle = DataGridViewCellStyle20
+        Me.dgvPermissions.Location = New System.Drawing.Point(16, 174)
         Me.dgvPermissions.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvPermissions.Name = "dgvPermissions"
         Me.dgvPermissions.ReadOnly = True
@@ -6531,27 +5666,28 @@ Partial Class frmMain
         Me.dgvProdgroup.AllowUserToAddRows = False
         Me.dgvProdgroup.AllowUserToDeleteRows = False
         Me.dgvProdgroup.AllowUserToOrderColumns = True
-        DataGridViewCellStyle39.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvProdgroup.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle39
+        DataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvProdgroup.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle21
         Me.dgvProdgroup.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvProdgroup.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
-        DataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle40.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle40.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvProdgroup.DefaultCellStyle = DataGridViewCellStyle40
-        Me.dgvProdgroup.Location = New System.Drawing.Point(6, 279)
+        Me.dgvProdgroup.ColumnHeadersHeight = 25
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle22.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvProdgroup.DefaultCellStyle = DataGridViewCellStyle22
+        Me.dgvProdgroup.Location = New System.Drawing.Point(9, 162)
         Me.dgvProdgroup.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvProdgroup.Name = "dgvProdgroup"
         Me.dgvProdgroup.ReadOnly = True
         Me.dgvProdgroup.RowTemplate.Height = 24
         Me.dgvProdgroup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvProdgroup.Size = New System.Drawing.Size(1544, 567)
+        Me.dgvProdgroup.Size = New System.Drawing.Size(1541, 564)
         Me.dgvProdgroup.TabIndex = 282
         '
         'Label107
@@ -6642,7 +5778,7 @@ Partial Class frmMain
         Me.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "挺益月子餐管理系統 V0.8.1"
+        Me.Text = "挺益管理系統 V0.9.0"
         Me.TabControl1.ResumeLayout(False)
         Me.tpCustomer.ResumeLayout(False)
         Me.tcCustomer.ResumeLayout(False)
@@ -6675,58 +5811,23 @@ Partial Class frmMain
         CType(Me.dgvOrder, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tpDistribute.ResumeLayout(False)
         Me.tpDistribute.PerformLayout()
-        Me.GroupBox10.ResumeLayout(False)
-        Me.GroupBox10.PerformLayout()
-        Me.TabControl3.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.GroupBox7.ResumeLayout(False)
-        Me.GroupBox7.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
-        Me.GroupBox5.ResumeLayout(False)
-        Me.GroupBox5.PerformLayout()
-        Me.GroupBox6.ResumeLayout(False)
-        Me.GroupBox6.PerformLayout()
-        Me.GroupBox8.ResumeLayout(False)
-        Me.GroupBox8.PerformLayout()
-        Me.TabPage2.ResumeLayout(False)
-        Me.GroupBox17.ResumeLayout(False)
-        Me.GroupBox17.PerformLayout()
-        Me.GroupBox9.ResumeLayout(False)
-        Me.GroupBox9.PerformLayout()
-        Me.GroupBox11.ResumeLayout(False)
-        Me.GroupBox11.PerformLayout()
-        Me.GroupBox12.ResumeLayout(False)
-        Me.GroupBox12.PerformLayout()
-        Me.GroupBox13.ResumeLayout(False)
-        Me.GroupBox13.PerformLayout()
-        Me.GroupBox14.ResumeLayout(False)
-        Me.GroupBox14.PerformLayout()
-        Me.GroupBox15.ResumeLayout(False)
-        Me.GroupBox15.PerformLayout()
-        Me.GroupBox16.ResumeLayout(False)
-        Me.GroupBox16.PerformLayout()
-        Me.TabPage5.ResumeLayout(False)
-        Me.GroupBox18.ResumeLayout(False)
-        Me.GroupBox18.PerformLayout()
-        Me.GroupBox19.ResumeLayout(False)
-        Me.GroupBox19.PerformLayout()
-        Me.GroupBox20.ResumeLayout(False)
-        Me.GroupBox20.PerformLayout()
-        Me.GroupBox21.ResumeLayout(False)
-        Me.GroupBox21.PerformLayout()
-        Me.GroupBox22.ResumeLayout(False)
-        Me.GroupBox22.PerformLayout()
         Me.GroupBox23.ResumeLayout(False)
         Me.GroupBox23.PerformLayout()
         Me.GroupBox24.ResumeLayout(False)
         Me.GroupBox24.PerformLayout()
         Me.GroupBox25.ResumeLayout(False)
         Me.GroupBox25.PerformLayout()
+        Me.GroupBox26.ResumeLayout(False)
+        Me.GroupBox26.PerformLayout()
+        Me.GroupBox27.ResumeLayout(False)
+        Me.GroupBox27.PerformLayout()
+        Me.GroupBox28.ResumeLayout(False)
+        Me.GroupBox28.PerformLayout()
+        Me.GroupBox29.ResumeLayout(False)
+        Me.GroupBox29.PerformLayout()
+        CType(Me.dgvDistribute, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox10.ResumeLayout(False)
+        Me.GroupBox10.PerformLayout()
         Me.pnlCalendar.ResumeLayout(False)
         Me.pnlCalendar.PerformLayout()
         Me.tpProduct.ResumeLayout(False)
@@ -6923,35 +6024,10 @@ Partial Class frmMain
     Friend WithEvents Label83 As Label
     Friend WithEvents txtCusName_dist As TextBox
     Friend WithEvents Label82 As Label
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents RadioButton3 As RadioButton
-    Friend WithEvents RadioButton2 As RadioButton
-    Friend WithEvents RadioButton1 As RadioButton
     Friend WithEvents btnDistQuery As Button
-    Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents GroupBox4 As GroupBox
-    Friend WithEvents RadioButton7 As RadioButton
-    Friend WithEvents RadioButton10 As RadioButton
-    Friend WithEvents RadioButton8 As RadioButton
-    Friend WithEvents RadioButton9 As RadioButton
-    Friend WithEvents GroupBox6 As GroupBox
-    Friend WithEvents GroupBox5 As GroupBox
-    Friend WithEvents RadioButton11 As RadioButton
-    Friend WithEvents RadioButton12 As RadioButton
-    Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents CheckBox4 As CheckBox
-    Friend WithEvents CheckBox3 As CheckBox
-    Friend WithEvents GroupBox8 As GroupBox
-    Friend WithEvents CheckBox9 As CheckBox
-    Friend WithEvents CheckBox26 As CheckBox
-    Friend WithEvents CheckBox27 As CheckBox
-    Friend WithEvents txtDistMemo As TextBox
-    Friend WithEvents Label88 As Label
     Friend WithEvents btnDistCancel As Button
     Friend WithEvents btnDistDel As Button
-    Friend WithEvents btnDistModify As Button
-    Friend WithEvents btnDistAdd As Button
+    Friend WithEvents distInsert As Button
     Friend WithEvents tpOrder As TabPage
     Friend WithEvents txtTotalPrice As TextBox
     Friend WithEvents Label26 As Label
@@ -7029,98 +6105,8 @@ Partial Class frmMain
     Friend WithEvents Label90 As Label
     Friend WithEvents Label125 As Label
     Friend WithEvents Label126 As Label
-    Friend WithEvents TabControl3 As TabControl
-    Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents TabPage2 As TabPage
-    Friend WithEvents GroupBox9 As GroupBox
-    Friend WithEvents RadioButton20 As RadioButton
-    Friend WithEvents RadioButton21 As RadioButton
-    Friend WithEvents RadioButton22 As RadioButton
-    Friend WithEvents GroupBox11 As GroupBox
-    Friend WithEvents RadioButton23 As RadioButton
-    Friend WithEvents RadioButton24 As RadioButton
-    Friend WithEvents RadioButton25 As RadioButton
-    Friend WithEvents GroupBox12 As GroupBox
-    Friend WithEvents RadioButton26 As RadioButton
-    Friend WithEvents RadioButton27 As RadioButton
-    Friend WithEvents GroupBox13 As GroupBox
-    Friend WithEvents RadioButton28 As RadioButton
-    Friend WithEvents RadioButton29 As RadioButton
-    Friend WithEvents GroupBox14 As GroupBox
-    Friend WithEvents RadioButton30 As RadioButton
-    Friend WithEvents RadioButton31 As RadioButton
-    Friend WithEvents GroupBox15 As GroupBox
-    Friend WithEvents CheckBox5 As CheckBox
-    Friend WithEvents CheckBox28 As CheckBox
-    Friend WithEvents CheckBox29 As CheckBox
-    Friend WithEvents CheckBox30 As CheckBox
-    Friend WithEvents GroupBox16 As GroupBox
-    Friend WithEvents CheckBox31 As CheckBox
-    Friend WithEvents CheckBox32 As CheckBox
-    Friend WithEvents CheckBox33 As CheckBox
-    Friend WithEvents TabPage5 As TabPage
-    Friend WithEvents GroupBox18 As GroupBox
-    Friend WithEvents RadioButton39 As RadioButton
-    Friend WithEvents RadioButton40 As RadioButton
-    Friend WithEvents RadioButton41 As RadioButton
-    Friend WithEvents GroupBox19 As GroupBox
-    Friend WithEvents RadioButton42 As RadioButton
-    Friend WithEvents RadioButton43 As RadioButton
-    Friend WithEvents RadioButton44 As RadioButton
-    Friend WithEvents GroupBox20 As GroupBox
-    Friend WithEvents RadioButton45 As RadioButton
-    Friend WithEvents RadioButton46 As RadioButton
-    Friend WithEvents GroupBox21 As GroupBox
-    Friend WithEvents RadioButton47 As RadioButton
-    Friend WithEvents RadioButton48 As RadioButton
-    Friend WithEvents GroupBox22 As GroupBox
-    Friend WithEvents RadioButton49 As RadioButton
-    Friend WithEvents RadioButton50 As RadioButton
-    Friend WithEvents GroupBox23 As GroupBox
-    Friend WithEvents CheckBox37 As CheckBox
-    Friend WithEvents CheckBox38 As CheckBox
-    Friend WithEvents CheckBox39 As CheckBox
-    Friend WithEvents CheckBox40 As CheckBox
-    Friend WithEvents GroupBox24 As GroupBox
-    Friend WithEvents CheckBox41 As CheckBox
-    Friend WithEvents CheckBox42 As CheckBox
-    Friend WithEvents CheckBox43 As CheckBox
-    Friend WithEvents GroupBox25 As GroupBox
-    Friend WithEvents CheckBox44 As CheckBox
-    Friend WithEvents CheckBox45 As CheckBox
-    Friend WithEvents CheckBox46 As CheckBox
     Friend WithEvents btnPermCancel As Button
     Friend WithEvents dtDelivery As DateTimePicker
-    Friend WithEvents GroupBox7 As GroupBox
-    Friend WithEvents CheckBox6 As CheckBox
-    Friend WithEvents CheckBox7 As CheckBox
-    Friend WithEvents CheckBox8 As CheckBox
-    Friend WithEvents CheckBox61 As CheckBox
-    Friend WithEvents CheckBox62 As CheckBox
-    Friend WithEvents CheckBox63 As CheckBox
-    Friend WithEvents CheckBox64 As CheckBox
-    Friend WithEvents CheckBox65 As CheckBox
-    Friend WithEvents CheckBox66 As CheckBox
-    Friend WithEvents CheckBox67 As CheckBox
-    Friend WithEvents GroupBox17 As GroupBox
-    Friend WithEvents CheckBox34 As CheckBox
-    Friend WithEvents CheckBox35 As CheckBox
-    Friend WithEvents CheckBox36 As CheckBox
-    Friend WithEvents CheckBox54 As CheckBox
-    Friend WithEvents CheckBox55 As CheckBox
-    Friend WithEvents CheckBox56 As CheckBox
-    Friend WithEvents CheckBox57 As CheckBox
-    Friend WithEvents CheckBox58 As CheckBox
-    Friend WithEvents CheckBox59 As CheckBox
-    Friend WithEvents CheckBox60 As CheckBox
-    Friend WithEvents CheckBox53 As CheckBox
-    Friend WithEvents CheckBox52 As CheckBox
-    Friend WithEvents CheckBox51 As CheckBox
-    Friend WithEvents CheckBox50 As CheckBox
-    Friend WithEvents CheckBox49 As CheckBox
-    Friend WithEvents CheckBox48 As CheckBox
-    Friend WithEvents CheckBox47 As CheckBox
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents btnAddMonth As Button
     Friend WithEvents txtDistCalendar As TextBox
     Friend WithEvents btnMinusMonth As Button
@@ -7167,7 +6153,7 @@ Partial Class frmMain
     Friend WithEvents Label106 As Label
     Friend WithEvents txtDiscount As TextBox
     Friend WithEvents Label109 As Label
-    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents txtDistQuery As TextBox
     Friend WithEvents dgvProdgroup As DataGridView
     Friend WithEvents txtProdGrpName As TextBox
     Friend WithEvents txtProdGrpID As TextBox
@@ -7180,9 +6166,7 @@ Partial Class frmMain
     Friend WithEvents txtUnpay As TextBox
     Friend WithEvents chkProdGrp As CheckBox
     Friend WithEvents chkTaboo As CheckBox
-    Friend WithEvents RadioButton5 As RadioButton
-    Friend WithEvents RadioButton4 As RadioButton
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txtProdName_dist As TextBox
     Friend WithEvents Label111 As Label
     Friend WithEvents chkDinnerAddr As CheckBox
     Friend WithEvents chkLunchAddr As CheckBox
@@ -7314,4 +6298,46 @@ Partial Class frmMain
     Friend WithEvents Label134 As Label
     Friend WithEvents cmbSales As ComboBox
     Friend WithEvents Label135 As Label
+    Friend WithEvents dgvDistribute As DataGridView
+    Friend WithEvents dtpDistribute As DateTimePicker
+    Friend WithEvents txtOrdID_dist As TextBox
+    Friend WithEvents Label136 As Label
+    Friend WithEvents GroupBox23 As GroupBox
+    Friend WithEvents CheckBox73 As CheckBox
+    Friend WithEvents CheckBox74 As CheckBox
+    Friend WithEvents CheckBox81 As CheckBox
+    Friend WithEvents CheckBox88 As CheckBox
+    Friend WithEvents CheckBox89 As CheckBox
+    Friend WithEvents CheckBox90 As CheckBox
+    Friend WithEvents CheckBox91 As CheckBox
+    Friend WithEvents CheckBox92 As CheckBox
+    Friend WithEvents CheckBox93 As CheckBox
+    Friend WithEvents CheckBox94 As CheckBox
+    Friend WithEvents GroupBox24 As GroupBox
+    Friend WithEvents RadioButton34 As RadioButton
+    Friend WithEvents RadioButton35 As RadioButton
+    Friend WithEvents RadioButton36 As RadioButton
+    Friend WithEvents RadioButton37 As RadioButton
+    Friend WithEvents RadioButton38 As RadioButton
+    Friend WithEvents GroupBox25 As GroupBox
+    Friend WithEvents RadioButton39 As RadioButton
+    Friend WithEvents RadioButton40 As RadioButton
+    Friend WithEvents GroupBox26 As GroupBox
+    Friend WithEvents RadioButton41 As RadioButton
+    Friend WithEvents RadioButton42 As RadioButton
+    Friend WithEvents GroupBox27 As GroupBox
+    Friend WithEvents RadioButton43 As RadioButton
+    Friend WithEvents RadioButton44 As RadioButton
+    Friend WithEvents GroupBox28 As GroupBox
+    Friend WithEvents CheckBox95 As CheckBox
+    Friend WithEvents CheckBox96 As CheckBox
+    Friend WithEvents CheckBox97 As CheckBox
+    Friend WithEvents CheckBox98 As CheckBox
+    Friend WithEvents GroupBox29 As GroupBox
+    Friend WithEvents CheckBox99 As CheckBox
+    Friend WithEvents CheckBox100 As CheckBox
+    Friend WithEvents CheckBox101 As CheckBox
+    Friend WithEvents btnDistModify As Button
+    Friend WithEvents txtSelectDate As TextBox
+    Friend WithEvents Label88 As Label
 End Class

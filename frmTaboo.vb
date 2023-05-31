@@ -1,7 +1,5 @@
 ﻿Public Class frmTaboo
     Private dic As New Dictionary(Of Int32, Boolean)
-    'todo frmMain.txtTaboo 若有值 傳值進來同步勾選
-    'todo 清除鍵
     Private Sub frmTaboo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '初始化所有選項
         For Each row In frmMain.dtTaboo.AsEnumerable.Select(Function(x) x.Field(Of Int32)("tabo_id"))
