@@ -1,5 +1,5 @@
-﻿Imports System.Configuration
-Imports System.Text
+﻿Imports System.Text
+Imports Microsoft.Office.Interop
 Imports MySql.Data.MySqlClient
 
 Public Class frmMain
@@ -38,8 +38,13 @@ Public Class frmMain
         dtTaboo = SelectFromTable("SELECT * FROM taboo")
         '初始化配餐管理 月曆
         txtDistCalendar.Text = DateTime.Now.ToString("Y")
+        '初始化菜單版本
+        With cmbProdVers_menu
+            Dim arr() As String = {"A", "B", "C", "D"}
+            .DataSource = arr
+            .SelectedIndex = -1
+        End With
         'todo 未完成區-----
-        tpMenu.Parent = Nothing
         TP_Report.Parent = Nothing
     End Sub
 
@@ -56,13 +61,13 @@ Public Class frmMain
         Dim isSelected As Boolean = (e.State And DrawItemState.Selected) = DrawItemState.Selected
 
         ' 繪製索引標籤的背景
-        Dim backColor As Color = If(isSelected, Color.CornflowerBlue, Color.WhiteSmoke)
+        Dim backColor As System.Drawing.Color = If(isSelected, System.Drawing.Color.CornflowerBlue, System.Drawing.Color.WhiteSmoke)
         e.Graphics.FillRectangle(New SolidBrush(backColor), e.Bounds)
 
         ' 繪製索引標籤的文字
         Dim text As String = tab.Text
-        Dim textColor As Color = If(isSelected, Color.White, Color.Black)
-        Dim font As Font = tabControl.Font
+        Dim textColor As System.Drawing.Color = If(isSelected, System.Drawing.Color.White, System.Drawing.Color.Black)
+        Dim font As System.Drawing.Font = tabControl.Font
         e.Graphics.DrawString(text, font, New SolidBrush(textColor), e.Bounds.Location)
     End Sub
 
@@ -83,7 +88,13 @@ Public Class frmMain
                 .SelectedIndex = -1
             End With
         Next
-
+        '初始化商品
+        With cmbProdName_menu
+            .DataSource = SelectFromTable("SELECT * FROM product WHERE prod_type = '套餐'")
+            .DisplayMember = "prod_name"
+            .ValueMember = "prod_id"
+            .SelectedIndex = -1
+        End With
         '初始化商品管理的商品分類
         Dim items() As String = {"套餐", "單點"}
         cmbProdType.Items.AddRange(items)
@@ -153,106 +164,70 @@ Public Class frmMain
         DataToDgv(SelectFromTable(sqlEmployee), "permissions,employee", dgvEmployee)
         '配餐管理        
         DataToDgv(SelectFromTable(sqlDistribute), "distribute,orders,customer,product", dgvDistribute)
-
         '菜單管理
-        With dgvMenu
-            .Columns.Add("", "編號")
-            .Columns.Add("", "版本")
-            .Columns.Add("", "日期")
-            .Columns.Add("", "商品名稱")
-            .Columns.Add("", "早餐-主食")
-            .Columns.Add("", "早餐-主菜")
-            .Columns.Add("", "早餐-半葷")
-            .Columns.Add("", "早餐-青菜/西飲")
-            .Columns.Add("", "早餐-湯品")
-            .Columns.Add("", "早餐-飲品")
-            .Columns.Add("", "午餐-湯盅")
-            .Columns.Add("", "午餐-湯盅(1,2期)")
-            .Columns.Add("", "午餐-湯盅(3,4期)")
-            .Columns.Add("", "午餐-主食")
-            .Columns.Add("", "午餐-主菜")
-            .Columns.Add("", "午餐-半葷")
-            .Columns.Add("", "午餐-青菜")
-            .Columns.Add("", "午餐-水果")
-            .Columns.Add("", "午餐-甜品")
-            .Columns.Add("", "午餐-飲品")
-            .Columns.Add("", "晚餐-湯盅")
-            .Columns.Add("", "晚餐-湯盅(1,2期)")
-            .Columns.Add("", "晚餐-湯盅(3,4期)")
-            .Columns.Add("", "晚餐-主食")
-            .Columns.Add("", "晚餐-主菜")
-            .Columns.Add("", "晚餐-半葷")
-            .Columns.Add("", "晚餐-青菜")
-            .Columns.Add("", "晚餐-水果")
-            .Columns.Add("", "晚餐-飲品")
-            .Columns.Add("", "晚點-湯盅")
-            .Columns.Add("", "晚點-湯盅(1,2期)")
-            .Columns.Add("", "晚點-湯盅(3,4期)")
-            .Rows.Add("1", "B", "2023-01-23", "經典月子餐", "黃金小米粥", "泰式沙嗲烤豬", "燻雞香拌雲耳", "蒜香龍鬚菜", "黃芪鮮雞湯", "", "枸杞排骨湯", "枸杞排骨湯", "杜仲燉排骨", "傳香地瓜飯", "蒜蓉海大蝦", "茶油杏菇爆炒腰子", "玉米高麗菜", "柳丁",
-                      "紅糖大麥粥", "", "錦蔬鮮魚湯", "錦蔬鮮魚湯", "何首烏鮮魚湯", "枸杞養生飯(茶油)", "醬燒煨豬膝", "塔香肉絲海龍", "吻魚白杏菜", "黃奇果", "", "玉竹鮮雞湯", "干貝鮮雞湯", "八珍干貝鮮雞湯")
-
-            .Rows.Add("2", "B", "2023-01-03", "溫馨月子餐", "照燒梅花三明治", "田園烤白筍", "起司煎蛋", "養生芝麻飲", "青木瓜燉魚湯", "", "枸杞排骨湯", "何首烏排骨湯", "何首烏排骨湯", "芝麻糙米飯", "檸檬香煎海魚",
-                      "黃耆炒雞肉", "薑絲蔭醬過貓", "柳丁", "桂圓銀耳甜湯", "", "玉竹鮮雞湯", "紅棗玉竹鮮雞湯", "黨蔘鮮雞湯", "養生紫米飯", "秘製紅酒牛腩", "翡翠鮮菇蒸雙鮮", "腐乳高麗菜", "百香果", "", "棗香龍尾湯", "棗香龍尾湯",
-                      "龍尾虎豆燉紅棗")
-
-            .Rows.Add("3", "C", "2023-03-11", "幸福餐", "", "", "", "", "", "", "北蟲草花鮮雞湯", "", "", "香甜栗子飯", "南方澳帶魚捲(烤)", "塔香杏鮑菇", "鮮菇白杏", "", "", "味噌魚頭湯", "", "", "", "養生五穀飯",
-                      "磨菇豬小排", "茶香紅棗雞", "蒜香青江菜")
-
-            .Rows.Add("4", "D", "2023-01-19", "住院餐", "田園時蔬雞肉粥", "椒塩烤鮑菇", "茄汁肉丸", "香菇高麗菜", "黃耆片鮮魚湯", "觀音串", "無花果排骨湯", "", "", "茶香珍菇飯", "梅子燒雞", "清炒香蔥魚栁", "金銀蛋莧菜",
-                      "四季水果", "紅糖燕麥粥", "杜仲茶", "玉竹鮮雞湯", "紅藜高纖飯", "粉蒸排骨(不要豆鼓)", "美人腿炒雞(茶香)", "吻魚炒青江菜", "", "通乳茶", "北菇燉魚湯")
-
-        End With
-
-        txtProdName_menu.Text = "經典月子餐"
-        cmbProdVers_menu.Text = "B"
-        dtMenu.Value = "2023-01-23"
-        txtBraSta.Text = "黃金小米粥"
-        txtBlaMain.Text = "泰式沙嗲烤豬"
-        txtBlaHM.Text = "燻雞香拌雲耳"
-        txtBlaVag.Text = "蒜香龍鬚菜"
-        txtBlaSoup.Text = "黃芪鮮雞湯"
-        txtBlaDri.Text = ""
-        txtLunSoup.Text = "枸杞排骨湯"
-        txtLun1.Text = "枸杞排骨湯"
-        txtLun3.Text = "杜仲燉排骨"
-        txtLunSta.Text = "傳香地瓜飯"
-        txtLunMain.Text = "蒜蓉海大蝦"
-        txtLunHM.Text = "茶油杏菇爆炒腰子"
-        txtLunVag.Text = "玉米高麗菜"
-        txtLunFru.Text = "柳丁"
-        txtLunDess.Text = "紅糖大麥粥"
-        txtLunDri.Text = ""
-        txtDinSoup.Text = "錦蔬鮮魚湯"
-        txtDin1.Text = "錦蔬鮮魚湯"
-        txtDin3.Text = "何首烏鮮魚湯"
-        txtDinSta.Text = "枸杞養生飯(茶油)"
-        txtDinMain.Text = "醬燒煨豬膝"
-        txtDinHM.Text = "塔香肉絲海龍"
-        txtDinVag.Text = "吻魚白杏菜"
-        txtDinFru.Text = "黃奇果"
-        txtDinDri.Text = ""
-        txtNSSoup.Text = "玉竹鮮雞湯"
-        txtNS1.Text = "干貝鮮雞湯"
-        txtNS3.Text = "八珍干貝鮮雞湯"
-
-        '配餐管理
-        'txtCusName_dist.Text = "陳小姐"
-        'txtPhone_dist.Text = "0918-123123"
+        DataToDgv(SelectFromTable(sqlMenu), "menu,product", dgvMenu)
     End Sub
 
-    Private Sub btnMenuExcel_Click(sender As Object, e As EventArgs) Handles btnMenuExcel.Click
-        'Dim excelApp As New Excel.Application
+    '''' <summary>
+    '''' xml取得儲存格資訊
+    '''' </summary>
+    '''' <returns></returns>
+    'Private Function GetCell() As Dictionary(Of String, String)
+    '    Dim dic As New Dictionary(Of String, String)
+    '    Dim exl = SpreadsheetDocument.Open("D:\WorkWork\挺益\20220126_菜單新格式\最新A版叫貨.xlsx", False)
+    '    Dim workbookPart As WorkbookPart = exl.WorkbookPart
+    '    Dim targetSheet = workbookPart.Workbook.Sheets.Elements(Of Sheet).FirstOrDefault(Function(x) x.Name = "菜單總表")
+    '    Dim worksheetPart As WorksheetPart = workbookPart.GetPartById(targetSheet.Id)
+    '    Dim sheetData As SheetData = worksheetPart.Worksheet.GetFirstChild(Of SheetData)()
+    '    Dim a As CellWhere
+    '    a.Column = "D"
+    '    a.RowStart = 3
+    '    a.RowEnd = 36
+    '    Dim cellName As New List(Of CellWhere) From {
+    '        a
+    '    }
 
-        'Dim workbook As Excel.Workbook = excelApp.Workbooks.Open("C:\ExcelFile.xlsx")
-        'Dim worksheet As Excel.Worksheet = workbook.Sheets("Sheet1")
+    '    For Each lst In cellName
+    '        For i As Integer = lst.RowStart To lst.RowEnd
+    '            If sheetData IsNot Nothing Then
+    '                Dim cellRef As String = lst.Column + i.ToString
+    '                Dim cell As Cell = sheetData.Descendants(Of Cell)().FirstOrDefault(Function(x) x.CellReference.Value = cellRef)
 
-        'Dim cellValue As String = worksheet.Cells(1, 1).Value
+    '                If cell IsNot Nothing Then
+    '                    ' 取得 A1 儲存格的值
+    '                    Dim sharedStringTablePart As SharedStringTablePart = workbookPart.GetPartsOfType(Of SharedStringTablePart)().FirstOrDefault()
+    '                    Dim cellValue As String = GetCellValue(cell, sharedStringTablePart)
+    '                    dic.Add(cellRef, cellValue)
+    '                Else
+    '                    Console.WriteLine($"找不到{cellName}儲存格")
+    '                End If
+    '            Else
+    '                Console.WriteLine("找不到工作表資料")
+    '                Exit For
+    '            End If
 
-        'workbook.Close(False)
-        'Marshal.ReleaseComObject(workbook)
-        'Marshal.ReleaseComObject(excelApp)
+    '        Next
+    '    Next
+    '    Return dic
+    'End Function
 
-    End Sub
+    '''' <summary>
+    '''' xml取出儲存格文字
+    '''' </summary>
+    '''' <param name="cell"></param>
+    '''' <param name="sharedStringTablePart"></param>
+    '''' <returns></returns>
+    'Private Function GetCellValue(cell As Cell, sharedStringTablePart As SharedStringTablePart) As String
+    '    Dim cellValue As String = cell.InnerText
+
+    '    If cell.DataType IsNot Nothing AndAlso cell.DataType.Value = CellValues.SharedString Then
+    '        Dim sharedStringIndex As Integer = Integer.Parse(cellValue)
+    '        Dim sharedStringItem As SharedStringItem = sharedStringTablePart.SharedStringTable.Elements(Of SharedStringItem)().ElementAt(sharedStringIndex)
+    '        cellValue = sharedStringItem.Text.Text
+    '    End If
+
+    '    Return cellValue
+    'End Function
 
     '客戶管理-dgv點擊
     Private Sub dgvCustomer_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvCustomer.CellMouseClick
@@ -517,7 +492,7 @@ Finish:
         Dim row = dgv.SelectedRows(0)
         Dim colName As String
         Dim rowData = SelectFromTable($"SELECT * FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id = c.prod_id LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id LEFT JOIN employee e ON a.ord_emp_id=e.emp_id WHERE ord_id = '{row.Cells("ord_id").Value}'").Rows(0)
-        For Each ctrl As Control In dgv.Parent.Controls
+        For Each ctrl As Windows.Forms.Control In dgv.Parent.Controls
             colName = ctrl.Tag 'TextBox的Tag對應表格的名稱
             If TypeOf ctrl Is TextBox Then
                 If Not String.IsNullOrEmpty(colName) Then ctrl.Text = rowData(colName).ToString
@@ -802,7 +777,7 @@ Finish:
         If dgv.SelectedRows.Count > 0 Then
             Dim row = dgv.SelectedRows(0)
             Dim colName As String
-            For Each ctrl As Control In dgv.Parent.Controls
+            For Each ctrl As Windows.Forms.Control In dgv.Parent.Controls
                 'TextBox的Tag對應表格的備註
                 If TypeOf ctrl Is TextBox Then
                     colName = dgv.Columns.Cast(Of DataGridViewColumn)().FirstOrDefault(Function(x) x.HeaderText = ctrl.Tag)?.Name
@@ -902,7 +877,7 @@ Finish:
         Dim dgvRow = dgv.SelectedRows(0)
         Dim colName As String
         Dim rowData = SelectFromTable($"SELECT a.ord_id,b.cus_name,b.cus_phone,c.prod_name,a.ord_delivery,a.ord_breakfast,a.ord_lunch,a.ord_dinner FROM orders a LEFT JOIN customer b ON a.ord_cus_id=b.cus_id LEFT JOIN product c ON a.ord_prod_id=c.prod_id WHERE a.ord_id = '{dgvRow.Cells("ord_id").Value}'").Rows(0)
-        For Each ctrl As Control In dgv.Parent.Controls
+        For Each ctrl As Windows.Forms.Control In dgv.Parent.Controls
             colName = ctrl.Tag 'TextBox的Tag對應表格欄位名稱
             If TypeOf ctrl Is TextBox Then
                 If Not String.IsNullOrEmpty(colName) Then ctrl.Text = rowData(colName).ToString
@@ -938,7 +913,7 @@ Finish:
             Dim btn = pnl?.Controls.OfType(Of Button).FirstOrDefault(Function(x) x.Text = row.Field(Of String)("dist_meal"))
             If btn IsNot Nothing Then
                 btn.Tag = row
-                btn.BackColor = Color.LightGreen
+                btn.BackColor = System.Drawing.Color.LightGreen
             End If
         Next
     End Sub
@@ -1017,7 +992,7 @@ Finish:
         Cursor = Cursors.WaitCursor
         Dim table = "distribute"
         '抓出所選的天
-        If tempDistDay.BackColor = Color.LightGreen Then
+        If tempDistDay.BackColor = System.Drawing.Color.LightGreen Then
             Dim day = tempDistDay.Parent.Controls.OfType(Of Label).FirstOrDefault.Text
             Dim d = Date.Parse(txtDistCalendar.Text + day + "日")
             Dim dic As New Dictionary(Of String, String)
@@ -1059,7 +1034,7 @@ Finish:
         Cursor = Cursors.WaitCursor
         Dim table = "distribute"
         '抓出所選的天
-        If tempDistDay.BackColor = Color.LightGreen Then
+        If tempDistDay.BackColor = System.Drawing.Color.LightGreen Then
             Dim day = tempDistDay.Parent.Controls.OfType(Of Label).FirstOrDefault.Text
             Dim d = Date.Parse(txtDistCalendar.Text + day + "日")
             Dim dic As New Dictionary(Of String, String)
@@ -1121,7 +1096,7 @@ Finish:
             .Tag = i'存日期供搜尋用
         }
         '日期
-        Dim font As New Font("Arial", 12, FontStyle.Bold)
+        Dim font As New System.Drawing.Font("Arial", 12, FontStyle.Bold)
         Dim point As Point
         point = New Point(0, 0)
         Dim lbl As New Label With {.Text = i, .Parent = panel, .Font = font, .AutoSize = True, .Location = point}
@@ -1147,7 +1122,7 @@ Finish:
             .Text = txt,
             .AutoSize = False,
             .Location = point,
-            .Font = New Font("標楷體", 10, FontStyle.Bold),
+            .Font = New System.Drawing.Font("標楷體", 10, FontStyle.Bold),
             .Height = 25,
             .Width = 25,
             .TextAlign = ContentAlignment.MiddleCenter
@@ -1256,7 +1231,1108 @@ Finish:
         tlpCalendar.Visible = True
     End Sub
 
-    'todo 更改月曆時間,有訂單就找訂單月份,沒訂單就用現在月份
+    '菜單管理-Excel匯入
+    Private Sub btnMenuExcel_Click(sender As Object, e As EventArgs) Handles btnMenuExcel.Click
+        Cursor = Cursors.WaitCursor
+        Dim exl As New Excel.Application With {
+            .DisplayAlerts = False
+        }
+        Dim sheet As Excel.Worksheet = exl.Workbooks.Open("D:\WorkWork\挺益\20220126_菜單新格式\最新A版叫貨.xlsx").Sheets("菜單總表")
+        Dim rng As String
+        Dim cell As Excel.Range
+        Dim value As Object
+        Dim txt As String
+        Dim menu As Menu
+        Dim tempCell As Excel.Range
+        Dim backColor As Excel.XlRgbColor
+        '版本
+        rng = "A2"
+        cell = sheet.Range(rng)
+        value = cell.Value
+        txt = value.ToString()
+        Dim ver = txt.Substring(txt.Length - 2, 1)
+        '蒐集完丟這裡
+        Dim lstMenu As New List(Of Menu)
+        '月子早餐
+        Dim dicMoonSonBreak As New Dictionary(Of Integer, Integer) From {
+            {4, Meal_Detail.主食},
+            {5, Meal_Detail.主菜},
+            {6, Meal_Detail.半葷素},
+            {7, Meal_Detail.青菜西飲},
+            {8, Meal_Detail.湯品}
+        }
+        '月子午餐
+        Dim dicMoonSonLunch As New Dictionary(Of Integer, Integer) From {
+            {9, Meal_Detail.湯盅清補},
+            {10, Meal_Detail.湯盅1期},
+            {11, Meal_Detail.湯盅3期},
+            {12, Meal_Detail.主食},
+            {13, Meal_Detail.主菜},
+            {14, Meal_Detail.半葷素},
+            {15, Meal_Detail.蔬菜1},
+            {16, Meal_Detail.水果},
+            {17, Meal_Detail.甜品}
+        }
+        '月子晚餐
+        Dim dicMoonSonDinner As New Dictionary(Of Integer, Integer) From {
+            {18, Meal_Detail.湯盅清補},
+            {19, Meal_Detail.湯盅1期},
+            {20, Meal_Detail.湯盅3期},
+            {21, Meal_Detail.主食},
+            {22, Meal_Detail.主菜},
+            {23, Meal_Detail.半葷素},
+            {24, Meal_Detail.蔬菜1},
+            {25, Meal_Detail.水果}
+        }
+        '月子晚點
+        Dim dicMoonSonNightSnack As New Dictionary(Of Integer, Integer) From {
+            {26, Meal_Detail.湯盅清補},
+            {27, Meal_Detail.湯盅1期},
+            {28, Meal_Detail.湯盅3期}
+        }
+        '調理餐
+        Dim dicConditioning As New Dictionary(Of Integer, Integer) From {
+            {39, Meal_Detail.主食},
+            {40, Meal_Detail.主菜},
+            {41, Meal_Detail.半葷素},
+            {42, Meal_Detail.蔬菜1},
+            {43, Meal_Detail.蔬菜2},
+            {44, Meal_Detail.湯品},
+            {45, Meal_Detail.水果}
+        }
+        '幸福午餐
+        Dim dicHappinessLunch As New Dictionary(Of Integer, Integer) From {
+            {50, Meal_Detail.主食},
+            {51, Meal_Detail.主菜},
+            {52, Meal_Detail.半葷素},
+            {53, Meal_Detail.蔬菜1},
+            {54, Meal_Detail.湯品}
+        }
+        '幸福晚餐
+        Dim dicHappinessDinner As New Dictionary(Of Integer, Integer) From {
+            {56, Meal_Detail.主食},
+            {57, Meal_Detail.主菜},
+            {58, Meal_Detail.半葷素},
+            {59, Meal_Detail.蔬菜1},
+            {60, Meal_Detail.湯品}
+        }
+        '住院早餐
+        Dim dicHospitalizedBreak As New Dictionary(Of Integer, Integer) From {
+            {65, Meal_Detail.主食},
+            {66, Meal_Detail.主菜},
+            {67, Meal_Detail.半葷素},
+            {68, Meal_Detail.蔬菜1},
+            {69, Meal_Detail.湯品},
+            {70, Meal_Detail.飲品}
+        }
+        '住院午餐
+        Dim dicHospitalizedLunch As New Dictionary(Of Integer, Integer) From {
+            {71, Meal_Detail.主食},
+            {72, Meal_Detail.主菜},
+            {73, Meal_Detail.半葷素},
+            {74, Meal_Detail.蔬菜1},
+            {75, Meal_Detail.湯品},
+            {76, Meal_Detail.水果},
+            {77, Meal_Detail.飲品},
+            {78, Meal_Detail.甜湯}
+        }
+        '住院晚餐
+        Dim dicHospitalizedDinner As New Dictionary(Of Integer, Integer) From {
+            {79, Meal_Detail.主食},
+            {80, Meal_Detail.主菜},
+            {81, Meal_Detail.半葷素},
+            {82, Meal_Detail.蔬菜1},
+            {83, Meal_Detail.湯品},
+            {84, Meal_Detail.飲品},
+            {85, Meal_Detail.夜點}
+        }
+        '輕食早餐
+        Dim dicLightMealBreak As New Dictionary(Of Integer, Integer) From {
+            {89, Meal_Detail.主食},
+            {90, Meal_Detail.主菜},
+            {91, Meal_Detail.蔬菜1},
+            {92, Meal_Detail.蔬菜2},
+            {93, Meal_Detail.水果},
+            {94, Meal_Detail.飲品}
+        }
+        '輕食午餐
+        Dim dicLightMealLunch As New Dictionary(Of Integer, Integer) From {
+            {96, Meal_Detail.主食},
+            {97, Meal_Detail.主菜},
+            {98, Meal_Detail.蔬菜1},
+            {99, Meal_Detail.蔬菜2},
+            {100, Meal_Detail.水果},
+            {101, Meal_Detail.飲品}
+        }
+        '輕食晚餐
+        Dim dicLightMealDinner As New Dictionary(Of Integer, Integer) From {
+            {103, Meal_Detail.主食},
+            {104, Meal_Detail.主菜},
+            {105, Meal_Detail.蔬菜1},
+            {106, Meal_Detail.蔬菜2},
+            {107, Meal_Detail.水果},
+            {108, Meal_Detail.飲品}
+        }
+        '術後調理早餐
+        Dim dicOperationBreak As New Dictionary(Of Integer, Integer) From {
+            {4, Meal_Detail.主食},
+            {5, Meal_Detail.主菜},
+            {6, Meal_Detail.半葷素},
+            {7, Meal_Detail.青菜西飲},
+            {8, Meal_Detail.湯品}
+        }
+        '術後調理午餐
+        Dim dicOperationLunch As New Dictionary(Of Integer, Integer) From {
+            {11, Meal_Detail.主食},
+            {12, Meal_Detail.主菜},
+            {13, Meal_Detail.半葷素},
+            {14, Meal_Detail.蔬菜1},
+            {15, Meal_Detail.水果},
+            {9, Meal_Detail.湯盅清補}
+        }
+        '術後調理晚餐
+        Dim dicOperationDinner As New Dictionary(Of Integer, Integer) From {
+            {18, Meal_Detail.主食},
+            {19, Meal_Detail.主菜},
+            {20, Meal_Detail.半葷素},
+            {21, Meal_Detail.蔬菜1},
+            {22, Meal_Detail.水果},
+            {16, Meal_Detail.湯盅清補}
+        }
+        '素食早餐
+        Dim dicVegetarianBreak As New Dictionary(Of Integer, Integer) From {
+            {27, Meal_Detail.主食},
+            {28, Meal_Detail.主菜},
+            {29, Meal_Detail.半葷素},
+            {30, Meal_Detail.青菜西飲},
+            {31, Meal_Detail.湯品}
+        }
+        '素食午餐
+        Dim dicVegetarianLunch As New Dictionary(Of Integer, Integer) From {
+            {32, Meal_Detail.湯盅清補},
+            {33, Meal_Detail.湯盅2期},
+            {34, Meal_Detail.主食},
+            {35, Meal_Detail.主菜},
+            {36, Meal_Detail.半葷素},
+            {37, Meal_Detail.蔬菜1},
+            {38, Meal_Detail.甜品}
+        }
+        '素食晚餐
+        Dim dicVegetarianDinner As New Dictionary(Of Integer, Integer) From {
+            {39, Meal_Detail.湯盅清補},
+            {40, Meal_Detail.湯盅2期},
+            {41, Meal_Detail.主食},
+            {42, Meal_Detail.主菜},
+            {43, Meal_Detail.半葷素},
+            {44, Meal_Detail.蔬菜1},
+            {46, Meal_Detail.夜點}
+        }
+        '素食一般午餐
+        Dim dicVegetarianNormalLunch As New Dictionary(Of Integer, Integer) From {
+            {53, Meal_Detail.主食},
+            {54, Meal_Detail.主菜},
+            {55, Meal_Detail.蔬菜1},
+            {56, Meal_Detail.蔬菜2},
+            {57, Meal_Detail.湯品}
+        }
+        '素食一般晚餐
+        Dim dicVegetarianNormalDinner As New Dictionary(Of Integer, Integer) From {
+            {58, Meal_Detail.主食},
+            {59, Meal_Detail.主菜},
+            {60, Meal_Detail.蔬菜1},
+            {61, Meal_Detail.蔬菜2},
+            {62, Meal_Detail.湯品}
+        }
+        For col As Integer = Asc("D") To Asc("J")
+            '日期
+            rng = Chr(col) + "3"
+            cell = sheet.Range(rng)
+            value = cell.Value
+            txt = value.ToString()
+            Dim d = Date.Parse(txt)
+
+            For row As Integer = 4 To 8
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "經典月子餐",
+                    .Meal = Meal.早餐,
+                    .Meal_Detail = dicMoonSonBreak(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "溫馨月子餐",
+                    .Meal = Meal.早餐,
+                    .Meal_Detail = dicMoonSonBreak(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+
+            For row As Integer = 9 To 17
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "經典月子餐",
+                    .Meal = Meal.午餐,
+                    .Meal_Detail = dicMoonSonLunch(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                '判斷顏色,若是黃色在搜尋菜單下面的來替換
+                backColor = cell.Interior.Color
+                If backColor.ToString = "rgbYellow" Then
+                    rng = Chr(col) + "33"
+                    tempCell = sheet.Range(rng)
+                    If tempCell.Value.ToString = "" Then
+                        value = cell.Value
+                    Else
+                        value = tempCell.Value
+                    End If
+                Else
+                    value = cell.Value
+                End If
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+                tempCell = Nothing
+
+                If row = 10 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "經典月子餐",
+                        .Meal = Meal.午餐,
+                        .Meal_Detail = Meal_Detail.湯盅2期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    '判斷顏色,若是黃色在搜尋菜單下面的來替換
+                    backColor = cell.Interior.Color
+                    If backColor.ToString = "rgbYellow" Then
+                        rng = Chr(col) + "33"
+                        tempCell = sheet.Range(rng)
+                        If tempCell.Value.ToString = "" Then
+                            value = cell.Value
+                        Else
+                            value = tempCell.Value
+                        End If
+                    Else
+                        value = cell.Value
+                    End If
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+
+                If row = 11 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "經典月子餐",
+                        .Meal = Meal.午餐,
+                        .Meal_Detail = Meal_Detail.湯盅4期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    '判斷顏色,若是黃色在搜尋菜單下面的來替換
+                    backColor = cell.Interior.Color
+                    If backColor.ToString = "rgbYellow" Then
+                        rng = Chr(col) + "33"
+                        tempCell = sheet.Range(rng)
+                        If tempCell.Value.ToString = "" Then
+                            value = cell.Value
+                        Else
+                            value = tempCell.Value
+                        End If
+                    Else
+                        value = cell.Value
+                    End If
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "溫馨月子餐",
+                    .Meal = Meal.午餐,
+                    .Meal_Detail = dicMoonSonLunch(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+
+                If row = 10 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "溫馨月子餐",
+                        .Meal = Meal.午餐,
+                        .Meal_Detail = Meal_Detail.湯盅2期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    value = cell.Value
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+
+                If row = 11 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "溫馨月子餐",
+                        .Meal = Meal.午餐,
+                        .Meal_Detail = Meal_Detail.湯盅4期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    value = cell.Value
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+            Next
+
+            For row As Integer = 18 To 25
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "經典月子餐",
+                    .Meal = Meal.晚餐,
+                    .Meal_Detail = dicMoonSonDinner(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                '判斷顏色,若是黃色在搜尋菜單下面的來替換
+                backColor = cell.Interior.Color
+                If backColor.ToString = "rgbYellow" Then
+                    rng = Chr(col) + "33"
+                    tempCell = sheet.Range(rng)
+                    If tempCell.Value.ToString = "" Then
+                        value = cell.Value
+                    Else
+                        value = tempCell.Value
+                    End If
+                Else
+                    value = cell.Value
+                End If
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+                tempCell = Nothing
+
+                If row = 19 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "經典月子餐",
+                        .Meal = Meal.晚餐,
+                        .Meal_Detail = Meal_Detail.湯盅2期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    '判斷顏色,若是黃色在搜尋菜單下面的來替換
+                    backColor = cell.Interior.Color
+                    If backColor.ToString = "rgbYellow" Then
+                        rng = Chr(col) + "33"
+                        tempCell = sheet.Range(rng)
+                        If tempCell.Value.ToString = "" Then
+                            value = cell.Value
+                        Else
+                            value = tempCell.Value
+                        End If
+                    Else
+                        value = cell.Value
+                    End If
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+
+                If row = 20 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "經典月子餐",
+                        .Meal = Meal.晚餐,
+                        .Meal_Detail = Meal_Detail.湯盅4期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    '判斷顏色,若是黃色在搜尋菜單下面的來替換
+                    backColor = cell.Interior.Color
+                    If backColor.ToString = "rgbYellow" Then
+                        rng = Chr(col) + "33"
+                        tempCell = sheet.Range(rng)
+                        If tempCell.Value.ToString = "" Then
+                            value = cell.Value
+                        Else
+                            value = tempCell.Value
+                        End If
+                    Else
+                        value = cell.Value
+                    End If
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "溫馨月子餐",
+                    .Meal = Meal.晚餐,
+                    .Meal_Detail = dicMoonSonDinner(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+
+                If row = 19 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "溫馨月子餐",
+                        .Meal = Meal.晚餐,
+                        .Meal_Detail = Meal_Detail.湯盅2期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    value = cell.Value
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+
+                If row = 20 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "溫馨月子餐",
+                        .Meal = Meal.晚餐,
+                        .Meal_Detail = Meal_Detail.湯盅4期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    value = cell.Value
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+            Next
+
+            For row As Integer = 26 To 28
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "經典月子餐",
+                    .Meal = Meal.夜點,
+                    .Meal_Detail = dicMoonSonNightSnack(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+
+                If row = 27 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "經典月子餐",
+                        .Meal = Meal.夜點,
+                        .Meal_Detail = Meal_Detail.湯盅2期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    value = cell.Value
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+
+                If row = 28 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "經典月子餐",
+                        .Meal = Meal.夜點,
+                        .Meal_Detail = Meal_Detail.湯盅4期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    value = cell.Value
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "溫馨月子餐",
+                    .Meal = Meal.夜點,
+                    .Meal_Detail = dicMoonSonNightSnack(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+
+                If row = 27 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "溫馨月子餐",
+                        .Meal = Meal.夜點,
+                        .Meal_Detail = Meal_Detail.湯盅2期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    value = cell.Value
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+
+                If row = 28 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "溫馨月子餐",
+                        .Meal = Meal.夜點,
+                        .Meal_Detail = Meal_Detail.湯盅4期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    value = cell.Value
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+            Next
+
+            For row As Integer = 39 To 44
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "調理餐",
+                    .Meal = Meal.午餐,
+                    .Meal_Detail = dicConditioning(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                If value Is Nothing Then Continue For
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+            '調理餐水果
+            menu = New Menu With {
+                .Version = ver,
+                .MenuDate = d,
+                .ProductName = "調理餐",
+                .Meal = Meal.午餐,
+                .Meal_Detail = dicConditioning(45)
+            }
+            rng = "D45"
+            cell = sheet.Range(rng)
+            value = cell.Value
+            txt = value.ToString()
+            menu.Name = txt
+            lstMenu.Add(menu)
+
+            For row As Integer = 50 To 54
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "幸福餐",
+                    .Meal = Meal.午餐,
+                    .Meal_Detail = dicHappinessLunch(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+
+            For row As Integer = 56 To 60
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "幸福餐",
+                    .Meal = Meal.晚餐,
+                    .Meal_Detail = dicHappinessDinner(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+
+            For row As Integer = 65 To 70
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "住院餐",
+                    .Meal = Meal.早餐,
+                    .Meal_Detail = dicHospitalizedBreak(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+
+            For row As Integer = 71 To 78
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "住院餐",
+                    .Meal = Meal.午餐,
+                    .Meal_Detail = dicHospitalizedLunch(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+
+            For row As Integer = 79 To 85
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "住院餐",
+                    .Meal = Meal.晚餐,
+                    .Meal_Detail = dicHospitalizedDinner(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+
+            For row As Integer = 89 To 94
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "輕食餐",
+                    .Meal = Meal.早餐,
+                    .Meal_Detail = dicLightMealBreak(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+
+            For row As Integer = 96 To 101
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "輕食餐",
+                    .Meal = Meal.午餐,
+                    .Meal_Detail = dicLightMealLunch(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+
+            For row As Integer = 103 To 108
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "輕食餐",
+                    .Meal = Meal.晚餐,
+                    .Meal_Detail = dicLightMealDinner(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+        Next
+
+        For col As Integer = Asc("O") To Asc("U")
+            '日期
+            rng = Chr(col) + "3"
+            cell = sheet.Range(rng)
+            value = cell.Value
+            txt = value.ToString()
+            Dim d = Date.Parse(txt)
+
+            For row As Integer = 4 To 8
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "術後調理餐",
+                    .Meal = Meal.早餐,
+                    .Meal_Detail = dicOperationBreak(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+
+            For Each row In dicOperationLunch.Keys
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "術後調理餐",
+                    .Meal = Meal.午餐,
+                    .Meal_Detail = dicOperationLunch(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+
+            For Each row In dicOperationDinner.Keys
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "術後調理餐",
+                    .Meal = Meal.晚餐,
+                    .Meal_Detail = dicOperationDinner(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+
+            For row As Integer = 27 To 31
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "素食餐",
+                    .Meal = Meal.早餐,
+                    .Meal_Detail = dicVegetarianBreak(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+
+            For row As Integer = 32 To 38
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "素食餐",
+                    .Meal = Meal.午餐,
+                    .Meal_Detail = dicVegetarianLunch(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+
+                If row = 32 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "素食餐",
+                        .Meal = Meal.午餐,
+                        .Meal_Detail = Meal_Detail.湯盅1期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    value = cell.Value
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+
+                If row = 33 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "素食餐",
+                        .Meal = Meal.午餐,
+                        .Meal_Detail = Meal_Detail.湯盅3期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    value = cell.Value
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+            Next
+
+            For Each row In dicVegetarianDinner.Keys
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "素食餐",
+                    .Meal = Meal.晚餐,
+                    .Meal_Detail = dicVegetarianDinner(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+
+                If row = 39 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "素食餐",
+                        .Meal = Meal.晚餐,
+                        .Meal_Detail = Meal_Detail.湯盅1期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    value = cell.Value
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+
+                If row = 40 Then
+                    menu = New Menu With {
+                        .Version = ver,
+                        .MenuDate = d,
+                        .ProductName = "素食餐",
+                        .Meal = Meal.晚餐,
+                        .Meal_Detail = Meal_Detail.湯盅3期
+                    }
+                    rng = Chr(col) + row.ToString
+                    cell = sheet.Range(rng)
+                    value = cell.Value
+                    txt = value.ToString()
+                    menu.Name = txt
+                    lstMenu.Add(menu)
+                End If
+            Next
+
+            For row As Integer = 53 To 57
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "素食一般餐",
+                    .Meal = Meal.午餐,
+                    .Meal_Detail = dicVegetarianNormalLunch(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+
+            For row As Integer = 58 To 62
+                menu = New Menu With {
+                    .Version = ver,
+                    .MenuDate = d,
+                    .ProductName = "素食一般餐",
+                    .Meal = Meal.晚餐,
+                    .Meal_Detail = dicVegetarianNormalDinner(row)
+                }
+                rng = Chr(col) + row.ToString
+                cell = sheet.Range(rng)
+                value = cell.Value
+                txt = value.ToString()
+                menu.Name = txt
+                lstMenu.Add(menu)
+            Next
+        Next
+
+        'insert到table
+        For Each m In lstMenu
+            Dim table = "menu"
+            Dim dic As New Dictionary(Of String, String) From {
+                {"me_date", m.MenuDate},
+                {"me_version", m.Version},
+                {"me_meal_id", m.Meal},
+                {"me_meal_detail_id", m.Meal_Detail},
+                {"me_name", m.Name}
+            }
+            '與商品匹配
+            Dim dt = SelectFromTable($"SELECT prod_id FROM product WHERE prod_name = '{m.ProductName}'")
+            If dt.Rows.Count > 0 Then
+                Dim row = dt.Rows(0)
+                dic.Add("me_prod_id", row("prod_id").ToString)
+                '先刪除後新增避免重複
+                DeleteData(table, $"me_date = '{m.MenuDate:yyyy-MM-dd}' AND me_version = '{m.Version}' AND me_meal_id = {m.Meal} AND me_meal_detail_id = {m.Meal_Detail} AND me_prod_id = {row("prod_id")}")
+                InserData(table, dic)
+            Else
+                MsgBox("無 " + m.ProductName + " 商品,請先新增")
+                GoTo Finish
+            End If
+        Next
+        DataToDgv(SelectFromTable(sqlMenu), "menu,product", dgvMenu)
+        MsgBox("匯入完成")
+Finish:
+        Cursor = Cursors.Default
+    End Sub
+
+    '菜單管理-dgv點擊
+    Private Sub dgvMenu_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvMenu.CellMouseClick
+        ClearTabPage(tpMenu)
+
+        If dgvMenu.SelectedRows.Count < 0 Then Exit Sub
+        '點dgv後將對象資料傳至各控制項
+        Dim dgvRow = dgvMenu.SelectedRows(0)
+        Dim d As Date = dgvRow.Cells("me_date").Value
+        Dim ver As String = dgvRow.Cells("me_version").Value
+        Dim prod As Integer = dgvRow.Cells("prod_id").Value
+        Dim dataMuenu = SelectFromTable($"SELECT * FROM menu WHERE me_date = '{d}' AND me_version = '{ver}' AND me_prod_id = '{prod}'").Rows
+        For Each row As DataRow In dataMuenu
+            Dim t As String = CStr(row.Field(Of Integer)("me_meal_id")) + "," + CStr(row.Field(Of Integer)("me_meal_detail_id"))
+            For Each txt In tpMenu.Controls.OfType(Of TextBox).Where(Function(x) x.Tag = t)
+                txt.Text = row.Field(Of String)("me_name")
+            Next
+        Next
+        cmbProdName_menu.SelectedIndex = cmbProdName_menu.FindStringExact(dgvRow.Cells("prod_name").Value.ToString)
+        cmbProdVers_menu.SelectedIndex = cmbProdVers_menu.FindStringExact(ver)
+        dtMenu.Value = d
+    End Sub
+
+    '菜單管理-新增/修改
+    Private Sub btnMunuInsert_Click(sender As Object, e As EventArgs) Handles btnMunuInsert.Click
+        Cursor = Cursors.WaitCursor
+
+        For Each txt In tpMenu.Controls.OfType(Of TextBox).Where(Function(x) String.IsNullOrEmpty(x.Text) = False)
+            Dim dic As New Dictionary(Of String, String)
+            With dic
+                .Add("me_date", dtMenu.Value)
+                If cmbProdVers_menu.SelectedItem Is Nothing Then
+                    MsgBox("請選擇版本")
+                    cmbProdVers_menu.Focus()
+                    GoTo Finish
+                End If
+                Dim ver = cmbProdVers_menu.SelectedItem.ToString
+                .Add("me_version", ver)
+                If cmbProdName_menu.SelectedValue Is Nothing Then
+                    MsgBox("請選擇商品")
+                    cmbProdName_menu.Focus()
+                    GoTo Finish
+                End If
+                Dim prodID = cmbProdName_menu.SelectedValue.ToString
+                .Add("me_prod_id", prodID)
+                Dim meal As String() = Split(txt.Tag, ",")
+                .Add("me_meal_id", meal(0))
+                .Add("me_meal_detail_id", meal(1))
+                .Add("me_name", txt.Text)
+
+                '先刪除後新增避免重複
+                Dim table = "menu"
+                DeleteData(table, $"me_date = '{dtMenu.Value:yyyy-MM-dd}' AND me_version = '{ver}' AND me_meal_id = {meal(0)} AND me_meal_detail_id = {meal(1)} AND me_prod_id = {prodID}")
+                InserData(table, dic)
+            End With
+        Next
+        ClearTabPage(tpMenu)
+        DataToDgv(SelectFromTable(sqlMenu), "menu,product", dgvMenu)
+        MsgBox("新增完成")
+Finish:
+        Cursor = Cursors.Default
+    End Sub
+
+    '菜單管理-刪除
+    Private Sub btnMenuDel_Click(sender As Object, e As EventArgs) Handles btnMenuDel.Click
+        Cursor = Cursors.WaitCursor
+
+        Dim dic As New Dictionary(Of String, String)
+        With dic
+            .Add("me_date", dtMenu.Value)
+            If cmbProdVers_menu.SelectedItem Is Nothing Then
+                MsgBox("請選擇版本")
+                cmbProdVers_menu.Focus()
+                GoTo Finish
+            End If
+            Dim ver = cmbProdVers_menu.SelectedItem.ToString
+            .Add("me_version", ver)
+            If cmbProdName_menu.SelectedValue Is Nothing Then
+                MsgBox("請選擇商品")
+                cmbProdName_menu.Focus()
+                GoTo Finish
+            End If
+            Dim prodID = cmbProdName_menu.SelectedValue.ToString
+            .Add("me_prod_id", prodID)
+            Dim table = "menu"
+            DeleteData(table, $"me_date = '{dtMenu.Value:yyyy-MM-dd}' AND me_version = '{ver}' AND me_prod_id = {prodID}")
+        End With
+        ClearTabPage(tpMenu)
+        DataToDgv(SelectFromTable(sqlMenu), "menu,product", dgvMenu)
+        MsgBox("刪除完成")
+Finish:
+        Cursor = Cursors.Default
+    End Sub
+
+    '菜單管理-取消
+    Private Sub btnMenuCancel_Click(sender As Object, e As EventArgs) Handles btnMenuCancel.Click
+        ClearTabPage(tpMenu)
+        DataToDgv(SelectFromTable(sqlMenu), "menu,product", dgvMenu)
+    End Sub
+
+    '菜單管理-搜尋
+    Private Sub btnMenuQuery_Click(sender As Object, e As EventArgs) Handles btnMenuQuery.Click
+        Dim sql = $"SELECT DISTINCT b.prod_name,a.me_date,a.me_version,b.prod_id FROM menu a LEFT JOIN product b ON a.me_prod_id=b.prod_id WHERE a.me_date = '{dtMenu.Value}'"
+        If cmbProdVers_menu.SelectedItem IsNot Nothing Then sql += $" AND me_version = '{cmbProdVers_menu.SelectedItem}'"
+        If cmbProdName_menu.SelectedValue IsNot Nothing Then sql += $" AND me_prod_id = '{cmbProdName_menu.SelectedValue}'"
+        DataToDgv(SelectFromTable(sql), "menu,product", dgvMenu)
+    End Sub
 
     ''' <summary>
     ''' 檢查Table是否有重複資料
@@ -1494,6 +2570,7 @@ Finish:
                                 .Add("dist_tableware", String.Join(",", chk.Select(Function(x) x.Text)))
                         End Select
                     Next
+
             End Select
         End With
         Return dicData
@@ -1599,7 +2676,7 @@ Finish:
         Dim dt As DataTable = SelectFromTable($"SELECT COLUMN_COMMENT FROM information_schema.columns WHERE table_schema = 'tingyi' AND TABLE_NAME='{sTable}' AND is_nullable = 'NO' AND column_key != 'PRI'")
 
         '比較與當前控制項.tag是否相符
-        For Each ctrl As Control In tp.Controls
+        For Each ctrl As Windows.Forms.Control In tp.Controls
             Dim row As DataRow = dt.AsEnumerable().FirstOrDefault(Function(x) x("COLUMN_COMMENT").ToString() = ctrl.Tag)
             If row IsNot Nothing Then
                 If String.IsNullOrWhiteSpace(ctrl.Text) Then
@@ -1636,7 +2713,7 @@ Finish:
     ''' </summary>
     ''' <param name="tp"></param>
     Private Sub ClearTabPage(tp As TabPage)
-        For Each ctrl As Control In tp.Controls
+        For Each ctrl As Windows.Forms.Control In tp.Controls
             If TypeOf ctrl Is GroupBox Then
                 ClearGroupBox(CType(ctrl, GroupBox))
             ElseIf TypeOf ctrl Is TabControl Then '取得TabControl裡的控制項
@@ -1659,14 +2736,14 @@ Finish:
 
     '清除GroupBox裡的控制項內容
     Private Sub ClearGroupBox(grp As GroupBox)
-        Dim ctrl As Control
+        Dim ctrl As Windows.Forms.Control
         For Each ctrl In grp.Controls
             ClearControl(ctrl)
         Next
     End Sub
 
     '清空控制項內容
-    Private Sub ClearControl(ctrl As Control)
+    Private Sub ClearControl(ctrl As Windows.Forms.Control)
         If TypeOf ctrl Is TextBox Then
             ctrl.Text = ""
         ElseIf TypeOf ctrl Is CheckBox Then
@@ -1722,7 +2799,7 @@ Finish:
         If dgv.SelectedRows.Count > 0 Then
             Dim row = dgv.SelectedRows(0)
             Dim colName As String
-            For Each ctrl As Control In dgv.Parent.Controls
+            For Each ctrl As Windows.Forms.Control In dgv.Parent.Controls
                 'TextBox的Tag對應表格的備註
                 If TypeOf ctrl Is TextBox Then
                     colName = dgv.Columns.Cast(Of DataGridViewColumn)().FirstOrDefault(Function(x) x.HeaderText = ctrl.Tag)?.Name
@@ -1768,7 +2845,7 @@ Finish:
         If dgv.SelectedRows.Count > 0 Then
             Dim row = dgv.SelectedRows(0)
             Dim colName As String
-            For Each ctrl As Control In dgv.Parent.Controls
+            For Each ctrl As Windows.Forms.Control In dgv.Parent.Controls
                 'TextBox的Tag對應表格的備註
                 If TypeOf ctrl Is TextBox Then
                     colName = dgv.Columns.Cast(Of DataGridViewColumn)().FirstOrDefault(Function(x) x.HeaderText = ctrl.Tag)?.Name
@@ -1814,7 +2891,7 @@ Finish:
         If dgv.SelectedRows.Count > 0 Then
             Dim row = dgv.SelectedRows(0)
             Dim colName As String
-            For Each ctrl As Control In dgv.Parent.Controls
+            For Each ctrl As Windows.Forms.Control In dgv.Parent.Controls
                 'TextBox的Tag對應表格的備註
                 If TypeOf ctrl Is TextBox Then
                     colName = dgv.Columns.Cast(Of DataGridViewColumn)().FirstOrDefault(Function(x) x.HeaderText = ctrl.Tag)?.Name
@@ -1957,7 +3034,7 @@ Finish:
         Dim tp As TabPage = CType(sender, Button).Parent
         Dim sTable = tp.Tag.ToString
         If CheckTextNull(sTable, tp) Then GoTo Finish
-        UpdateData(sTable, Bind_TableTextBox(sTable), $"prod_id  = '{txtProdID.Text}'")
+        If UpdateData(sTable, Bind_TableTextBox(sTable), $"prod_id  = '{txtProdID.Text}'") Then MsgBox("修改成功")
 
         '列出所有資料
         btnProdCancel.PerformClick()
@@ -2198,11 +3275,7 @@ Finish:
         Cursor = Cursors.Default
     End Sub
 
-    Private Sub btnTaboo_Click(sender As Object, e As EventArgs)
-        frmTaboo.Show()
-    End Sub
-
-    Private Sub btnTaboo_Click_1(sender As Object, e As EventArgs) Handles btnTaboo.Click
+    Private Sub btnTaboo_Click(sender As Object, e As EventArgs) Handles btnTaboo.Click
         frmTaboo.Show()
     End Sub
 
