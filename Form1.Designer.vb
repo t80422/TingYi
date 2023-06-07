@@ -22,28 +22,28 @@ Partial Class frmMain
     '請勿使用程式碼編輯器進行修改。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle91 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle92 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle93 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle94 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle95 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle96 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle97 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle98 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle99 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle100 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle89 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle90 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle101 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle102 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle103 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle104 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle105 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle106 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle107 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle108 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle109 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle110 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tpCustomer = New System.Windows.Forms.TabPage()
         Me.tcCustomer = New System.Windows.Forms.TabControl()
@@ -316,9 +316,37 @@ Partial Class frmMain
         Me.Label18 = New System.Windows.Forms.Label()
         Me.dgvProduct = New System.Windows.Forms.DataGridView()
         Me.tpMenu = New System.Windows.Forms.TabPage()
+        Me.Label151 = New System.Windows.Forms.Label()
+        Me.TextBox15 = New System.Windows.Forms.TextBox()
+        Me.Label150 = New System.Windows.Forms.Label()
+        Me.TextBox14 = New System.Windows.Forms.TextBox()
+        Me.Label149 = New System.Windows.Forms.Label()
+        Me.TextBox13 = New System.Windows.Forms.TextBox()
+        Me.Label148 = New System.Windows.Forms.Label()
+        Me.TextBox12 = New System.Windows.Forms.TextBox()
+        Me.Label147 = New System.Windows.Forms.Label()
+        Me.TextBox11 = New System.Windows.Forms.TextBox()
+        Me.Label146 = New System.Windows.Forms.Label()
+        Me.TextBox10 = New System.Windows.Forms.TextBox()
+        Me.Label145 = New System.Windows.Forms.Label()
+        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.Label143 = New System.Windows.Forms.Label()
+        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.Label144 = New System.Windows.Forms.Label()
+        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.Label141 = New System.Windows.Forms.Label()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.Label142 = New System.Windows.Forms.Label()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.Label139 = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label140 = New System.Windows.Forms.Label()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label137 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label138 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label101 = New System.Windows.Forms.Label()
-        Me.Label94 = New System.Windows.Forms.Label()
-        Me.txtMenuID = New System.Windows.Forms.TextBox()
         Me.Label50 = New System.Windows.Forms.Label()
         Me.Label44 = New System.Windows.Forms.Label()
         Me.txtNS3 = New System.Windows.Forms.TextBox()
@@ -338,7 +366,7 @@ Partial Class frmMain
         Me.txtLun1 = New System.Windows.Forms.TextBox()
         Me.Label36 = New System.Windows.Forms.Label()
         Me.txtLunSoup = New System.Windows.Forms.TextBox()
-        Me.txtProdName_menu = New System.Windows.Forms.ComboBox()
+        Me.cmbProdName_menu = New System.Windows.Forms.ComboBox()
         Me.btnMenuExcel = New System.Windows.Forms.Button()
         Me.Label74 = New System.Windows.Forms.Label()
         Me.txtDinDri = New System.Windows.Forms.TextBox()
@@ -385,9 +413,8 @@ Partial Class frmMain
         Me.Label53 = New System.Windows.Forms.Label()
         Me.dtMenu = New System.Windows.Forms.DateTimePicker()
         Me.btnMenuCancel = New System.Windows.Forms.Button()
-        Me.btnMenuDelete = New System.Windows.Forms.Button()
-        Me.btnMenuModify = New System.Windows.Forms.Button()
-        Me.btnMunuAdd = New System.Windows.Forms.Button()
+        Me.btnMenuDel = New System.Windows.Forms.Button()
+        Me.btnMunuInsert = New System.Windows.Forms.Button()
         Me.dgvMenu = New System.Windows.Forms.DataGridView()
         Me.btnMenuQuery = New System.Windows.Forms.Button()
         Me.Label51 = New System.Windows.Forms.Label()
@@ -662,7 +689,7 @@ Partial Class frmMain
         '
         Me.GroupBox31.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox31.Controls.Add(Me.dgvOrder_cus)
-        Me.GroupBox31.Location = New System.Drawing.Point(1042, 246)
+        Me.GroupBox31.Location = New System.Drawing.Point(1042, 282)
         Me.GroupBox31.Name = "GroupBox31"
         Me.GroupBox31.Size = New System.Drawing.Size(523, 505)
         Me.GroupBox31.TabIndex = 265
@@ -674,18 +701,18 @@ Partial Class frmMain
         Me.dgvOrder_cus.AllowUserToAddRows = False
         Me.dgvOrder_cus.AllowUserToDeleteRows = False
         Me.dgvOrder_cus.AllowUserToOrderColumns = True
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvOrder_cus.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle91.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle91.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvOrder_cus.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle91
         Me.dgvOrder_cus.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvOrder_cus.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle92.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle92.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle92.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle92.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle92.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle92.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle92.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvOrder_cus.DefaultCellStyle = DataGridViewCellStyle92
         Me.dgvOrder_cus.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvOrder_cus.Location = New System.Drawing.Point(3, 29)
         Me.dgvOrder_cus.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
@@ -700,7 +727,7 @@ Partial Class frmMain
         '
         Me.GroupBox30.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.GroupBox30.Controls.Add(Me.dgvCustomer)
-        Me.GroupBox30.Location = New System.Drawing.Point(559, 246)
+        Me.GroupBox30.Location = New System.Drawing.Point(559, 282)
         Me.GroupBox30.Name = "GroupBox30"
         Me.GroupBox30.Size = New System.Drawing.Size(477, 505)
         Me.GroupBox30.TabIndex = 264
@@ -712,18 +739,18 @@ Partial Class frmMain
         Me.dgvCustomer.AllowUserToAddRows = False
         Me.dgvCustomer.AllowUserToDeleteRows = False
         Me.dgvCustomer.AllowUserToOrderColumns = True
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvCustomer.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle93.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle93.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvCustomer.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle93
         Me.dgvCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvCustomer.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle94.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle94.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle94.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle94.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle94.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle94.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle94.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvCustomer.DefaultCellStyle = DataGridViewCellStyle94
         Me.dgvCustomer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvCustomer.Location = New System.Drawing.Point(3, 29)
         Me.dgvCustomer.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
@@ -2361,20 +2388,20 @@ Partial Class frmMain
         '
         Me.dgvOrder.AllowUserToAddRows = False
         Me.dgvOrder.AllowUserToDeleteRows = False
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvOrder.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle95.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle95.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvOrder.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle95
         Me.dgvOrder.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvOrder.ColumnHeadersHeight = 25
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvOrder.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle96.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle96.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle96.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle96.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle96.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle96.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle96.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvOrder.DefaultCellStyle = DataGridViewCellStyle96
         Me.dgvOrder.Location = New System.Drawing.Point(623, 346)
         Me.dgvOrder.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvOrder.Name = "dgvOrder"
@@ -2869,19 +2896,19 @@ Partial Class frmMain
         Me.dgvDistribute.AllowUserToAddRows = False
         Me.dgvDistribute.AllowUserToDeleteRows = False
         Me.dgvDistribute.AllowUserToOrderColumns = True
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvDistribute.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle97.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle97.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvDistribute.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle97
         Me.dgvDistribute.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvDistribute.ColumnHeadersHeight = 25
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvDistribute.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle98.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle98.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle98.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle98.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle98.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle98.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle98.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvDistribute.DefaultCellStyle = DataGridViewCellStyle98
         Me.dgvDistribute.Location = New System.Drawing.Point(931, 342)
         Me.dgvDistribute.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvDistribute.Name = "dgvDistribute"
@@ -3354,7 +3381,7 @@ Partial Class frmMain
         Me.txtProdID.ReadOnly = True
         Me.txtProdID.Size = New System.Drawing.Size(172, 33)
         Me.txtProdID.TabIndex = 190
-        Me.txtProdID.Tag = "編號"
+        Me.txtProdID.Tag = "商品編號"
         '
         'Label93
         '
@@ -3532,21 +3559,21 @@ Partial Class frmMain
         '
         Me.dgvProduct.AllowUserToAddRows = False
         Me.dgvProduct.AllowUserToDeleteRows = False
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvProduct.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle99.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle99.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvProduct.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle99
         Me.dgvProduct.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvProduct.ColumnHeadersHeight = 25
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvProduct.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle100.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle100.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle100.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle100.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle100.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle100.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle100.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvProduct.DefaultCellStyle = DataGridViewCellStyle100
         Me.dgvProduct.Location = New System.Drawing.Point(9, 170)
         Me.dgvProduct.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvProduct.Name = "dgvProduct"
@@ -3558,9 +3585,37 @@ Partial Class frmMain
         '
         'tpMenu
         '
+        Me.tpMenu.Controls.Add(Me.Label151)
+        Me.tpMenu.Controls.Add(Me.TextBox15)
+        Me.tpMenu.Controls.Add(Me.Label150)
+        Me.tpMenu.Controls.Add(Me.TextBox14)
+        Me.tpMenu.Controls.Add(Me.Label149)
+        Me.tpMenu.Controls.Add(Me.TextBox13)
+        Me.tpMenu.Controls.Add(Me.Label148)
+        Me.tpMenu.Controls.Add(Me.TextBox12)
+        Me.tpMenu.Controls.Add(Me.Label147)
+        Me.tpMenu.Controls.Add(Me.TextBox11)
+        Me.tpMenu.Controls.Add(Me.Label146)
+        Me.tpMenu.Controls.Add(Me.TextBox10)
+        Me.tpMenu.Controls.Add(Me.Label145)
+        Me.tpMenu.Controls.Add(Me.TextBox9)
+        Me.tpMenu.Controls.Add(Me.Label143)
+        Me.tpMenu.Controls.Add(Me.TextBox7)
+        Me.tpMenu.Controls.Add(Me.Label144)
+        Me.tpMenu.Controls.Add(Me.TextBox8)
+        Me.tpMenu.Controls.Add(Me.Label141)
+        Me.tpMenu.Controls.Add(Me.TextBox5)
+        Me.tpMenu.Controls.Add(Me.Label142)
+        Me.tpMenu.Controls.Add(Me.TextBox6)
+        Me.tpMenu.Controls.Add(Me.Label139)
+        Me.tpMenu.Controls.Add(Me.TextBox3)
+        Me.tpMenu.Controls.Add(Me.Label140)
+        Me.tpMenu.Controls.Add(Me.TextBox4)
+        Me.tpMenu.Controls.Add(Me.Label137)
+        Me.tpMenu.Controls.Add(Me.TextBox1)
+        Me.tpMenu.Controls.Add(Me.Label138)
+        Me.tpMenu.Controls.Add(Me.TextBox2)
         Me.tpMenu.Controls.Add(Me.Label101)
-        Me.tpMenu.Controls.Add(Me.Label94)
-        Me.tpMenu.Controls.Add(Me.txtMenuID)
         Me.tpMenu.Controls.Add(Me.Label50)
         Me.tpMenu.Controls.Add(Me.Label44)
         Me.tpMenu.Controls.Add(Me.txtNS3)
@@ -3580,7 +3635,7 @@ Partial Class frmMain
         Me.tpMenu.Controls.Add(Me.txtLun1)
         Me.tpMenu.Controls.Add(Me.Label36)
         Me.tpMenu.Controls.Add(Me.txtLunSoup)
-        Me.tpMenu.Controls.Add(Me.txtProdName_menu)
+        Me.tpMenu.Controls.Add(Me.cmbProdName_menu)
         Me.tpMenu.Controls.Add(Me.btnMenuExcel)
         Me.tpMenu.Controls.Add(Me.Label74)
         Me.tpMenu.Controls.Add(Me.txtDinDri)
@@ -3627,9 +3682,8 @@ Partial Class frmMain
         Me.tpMenu.Controls.Add(Me.Label53)
         Me.tpMenu.Controls.Add(Me.dtMenu)
         Me.tpMenu.Controls.Add(Me.btnMenuCancel)
-        Me.tpMenu.Controls.Add(Me.btnMenuDelete)
-        Me.tpMenu.Controls.Add(Me.btnMenuModify)
-        Me.tpMenu.Controls.Add(Me.btnMunuAdd)
+        Me.tpMenu.Controls.Add(Me.btnMenuDel)
+        Me.tpMenu.Controls.Add(Me.btnMunuInsert)
         Me.tpMenu.Controls.Add(Me.dgvMenu)
         Me.tpMenu.Controls.Add(Me.btnMenuQuery)
         Me.tpMenu.Controls.Add(Me.Label51)
@@ -3640,37 +3694,290 @@ Partial Class frmMain
         Me.tpMenu.Text = "菜單管理"
         Me.tpMenu.UseVisualStyleBackColor = True
         '
+        'Label151
+        '
+        Me.Label151.AutoSize = True
+        Me.Label151.Location = New System.Drawing.Point(802, 196)
+        Me.Label151.Name = "Label151"
+        Me.Label151.Size = New System.Drawing.Size(68, 21)
+        Me.Label151.TabIndex = 344
+        Me.Label151.Text = "水 果"
+        '
+        'TextBox15
+        '
+        Me.TextBox15.Location = New System.Drawing.Point(902, 193)
+        Me.TextBox15.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.TextBox15.Name = "TextBox15"
+        Me.TextBox15.Size = New System.Drawing.Size(245, 33)
+        Me.TextBox15.TabIndex = 343
+        Me.TextBox15.Tag = "1,11"
+        '
+        'Label150
+        '
+        Me.Label150.AutoSize = True
+        Me.Label150.Location = New System.Drawing.Point(447, 626)
+        Me.Label150.Name = "Label150"
+        Me.Label150.Size = New System.Drawing.Size(56, 21)
+        Me.Label150.TabIndex = 342
+        Me.Label150.Text = "夜點"
+        '
+        'TextBox14
+        '
+        Me.TextBox14.Location = New System.Drawing.Point(548, 623)
+        Me.TextBox14.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.TextBox14.Name = "TextBox14"
+        Me.TextBox14.Size = New System.Drawing.Size(245, 33)
+        Me.TextBox14.TabIndex = 341
+        Me.TextBox14.Tag = "3,14"
+        '
+        'Label149
+        '
+        Me.Label149.AutoSize = True
+        Me.Label149.Location = New System.Drawing.Point(802, 411)
+        Me.Label149.Name = "Label149"
+        Me.Label149.Size = New System.Drawing.Size(56, 21)
+        Me.Label149.TabIndex = 340
+        Me.Label149.Text = "甜湯"
+        '
+        'TextBox13
+        '
+        Me.TextBox13.Location = New System.Drawing.Point(902, 408)
+        Me.TextBox13.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.TextBox13.Name = "TextBox13"
+        Me.TextBox13.Size = New System.Drawing.Size(245, 33)
+        Me.TextBox13.TabIndex = 339
+        Me.TextBox13.Tag = "2,13"
+        '
+        'Label148
+        '
+        Me.Label148.AutoSize = True
+        Me.Label148.Location = New System.Drawing.Point(70, 626)
+        Me.Label148.Name = "Label148"
+        Me.Label148.Size = New System.Drawing.Size(68, 21)
+        Me.Label148.TabIndex = 338
+        Me.Label148.Text = "湯 品"
+        '
+        'TextBox12
+        '
+        Me.TextBox12.Location = New System.Drawing.Point(193, 623)
+        Me.TextBox12.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.TextBox12.Name = "TextBox12"
+        Me.TextBox12.Size = New System.Drawing.Size(245, 33)
+        Me.TextBox12.TabIndex = 337
+        Me.TextBox12.Tag = "3,5"
+        '
+        'Label147
+        '
+        Me.Label147.AutoSize = True
+        Me.Label147.Location = New System.Drawing.Point(447, 411)
+        Me.Label147.Name = "Label147"
+        Me.Label147.Size = New System.Drawing.Size(68, 21)
+        Me.Label147.TabIndex = 336
+        Me.Label147.Text = "湯 品"
+        '
+        'TextBox11
+        '
+        Me.TextBox11.Location = New System.Drawing.Point(547, 408)
+        Me.TextBox11.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.TextBox11.Name = "TextBox11"
+        Me.TextBox11.Size = New System.Drawing.Size(245, 33)
+        Me.TextBox11.TabIndex = 335
+        Me.TextBox11.Tag = "2,5"
+        '
+        'Label146
+        '
+        Me.Label146.AutoSize = True
+        Me.Label146.Location = New System.Drawing.Point(801, 583)
+        Me.Label146.Name = "Label146"
+        Me.Label146.Size = New System.Drawing.Size(68, 21)
+        Me.Label146.TabIndex = 334
+        Me.Label146.Text = "蔬菜2"
+        '
+        'TextBox10
+        '
+        Me.TextBox10.Location = New System.Drawing.Point(902, 580)
+        Me.TextBox10.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.TextBox10.Name = "TextBox10"
+        Me.TextBox10.Size = New System.Drawing.Size(245, 33)
+        Me.TextBox10.TabIndex = 333
+        Me.TextBox10.Tag = "3,19"
+        '
+        'Label145
+        '
+        Me.Label145.AutoSize = True
+        Me.Label145.Location = New System.Drawing.Point(70, 368)
+        Me.Label145.Name = "Label145"
+        Me.Label145.Size = New System.Drawing.Size(68, 21)
+        Me.Label145.TabIndex = 332
+        Me.Label145.Text = "蔬菜2"
+        '
+        'TextBox9
+        '
+        Me.TextBox9.Location = New System.Drawing.Point(193, 365)
+        Me.TextBox9.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.Size = New System.Drawing.Size(245, 33)
+        Me.TextBox9.TabIndex = 331
+        Me.TextBox9.Tag = "2,19"
+        '
+        'Label143
+        '
+        Me.Label143.AutoSize = True
+        Me.Label143.Location = New System.Drawing.Point(447, 196)
+        Me.Label143.Name = "Label143"
+        Me.Label143.Size = New System.Drawing.Size(68, 21)
+        Me.Label143.TabIndex = 330
+        Me.Label143.Text = "蔬菜2"
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Location = New System.Drawing.Point(547, 193)
+        Me.TextBox7.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New System.Drawing.Size(245, 33)
+        Me.TextBox7.TabIndex = 329
+        Me.TextBox7.Tag = "1,19"
+        '
+        'Label144
+        '
+        Me.Label144.AutoSize = True
+        Me.Label144.Location = New System.Drawing.Point(70, 196)
+        Me.Label144.Name = "Label144"
+        Me.Label144.Size = New System.Drawing.Size(68, 21)
+        Me.Label144.TabIndex = 328
+        Me.Label144.Text = "蔬菜1"
+        '
+        'TextBox8
+        '
+        Me.TextBox8.Location = New System.Drawing.Point(193, 193)
+        Me.TextBox8.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.Size = New System.Drawing.Size(245, 33)
+        Me.TextBox8.TabIndex = 327
+        Me.TextBox8.Tag = "1,9"
+        '
+        'Label141
+        '
+        Me.Label141.AutoSize = True
+        Me.Label141.Location = New System.Drawing.Point(447, 708)
+        Me.Label141.Name = "Label141"
+        Me.Label141.Size = New System.Drawing.Size(91, 21)
+        Me.Label141.TabIndex = 326
+        Me.Label141.Text = "湯盅4期"
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(548, 705)
+        Me.TextBox5.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(245, 33)
+        Me.TextBox5.TabIndex = 325
+        Me.TextBox5.Tag = "4,17"
+        '
+        'Label142
+        '
+        Me.Label142.AutoSize = True
+        Me.Label142.Location = New System.Drawing.Point(70, 708)
+        Me.Label142.Name = "Label142"
+        Me.Label142.Size = New System.Drawing.Size(91, 21)
+        Me.Label142.TabIndex = 324
+        Me.Label142.Text = "湯盅3期"
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(193, 705)
+        Me.TextBox6.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(245, 33)
+        Me.TextBox6.TabIndex = 323
+        Me.TextBox6.Tag = "4,15"
+        '
+        'Label139
+        '
+        Me.Label139.AutoSize = True
+        Me.Label139.Location = New System.Drawing.Point(447, 500)
+        Me.Label139.Name = "Label139"
+        Me.Label139.Size = New System.Drawing.Size(91, 21)
+        Me.Label139.TabIndex = 322
+        Me.Label139.Text = "湯盅4期"
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(547, 494)
+        Me.TextBox3.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(245, 33)
+        Me.TextBox3.TabIndex = 321
+        Me.TextBox3.Tag = "3,17"
+        '
+        'Label140
+        '
+        Me.Label140.AutoSize = True
+        Me.Label140.Location = New System.Drawing.Point(70, 497)
+        Me.Label140.Name = "Label140"
+        Me.Label140.Size = New System.Drawing.Size(91, 21)
+        Me.Label140.TabIndex = 320
+        Me.Label140.Text = "湯盅3期"
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New System.Drawing.Point(193, 494)
+        Me.TextBox4.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(245, 33)
+        Me.TextBox4.TabIndex = 319
+        Me.TextBox4.Tag = "3,15"
+        '
+        'Label137
+        '
+        Me.Label137.AutoSize = True
+        Me.Label137.Location = New System.Drawing.Point(447, 282)
+        Me.Label137.Name = "Label137"
+        Me.Label137.Size = New System.Drawing.Size(91, 21)
+        Me.Label137.TabIndex = 318
+        Me.Label137.Text = "湯盅4期"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(547, 279)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(245, 33)
+        Me.TextBox1.TabIndex = 317
+        Me.TextBox1.Tag = "2,17"
+        '
+        'Label138
+        '
+        Me.Label138.AutoSize = True
+        Me.Label138.Location = New System.Drawing.Point(70, 282)
+        Me.Label138.Name = "Label138"
+        Me.Label138.Size = New System.Drawing.Size(91, 21)
+        Me.Label138.TabIndex = 316
+        Me.Label138.Text = "湯盅3期"
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(193, 279)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(245, 33)
+        Me.TextBox2.TabIndex = 315
+        Me.TextBox2.Tag = "2,15"
+        '
         'Label101
         '
         Me.Label101.AutoSize = True
-        Me.Label101.Location = New System.Drawing.Point(643, 20)
+        Me.Label101.Location = New System.Drawing.Point(296, 11)
         Me.Label101.Name = "Label101"
         Me.Label101.Size = New System.Drawing.Size(68, 21)
         Me.Label101.TabIndex = 314
         Me.Label101.Text = "日 期"
         '
-        'Label94
-        '
-        Me.Label94.AutoSize = True
-        Me.Label94.Location = New System.Drawing.Point(20, 20)
-        Me.Label94.Name = "Label94"
-        Me.Label94.Size = New System.Drawing.Size(102, 21)
-        Me.Label94.TabIndex = 313
-        Me.Label94.Text = "菜單編號"
-        '
-        'txtMenuID
-        '
-        Me.txtMenuID.Location = New System.Drawing.Point(147, 17)
-        Me.txtMenuID.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
-        Me.txtMenuID.Name = "txtMenuID"
-        Me.txtMenuID.ReadOnly = True
-        Me.txtMenuID.Size = New System.Drawing.Size(200, 33)
-        Me.txtMenuID.TabIndex = 312
-        '
         'Label50
         '
         Me.Label50.AutoSize = True
-        Me.Label50.Location = New System.Drawing.Point(20, 321)
+        Me.Label50.ForeColor = System.Drawing.Color.Blue
+        Me.Label50.Location = New System.Drawing.Point(8, 662)
         Me.Label50.Name = "Label50"
         Me.Label50.Size = New System.Drawing.Size(56, 21)
         Me.Label50.TabIndex = 311
@@ -3679,168 +3986,177 @@ Partial Class frmMain
         'Label44
         '
         Me.Label44.AutoSize = True
-        Me.Label44.Location = New System.Drawing.Point(643, 321)
+        Me.Label44.Location = New System.Drawing.Point(801, 665)
         Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(69, 21)
+        Me.Label44.Size = New System.Drawing.Size(91, 21)
         Me.Label44.TabIndex = 310
-        Me.Label44.Text = "3,4期"
+        Me.Label44.Text = "湯盅2期"
         '
         'txtNS3
         '
-        Me.txtNS3.Location = New System.Drawing.Point(719, 318)
+        Me.txtNS3.Location = New System.Drawing.Point(902, 662)
         Me.txtNS3.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtNS3.Name = "txtNS3"
-        Me.txtNS3.Size = New System.Drawing.Size(200, 33)
+        Me.txtNS3.Size = New System.Drawing.Size(245, 33)
         Me.txtNS3.TabIndex = 309
+        Me.txtNS3.Tag = "4,8"
         '
         'Label45
         '
         Me.Label45.AutoSize = True
-        Me.Label45.Location = New System.Drawing.Point(356, 321)
+        Me.Label45.Location = New System.Drawing.Point(447, 665)
         Me.Label45.Name = "Label45"
-        Me.Label45.Size = New System.Drawing.Size(69, 21)
+        Me.Label45.Size = New System.Drawing.Size(91, 21)
         Me.Label45.TabIndex = 308
-        Me.Label45.Text = "1,2期"
+        Me.Label45.Text = "湯盅1期"
         '
         'txtNS1
         '
-        Me.txtNS1.Location = New System.Drawing.Point(434, 318)
+        Me.txtNS1.Location = New System.Drawing.Point(547, 662)
         Me.txtNS1.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtNS1.Name = "txtNS1"
-        Me.txtNS1.Size = New System.Drawing.Size(200, 33)
+        Me.txtNS1.Size = New System.Drawing.Size(245, 33)
         Me.txtNS1.TabIndex = 307
+        Me.txtNS1.Tag = "4,7"
         '
         'Label47
         '
         Me.Label47.AutoSize = True
-        Me.Label47.Location = New System.Drawing.Point(82, 321)
+        Me.Label47.Location = New System.Drawing.Point(70, 665)
         Me.Label47.Name = "Label47"
-        Me.Label47.Size = New System.Drawing.Size(56, 21)
+        Me.Label47.Size = New System.Drawing.Size(102, 21)
         Me.Label47.TabIndex = 306
-        Me.Label47.Text = "湯盅"
+        Me.Label47.Text = "湯盅清補"
         '
         'txtNSSoup
         '
-        Me.txtNSSoup.Location = New System.Drawing.Point(147, 318)
+        Me.txtNSSoup.Location = New System.Drawing.Point(193, 662)
         Me.txtNSSoup.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtNSSoup.Name = "txtNSSoup"
-        Me.txtNSSoup.Size = New System.Drawing.Size(200, 33)
+        Me.txtNSSoup.Size = New System.Drawing.Size(245, 33)
         Me.txtNSSoup.TabIndex = 305
+        Me.txtNSSoup.Tag = "4,6"
         '
         'Label37
         '
         Me.Label37.AutoSize = True
-        Me.Label37.Location = New System.Drawing.Point(642, 235)
+        Me.Label37.Location = New System.Drawing.Point(801, 454)
         Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(69, 21)
+        Me.Label37.Size = New System.Drawing.Size(91, 21)
         Me.Label37.TabIndex = 304
-        Me.Label37.Text = "3,4期"
+        Me.Label37.Text = "湯盅2期"
         '
         'txtDin3
         '
-        Me.txtDin3.Location = New System.Drawing.Point(719, 232)
+        Me.txtDin3.Location = New System.Drawing.Point(902, 451)
         Me.txtDin3.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtDin3.Name = "txtDin3"
-        Me.txtDin3.Size = New System.Drawing.Size(200, 33)
+        Me.txtDin3.Size = New System.Drawing.Size(245, 33)
         Me.txtDin3.TabIndex = 303
+        Me.txtDin3.Tag = "3,8"
         '
         'Label38
         '
         Me.Label38.AutoSize = True
-        Me.Label38.Location = New System.Drawing.Point(356, 235)
+        Me.Label38.Location = New System.Drawing.Point(447, 454)
         Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(69, 21)
+        Me.Label38.Size = New System.Drawing.Size(91, 21)
         Me.Label38.TabIndex = 302
-        Me.Label38.Text = "1,2期"
+        Me.Label38.Text = "湯盅1期"
         '
         'txtDin1
         '
-        Me.txtDin1.Location = New System.Drawing.Point(434, 228)
+        Me.txtDin1.Location = New System.Drawing.Point(547, 451)
         Me.txtDin1.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtDin1.Name = "txtDin1"
-        Me.txtDin1.Size = New System.Drawing.Size(200, 33)
+        Me.txtDin1.Size = New System.Drawing.Size(245, 33)
         Me.txtDin1.TabIndex = 301
+        Me.txtDin1.Tag = "3,7"
         '
         'Label41
         '
         Me.Label41.AutoSize = True
-        Me.Label41.Location = New System.Drawing.Point(82, 235)
+        Me.Label41.Location = New System.Drawing.Point(70, 454)
         Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(56, 21)
+        Me.Label41.Size = New System.Drawing.Size(102, 21)
         Me.Label41.TabIndex = 300
-        Me.Label41.Text = "湯盅"
+        Me.Label41.Text = "湯盅清補"
         '
         'txtDinSoup
         '
-        Me.txtDinSoup.Location = New System.Drawing.Point(147, 232)
+        Me.txtDinSoup.Location = New System.Drawing.Point(193, 451)
         Me.txtDinSoup.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtDinSoup.Name = "txtDinSoup"
-        Me.txtDinSoup.Size = New System.Drawing.Size(200, 33)
+        Me.txtDinSoup.Size = New System.Drawing.Size(245, 33)
         Me.txtDinSoup.TabIndex = 299
+        Me.txtDinSoup.Tag = "3,6"
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(643, 149)
+        Me.Label11.Location = New System.Drawing.Point(801, 239)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(69, 21)
+        Me.Label11.Size = New System.Drawing.Size(91, 21)
         Me.Label11.TabIndex = 298
-        Me.Label11.Text = "3,4期"
+        Me.Label11.Text = "湯盅2期"
         '
         'txtLun3
         '
-        Me.txtLun3.Location = New System.Drawing.Point(719, 146)
+        Me.txtLun3.Location = New System.Drawing.Point(901, 236)
         Me.txtLun3.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtLun3.Name = "txtLun3"
-        Me.txtLun3.Size = New System.Drawing.Size(200, 33)
+        Me.txtLun3.Size = New System.Drawing.Size(245, 33)
         Me.txtLun3.TabIndex = 297
+        Me.txtLun3.Tag = "2,8"
         '
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(356, 149)
+        Me.Label20.Location = New System.Drawing.Point(447, 239)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(69, 21)
+        Me.Label20.Size = New System.Drawing.Size(91, 21)
         Me.Label20.TabIndex = 296
-        Me.Label20.Text = "1,2期"
+        Me.Label20.Text = "湯盅1期"
         '
         'txtLun1
         '
-        Me.txtLun1.Location = New System.Drawing.Point(434, 145)
+        Me.txtLun1.Location = New System.Drawing.Point(547, 236)
         Me.txtLun1.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtLun1.Name = "txtLun1"
-        Me.txtLun1.Size = New System.Drawing.Size(200, 33)
+        Me.txtLun1.Size = New System.Drawing.Size(245, 33)
         Me.txtLun1.TabIndex = 295
+        Me.txtLun1.Tag = "2,7"
         '
         'Label36
         '
         Me.Label36.AutoSize = True
-        Me.Label36.Location = New System.Drawing.Point(82, 149)
+        Me.Label36.Location = New System.Drawing.Point(70, 239)
         Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(56, 21)
+        Me.Label36.Size = New System.Drawing.Size(102, 21)
         Me.Label36.TabIndex = 294
-        Me.Label36.Text = "湯盅"
+        Me.Label36.Text = "湯盅清補"
         '
         'txtLunSoup
         '
-        Me.txtLunSoup.Location = New System.Drawing.Point(147, 146)
+        Me.txtLunSoup.Location = New System.Drawing.Point(193, 236)
         Me.txtLunSoup.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtLunSoup.Name = "txtLunSoup"
-        Me.txtLunSoup.Size = New System.Drawing.Size(200, 33)
+        Me.txtLunSoup.Size = New System.Drawing.Size(245, 33)
         Me.txtLunSoup.TabIndex = 293
+        Me.txtLunSoup.Tag = "2,6"
         '
-        'txtProdName_menu
+        'cmbProdName_menu
         '
-        Me.txtProdName_menu.FormattingEnabled = True
-        Me.txtProdName_menu.Location = New System.Drawing.Point(464, 17)
-        Me.txtProdName_menu.Name = "txtProdName_menu"
-        Me.txtProdName_menu.Size = New System.Drawing.Size(170, 29)
-        Me.txtProdName_menu.TabIndex = 292
+        Me.cmbProdName_menu.FormattingEnabled = True
+        Me.cmbProdName_menu.Location = New System.Drawing.Point(120, 8)
+        Me.cmbProdName_menu.Name = "cmbProdName_menu"
+        Me.cmbProdName_menu.Size = New System.Drawing.Size(170, 29)
+        Me.cmbProdName_menu.TabIndex = 292
         '
         'btnMenuExcel
         '
         Me.btnMenuExcel.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnMenuExcel.Location = New System.Drawing.Point(1411, 12)
+        Me.btnMenuExcel.Location = New System.Drawing.Point(13, 43)
         Me.btnMenuExcel.Name = "btnMenuExcel"
         Me.btnMenuExcel.Size = New System.Drawing.Size(160, 44)
         Me.btnMenuExcel.TabIndex = 291
@@ -3850,24 +4166,25 @@ Partial Class frmMain
         'Label74
         '
         Me.Label74.AutoSize = True
-        Me.Label74.Location = New System.Drawing.Point(928, 278)
+        Me.Label74.Location = New System.Drawing.Point(447, 583)
         Me.Label74.Name = "Label74"
-        Me.Label74.Size = New System.Drawing.Size(104, 21)
+        Me.Label74.Size = New System.Drawing.Size(68, 21)
         Me.Label74.TabIndex = 288
-        Me.Label74.Text = "飲    品"
+        Me.Label74.Text = "飲 品"
         '
         'txtDinDri
         '
-        Me.txtDinDri.Location = New System.Drawing.Point(1052, 275)
+        Me.txtDinDri.Location = New System.Drawing.Point(547, 580)
         Me.txtDinDri.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtDinDri.Name = "txtDinDri"
-        Me.txtDinDri.Size = New System.Drawing.Size(200, 33)
+        Me.txtDinDri.Size = New System.Drawing.Size(245, 33)
         Me.txtDinDri.TabIndex = 287
+        Me.txtDinDri.Tag = "3,12"
         '
         'Label75
         '
         Me.Label75.AutoSize = True
-        Me.Label75.Location = New System.Drawing.Point(642, 278)
+        Me.Label75.Location = New System.Drawing.Point(70, 583)
         Me.Label75.Name = "Label75"
         Me.Label75.Size = New System.Drawing.Size(68, 21)
         Me.Label75.TabIndex = 286
@@ -3875,76 +4192,81 @@ Partial Class frmMain
         '
         'txtDinFru
         '
-        Me.txtDinFru.Location = New System.Drawing.Point(719, 275)
+        Me.txtDinFru.Location = New System.Drawing.Point(193, 580)
         Me.txtDinFru.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtDinFru.Name = "txtDinFru"
-        Me.txtDinFru.Size = New System.Drawing.Size(200, 33)
+        Me.txtDinFru.Size = New System.Drawing.Size(245, 33)
         Me.txtDinFru.TabIndex = 285
+        Me.txtDinFru.Tag = "3,11"
         '
         'Label76
         '
         Me.Label76.AutoSize = True
-        Me.Label76.Location = New System.Drawing.Point(356, 278)
+        Me.Label76.Location = New System.Drawing.Point(801, 540)
         Me.Label76.Name = "Label76"
         Me.Label76.Size = New System.Drawing.Size(68, 21)
         Me.Label76.TabIndex = 284
-        Me.Label76.Text = "青 菜"
+        Me.Label76.Text = "蔬菜1"
         '
         'txtDinVag
         '
-        Me.txtDinVag.Location = New System.Drawing.Point(433, 275)
+        Me.txtDinVag.Location = New System.Drawing.Point(902, 537)
         Me.txtDinVag.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtDinVag.Name = "txtDinVag"
-        Me.txtDinVag.Size = New System.Drawing.Size(200, 33)
+        Me.txtDinVag.Size = New System.Drawing.Size(245, 33)
         Me.txtDinVag.TabIndex = 283
+        Me.txtDinVag.Tag = "3,9"
         '
         'Label77
         '
         Me.Label77.AutoSize = True
-        Me.Label77.Location = New System.Drawing.Point(82, 278)
+        Me.Label77.Location = New System.Drawing.Point(447, 540)
         Me.Label77.Name = "Label77"
-        Me.Label77.Size = New System.Drawing.Size(56, 21)
+        Me.Label77.Size = New System.Drawing.Size(68, 21)
         Me.Label77.TabIndex = 282
-        Me.Label77.Text = "半葷"
+        Me.Label77.Text = "半 葷"
         '
         'txtDinHM
         '
-        Me.txtDinHM.Location = New System.Drawing.Point(147, 275)
+        Me.txtDinHM.Location = New System.Drawing.Point(547, 537)
         Me.txtDinHM.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtDinHM.Name = "txtDinHM"
-        Me.txtDinHM.Size = New System.Drawing.Size(200, 33)
+        Me.txtDinHM.Size = New System.Drawing.Size(245, 33)
         Me.txtDinHM.TabIndex = 281
+        Me.txtDinHM.Tag = "3,3"
         '
         'Label78
         '
         Me.Label78.AutoSize = True
-        Me.Label78.Location = New System.Drawing.Point(1261, 235)
+        Me.Label78.Location = New System.Drawing.Point(70, 540)
         Me.Label78.Name = "Label78"
-        Me.Label78.Size = New System.Drawing.Size(56, 21)
+        Me.Label78.Size = New System.Drawing.Size(68, 21)
         Me.Label78.TabIndex = 280
-        Me.Label78.Text = "主菜"
+        Me.Label78.Text = "主 菜"
         '
         'txtDinMain
         '
-        Me.txtDinMain.Location = New System.Drawing.Point(1326, 232)
+        Me.txtDinMain.Location = New System.Drawing.Point(193, 537)
         Me.txtDinMain.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtDinMain.Name = "txtDinMain"
-        Me.txtDinMain.Size = New System.Drawing.Size(200, 33)
+        Me.txtDinMain.Size = New System.Drawing.Size(245, 33)
         Me.txtDinMain.TabIndex = 279
+        Me.txtDinMain.Tag = "3,2"
         '
         'Label79
         '
         Me.Label79.AutoSize = True
-        Me.Label79.Location = New System.Drawing.Point(928, 235)
+        Me.Label79.Location = New System.Drawing.Point(801, 497)
         Me.Label79.Name = "Label79"
-        Me.Label79.Size = New System.Drawing.Size(104, 21)
+        Me.Label79.Size = New System.Drawing.Size(68, 21)
         Me.Label79.TabIndex = 278
-        Me.Label79.Text = "主    食"
+        Me.Label79.Text = "主 食"
         '
         'Label80
         '
         Me.Label80.AutoSize = True
-        Me.Label80.Location = New System.Drawing.Point(20, 235)
+        Me.Label80.ForeColor = System.Drawing.Color.Blue
+        Me.Label80.Location = New System.Drawing.Point(8, 454)
         Me.Label80.Name = "Label80"
         Me.Label80.Size = New System.Drawing.Size(56, 21)
         Me.Label80.TabIndex = 277
@@ -3952,50 +4274,53 @@ Partial Class frmMain
         '
         'txtDinSta
         '
-        Me.txtDinSta.Location = New System.Drawing.Point(1052, 232)
+        Me.txtDinSta.Location = New System.Drawing.Point(902, 494)
         Me.txtDinSta.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtDinSta.Name = "txtDinSta"
-        Me.txtDinSta.Size = New System.Drawing.Size(200, 33)
+        Me.txtDinSta.Size = New System.Drawing.Size(245, 33)
         Me.txtDinSta.TabIndex = 276
+        Me.txtDinSta.Tag = "3,1"
         '
         'Label64
         '
         Me.Label64.AutoSize = True
-        Me.Label64.Location = New System.Drawing.Point(1260, 192)
+        Me.Label64.Location = New System.Drawing.Point(70, 411)
         Me.Label64.Name = "Label64"
-        Me.Label64.Size = New System.Drawing.Size(56, 21)
+        Me.Label64.Size = New System.Drawing.Size(68, 21)
         Me.Label64.TabIndex = 273
-        Me.Label64.Text = "飲品"
+        Me.Label64.Text = "飲 品"
         '
         'txtLunDri
         '
-        Me.txtLunDri.Location = New System.Drawing.Point(1326, 189)
+        Me.txtLunDri.Location = New System.Drawing.Point(193, 408)
         Me.txtLunDri.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtLunDri.Name = "txtLunDri"
-        Me.txtLunDri.Size = New System.Drawing.Size(200, 33)
+        Me.txtLunDri.Size = New System.Drawing.Size(245, 33)
         Me.txtLunDri.TabIndex = 272
+        Me.txtLunDri.Tag = "2,12"
         '
         'Label65
         '
         Me.Label65.AutoSize = True
-        Me.Label65.Location = New System.Drawing.Point(928, 192)
+        Me.Label65.Location = New System.Drawing.Point(801, 368)
         Me.Label65.Name = "Label65"
-        Me.Label65.Size = New System.Drawing.Size(104, 21)
+        Me.Label65.Size = New System.Drawing.Size(68, 21)
         Me.Label65.TabIndex = 271
-        Me.Label65.Text = "甜    品"
+        Me.Label65.Text = "甜 品"
         '
         'txtLunDess
         '
-        Me.txtLunDess.Location = New System.Drawing.Point(1051, 189)
+        Me.txtLunDess.Location = New System.Drawing.Point(901, 365)
         Me.txtLunDess.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtLunDess.Name = "txtLunDess"
-        Me.txtLunDess.Size = New System.Drawing.Size(200, 33)
+        Me.txtLunDess.Size = New System.Drawing.Size(245, 33)
         Me.txtLunDess.TabIndex = 270
+        Me.txtLunDess.Tag = "2,10"
         '
         'Label66
         '
         Me.Label66.AutoSize = True
-        Me.Label66.Location = New System.Drawing.Point(643, 192)
+        Me.Label66.Location = New System.Drawing.Point(447, 368)
         Me.Label66.Name = "Label66"
         Me.Label66.Size = New System.Drawing.Size(68, 21)
         Me.Label66.TabIndex = 269
@@ -4003,76 +4328,81 @@ Partial Class frmMain
         '
         'txtLunFru
         '
-        Me.txtLunFru.Location = New System.Drawing.Point(719, 189)
+        Me.txtLunFru.Location = New System.Drawing.Point(547, 365)
         Me.txtLunFru.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtLunFru.Name = "txtLunFru"
-        Me.txtLunFru.Size = New System.Drawing.Size(200, 33)
+        Me.txtLunFru.Size = New System.Drawing.Size(245, 33)
         Me.txtLunFru.TabIndex = 268
+        Me.txtLunFru.Tag = "2,11"
         '
         'Label67
         '
         Me.Label67.AutoSize = True
-        Me.Label67.Location = New System.Drawing.Point(356, 192)
+        Me.Label67.Location = New System.Drawing.Point(801, 325)
         Me.Label67.Name = "Label67"
         Me.Label67.Size = New System.Drawing.Size(68, 21)
         Me.Label67.TabIndex = 267
-        Me.Label67.Text = "青 菜"
+        Me.Label67.Text = "蔬菜1"
         '
         'txtLunVag
         '
-        Me.txtLunVag.Location = New System.Drawing.Point(434, 189)
+        Me.txtLunVag.Location = New System.Drawing.Point(901, 322)
         Me.txtLunVag.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtLunVag.Name = "txtLunVag"
-        Me.txtLunVag.Size = New System.Drawing.Size(200, 33)
+        Me.txtLunVag.Size = New System.Drawing.Size(245, 33)
         Me.txtLunVag.TabIndex = 266
+        Me.txtLunVag.Tag = "2,9"
         '
         'Label68
         '
         Me.Label68.AutoSize = True
-        Me.Label68.Location = New System.Drawing.Point(82, 192)
+        Me.Label68.Location = New System.Drawing.Point(447, 325)
         Me.Label68.Name = "Label68"
-        Me.Label68.Size = New System.Drawing.Size(56, 21)
+        Me.Label68.Size = New System.Drawing.Size(68, 21)
         Me.Label68.TabIndex = 265
-        Me.Label68.Text = "半葷"
+        Me.Label68.Text = "半 葷"
         '
         'txtLunHM
         '
-        Me.txtLunHM.Location = New System.Drawing.Point(147, 189)
+        Me.txtLunHM.Location = New System.Drawing.Point(547, 322)
         Me.txtLunHM.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtLunHM.Name = "txtLunHM"
-        Me.txtLunHM.Size = New System.Drawing.Size(200, 33)
+        Me.txtLunHM.Size = New System.Drawing.Size(245, 33)
         Me.txtLunHM.TabIndex = 264
+        Me.txtLunHM.Tag = "2,3"
         '
         'Label69
         '
         Me.Label69.AutoSize = True
-        Me.Label69.Location = New System.Drawing.Point(1260, 149)
+        Me.Label69.Location = New System.Drawing.Point(70, 325)
         Me.Label69.Name = "Label69"
-        Me.Label69.Size = New System.Drawing.Size(56, 21)
+        Me.Label69.Size = New System.Drawing.Size(68, 21)
         Me.Label69.TabIndex = 263
-        Me.Label69.Text = "主菜"
+        Me.Label69.Text = "主 菜"
         '
         'txtLunMain
         '
-        Me.txtLunMain.Location = New System.Drawing.Point(1325, 145)
+        Me.txtLunMain.Location = New System.Drawing.Point(193, 322)
         Me.txtLunMain.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtLunMain.Name = "txtLunMain"
-        Me.txtLunMain.Size = New System.Drawing.Size(200, 33)
+        Me.txtLunMain.Size = New System.Drawing.Size(245, 33)
         Me.txtLunMain.TabIndex = 262
+        Me.txtLunMain.Tag = "2,2"
         '
         'Label70
         '
         Me.Label70.AutoSize = True
-        Me.Label70.Location = New System.Drawing.Point(928, 149)
+        Me.Label70.Location = New System.Drawing.Point(801, 282)
         Me.Label70.Name = "Label70"
-        Me.Label70.Size = New System.Drawing.Size(104, 21)
+        Me.Label70.Size = New System.Drawing.Size(68, 21)
         Me.Label70.TabIndex = 261
-        Me.Label70.Text = "主    食"
+        Me.Label70.Text = "主 食"
         '
         'Label71
         '
         Me.Label71.AutoSize = True
-        Me.Label71.Location = New System.Drawing.Point(20, 149)
+        Me.Label71.ForeColor = System.Drawing.Color.Blue
+        Me.Label71.Location = New System.Drawing.Point(8, 239)
         Me.Label71.Name = "Label71"
         Me.Label71.Size = New System.Drawing.Size(56, 21)
         Me.Label71.TabIndex = 260
@@ -4080,16 +4410,17 @@ Partial Class frmMain
         '
         'txtLunSta
         '
-        Me.txtLunSta.Location = New System.Drawing.Point(1051, 145)
+        Me.txtLunSta.Location = New System.Drawing.Point(901, 279)
         Me.txtLunSta.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtLunSta.Name = "txtLunSta"
-        Me.txtLunSta.Size = New System.Drawing.Size(200, 33)
+        Me.txtLunSta.Size = New System.Drawing.Size(245, 33)
         Me.txtLunSta.TabIndex = 259
+        Me.txtLunSta.Tag = "2,1"
         '
         'Label61
         '
         Me.Label61.AutoSize = True
-        Me.Label61.Location = New System.Drawing.Point(356, 106)
+        Me.Label61.Location = New System.Drawing.Point(801, 153)
         Me.Label61.Name = "Label61"
         Me.Label61.Size = New System.Drawing.Size(68, 21)
         Me.Label61.TabIndex = 254
@@ -4097,33 +4428,35 @@ Partial Class frmMain
         '
         'txtBlaDri
         '
-        Me.txtBlaDri.Location = New System.Drawing.Point(433, 103)
+        Me.txtBlaDri.Location = New System.Drawing.Point(901, 150)
         Me.txtBlaDri.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtBlaDri.Name = "txtBlaDri"
-        Me.txtBlaDri.Size = New System.Drawing.Size(200, 33)
+        Me.txtBlaDri.Size = New System.Drawing.Size(245, 33)
         Me.txtBlaDri.TabIndex = 253
+        Me.txtBlaDri.Tag = "1,12"
         '
         'Label62
         '
         Me.Label62.AutoSize = True
-        Me.Label62.Location = New System.Drawing.Point(82, 106)
+        Me.Label62.Location = New System.Drawing.Point(447, 153)
         Me.Label62.Name = "Label62"
-        Me.Label62.Size = New System.Drawing.Size(56, 21)
+        Me.Label62.Size = New System.Drawing.Size(68, 21)
         Me.Label62.TabIndex = 252
-        Me.Label62.Text = "湯品"
+        Me.Label62.Text = "湯 品"
         '
         'txtBlaSoup
         '
-        Me.txtBlaSoup.Location = New System.Drawing.Point(147, 103)
+        Me.txtBlaSoup.Location = New System.Drawing.Point(547, 150)
         Me.txtBlaSoup.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtBlaSoup.Name = "txtBlaSoup"
-        Me.txtBlaSoup.Size = New System.Drawing.Size(200, 33)
+        Me.txtBlaSoup.Size = New System.Drawing.Size(245, 33)
         Me.txtBlaSoup.TabIndex = 251
+        Me.txtBlaSoup.Tag = "1,5"
         '
         'Label57
         '
         Me.Label57.AutoSize = True
-        Me.Label57.Location = New System.Drawing.Point(928, 63)
+        Me.Label57.Location = New System.Drawing.Point(70, 153)
         Me.Label57.Name = "Label57"
         Me.Label57.Size = New System.Drawing.Size(114, 21)
         Me.Label57.TabIndex = 250
@@ -4131,16 +4464,17 @@ Partial Class frmMain
         '
         'txtBlaVag
         '
-        Me.txtBlaVag.Location = New System.Drawing.Point(1051, 60)
+        Me.txtBlaVag.Location = New System.Drawing.Point(193, 150)
         Me.txtBlaVag.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtBlaVag.Name = "txtBlaVag"
-        Me.txtBlaVag.Size = New System.Drawing.Size(200, 33)
+        Me.txtBlaVag.Size = New System.Drawing.Size(245, 33)
         Me.txtBlaVag.TabIndex = 249
+        Me.txtBlaVag.Tag = "1,4"
         '
         'Label58
         '
         Me.Label58.AutoSize = True
-        Me.Label58.Location = New System.Drawing.Point(642, 63)
+        Me.Label58.Location = New System.Drawing.Point(801, 110)
         Me.Label58.Name = "Label58"
         Me.Label58.Size = New System.Drawing.Size(68, 21)
         Me.Label58.TabIndex = 248
@@ -4148,16 +4482,17 @@ Partial Class frmMain
         '
         'txtBlaHM
         '
-        Me.txtBlaHM.Location = New System.Drawing.Point(719, 60)
+        Me.txtBlaHM.Location = New System.Drawing.Point(901, 107)
         Me.txtBlaHM.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtBlaHM.Name = "txtBlaHM"
-        Me.txtBlaHM.Size = New System.Drawing.Size(200, 33)
+        Me.txtBlaHM.Size = New System.Drawing.Size(245, 33)
         Me.txtBlaHM.TabIndex = 247
+        Me.txtBlaHM.Tag = "1,3"
         '
         'Label56
         '
         Me.Label56.AutoSize = True
-        Me.Label56.Location = New System.Drawing.Point(356, 63)
+        Me.Label56.Location = New System.Drawing.Point(447, 110)
         Me.Label56.Name = "Label56"
         Me.Label56.Size = New System.Drawing.Size(68, 21)
         Me.Label56.TabIndex = 246
@@ -4165,25 +4500,27 @@ Partial Class frmMain
         '
         'txtBlaMain
         '
-        Me.txtBlaMain.Location = New System.Drawing.Point(433, 60)
+        Me.txtBlaMain.Location = New System.Drawing.Point(547, 107)
         Me.txtBlaMain.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtBlaMain.Name = "txtBlaMain"
-        Me.txtBlaMain.Size = New System.Drawing.Size(200, 33)
+        Me.txtBlaMain.Size = New System.Drawing.Size(245, 33)
         Me.txtBlaMain.TabIndex = 245
+        Me.txtBlaMain.Tag = "1,2"
         '
         'Label55
         '
         Me.Label55.AutoSize = True
-        Me.Label55.Location = New System.Drawing.Point(82, 63)
+        Me.Label55.Location = New System.Drawing.Point(70, 110)
         Me.Label55.Name = "Label55"
-        Me.Label55.Size = New System.Drawing.Size(56, 21)
+        Me.Label55.Size = New System.Drawing.Size(68, 21)
         Me.Label55.TabIndex = 244
-        Me.Label55.Text = "主食"
+        Me.Label55.Text = "主 食"
         '
         'Label54
         '
         Me.Label54.AutoSize = True
-        Me.Label54.Location = New System.Drawing.Point(20, 63)
+        Me.Label54.ForeColor = System.Drawing.Color.Blue
+        Me.Label54.Location = New System.Drawing.Point(8, 110)
         Me.Label54.Name = "Label54"
         Me.Label54.Size = New System.Drawing.Size(56, 21)
         Me.Label54.TabIndex = 243
@@ -4191,17 +4528,18 @@ Partial Class frmMain
         '
         'txtBraSta
         '
-        Me.txtBraSta.Location = New System.Drawing.Point(147, 60)
+        Me.txtBraSta.Location = New System.Drawing.Point(193, 107)
         Me.txtBraSta.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtBraSta.Name = "txtBraSta"
-        Me.txtBraSta.Size = New System.Drawing.Size(200, 33)
+        Me.txtBraSta.Size = New System.Drawing.Size(245, 33)
         Me.txtBraSta.TabIndex = 242
+        Me.txtBraSta.Tag = "1,1"
         '
         'cmbProdVers_menu
         '
         Me.cmbProdVers_menu.FormattingEnabled = True
         Me.cmbProdVers_menu.Items.AddRange(New Object() {"A版", "B版", "C版", "D版"})
-        Me.cmbProdVers_menu.Location = New System.Drawing.Point(1051, 12)
+        Me.cmbProdVers_menu.Location = New System.Drawing.Point(686, 8)
         Me.cmbProdVers_menu.Name = "cmbProdVers_menu"
         Me.cmbProdVers_menu.Size = New System.Drawing.Size(200, 29)
         Me.cmbProdVers_menu.TabIndex = 241
@@ -4209,7 +4547,7 @@ Partial Class frmMain
         'Label53
         '
         Me.Label53.AutoSize = True
-        Me.Label53.Location = New System.Drawing.Point(928, 20)
+        Me.Label53.Location = New System.Drawing.Point(576, 11)
         Me.Label53.Name = "Label53"
         Me.Label53.Size = New System.Drawing.Size(104, 21)
         Me.Label53.TabIndex = 240
@@ -4217,81 +4555,73 @@ Partial Class frmMain
         '
         'dtMenu
         '
-        Me.dtMenu.Location = New System.Drawing.Point(719, 12)
+        Me.dtMenu.Location = New System.Drawing.Point(370, 8)
         Me.dtMenu.Name = "dtMenu"
         Me.dtMenu.Size = New System.Drawing.Size(200, 33)
         Me.dtMenu.TabIndex = 239
-        Me.dtMenu.Value = New Date(2023, 3, 10, 0, 0, 0, 0)
+        Me.dtMenu.Value = New Date(2023, 6, 7, 0, 0, 0, 0)
         '
         'btnMenuCancel
         '
         Me.btnMenuCancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnMenuCancel.Location = New System.Drawing.Point(462, 359)
+        Me.btnMenuCancel.Location = New System.Drawing.Point(1440, 8)
         Me.btnMenuCancel.Name = "btnMenuCancel"
         Me.btnMenuCancel.Size = New System.Drawing.Size(140, 44)
         Me.btnMenuCancel.TabIndex = 194
         Me.btnMenuCancel.Text = "取  消"
         Me.btnMenuCancel.UseVisualStyleBackColor = False
         '
-        'btnMenuDelete
+        'btnMenuDel
         '
-        Me.btnMenuDelete.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnMenuDelete.Location = New System.Drawing.Point(316, 359)
-        Me.btnMenuDelete.Name = "btnMenuDelete"
-        Me.btnMenuDelete.Size = New System.Drawing.Size(140, 44)
-        Me.btnMenuDelete.TabIndex = 193
-        Me.btnMenuDelete.Text = "刪  除"
-        Me.btnMenuDelete.UseVisualStyleBackColor = False
+        Me.btnMenuDel.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnMenuDel.Location = New System.Drawing.Point(1294, 8)
+        Me.btnMenuDel.Name = "btnMenuDel"
+        Me.btnMenuDel.Size = New System.Drawing.Size(140, 44)
+        Me.btnMenuDel.TabIndex = 193
+        Me.btnMenuDel.Text = "刪  除"
+        Me.btnMenuDel.UseVisualStyleBackColor = False
         '
-        'btnMenuModify
+        'btnMunuInsert
         '
-        Me.btnMenuModify.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnMenuModify.Location = New System.Drawing.Point(170, 359)
-        Me.btnMenuModify.Name = "btnMenuModify"
-        Me.btnMenuModify.Size = New System.Drawing.Size(140, 44)
-        Me.btnMenuModify.TabIndex = 192
-        Me.btnMenuModify.Text = "修  改"
-        Me.btnMenuModify.UseVisualStyleBackColor = False
-        '
-        'btnMunuAdd
-        '
-        Me.btnMunuAdd.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnMunuAdd.Location = New System.Drawing.Point(24, 359)
-        Me.btnMunuAdd.Name = "btnMunuAdd"
-        Me.btnMunuAdd.Size = New System.Drawing.Size(140, 44)
-        Me.btnMunuAdd.TabIndex = 191
-        Me.btnMunuAdd.Text = "新  增"
-        Me.btnMunuAdd.UseVisualStyleBackColor = False
+        Me.btnMunuInsert.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnMunuInsert.Cursor = System.Windows.Forms.Cursors.Default
+        Me.btnMunuInsert.Location = New System.Drawing.Point(1148, 8)
+        Me.btnMunuInsert.Name = "btnMunuInsert"
+        Me.btnMunuInsert.Size = New System.Drawing.Size(140, 44)
+        Me.btnMunuInsert.TabIndex = 191
+        Me.btnMunuInsert.Text = "新增/修改"
+        Me.btnMunuInsert.UseVisualStyleBackColor = False
         '
         'dgvMenu
         '
         Me.dgvMenu.AllowUserToAddRows = False
         Me.dgvMenu.AllowUserToDeleteRows = False
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvMenu.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle89.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle89.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvMenu.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle89
         Me.dgvMenu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvMenu.DefaultCellStyle = DataGridViewCellStyle12
-        Me.dgvMenu.Location = New System.Drawing.Point(8, 411)
+        DataGridViewCellStyle90.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle90.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle90.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle90.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle90.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle90.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle90.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvMenu.DefaultCellStyle = DataGridViewCellStyle90
+        Me.dgvMenu.Location = New System.Drawing.Point(1158, 60)
         Me.dgvMenu.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvMenu.Name = "dgvMenu"
         Me.dgvMenu.ReadOnly = True
         Me.dgvMenu.RowTemplate.Height = 24
-        Me.dgvMenu.Size = New System.Drawing.Size(1569, 327)
+        Me.dgvMenu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvMenu.Size = New System.Drawing.Size(419, 674)
         Me.dgvMenu.TabIndex = 190
         '
         'btnMenuQuery
         '
         Me.btnMenuQuery.BackColor = System.Drawing.Color.Lime
-        Me.btnMenuQuery.Location = New System.Drawing.Point(1265, 12)
+        Me.btnMenuQuery.Location = New System.Drawing.Point(892, 4)
         Me.btnMenuQuery.Name = "btnMenuQuery"
         Me.btnMenuQuery.Size = New System.Drawing.Size(140, 44)
         Me.btnMenuQuery.TabIndex = 189
@@ -4301,7 +4631,7 @@ Partial Class frmMain
         'Label51
         '
         Me.Label51.AutoSize = True
-        Me.Label51.Location = New System.Drawing.Point(356, 20)
+        Me.Label51.Location = New System.Drawing.Point(9, 11)
         Me.Label51.Name = "Label51"
         Me.Label51.Size = New System.Drawing.Size(102, 21)
         Me.Label51.TabIndex = 188
@@ -4855,22 +5185,22 @@ Partial Class frmMain
         '
         Me.dgvMoney.AllowUserToAddRows = False
         Me.dgvMoney.AllowUserToDeleteRows = False
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvMoney.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle101.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle101.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvMoney.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle101
         Me.dgvMoney.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvMoney.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvMoney.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvMoney.DefaultCellStyle = DataGridViewCellStyle14
-        Me.dgvMoney.Location = New System.Drawing.Point(9, 220)
+        DataGridViewCellStyle102.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle102.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle102.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle102.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle102.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle102.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle102.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvMoney.DefaultCellStyle = DataGridViewCellStyle102
+        Me.dgvMoney.Location = New System.Drawing.Point(9, 256)
         Me.dgvMoney.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvMoney.Name = "dgvMoney"
         Me.dgvMoney.ReadOnly = True
@@ -5166,21 +5496,21 @@ Partial Class frmMain
         '
         Me.dgvEmployee.AllowUserToAddRows = False
         Me.dgvEmployee.AllowUserToDeleteRows = False
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvEmployee.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle103.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle103.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvEmployee.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle103
         Me.dgvEmployee.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvEmployee.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle104.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle104.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle104.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle104.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle104.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle104.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle104.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvEmployee.DefaultCellStyle = DataGridViewCellStyle104
         Me.dgvEmployee.Location = New System.Drawing.Point(8, 189)
         Me.dgvEmployee.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvEmployee.Name = "dgvEmployee"
@@ -5352,22 +5682,22 @@ Partial Class frmMain
         '
         Me.dgvTaboo.AllowUserToAddRows = False
         Me.dgvTaboo.AllowUserToDeleteRows = False
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvTaboo.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle105.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle105.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvTaboo.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle105
         Me.dgvTaboo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvTaboo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvTaboo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvTaboo.DefaultCellStyle = DataGridViewCellStyle18
-        Me.dgvTaboo.Location = New System.Drawing.Point(6, 162)
+        DataGridViewCellStyle106.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle106.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle106.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle106.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle106.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle106.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle106.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvTaboo.DefaultCellStyle = DataGridViewCellStyle106
+        Me.dgvTaboo.Location = New System.Drawing.Point(6, 198)
         Me.dgvTaboo.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvTaboo.Name = "dgvTaboo"
         Me.dgvTaboo.ReadOnly = True
@@ -5596,22 +5926,22 @@ Partial Class frmMain
         '
         Me.dgvPermissions.AllowUserToAddRows = False
         Me.dgvPermissions.AllowUserToDeleteRows = False
-        DataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvPermissions.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle107.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle107.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvPermissions.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle107
         Me.dgvPermissions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvPermissions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvPermissions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle20.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPermissions.DefaultCellStyle = DataGridViewCellStyle20
-        Me.dgvPermissions.Location = New System.Drawing.Point(16, 174)
+        DataGridViewCellStyle108.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle108.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle108.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle108.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle108.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle108.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle108.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPermissions.DefaultCellStyle = DataGridViewCellStyle108
+        Me.dgvPermissions.Location = New System.Drawing.Point(16, 210)
         Me.dgvPermissions.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvPermissions.Name = "dgvPermissions"
         Me.dgvPermissions.ReadOnly = True
@@ -5666,22 +5996,22 @@ Partial Class frmMain
         Me.dgvProdgroup.AllowUserToAddRows = False
         Me.dgvProdgroup.AllowUserToDeleteRows = False
         Me.dgvProdgroup.AllowUserToOrderColumns = True
-        DataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvProdgroup.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle109.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle109.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvProdgroup.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle109
         Me.dgvProdgroup.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvProdgroup.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvProdgroup.ColumnHeadersHeight = 25
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle22.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvProdgroup.DefaultCellStyle = DataGridViewCellStyle22
-        Me.dgvProdgroup.Location = New System.Drawing.Point(9, 162)
+        DataGridViewCellStyle110.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle110.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle110.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle110.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle110.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle110.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle110.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvProdgroup.DefaultCellStyle = DataGridViewCellStyle110
+        Me.dgvProdgroup.Location = New System.Drawing.Point(9, 198)
         Me.dgvProdgroup.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvProdgroup.Name = "dgvProdgroup"
         Me.dgvProdgroup.ReadOnly = True
@@ -5971,9 +6301,8 @@ Partial Class frmMain
     Friend WithEvents Label53 As Label
     Friend WithEvents dtMenu As DateTimePicker
     Friend WithEvents btnMenuCancel As Button
-    Friend WithEvents btnMenuDelete As Button
-    Friend WithEvents btnMenuModify As Button
-    Friend WithEvents btnMunuAdd As Button
+    Friend WithEvents btnMenuDel As Button
+    Friend WithEvents btnMunuInsert As Button
     Friend WithEvents dgvMenu As DataGridView
     Friend WithEvents btnMenuQuery As Button
     Friend WithEvents Label51 As Label
@@ -5993,7 +6322,7 @@ Partial Class frmMain
     Friend WithEvents Label81 As Label
     Friend WithEvents txtMonMemo As TextBox
     Friend WithEvents btnMonQuery As Button
-    Friend WithEvents txtProdName_menu As ComboBox
+    Friend WithEvents cmbProdName_menu As ComboBox
     Friend WithEvents Label33 As Label
     Friend WithEvents Label11 As Label
     Friend WithEvents txtLun3 As TextBox
@@ -6112,8 +6441,6 @@ Partial Class frmMain
     Friend WithEvents btnMinusMonth As Button
     Friend WithEvents txtProdID As TextBox
     Friend WithEvents Label93 As Label
-    Friend WithEvents Label94 As Label
-    Friend WithEvents txtMenuID As TextBox
     Friend WithEvents Label100 As Label
     Friend WithEvents txtProdQuery As TextBox
     Friend WithEvents txtOrdID_order As TextBox
@@ -6340,4 +6667,34 @@ Partial Class frmMain
     Friend WithEvents btnDistModify As Button
     Friend WithEvents txtSelectDate As TextBox
     Friend WithEvents Label88 As Label
+    Friend WithEvents Label141 As Label
+    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents Label142 As Label
+    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents Label139 As Label
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents Label140 As Label
+    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents Label137 As Label
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label138 As Label
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Label143 As Label
+    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents Label144 As Label
+    Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents Label146 As Label
+    Friend WithEvents TextBox10 As TextBox
+    Friend WithEvents Label145 As Label
+    Friend WithEvents TextBox9 As TextBox
+    Friend WithEvents Label148 As Label
+    Friend WithEvents TextBox12 As TextBox
+    Friend WithEvents Label147 As Label
+    Friend WithEvents TextBox11 As TextBox
+    Friend WithEvents Label149 As Label
+    Friend WithEvents TextBox13 As TextBox
+    Friend WithEvents Label150 As Label
+    Friend WithEvents TextBox14 As TextBox
+    Friend WithEvents Label151 As Label
+    Friend WithEvents TextBox15 As TextBox
 End Class
