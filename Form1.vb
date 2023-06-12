@@ -36,23 +36,26 @@ Public Class frmMain
         cmbMonType.Items.Add("訂金")
         '初始化禁忌清單
         dtTaboo = SelectFromTable("SELECT * FROM taboo")
-        '初始化配餐管理 月曆
-        txtDistCalendar.Text = DateTime.Now.ToString("Y")
-        '初始化菜單版本
-        With cmbProdVers_menu
-            Dim arr() As String = {"A", "B", "C", "D"}
-            .DataSource = arr
-            .SelectedIndex = -1
-        End With
-        'todo 未完成區-----
+
+        tpDistribute.Parent = Nothing
+        tpMenu.Parent = Nothing
         TP_Report.Parent = Nothing
+        ''初始化配餐管理 月曆
+        'txtDistCalendar.Text = DateTime.Now.ToString("Y")
+        ''初始化菜單版本
+        'With cmbProdVers_menu
+        '    Dim arr() As String = {"A", "B", "C", "D"}
+        '    .DataSource = arr
+        '    .SelectedIndex = -1
+        'End With
+
     End Sub
 
     Private Sub frmMain_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         LoginForm1.Close()
     End Sub
 
-    '自定義索引標籤、文字顏色
+    '自定義TabPage索引標籤、文字顏色
     Private Sub TabControl_DrawItem(sender As Object, e As DrawItemEventArgs) Handles TabControl1.DrawItem, tcCustomer.DrawItem
         Dim tabControl As TabControl = DirectCast(sender, TabControl)
         Dim tab As TabPage = tabControl.TabPages(e.Index)
@@ -168,76 +171,18 @@ Public Class frmMain
         DataToDgv(SelectFromTable(sqlMenu), "menu,product", dgvMenu)
     End Sub
 
-    '''' <summary>
-    '''' xml取得儲存格資訊
-    '''' </summary>
-    '''' <returns></returns>
-    'Private Function GetCell() As Dictionary(Of String, String)
-    '    Dim dic As New Dictionary(Of String, String)
-    '    Dim exl = SpreadsheetDocument.Open("D:\WorkWork\挺益\20220126_菜單新格式\最新A版叫貨.xlsx", False)
-    '    Dim workbookPart As WorkbookPart = exl.WorkbookPart
-    '    Dim targetSheet = workbookPart.Workbook.Sheets.Elements(Of Sheet).FirstOrDefault(Function(x) x.Name = "菜單總表")
-    '    Dim worksheetPart As WorksheetPart = workbookPart.GetPartById(targetSheet.Id)
-    '    Dim sheetData As SheetData = worksheetPart.Worksheet.GetFirstChild(Of SheetData)()
-    '    Dim a As CellWhere
-    '    a.Column = "D"
-    '    a.RowStart = 3
-    '    a.RowEnd = 36
-    '    Dim cellName As New List(Of CellWhere) From {
-    '        a
-    '    }
-
-    '    For Each lst In cellName
-    '        For i As Integer = lst.RowStart To lst.RowEnd
-    '            If sheetData IsNot Nothing Then
-    '                Dim cellRef As String = lst.Column + i.ToString
-    '                Dim cell As Cell = sheetData.Descendants(Of Cell)().FirstOrDefault(Function(x) x.CellReference.Value = cellRef)
-
-    '                If cell IsNot Nothing Then
-    '                    ' 取得 A1 儲存格的值
-    '                    Dim sharedStringTablePart As SharedStringTablePart = workbookPart.GetPartsOfType(Of SharedStringTablePart)().FirstOrDefault()
-    '                    Dim cellValue As String = GetCellValue(cell, sharedStringTablePart)
-    '                    dic.Add(cellRef, cellValue)
-    '                Else
-    '                    Console.WriteLine($"找不到{cellName}儲存格")
-    '                End If
-    '            Else
-    '                Console.WriteLine("找不到工作表資料")
-    '                Exit For
-    '            End If
-
-    '        Next
-    '    Next
-    '    Return dic
-    'End Function
-
-    '''' <summary>
-    '''' xml取出儲存格文字
-    '''' </summary>
-    '''' <param name="cell"></param>
-    '''' <param name="sharedStringTablePart"></param>
-    '''' <returns></returns>
-    'Private Function GetCellValue(cell As Cell, sharedStringTablePart As SharedStringTablePart) As String
-    '    Dim cellValue As String = cell.InnerText
-
-    '    If cell.DataType IsNot Nothing AndAlso cell.DataType.Value = CellValues.SharedString Then
-    '        Dim sharedStringIndex As Integer = Integer.Parse(cellValue)
-    '        Dim sharedStringItem As SharedStringItem = sharedStringTablePart.SharedStringTable.Elements(Of SharedStringItem)().ElementAt(sharedStringIndex)
-    '        cellValue = sharedStringItem.Text.Text
-    '    End If
-
-    '    Return cellValue
-    'End Function
+    Structure InitDGV
+        Public sql As String
+        Public table As String
+        Public dgv As DataGridView
+    End Structure
 
     '客戶管理-dgv點擊
     Private Sub dgvCustomer_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvCustomer.CellMouseClick
-        'todo 參考訂單管理來簡化
-        Dim dgv = CType(sender, DataGridView)
-        If dgv.SelectedRows.Count > 0 Then
+        If dgvCustomer.SelectedRows.Count > 0 Then
             ClearTabPage(tpConsult_cus)
             ClearTabPage(tpBasic_cus)
-            Dim row = dgv.SelectedRows(0)
-            Dim list As List(Of String)
+            Dim row = dgvCustomer.SelectedRows(0)
             Dim rdo As RadioButton
             Dim id = row.Cells("cus_id").Value.ToString
             '用data table把所有資料放上去
@@ -250,56 +195,35 @@ Public Class frmMain
             txtJob.Text = rowCus("cus_job").ToString
             txtLineID.Text = rowCus("cus_line").ToString
             txtAddress.Text = rowCus("cus_address").ToString
+            rdoMan.Checked = rowCus.Field(Of String)("cus_gender") = "男"
+            rdoFemale.Checked = (rowCus.Field(Of String)("cus_gender") = "女")
 
-            If Not rowCus.IsNull("cus_gender") Then
-                If rowCus("cus_gender") = "男" Then
-                    rdoMan.Checked = True
-                Else
-                    rdoFemale.Checked = True
-                End If
-            End If
-
-            If Not rowCus.IsNull("cus_marriage") Then
-                If rowCus("cus_marriage") = "未婚" Then
-                    rdounmarried.Checked = True
-                Else
-                    rdoMarried.Checked = True
-                    txtSpouse.Text = rowCus("cus_spouse").ToString
-                    txtChildren.Text = rowCus("cus_children").ToString
-                End If
-            End If
+            rdounmarried.Checked = (rowCus.Field(Of String)("cus_marriage") = "未婚")
+            rdoMarried.Checked = (rowCus.Field(Of String)("cus_marriage") = "已婚")
+            txtSpouse.Text = If(rdoMarried.Checked, rowCus.Field(Of String)("cus_spouse"), "")
+            txtChildren.Text = If(rdoMarried.Checked, rowCus.Field(Of Integer)("cus_children"), "")
 
             For Each rdo In grpAcad_Qual.Controls.OfType(Of RadioButton)
-                rdo.Checked = Equals(rdo.Text, rowCus("cus_acad_qual"))
+                rdo.Checked = rdo.Text = rowCus.Field(Of String)("cus_acad_qual")
             Next
 
-            If Not rowCus.IsNull("cus_kind") Then
-                list = Split(rowCus("cus_kind"), ",").ToList
-                For Each check In grpKind.Controls.OfType(Of CheckBox)
-                    If list.Contains(check.Text) Then
-                        check.Checked = True
-                        If check.Text = "術後餐" Then
-                            txtKindElse.Text = rowCus("cus_kind_else").ToString
-                        End If
-                    End If
-                Next
-                list.Clear()
-            End If
+            Dim list As List(Of String)
+            list = Split(rowCus.Field(Of String)("cus_kind"), ",").ToList
+            For Each check In grpKind.Controls.OfType(Of CheckBox)
+                check.Checked = list.Contains(check.Text)
+                If check.Text = "術後餐" Then
+                    txtKindElse.Text = If(check.Checked, rowCus.Field(Of String)("cus_kind_else"), "")
+                End If
+            Next
 
-            If Not rowCus.IsNull("cus_get_msg") Then
-                list = Split(rowCus("cus_get_msg"), ",").ToList
-                For Each check In grpGetMsg.Controls.OfType(Of CheckBox)
-                    If list.Contains(check.Text) Then
-                        check.Checked = True
-                        If check.Text = "其他" Then
-                            txtGetMsgElse.Text = rowCus("cus_getmsg_else")
-                        End If
-                    End If
-                Next
-                list.Clear()
-            End If
+            list = Split(rowCus.Field(Of String)("cus_get_msg"), ",").ToList
+            For Each check In grpGetMsg.Controls.OfType(Of CheckBox)
+                check.Checked = list.Contains(check.Text)
+                If check.Text = "其他" Then
+                    txtGetMsgElse.Text = If(check.Checked, rowCus.Field(Of String)("cus_getmsg_else"), "")
+                End If
+            Next
 
-            'txtDueDate.Text = rowCus("cus_due_date")
             txtDueDate.Text = If(rowCus.IsNull("cus_due_date"), "", Convert.ToDateTime(rowCus("cus_due_date")))
             txtHospital.Text = rowCus("cus_hospital")
             txtManyChild.Text = rowCus("cus_many_child").ToString
@@ -310,31 +234,25 @@ Public Class frmMain
             txtBornWeight.Text = rowCus("cus_born_weight").ToString
             txtWeight.Text = rowCus("cus_weight").ToString
 
-            If Not rowCus.IsNull("cus_disease") Then
-                list = Split(rowCus("cus_disease"), ",").ToList
-                For Each check In grpDisease.Controls.OfType(Of CheckBox)
-                    If list.Contains(check.Text) Then
-                        check.Checked = True
-                        If check.Text = "其他" Then
-                            txtDisease.Text = rowCus("cus_disease_else")
-                        End If
-                    End If
-                Next
-                list.Clear()
-            End If
+            list = Split(rowCus.Field(Of String)("cus_disease"), ",").ToList
+            For Each check In grpDisease.Controls.OfType(Of CheckBox)
+                check.Checked = list.Contains(check.Text)
+                If check.Text = "其他" Then
+                    txtDisease.Text = If(check.Checked, rowCus.Field(Of String)("cus_disease_else"), "")
+                End If
+            Next
 
-            If Not rowCus.IsNull("cus_tabo_id") Then
-                list = Split(rowCus("cus_tabo_id"), ",").ToList
-                txtTaboo.Tag = String.Join(",", list)
-                Dim listText As New List(Of String)
-                For Each txt As String In list
-                    Dim name = dtTaboo.Select($"tabo_id = '{txt}'").FirstOrDefault.Field(Of String)("tabo_name")
+            list = Split(rowCus.Field(Of String)("cus_tabo_id"), ",").ToList
+            txtTaboo.Tag = String.Join(",", list)
+            Dim listText As New List(Of String)
+            For Each txt As String In list
+                Dim txtid As Integer
+                If Integer.TryParse(txt, txtid) Then
+                    Dim name = dtTaboo.Select($"tabo_id = '{txtid}'").FirstOrDefault?.Field(Of String)("tabo_name")
                     listText.Add(name)
-                Next
-                txtTaboo.Text = String.Join(",", listText)
-                list.Clear()
-            End If
-
+                End If
+            Next
+            txtTaboo.Text = String.Join(",", listText)
             txtMealAdj.Text = rowCus("cus_meal_adj").ToString
             txtDietPerp.Text = rowCus("cus_diet_prep").ToString
             txtNutrCons.Text = rowCus("cus_nutr_cons").ToString
@@ -368,6 +286,7 @@ Public Class frmMain
         InserData(table, Bind_TableTextBox(table))
 
         btnCusCancel.PerformClick()
+        MsgBox("新增成功")
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -380,6 +299,7 @@ Finish:
         UpdateData(table, Bind_TableTextBox(table), $"cus_id = '{txtCusID.Text}'")
 
         btnCusCancel.PerformClick()
+        MsgBox("修改成功")
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -566,6 +486,7 @@ Finish:
         InserData(table, Bind_TableTextBox(table))
 
         btnOrdCancel.PerformClick()
+        MsgBox("新增成功")
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -595,6 +516,7 @@ Finish:
         UpdateData(sTable, Bind_TableTextBox(sTable), $"ord_id  = '{txtOrdID_order.Text}'")
 
         btnOrdCancel.PerformClick()
+        MsgBox("修改成功")
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -809,6 +731,7 @@ Finish:
         InserData(sTable, Bind_TableTextBox(sTable))
         btnEmpCancel.PerformClick()
         InitSales()
+        MsgBox("新增成功")
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -822,6 +745,7 @@ Finish:
         UpdateData(sTable, Bind_TableTextBox(sTable), $"emp_id  = '{txtEmpID.Text}'")
         btnEmpCancel.PerformClick()
         InitSales()
+        MsgBox("修改成功")
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -877,7 +801,7 @@ Finish:
         Dim dgvRow = dgv.SelectedRows(0)
         Dim colName As String
         Dim rowData = SelectFromTable($"SELECT a.ord_id,b.cus_name,b.cus_phone,c.prod_name,a.ord_delivery,a.ord_breakfast,a.ord_lunch,a.ord_dinner FROM orders a LEFT JOIN customer b ON a.ord_cus_id=b.cus_id LEFT JOIN product c ON a.ord_prod_id=c.prod_id WHERE a.ord_id = '{dgvRow.Cells("ord_id").Value}'").Rows(0)
-        For Each ctrl As Windows.Forms.Control In dgv.Parent.Controls
+        For Each ctrl As Control In dgv.Parent.Controls
             colName = ctrl.Tag 'TextBox的Tag對應表格欄位名稱
             If TypeOf ctrl Is TextBox Then
                 If Not String.IsNullOrEmpty(colName) Then ctrl.Text = rowData(colName).ToString
@@ -1234,10 +1158,16 @@ Finish:
     '菜單管理-Excel匯入
     Private Sub btnMenuExcel_Click(sender As Object, e As EventArgs) Handles btnMenuExcel.Click
         Cursor = Cursors.WaitCursor
+        Dim path As String = ""
+        If OpenFileDialog1.ShowDialog = DialogResult.OK Then
+            path = OpenFileDialog1.FileName
+        Else
+            GoTo Finish
+        End If
         Dim exl As New Excel.Application With {
             .DisplayAlerts = False
         }
-        Dim sheet As Excel.Worksheet = exl.Workbooks.Open("D:\WorkWork\挺益\20220126_菜單新格式\最新A版叫貨.xlsx").Sheets("菜單總表")
+        Dim sheet As Excel.Worksheet = exl.Workbooks.Open(path).Sheets("菜單總表")
         Dim rng As String
         Dim cell As Excel.Range
         Dim value As Object
@@ -2508,7 +2438,10 @@ Finish:
                         .Add("ord_eat_type", rdo.Text) '葷素
                         rdo = Nothing
                     End If
-                    .Add("ord_emp_id", cmbSales.SelectedValue.ToString)
+                    If cmbSales.SelectedIndex <> -1 Then
+                        .Add("ord_emp_id", cmbSales.SelectedValue.ToString)
+                    End If
+
 
                 Case "money"
                     row = SelectFromTable($"SELECT cus_id FROM customer WHERE cus_name = '{txtCusName_money.Text}' AND cus_phone = '{txtPhone_money.Text}'").Rows(0)
@@ -2950,6 +2883,7 @@ Finish:
 
         '列出所有表格資料
         btnProdGrpCancel.PerformClick()
+        MsgBox("新增成功")
 Finish:
         Me.Cursor = Cursors.Default
     End Sub
@@ -2967,6 +2901,7 @@ Finish:
 
         '列出所有表格資料
         btnProdCancel.PerformClick()
+        MsgBox("新增成功")
 Finish:
         Me.Cursor = Cursors.Default
     End Sub
@@ -2984,6 +2919,7 @@ Finish:
         '列出所有表格資料
         btnTaboCancel.PerformClick()
         InitTabooType()
+        MsgBox("新增成功")
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -2997,6 +2933,7 @@ Finish:
         InserData(sTable, Bind_TableTextBox(sTable))
         '列出所有表格資料
         btnMonCancel.PerformClick()
+        MsgBox("新增成功")
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -3010,6 +2947,7 @@ Finish:
         InserData(sTable, Bind_TableTextBox(sTable))
         '列出所有表格資料
         btnPermCancel.PerformClick()
+        MsgBox("新增成功")
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -3024,6 +2962,7 @@ Finish:
 
         '列出所有資料
         btnProdGrpCancel.PerformClick()
+        MsgBox("修改成功")
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -3038,6 +2977,7 @@ Finish:
 
         '列出所有資料
         btnProdCancel.PerformClick()
+        MsgBox("修改成功")
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -3052,6 +2992,7 @@ Finish:
         '列出所有資料
         btnTaboCancel.PerformClick()
         InitTabooType()
+        MsgBox("修改成功")
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -3065,6 +3006,7 @@ Finish:
         UpdateData(sTable, Bind_TableTextBox(sTable), $"mon_id  = '{txtMonID.Text}'")
         '列出所有資料
         btnMonCancel.PerformClick()
+        MsgBox("修改成功")
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -3078,6 +3020,7 @@ Finish:
         UpdateData(sTable, Bind_TableTextBox(sTable), $"perm_id  = '{txtPermID.Text}'")
         '列出所有資料
         btnPermCancel.PerformClick()
+        MsgBox("修改成功")
 Finish:
         Cursor = Cursors.Default
     End Sub
@@ -3100,6 +3043,7 @@ Finish:
 
             btnProdGrpCancel.PerformClick()
         End If
+
     End Sub
 
     '商品管理-刪除
@@ -3278,5 +3222,4 @@ Finish:
     Private Sub btnTaboo_Click(sender As Object, e As EventArgs) Handles btnTaboo.Click
         frmTaboo.Show()
     End Sub
-
 End Class
