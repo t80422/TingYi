@@ -35,13 +35,14 @@
         Dim dic As New Dictionary(Of String, String)
         Dim table = "dishes"
         For Each row As DataGridViewRow In DataGridView1.Rows
-            If row.Cells("dish_ingredients").Value IsNot Nothing Then
-                dic.Add("dish_name", row.Cells("dish_name").Value)
-                dic.Add("dish_ingredients", row.Cells("dish_ingredients").Value)
-                DeleteData(table, $"dish_name = '{row.Cells("dish_name").Value}'")
-                InserTable(table, dic)
-            End If
+            dic.Add("dish_name", row.Cells("dish_name").Value)
+            dic.Add("dish_ingredients", row.Cells("dish_ingredients").Value)
+            DeleteData(table, $"dish_name = '{row.Cells("dish_name").Value}'")
+            InserTable(table, dic)
+            dic.Clear()
         Next
+
+        frmMain.btnCancel_dish.PerformClick()
         Close()
     End Sub
 End Class

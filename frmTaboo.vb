@@ -11,16 +11,19 @@
 
     Private Sub frmTaboo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dt = SelectTable("SELECT * FROM taboo")
+
         '初始化所有選項
         For Each row In dt.AsEnumerable.Select(Function(x) x.Field(Of Integer)("tabo_id"))
             dic.Add(row, False)
         Next
+
         '初始化分類
-        Dim lst As List(Of String) = dt.AsEnumerable.Select(Function(row) row.Field(Of String)("tabo_type")).Distinct.ToList
+        Dim rowGroups = SelectTable("SELECT * FROM taboo_group").Rows
         With cmbType
             .Items.Add("全部")
-            For Each type As String In lst
-                .Items.Add(type)
+            For Each row As DataRow In rowGroups
+
+                .Items.Add(row("tg_name"))
             Next
             .SelectedIndex = 0
         End With

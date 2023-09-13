@@ -5,15 +5,12 @@
     Friend sqlProductGroup As String = "SELECT * FROM product_group"
     '商品管理
     Friend sqlProduct As String = "SELECT a.prod_id,a.prod_name,b.prod_grp_name,a.prod_price,a.prod_cost,a.prod_type,a.prod_meal,a.prod_memo FROM product a LEFT JOIN product_group b on a.prod_prod_grp_id=b.prod_grp_id"
-    '禁忌管理
-    Friend sqlTaboo As String = "SELECT * FROM taboo"
     '訂單管理
     Friend sqlOrder As String = "SELECT a.ord_id, a.ord_date, b.cus_name, b.cus_phone, c.prod_name FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id=c.prod_id"
     '財務管理
-    Friend sqlMoney As String = "SELECT a.mon_id, c.cus_name, c.cus_phone, a.mon_ord_id, a.mon_date, a.mon_type, a.mon_income, a.mon_memo " +
-                                "FROM money a " +
-                                "LEFT JOIN orders b On a.mon_ord_id = b.ord_id " +
-                                "LEFT JOIN customer c On b.ord_cus_id = c.cus_id"
+    Friend sqlMoney = "SELECT a.ord_id, c.cus_name, c.cus_phone, a.ord_price, a.ord_discount, a.ord_tableware, a.ord_taste " &
+                                   "FROM orders a " &
+                                   "LEFT JOIN customer c ON a.ord_cus_id = c.cus_id"
     '權限管理
     Friend sqlPermision As String = "Select * FROM permissions"
     '員工管理
@@ -70,201 +67,17 @@
         Public Property Name As String
     End Class
 
-    '''' <summary>
-    '''' 取得各產品的菜色在Excel菜單Cell的位置對應到Table的編號
-    '''' </summary>
-    '''' <param name="pmDetail">產品菜色名稱</param>
-    '''' <returns></returns>
-    'Public Function GetProductMealDetail(pmDetail As ProductMealDetail) As Dictionary(Of Integer, Integer)
-    '    Dim dic As New Dictionary(Of Integer, Integer)
-    '    With dic
-    '        Select Case pmDetail
-    '            Case 0 '月子早餐
-    '                .Add(4, Meal_Detail.主食)
-    '                .Add(5, Meal_Detail.主菜)
-    '                .Add(6, Meal_Detail.半葷素)
-    '                .Add(7, Meal_Detail.青菜西飲)
-    '                .Add(8, Meal_Detail.湯品)
-    '            Case 1 '月子午餐
-    '                .Add(9, Meal_Detail.湯盅清補)
-    '                .Add(10, Meal_Detail.湯盅1期)
-    '                .Add(11, Meal_Detail.湯盅3期)
-    '                .Add(12, Meal_Detail.主食)
-    '                .Add(13, Meal_Detail.主菜)
-    '                .Add(14, Meal_Detail.半葷素)
-    '                .Add(15, Meal_Detail.蔬菜1)
-    '                .Add(16, Meal_Detail.水果)
-    '                .Add(17, Meal_Detail.甜品)
-    '            Case 2 '月子晚餐
-    '                .Add(18, Meal_Detail.湯盅清補)
-    '                .Add(19, Meal_Detail.湯盅1期)
-    '                .Add(20, Meal_Detail.湯盅3期)
-    '                .Add(21, Meal_Detail.主食)
-    '                .Add(22, Meal_Detail.主菜)
-    '                .Add(23, Meal_Detail.半葷素)
-    '                .Add(24, Meal_Detail.蔬菜1)
-    '                .Add(25, Meal_Detail.水果)
-    '            Case 3 '月子晚點
-    '                .Add(26, Meal_Detail.湯盅清補)
-    '                .Add(27, Meal_Detail.湯盅1期)
-    '                .Add(28, Meal_Detail.湯盅3期)
-    '            Case 4 '調理餐
-    '                .Add(39, Meal_Detail.主食)
-    '                .Add(40, Meal_Detail.主菜)
-    '                .Add(41, Meal_Detail.半葷素)
-    '                .Add(42, Meal_Detail.蔬菜1)
-    '                .Add(43, Meal_Detail.蔬菜2)
-    '                .Add(44, Meal_Detail.湯品)
-    '                .Add(45, Meal_Detail.水果)
-    '            Case 5 '幸福午餐
-    '                .Add(50, Meal_Detail.主食)
-    '                .Add(51, Meal_Detail.主菜)
-    '                .Add(52, Meal_Detail.半葷素)
-    '                .Add(53, Meal_Detail.蔬菜1)
-    '                .Add(54, Meal_Detail.湯品)
-    '            Case 6 '幸福晚餐
-    '                .Add(56, Meal_Detail.主食)
-    '                .Add(57, Meal_Detail.主菜)
-    '                .Add(58, Meal_Detail.半葷素)
-    '                .Add(59, Meal_Detail.蔬菜1)
-    '                .Add(60, Meal_Detail.湯品)
-    '            Case 7 '住院早餐
-    '                .Add(65, Meal_Detail.主食)
-    '                .Add(66, Meal_Detail.主菜)
-    '                .Add(67, Meal_Detail.半葷素)
-    '                .Add(68, Meal_Detail.蔬菜1)
-    '                .Add(69, Meal_Detail.湯品)
-    '                .Add(70, Meal_Detail.飲品)
-    '            Case 8 '住院午餐
-    '                .Add(71, Meal_Detail.主食)
-    '                .Add(72, Meal_Detail.主菜)
-    '                .Add(73, Meal_Detail.半葷素)
-    '                .Add(74, Meal_Detail.蔬菜1)
-    '                .Add(75, Meal_Detail.湯品)
-    '                .Add(76, Meal_Detail.水果)
-    '                .Add(77, Meal_Detail.飲品)
-    '                .Add(78, Meal_Detail.甜湯)
-    '            Case 9 '住院晚餐
-    '                .Add(79, Meal_Detail.主食)
-    '                .Add(80, Meal_Detail.主菜)
-    '                .Add(81, Meal_Detail.半葷素)
-    '                .Add(82, Meal_Detail.蔬菜1)
-    '                .Add(83, Meal_Detail.湯品)
-    '                .Add(84, Meal_Detail.飲品)
-    '                .Add(85, Meal_Detail.夜點)
-    '            Case 10 '輕食早餐
-    '                .Add(89, Meal_Detail.主食)
-    '                .Add(90, Meal_Detail.主菜)
-    '                .Add(91, Meal_Detail.蔬菜1)
-    '                .Add(92, Meal_Detail.蔬菜2)
-    '                .Add(93, Meal_Detail.水果)
-    '                .Add(94, Meal_Detail.飲品)
-    '            Case 11 '輕食午餐
-    '                .Add(96, Meal_Detail.主食)
-    '                .Add(97, Meal_Detail.主菜)
-    '                .Add(98, Meal_Detail.蔬菜1)
-    '                .Add(99, Meal_Detail.蔬菜2)
-    '                .Add(100, Meal_Detail.水果)
-    '                .Add(101, Meal_Detail.飲品)
-    '            Case 12 '輕食晚餐
-    '                .Add(103, Meal_Detail.主食)
-    '                .Add(104, Meal_Detail.主菜)
-    '                .Add(105, Meal_Detail.蔬菜1)
-    '                .Add(106, Meal_Detail.蔬菜2)
-    '                .Add(107, Meal_Detail.水果)
-    '                .Add(108, Meal_Detail.飲品)
-    '            Case 13 '術後調理早餐
-    '                .Add(4, Meal_Detail.主食)
-    '                .Add(5, Meal_Detail.主菜)
-    '                .Add(6, Meal_Detail.半葷素)
-    '                .Add(7, Meal_Detail.青菜西飲)
-    '                .Add(8, Meal_Detail.湯品)
-    '            Case 14 '術後調理午餐
-    '                .Add(11, Meal_Detail.主食)
-    '                .Add(12, Meal_Detail.主菜)
-    '                .Add(13, Meal_Detail.半葷素)
-    '                .Add(14, Meal_Detail.蔬菜1)
-    '                .Add(15, Meal_Detail.水果)
-    '                .Add(9, Meal_Detail.湯盅清補)
-    '            Case 15 '術後調理晚餐
-    '                .Add(18, Meal_Detail.主食)
-    '                .Add(19, Meal_Detail.主菜)
-    '                .Add(20, Meal_Detail.半葷素)
-    '                .Add(21, Meal_Detail.蔬菜1)
-    '                .Add(22, Meal_Detail.水果)
-    '                .Add(16, Meal_Detail.湯盅清補)
-    '            Case 16 '素食早餐
-    '                .Add(27, Meal_Detail.主食)
-    '                .Add(28, Meal_Detail.主菜)
-    '                .Add(29, Meal_Detail.半葷素)
-    '                .Add(30, Meal_Detail.青菜西飲)
-    '                .Add(31, Meal_Detail.湯品)
-    '            Case 17 '素食午餐
-    '                .Add(32, Meal_Detail.湯盅清補)
-    '                .Add(33, Meal_Detail.湯盅2期)
-    '                .Add(34, Meal_Detail.主食)
-    '                .Add(35, Meal_Detail.主菜)
-    '                .Add(36, Meal_Detail.半葷素)
-    '                .Add(37, Meal_Detail.蔬菜1)
-    '                .Add(38, Meal_Detail.甜品)
-    '            Case 18 '素食晚餐
-    '                .Add(39, Meal_Detail.湯盅清補)
-    '                .Add(40, Meal_Detail.湯盅2期)
-    '                .Add(41, Meal_Detail.主食)
-    '                .Add(42, Meal_Detail.主菜)
-    '                .Add(43, Meal_Detail.半葷素)
-    '                .Add(44, Meal_Detail.蔬菜1)
-    '                .Add(46, Meal_Detail.夜點)
-    '            Case 19 '素食一般午餐
-    '                .Add(53, Meal_Detail.主食)
-    '                .Add(54, Meal_Detail.主菜)
-    '                .Add(55, Meal_Detail.蔬菜1)
-    '                .Add(56, Meal_Detail.蔬菜2)
-    '                .Add(57, Meal_Detail.湯品)
-    '            Case 20 '素食一般晚餐
-    '                .Add(58, Meal_Detail.主食)
-    '                .Add(59, Meal_Detail.主菜)
-    '                .Add(60, Meal_Detail.蔬菜1)
-    '                .Add(61, Meal_Detail.蔬菜2)
-    '                .Add(62, Meal_Detail.湯品)
-    '        End Select
-    '    End With
-    '    Return dic
-    'End Function
-
-    'Public Enum ProductMealDetail
-    '    月子早餐
-    '    月子午餐
-    '    月子晚餐
-    '    月子晚點
-    '    調理餐
-    '    幸福午餐
-    '    幸福晚餐
-    '    住院早餐
-    '    住院午餐
-    '    住院晚餐
-    '    輕食早餐
-    '    輕食午餐
-    '    輕食晚餐
-    '    術後調理早餐
-    '    術後調理午餐
-    '    術後調理晚餐
-    '    素食早餐
-    '    素食午餐
-    '    素食晚餐
-    '    素食一般午餐
-    '    素食一般晚餐
-    'End Enum
-
     ''' <summary>
-    ''' 清空指定控制項內其他控制項
+    ''' 清空容器裡的控制項
     ''' </summary>
-    ''' <param name="ctrls">控制項的集合</param>
+    ''' <param name="ctrls"></param>
+    ''' <param name="exception">例外控制項的名稱</param>
     Public Sub ClearControls(ctrls As Control, Optional exception As List(Of String) = Nothing)
         For Each ctrl As Control In ctrls.Controls
             If exception IsNot Nothing Then
-                If exception.Contains(ctrls.Name) Or exception.Contains(ctrls.Text) Then Continue For
+                If exception.Contains(ctrl.Name) Or exception.Contains(ctrl.Text) Then Continue For
             End If
+
             If TypeOf ctrl Is GroupBox Then
                 Dim grp = CType(ctrl, GroupBox)
                 ClearControls(grp)
@@ -273,15 +86,19 @@
                     ClearControls(ctrls)
                 Next
             End If
-            If TypeOf ctrl Is TextBox Then
-                ctrl.Text = ""
-            ElseIf TypeOf ctrl Is CheckBox Then
-                CType(ctrl, CheckBox).Checked = False
-            ElseIf TypeOf ctrl Is RadioButton Then
-                CType(ctrl, RadioButton).Checked = False
-            ElseIf TypeOf ctrl Is ComboBox Then
-                CType(ctrl, ComboBox).SelectedIndex = -1
-            End If
+
+            Select Case ctrl.GetType.Name
+                Case "TextBox"
+                    ctrl.Text = ""
+                Case "CheckBox"
+                    CType(ctrl, CheckBox).Checked = False
+                Case "ComboBox"
+                    CType(ctrl, ComboBox).SelectedIndex = -1
+                Case "DateTimePicker"
+                    CType(ctrl, DateTimePicker).Value = Now
+                Case Else
+
+            End Select
         Next
     End Sub
 
@@ -312,7 +129,7 @@
     End Sub
 
     '清空控制項內容
-    Private Sub ClearControl(ctrl As Windows.Forms.Control)
+    Private Sub ClearControl(ctrl As Control)
         If TypeOf ctrl Is TextBox Then
             ctrl.Text = ""
         ElseIf TypeOf ctrl Is CheckBox Then
@@ -332,17 +149,24 @@
     Public Sub GetDataToControls(ctrls As Control, row As Object)
         For Each ctrl In ctrls.Controls.Cast(Of Control).Where(Function(c) Not String.IsNullOrEmpty(c.Tag))
             Dim value = GetCellData(row, ctrl.Tag.ToString)
+
+            If String.IsNullOrEmpty(value) Then Continue For
+
             Select Case ctrl.GetType.Name
                 Case "TextBox"
                     ctrl.Text = value
+
                 Case "DateTimePicker"
                     Dim dtp As DateTimePicker = ctrl
                     dtp.Value = value
+
                 Case "ComboBox"
                     Dim cmb As ComboBox = ctrl
                     cmb.SelectedIndex = cmb.FindStringExact(value)
+
                 Case "GroupBox"
                     Dim grp As GroupBox = ctrl
+
                     For Each c In grp.Controls
                         If TypeOf c Is CheckBox Then
                             Dim chk As CheckBox = c
@@ -352,19 +176,24 @@
                             Else
                                 chk.Checked = value.Contains(chk.Text)
                             End If
+
                         ElseIf TypeOf c Is RadioButton Then
                             Dim rdo As RadioButton = c
                             rdo.Checked = rdo.Text = value
                         End If
                     Next
+
                     GetDataToControls(ctrl, row)
+
                 Case "CheckBox"
                     Dim chk As CheckBox = ctrl
+
                     If Boolean.Parse(value) Then
                         chk.Checked = value
                     Else
                         chk.Checked = value.Contains(chk.Text)
                     End If
+
                 Case Else
             End Select
         Next
@@ -487,7 +316,7 @@ Finish:
     ''' <param name="dgv"></param>
     ''' <returns></returns>
     Public Function CheckDuplication(selectFrom As String, list As List(Of Object), dgv As DataGridView) As Boolean
-        Dim sql = selectFrom + $" WHERE {String.Join(" AND ", list.Select(Function(x) $"{x.tag} = '{x.text}'"))}"
+        Dim sql = selectFrom + $" WHERE {String.Join(" AND ", list.Select(Function(x) $"{x.tag} = '{Trim(x.text)}'"))}"
         If SelectTable(sql).Rows.Count > 0 Then
             MsgBox("重複資料")
             '列出重複的資料
@@ -522,9 +351,8 @@ Finish:
     ''' <summary>
     ''' 將資料放到DataGridView
     ''' </summary>
-    ''' <param name="dt"></param>
-    ''' <param name="table"></param>
-    ''' <param name="dgv"></param>
+    ''' <param name="sql">搜尋語法</param>
+    ''' <param name="dgv">目標dgv</param>
     Public Sub DataToDgv(sql As String, dgv As DataGridView)
         With dgv
             .DataSource = SelectTable(sql)
@@ -554,7 +382,7 @@ Finish:
     End Sub
 
     ''' <summary>
-    ''' 新增鍵共用功能(Table名稱要存在TabPage.Tag)
+    ''' 新增鍵共用功能(Table名稱要存在TabPage.Tag) 檢查必填欄位
     ''' </summary>
     ''' <param name="btn">"新增"按鈕</param>
     ''' <param name="id">用來判斷是不是新資料(有insert過就會有id)</param>
@@ -567,6 +395,7 @@ Finish:
         If required IsNot Nothing Then
             If Not CheckRequiredCol(required) Then Return False
         End If
+
         Dim tp As TabPage = btn.Parent
         Dim table = tp.Tag.ToString
         If Not InserTable(table, frmMain.BindData(table)) Then Return False
@@ -576,7 +405,7 @@ Finish:
     End Function
 
     ''' <summary>
-    ''' 修改鍵共用功能(Table名稱要存在TabPage.Tag)
+    ''' 修改鍵共用功能(Table名稱要存在TabPage.Tag) 必填欄位檢查
     ''' </summary>
     ''' <param name="btn"></param>
     ''' <param name="id">用來判斷是不是新資料(有insert過就會有id)</param>
@@ -585,17 +414,20 @@ Finish:
     ''' <returns></returns>
     Public Function BtnModify(btn As Button, id As Control, condition As String, Optional required As Dictionary(Of String, Object) = Nothing)
         '判斷是否可以修改
-        If String.IsNullOrEmpty(id.Text) Then Return False
+        If String.IsNullOrEmpty(id.Text) Then
+            MsgBox("請先選擇對象")
+            Return False
+        End If
 
         If required IsNot Nothing Then
             If Not CheckRequiredCol(required) Then Return False
         End If
-        '該TabPage裡的TextBox文字去頭尾空白
-        Dim tp As TabPage = btn.Parent
-        tp.Controls.OfType(Of TextBox).ToList.ForEach(Sub(txt) txt.Text = Trim(txt.Text))
 
+        Dim tp As TabPage = btn.Parent
         Dim table = tp.Tag.ToString
+
         If Not UpdateTable(table, frmMain.BindData(table), condition) Then Return False
+
         '刷新
         tp.Controls.OfType(Of Button).First(Function(b) b.Text = "取  消").PerformClick()
         Return True
@@ -620,7 +452,7 @@ Finish:
     End Function
 
     ''' <summary>
-    ''' DataGridVeiw CellMouseClick共用功能
+    ''' DataGridVeiw_點擊欄位共用功能
     ''' </summary>
     ''' <param name="dgv"></param>
     ''' <returns></returns>
@@ -648,8 +480,8 @@ Finish:
                 .ColumnHeadersDefaultCellStyle.BackColor = Color.MediumTurquoise
                 .AllowUserToAddRows = False
                 .AllowUserToDeleteRows = False
-                .ReadOnly = True
                 .AllowUserToResizeColumns = True
+                .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
             End With
         Next
     End Sub
