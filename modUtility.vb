@@ -1,4 +1,7 @@
-﻿Module modUtility
+﻿Imports System.Globalization
+Imports DocumentFormat.OpenXml.Office2010.Excel
+
+Module modUtility
     '客戶管理
     Friend sqlCustomer As String = "SELECT cus_id, cus_name, cus_gender, cus_phone FROM customer"
     '系統設定-商品群組管理
@@ -8,9 +11,9 @@
     '訂單管理
     Friend sqlOrder As String = "SELECT a.ord_id, a.ord_date, b.cus_name, b.cus_phone, c.prod_name FROM orders a LEFT JOIN customer b ON a.ord_cus_id = b.cus_id LEFT JOIN product c ON a.ord_prod_id=c.prod_id"
     '財務管理
-    Friend sqlMoney = "SELECT a.ord_id, c.cus_name, c.cus_phone, a.ord_price, a.ord_discount, a.ord_tableware, a.ord_taste " &
-                                   "FROM orders a " &
-                                   "LEFT JOIN customer c ON a.ord_cus_id = c.cus_id"
+    Friend sqlMoney = "SELECT a.ord_id, c.cus_name, c.cus_phone, a.ord_price, a.ord_discount, a.ord_tableware, a.ord_taste, a.ord_spread, a.ord_cost, a.ord_freight " &
+                      "FROM orders a " &
+                      "LEFT JOIN customer c ON a.ord_cus_id = c.cus_id"
     '權限管理
     Friend sqlPermision As String = "Select * FROM permissions"
     '員工管理
@@ -148,6 +151,8 @@
     ''' <param name="row"></param>
     Public Sub GetDataToControls(ctrls As Control, row As Object)
         For Each ctrl In ctrls.Controls.Cast(Of Control).Where(Function(c) Not String.IsNullOrEmpty(c.Tag))
+            If ctrl.GetType.Name = "DataGridView" Then Continue For
+
             Dim value = GetCellData(row, ctrl.Tag.ToString)
 
             If String.IsNullOrEmpty(value) Then Continue For
@@ -396,11 +401,11 @@ Finish:
             If Not CheckRequiredCol(required) Then Return False
         End If
 
-        Dim tp As TabPage = btn.Parent
-        Dim table = tp.Tag.ToString
+        Dim tp = btn.Parent.Controls
+        Dim table = tp.OfType(Of DataGridView).FirstOrDefault.Tag
         If Not InserTable(table, frmMain.BindData(table)) Then Return False
         '刷新
-        tp.Controls.OfType(Of Button).First(Function(b) b.Text = "取  消").PerformClick()
+        tp.OfType(Of Button).First(Function(b) b.Text = "取  消").PerformClick()
         Return True
     End Function
 
@@ -475,9 +480,9 @@ Finish:
                 .SelectionMode = DataGridViewSelectionMode.FullRowSelect
                 .ColumnHeadersDefaultCellStyle.Font = New Font("標楷體", 12, FontStyle.Bold)
                 .DefaultCellStyle.Font = New Font("標楷體", 12, FontStyle.Bold)
-                .AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(224, 224, 224)
+                .AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(224, 224, 224)
                 .EnableHeadersVisualStyles = False
-                .ColumnHeadersDefaultCellStyle.BackColor = Color.MediumTurquoise
+                .ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.MediumTurquoise
                 .AllowUserToAddRows = False
                 .AllowUserToDeleteRows = False
                 .AllowUserToResizeColumns = True
@@ -502,4 +507,23 @@ Finish:
         End If
         Return lst
     End Function
+
+    Public Function GetTabooNames(tabooIDs As String) As String
+        If String.IsNullOrEmpty(tabooIDs) Then Return Nothing
+
+        Dim arrTabooID = tabooIDs.Split(",")
+        Dim inClause = String.Join(",", arrTabooID.Select(Function(id) $"@tabo_id{Array.IndexOf(arrTabooID, id)}"))
+        Dim sql = $"SELECT tabo_name FROM taboo WHERE tabo_id IN ({inClause})"
+        Dim parameters As New Dictionary(Of String, Object)
+
+        For i As Integer = 0 To arrTabooID.Length - 1
+            parameters.Add($"@tabo_id{i}", arrTabooID(i))
+        Next
+
+        Dim dt = SelectTable(sql, parameters)
+        Dim tabooNames = dt.AsEnumerable().Select(Function(row) row.Field(Of String)("tabo_name"))
+
+        Return String.Join(",", tabooNames)
+    End Function
+
 End Module

@@ -1,5 +1,6 @@
 ﻿Imports System.Configuration
 Imports System.Reflection
+Imports System.Text
 Imports System.Text.RegularExpressions
 Imports MySql.Data.MySqlClient
 'MySQL相關
@@ -27,6 +28,7 @@ Module modMySQL
     ''' 查詢資料表
     ''' </summary>
     ''' <returns></returns>
+    <Obsolete("改用SelectTable(query As String, parameters As Dictionary(Of String, Object)")>
     Friend Function SelectTable(sSQL As String) As DataTable
         Dim dt As New DataTable()
         Try
@@ -41,6 +43,32 @@ Module modMySQL
         mConn.Close()
         Return dt
     End Function
+
+    ''' <summary>
+    ''' 查詢資料表
+    ''' </summary>
+    ''' <returns></returns>
+    Public Function SelectTable(query As String, parameters As Dictionary(Of String, Object)) As DataTable
+        Dim dt As New DataTable()
+
+        Try
+            mConn.Open()
+            Using cmd As New MySqlCommand(query, mConn)
+                parameters.ToList.ForEach(Function(p) cmd.Parameters.AddWithValue(p.Key, p.Value))
+
+                Dim adapter As New MySqlDataAdapter(cmd)
+
+                adapter.Fill(dt)
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation, title)
+        End Try
+
+        mConn.Close()
+
+        Return dt
+    End Function
+
 
     ''' <summary>
     ''' 新增資料至資料表

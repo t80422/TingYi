@@ -22,7 +22,6 @@
         With cmbType
             .Items.Add("全部")
             For Each row As DataRow In rowGroups
-
                 .Items.Add(row("tg_name"))
             Next
             .SelectedIndex = 0
