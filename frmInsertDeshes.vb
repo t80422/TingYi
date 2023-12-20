@@ -32,7 +32,7 @@
     End Sub
 
     Private Sub btnOK_Click(sender As Object, e As EventArgs) Handles btnOK.Click
-        Dim dic As New Dictionary(Of String, String)
+        Dim dic As New Dictionary(Of String, Object)
         Dim table = "dishes"
         For Each row As DataGridViewRow In DataGridView1.Rows
             dic.Add("dish_name", row.Cells("dish_name").Value)

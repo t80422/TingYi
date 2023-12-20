@@ -1,10 +1,12 @@
 ﻿Imports System.IO
 Imports System.Windows
 Imports DocumentFormat.OpenXml.Office2010.Excel
+Imports DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing
 Imports DocumentFormat.OpenXml.Packaging
 Imports DocumentFormat.OpenXml.Presentation
 Imports DocumentFormat.OpenXml.Spreadsheet
 Imports Microsoft.Office.Interop
+Imports Org.BouncyCastle.Asn1.Crmf
 Imports Path = System.IO.Path
 
 Public Class frmMain
@@ -236,26 +238,36 @@ Public Class frmMain
     ''' </summary>
     Private Sub InitDistribute()
         flpDist.Visible = False
+
         Dim dt = SelectTable("SELECT * FROM distribute_system")
-        For Each grp In flpDist.Controls.OfType(Of GroupBox).Where(Function(x) x.Text <> "飲品需求" And x.Text <> "送餐路線")
+
+        For Each grp In flpDist.Controls.OfType(Of GroupBox)
             Dim flp = grp.Controls.OfType(Of FlowLayoutPanel).FirstOrDefault
+
             If flp IsNot Nothing Then flp.Controls.Clear()
+
             Dim row = dt.Select($"dist_sys_name = '{grp.Text}'")
             Dim options = row.First.Field(Of String)("dist_sys_option")
             Dim type = row.First.Field(Of String)("dist_sys_type")
+
             For Each txt In Split(options, ",")
+                If txt = "" Then Exit For
+
                 If type = "單選" Then
                     grp.Controls.OfType(Of FlowLayoutPanel).First.Controls.Add(New RadioButton With {.Text = txt, .AutoSize = True})
+
                 ElseIf type = "多選" Then
                     Dim chk As New CheckBox With {.Text = txt, .AutoSize = True}
+
                     If txt = "最後一餐" Then
                         AddHandler chk.CheckedChanged, AddressOf LastMeal
                     End If
+
                     grp.Controls.OfType(Of FlowLayoutPanel).First.Controls.Add(chk)
                 End If
             Next
         Next
-        txtDrink.Clear()
+
         flpDist.Visible = True
     End Sub
 
@@ -309,7 +321,7 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Function CheckMoney(sender As Button) As Dictionary(Of String, String)
+    Private Function CheckMoney(sender As Button) As Dictionary(Of String, Object)
         Dim dicReq As New Dictionary(Of String, Object) From {
             {"收款金額", txtMoney},
             {"收款類型", cmbMonType},
@@ -319,10 +331,10 @@ Public Class frmMain
 
         Dim tp As TabPage = sender.Parent
 
-        Dim dic As New Dictionary(Of String, String)
+        Dim dic As New Dictionary(Of String, Object)
         dic = tp.Controls.OfType(Of TextBox).Where(Function(ctrl) ctrl.Tag IsNot Nothing AndAlso Not ctrl.Tag.ToString.Contains("id") AndAlso
                                                              Not String.IsNullOrWhiteSpace(ctrl.Text)).
-            ToDictionary(Function(ctrl) ctrl.Tag.ToString, Function(ctrl) ctrl.Text)
+            ToDictionary(Function(ctrl) ctrl.Tag.ToString, Function(ctrl) CType(ctrl.Text, Object))
         dic.Add("mon_type", cmbMonType.Text)
         dic.Add("mon_pay_type", cmbPayType.Text)
         dic.Add("mon_date", dtMonDate.Value.ToString("yyyy/MM/dd"))
@@ -392,7 +404,7 @@ Public Class frmMain
 
     Private Sub btnModify_order_money_Click(sender As Object, e As EventArgs) Handles btnModify_order_money.Click
         Dim dicOrder = grpOrder_money.Controls.OfType(Of TextBox).Where(Function(x) Not String.IsNullOrEmpty(x.Tag) AndAlso x.Tag.ToString.Contains("ord_")).
-            ToDictionary(Of String, String)(Function(x) x.Tag, Function(x) x.Text)
+            ToDictionary(Of String, Object)(Function(x) x.Tag, Function(x) x.Text)
 
         If UpdateTable("orders", dicOrder, $"{txtOrderID_money.Tag} = '{txtOrderID_money.Text}'") Then
             btnCancel_money_ord.PerformClick()
@@ -426,7 +438,7 @@ Public Class frmMain
 
         Dim btn As Button = sender
         Dim dic = CheckOrder(btn)
-        If dic.Count = 0 Then Exit Sub
+        If dic Is Nothing OrElse dic.Count = 0 Then Exit Sub
 
         Dim tp = btn.Parent
         If InserTable("orders", dic) Then
@@ -450,7 +462,7 @@ Public Class frmMain
         Dim table = "orders"
         Dim dic = CheckOrder(btn)
 
-        If dic.Count = 0 Then Exit Sub
+        If dic Is Nothing OrElse dic.Count = 0 Then Exit Sub
 
         If UpdateTable(table, dic, $"{txtOrdID_order.Tag} = '{txtOrdID_order.Text}'") Then
             tp.Controls.OfType(Of Button).First(Function(b) b.Text = "取  消").PerformClick()
@@ -485,8 +497,8 @@ Public Class frmMain
     ''' 檢查Orders必填欄位,取得上傳資料
     ''' </summary>
     ''' <returns>True:正確 False:錯誤</returns>
-    Private Function CheckOrder(btn As Button) As Dictionary(Of String, String)
-        Dim dicData As New Dictionary(Of String, String)
+    Private Function CheckOrder(btn As Button) As Dictionary(Of String, Object)
+        Dim dicData As New Dictionary(Of String, Object)
         Dim dicReq As New Dictionary(Of String, Object) From {
             {"商品群組", cmbProdGrp_order},
             {"商品名稱", cmbProdName_order},
@@ -501,9 +513,16 @@ Public Class frmMain
             Dim dic As New Dictionary(Of String, Object) From {
                 {"cus_phone", txtPhone_order.Text}
             }
-            cusID = SelectTable($"SELECT cus_id FROM customer WHERE cus_phone = @cus_phone", dic).Rows(0).Field(Of Integer)("cus_id")
+
+            Try
+                cusID = SelectTable($"SELECT cus_id FROM customer WHERE cus_phone = @cus_phone", dic).Rows(0).Field(Of Integer)("cus_id")
+            Catch ex As Exception
+                MsgBox("查無此客戶")
+                Return Nothing
+            End Try
         Else
             cusID = txtCusID_ord.Text
+
         End If
 
 #Region "取得資料"
@@ -518,8 +537,15 @@ Public Class frmMain
                 .Where(Function(x) Not String.IsNullOrEmpty(x.Tag) AndAlso Not String.IsNullOrEmpty(x.Text) AndAlso x.Tag.Contains("ord_")).ToList.ForEach(Sub(x) .Add(x.Tag, x.Text))
 
             Dim rdo = grpEatType.Controls.OfType(Of RadioButton)().FirstOrDefault(Function(x) x.Checked)
+
             If rdo IsNot Nothing Then .Add(grpEatType.Tag, rdo.Text) '葷素
             If cmbSales.SelectedIndex <> -1 Then .Add("ord_emp_id", cmbSales.SelectedValue) '業務人員
+
+            '餐種數量
+            .Add("ord_breakfast", txtCount.Text)
+            .Add("ord_lunch", txtCount.Text)
+            .Add("ord_dinner", txtCount.Text)
+
         End With
 
 #End Region
@@ -535,7 +561,6 @@ Public Class frmMain
         DataToControl_Order(row.Cells("ord_id").Value)
     End Sub
 
-    'add by v0.13-----
     ''' <summary>
     ''' 將資料傳至訂單管理個控制項
     ''' </summary>
@@ -564,148 +589,60 @@ Public Class frmMain
         End If
     End Sub
 
-    '-----
 
     '訂單管理-訂單編號-連動資料
     Private Sub txtOrdID_order_TextChanged(sender As Object, e As EventArgs) Handles txtOrdID_order.TextChanged
-        If String.IsNullOrEmpty(txtOrdID_order.Text) Then Exit Sub
+        If String.IsNullOrEmpty(txtOrdID_order.Text) OrElse Not IsNumeric(txtOrdID_order.Text) Then Exit Sub
 
-        Dim sql = $"SELECT * FROM orders WHERE ord_id = '{txtOrdID_order.Text}'"
-        DataToControl_Customer(SelectTable(sql).Rows(0).Field(Of Integer)("ord_cus_id"))
+        Dim dic As New Dictionary(Of String, Object) From {{"ord_id", txtOrdID_order.Text}}
+        Dim sql = "SELECT * FROM orders WHERE ord_id = @ord_id"
+        DataToControl_Customer(SelectTable(sql, dic).Rows(0).Field(Of Integer)("ord_cus_id"))
+
+        DataToControl_Distribute(txtOrdID_order.Text)
     End Sub
 
     '配餐管理-新增
     Private Sub distInsert_Click(sender As Object, e As EventArgs) Handles btnDistInsert.Click
-        'modify by v0.14=====
-        'Dim count As Integer
+        Dim d As Date
+        Dim count As Integer
 
-        ''檢查點選的是哪個餐種,剩下幾餐可以配
-        'Select Case tempDistDay.Text
-        '    Case "早"
-        '        count = txtBreak.Text
-        '    Case "午"
-        '        count = txtLunch.Text
-        '    Case "晚"
-        '        count = txtDinner.Text
-        'End Select
+        '早餐有勾選
+        If chkBreakfast_dist.Checked Then
+            d = dtpStart_dist.Value
+            count = txtBreak.Text
 
-        ''沒有剩餘餐就離開
-        'If count = 0 Then Exit Sub
+            '跑回圈直到結束日期或未配置餐數為0
+            Do While (d.Date <= dtpEnd_dist.Value.Date And count > 0)
+                InsertDistribute(d, txtOrdID_dist.Text, chkBreakfast_dist.Text, GetDistributeData, count)
+                '前進一天
+                d = d.AddDays(1)
+            Loop
+        End If
 
-        ''判斷有沒有按"改變後續設定"
-        'If Not chkContinue.Checked Then count = 1
+        '午餐有勾選
+        If chkLunch_dist.Checked Then
+            d = dtpStart_dist.Value
+            count = txtLunch.Text
 
-        ''先減一天方便迴圈
-        'Dim d = Date.Parse(txtSelectDate.Text).AddDays(-1)
-        'Dim table = "distribute"
-        'Dim dic = BindData(table)
-        'dic.Add("dist_memo", dgvDist.SelectedRows(0).Cells("ord_memo").Value)
+            '跑回圈直到結束日期或未配置餐數為0
+            Do While (d.Date <= dtpEnd_dist.Value.Date And count > 0)
+                InsertDistribute(d, txtOrdID_dist.Text, chkLunch_dist.Text, GetDistributeData, count)
+                '前進一天
+                d = d.AddDays(1)
+            Loop
+        End If
 
-        'For i As Integer = count To 1 Step -1
-        '    d = d.AddDays(1).ToString("yyyy/MM/dd")
-        '    dic.Add("dist_date", d) '送餐日期
-        '    If Not InserTable(table, dic) Then Exit Sub
-        '    dic.Remove("dist_date")
-        'Next
-        '====================
-        '檢查起訖日期的天數
-        Dim diffDay = DateDiff(DateInterval.Day, dtpStart_dist.Value, dtpEnd_dist.Value)
-        Dim bExit As Boolean
-        grpDateStrartEnd.Controls.OfType(Of CheckBox).Where(Function(x) x.Checked).ToList.ForEach(Sub(x)
-                                                                                                      Dim day As Integer
+        If chkDinner_dist.Checked Then
+            d = dtpStart_dist.Value
+            count = txtDinner.Text
 
-                                                                                                      Select Case x.Text
-                                                                                                          Case "早"
-                                                                                                              day = txtBreak.Text
-                                                                                                          Case "午"
-                                                                                                              day = txtLunch.Text
-                                                                                                          Case "晚"
-                                                                                                              day = txtDinner.Text
-                                                                                                      End Select
-
-                                                                                                      If diffDay > day Then
-                                                                                                          MsgBox($"所選的天數超過 {x.Text}餐 的未配置數")
-                                                                                                          bExit = True
-                                                                                                      End If
-                                                                                                  End Sub)
-        If bExit Then Exit Sub
-
-        'Dim dic As New Dictionary(Of String, String)
-
-        'With dic
-        '    .Add("dist_ord_id", txtOrdID_dist.Text)
-        '    .Add("dist_meal", tempDistDay.Text) '早午晚餐
-
-        '    Dim txt As String
-        '    Dim chks As IEnumerable(Of CheckBox)
-
-        '    For Each grp In flpDist.Controls.OfType(Of GroupBox)
-        '        Select Case grp.Text
-        '            Case "湯盅"
-        '                txt = grp.Controls.OfType(Of FlowLayoutPanel).First.Controls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault()
-        '                .Add("dist_soup", txt)
-        '            Case "麻油"
-        '                txt = grp.Controls.OfType(Of FlowLayoutPanel).First.Controls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault()
-        '                .Add("dist_oil", txt)
-        '            Case "酒"
-        '                txt = grp.Controls.OfType(Of FlowLayoutPanel).First.Controls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault()
-        '                .Add("dist_wine", txt)
-        '            Case "素"
-        '                txt = grp.Controls.OfType(Of FlowLayoutPanel).First.Controls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault()
-        '                .Add("dist_vege", txt)
-        '            Case "其他"
-        '                chks = grp.Controls.OfType(Of FlowLayoutPanel).First.Controls.OfType(Of CheckBox).Where(Function(x) x.Checked = True)
-        '                .Add("dist_other", String.Join(",", chks.Select(Function(x) x.Text)))
-        '            Case "客製需求"
-        '                chks = grp.Controls.OfType(Of FlowLayoutPanel).First.Controls.OfType(Of CheckBox).Where(Function(x) x.Checked = True)
-        '                .Add("dist_customized", String.Join(",", chks.Select(Function(x) x.Text)))
-        '            Case "餐具"
-        '                chks = grp.Controls.OfType(Of FlowLayoutPanel).First.Controls.OfType(Of CheckBox).Where(Function(x) x.Checked = True)
-        '                .Add("dist_tableware", String.Join(",", chks.Select(Function(x) x.Text)))
-        '            Case "飲品需求"
-        '                .Add("dist_drink", txtDrink.Text)
-        '        End Select
-        '    Next
-
-        '    '更新預設地址
-        '    Dim rowAddr As DataRow = Nothing
-        '    Dim city As String = ""
-        '    Dim area As String = ""
-        '    Dim address As String = ""
-
-        '    Select Case tempDistDay.Text
-        '        Case "早"
-        '            '取得訂單預設地址
-        '            rowAddr = SelectTable($"SELECT ord_break_city, ord_break_area, ord_break_addr FROM orders WHERE ord_id = {txtOrdID_dist.Text}").Rows(0)
-        '            city = If(rowAddr.Field(Of String)("ord_break_city"), "")
-        '            area = If(rowAddr.Field(Of String)("ord_break_area"), "")
-        '            address = If(rowAddr.Field(Of String)("ord_break_addr"), "")
-
-        '        Case "午"
-        '            '取得訂單預設地址
-        '            rowAddr = SelectTable($"SELECT ord_lunch_ctiy, ord_lunch_area, ord_lunch_addr FROM orders WHERE ord_id = {txtOrdID_dist.Text}").Rows(0)
-        '            city = If(rowAddr.Field(Of String)("ord_lunch_ctiy"), "")
-        '            area = If(rowAddr.Field(Of String)("ord_lunch_area"), "")
-        '            address = If(rowAddr.Field(Of String)("ord_lunch_addr"), "")
-
-        '        Case "晚"
-        '            '取得訂單預設地址
-        '            rowAddr = SelectTable($"SELECT ord_dinner_city, ord_dinner_area, ord_dinner_addr FROM orders WHERE ord_id = {txtOrdID_dist.Text}").Rows(0)
-        '            city = If(rowAddr.Field(Of String)("ord_dinner_city"), "")
-        '            area = If(rowAddr.Field(Of String)("ord_dinner_area"), "")
-        '            address = If(rowAddr.Field(Of String)("ord_dinner_addr"), "")
-        '    End Select
-
-        '    .Add("dist_city", city)
-        '    .Add("dist_area", area)
-        '    .Add("dist_address", address)
-        '    .Add("dist_memo", dgvDist.SelectedRows(0).Cells("ord_memo").Value)
-
-        'End With
-
-        '====================
-
-
+            '跑回圈直到結束日期或未配置餐數為0
+            Do While (d.Date <= dtpEnd_dist.Value.Date And count > 0)
+                InsertDistribute(d, txtOrdID_dist.Text, chkDinner_dist.Text, GetDistributeData, count)
+                '前進一天
+                d = d.AddDays(1)
+            Loop
+        End If
 
         SetCalender()
         SetCalenderData()
@@ -713,87 +650,159 @@ Public Class frmMain
         MsgBox("新增成功")
     End Sub
 
+    '配餐管理-修改
+    Private Sub btnDistModify_Click(sender As Object, e As EventArgs) Handles btnDistModify.Click
+        Dim d As Date
+
+        '早餐有勾選
+        If chkBreakfast_dist.Checked Then
+            d = dtpStart_dist.Value
+
+            '跑回圈直到結束日期
+            Do While d.Date <= dtpEnd_dist.Value.Date
+                UpdateDistribute(d, txtOrdID_dist.Text, chkBreakfast_dist.Text, GetDistributeData)
+                '前進一天
+                d = d.AddDays(1)
+            Loop
+        End If
+
+        '午餐有勾選
+        If chkLunch_dist.Checked Then
+            d = dtpStart_dist.Value
+
+            '跑回圈直到結束日期
+            Do While d.Date <= dtpEnd_dist.Value.Date
+                UpdateDistribute(d, txtOrdID_dist.Text, chkLunch_dist.Text, GetDistributeData)
+                '前進一天
+                d = d.AddDays(1)
+            Loop
+        End If
+
+        If chkDinner_dist.Checked Then
+            d = dtpStart_dist.Value
+
+            '跑回圈直到結束日期
+            Do While d.Date <= dtpEnd_dist.Value.Date
+                UpdateDistribute(d, txtOrdID_dist.Text, chkDinner_dist.Text, GetDistributeData)
+                '前進一天
+                d = d.AddDays(1)
+            Loop
+        End If
+
+        SetCalender()
+        SetCalenderData()
+        CountNotConfigured()
+        MsgBox("修改成功")
+    End Sub
+
     '配餐管理-刪除
     Private Sub btnDistDel_Click(sender As Object, e As EventArgs) Handles btnDistDel.Click
-        If txtOrdID_dist.Text = "" Then Exit Sub
+        Dim d As Date
 
-        Dim table = "distribute"
+        '早餐有勾選
+        If chkBreakfast_dist.Checked Then
+            d = dtpStart_dist.Value
 
-        If MsgBox("確定要刪除?", vbYesNo, "警告") = MsgBoxResult.No Then Exit Sub
-
-        '抓出所選的天
-        If tempDistDay.BackColor <> System.Drawing.Color.White Then
-            Dim day = tempDistDay.Parent.Controls.OfType(Of Label).FirstOrDefault.Text
-            Dim d = Date.Parse(txtDistCalendar.Text + day + "日")
-            Dim dic As New Dictionary(Of String, String)
-            With dic
-                .Add("dist_ord_id", txtOrdID_dist.Text)
-                .Add("dist_meal", tempDistDay.Text) '早午晚餐
-
-                '若沒勾 改變後續設定 就只新增一天
-                Dim count As Integer = 1
-
-                'If chkContinue.Checked Then
-                '    count = SelectTable($"SELECT * FROM {table} WHERE dist_ord_id = '{txtOrdID_dist.Text}' AND dist_date >= '{d}'").Rows.Count
-                'End If
-
-                d = d.AddDays(-1)
-
-                For i As Integer = count To 1 Step -1
-                    d = d.AddDays(1)
-                    .Add("dist_date", d) '送餐日期
-
-                    Dim conditions As List(Of String) = dic.Select(Function(kvp) $"{kvp.Key} = '{kvp.Value}'").ToList()
-                    DeleteData(table, String.Join(" and ", conditions))
-                    dic.Remove("dist_date")
-                Next
-            End With
-
-        Else
-            MsgBox("請選擇已新增的日期")
+            '跑回圈直到結束日期
+            Do While d.Date <= dtpEnd_dist.Value.Date
+                DeleteDistribute(d, txtOrdID_dist.Text, chkBreakfast_dist.Text)
+                '前進一天
+                d = d.AddDays(1)
+            Loop
         End If
+
+        '午餐有勾選
+        If chkLunch_dist.Checked Then
+            d = dtpStart_dist.Value
+
+            '跑回圈直到結束日期
+            Do While d.Date <= dtpEnd_dist.Value.Date
+                DeleteDistribute(d, txtOrdID_dist.Text, chkLunch_dist.Text)
+                '前進一天
+                d = d.AddDays(1)
+            Loop
+        End If
+
+        If chkDinner_dist.Checked Then
+            d = dtpStart_dist.Value
+
+            '跑回圈直到結束日期
+            Do While d.Date <= dtpEnd_dist.Value.Date
+                DeleteDistribute(d, txtOrdID_dist.Text, chkDinner_dist.Text)
+                '前進一天
+                d = d.AddDays(1)
+            Loop
+        End If
+
         SetCalender()
         SetCalenderData()
         CountNotConfigured()
         MsgBox("刪除成功")
     End Sub
 
+    Private Function GetDistributeData() As Dictionary(Of String, Object)
+        Dim result = New Dictionary(Of String, Object)
+
+        With result
+            For Each grp In flpDist.Controls.OfType(Of GroupBox)
+                Dim flp = grp.Controls.OfType(Of FlowLayoutPanel).FirstOrDefault
+                Dim flpControls As Forms.Control.ControlCollection = Nothing
+
+                If flp IsNot Nothing Then flpControls = flp.Controls
+
+                Select Case grp.Text
+                    Case "湯盅"
+                        .Add("dist_soup", flpControls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault())
+                    Case "麻油"
+                        .Add("dist_oil", flpControls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault())
+                    Case "酒"
+                        .Add("dist_wine", flpControls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault())
+                    Case "素"
+                        .Add("dist_vege", flpControls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault())
+                    Case "其他"
+                        .Add("dist_other", String.Join(",", flpControls.OfType(Of CheckBox).Where(Function(x) x.Checked = True).Select(Function(x) x.Text)))
+                    Case "客製需求"
+                        .Add("dist_customized", String.Join(",", flpControls.OfType(Of CheckBox).Where(Function(x) x.Checked = True).Select(Function(x) x.Text)))
+                    Case "餐具"
+                        .Add("dist_tableware", String.Join(",", flpControls.OfType(Of CheckBox).Where(Function(x) x.Checked = True).Select(Function(x) x.Text)))
+                    Case "飲品需求"
+                        .Add("dist_drink", String.Join(",", flpControls.OfType(Of CheckBox).Where(Function(x) x.Checked = True).Select(Function(x) x.Text)))
+                End Select
+            Next
+
+            '取得訂單預設地址
+            Dim dicAddress As New Dictionary(Of String, Object) From {{"ord_id", txtOrdID_dist.Text}}
+            .Add("dist_address", SelectTable("SELECT ord_break_addr FROM orders WHERE ord_id = @ord_id", dicAddress).Rows(0).Field(Of String)("ord_break_addr"))
+
+            .Add("dist_memo", dgvDist.SelectedRows(0).Cells("ord_memo").Value.ToString)
+            .Add("dist_memo2", txtMemo2_dist.Text)
+        End With
+
+        Return result
+    End Function
+
     '配餐管理-訂單編號-連動資料
     Private Sub txtOrdID_dist_TextChanged(sender As Object, e As EventArgs) Handles txtOrdID_dist.TextChanged
-        If String.IsNullOrEmpty(txtOrdID_dist.Text) Then Exit Sub
+        If String.IsNullOrEmpty(txtOrdID_dist.Text) OrElse txtOrdID_dist.Text = txtOrdID_order.Text Then Exit Sub
         DataToControl_Order(txtOrdID_dist.Text)
     End Sub
 
     '客戶管理-dgv點擊
     Private Sub dgvCustomer_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvCustomer.CellMouseClick
-        'Modify by v0.13-----
-        'If dgvCustomer.SelectedRows.Count = 1 Then
-        '    ClearControls(tpConsult_cus)
-        '    ClearControls(tpBasic_cus)
-
-        '    Dim row = dgvCustomer.SelectedRows(0)
-        '    Dim id = row.Cells("cus_id").Value.ToString
-        '    Dim rowCus = SelectTable($"SELECT * FROM customer WHERE cus_id = '{id}'").Rows(0)
-        '    GetDataToControls(tpBasic_cus, rowCus)
-        '    GetDataToControls(tpConsult_cus, rowCus)
-        '    '顯示歷史訂單
-        '    Dim sql = "SELECT a.ord_id,a.ord_date,b.cus_name,b.cus_phone" +
-        '         " FROM orders a" +
-        '         " LEFT JOIN customer b ON a.ord_cus_id = b.cus_id" +
-        '         " LEFT JOIN product c ON a.ord_prod_id = c.prod_id" +
-        '         " LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id" +
-        '        $" WHERE b.cus_id = '{txtCusID.Text}'" +
-        '         " ORDER BY a.ord_date DESC"
-        '    DataToDgv(sql, dgvOrder_cus)
-        'End If
-        '-----
         Dim dgv As DataGridView = sender
         Dim cusID As Integer = dgv.SelectedRows(0).Cells("cus_id").Value
+        Dim obj As Object = Nothing
+
         DataToControl_Customer(cusID)
-        '-----
+
+        If Not String.IsNullOrEmpty(txtCusName_cus.Text) Then
+            txtOrdQuery.Text = txtCusName_cus.Text
+            txtDistQuery.Text = txtCusName_cus.Text
+            btnOrderQuery_Click(obj, EventArgs.Empty)
+            btnDistQuery_Click(obj, EventArgs.Empty)
+        End If
     End Sub
 
-    'Add by v0.13-----
     ''' <summary>
     ''' 將資料傳至客戶管理各控制項
     ''' </summary>
@@ -807,13 +816,6 @@ Public Class frmMain
         GetDataToControls(tpConsult_cus, rowCus)
 
         '禁忌
-        'If Not IsDBNull(rowCus("cus_tabo_id")) Then
-        '    Dim tabooIDs = Split(rowCus("cus_tabo_id"), ",")
-        '    Dim tabooName As New List(Of String)
-        '    tabooIDs.ToList.ForEach(Sub(id) tabooName.Add(SelectTable($"SELECT * FROM taboo WHERE tabo_id = {id}").Rows(0).Field(Of String)("tabo_name")))
-        '    txtTaboo.Text = String.Join(",", tabooName)
-
-        'End If
         txtTaboo.Text = GetTabooNames(rowCus("cus_tabo_id").ToString())
 
         '顯示歷史訂單
@@ -827,7 +829,6 @@ Public Class frmMain
 
         DataToDgv(sql, dgvOrder_cus)
     End Sub
-    '-----
 
     '客戶管理-新增
     Private Sub btnCusInsert_Click(sender As Object, e As EventArgs) Handles btnCusInsert.Click
@@ -863,13 +864,14 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Function CheckCustomer() As Dictionary(Of String, String)
-        Dim dic As New Dictionary(Of String, String)
+    Private Function CheckCustomer() As Dictionary(Of String, Object)
+        Dim dic As New Dictionary(Of String, Object)
 
         Dim dicReq As New Dictionary(Of String, Object) From {
             {"姓名", txtCusName_cus},
             {"手機", txtPhone_cus}
         }
+
         If Not CheckRequiredCol(dicReq) Then Return dic
 
         '檢查日期格式
@@ -878,6 +880,7 @@ Public Class frmMain
             {"生日", txtBirthday},
             {"預產期", txtDueDate}
         }
+
         For Each kvp In dicDate
             If Not String.IsNullOrEmpty(kvp.Value.Text) And Not Date.TryParse(kvp.Value.Text, d) Then
                 MsgBox(kvp.Key + " 日期格式錯誤")
@@ -896,6 +899,7 @@ Public Class frmMain
             {"產前體重", txtBornWeight},
             {"目前體重", txtWeight}
         }
+
         If Not String.IsNullOrEmpty(txtChildren.Text) And Not IsNumeric(txtChildren.Text) Then
             MsgBox("子女人數 不為數字")
             txtChildren.Focus()
@@ -903,10 +907,10 @@ Public Class frmMain
         End If
 
         With dic
-            tpBasic_cus.Controls.OfType(Of TextBox).Where(Function(txt) Not String.IsNullOrEmpty(txt.Tag) AndAlso Not String.IsNullOrWhiteSpace(txt.Text)).ToList.
+            tpBasic_cus.Controls.OfType(Of TextBox).Where(Function(txt) Not String.IsNullOrEmpty(txt.Tag)).ToList.
                 ForEach(Sub(t) .Add(t.Tag, t.Text))
 
-            tpConsult_cus.Controls.OfType(Of TextBox).Where(Function(txt) Not String.IsNullOrEmpty(txt.Tag) AndAlso Not String.IsNullOrWhiteSpace(txt.Text)).ToList.
+            tpConsult_cus.Controls.OfType(Of TextBox).Where(Function(txt) Not String.IsNullOrEmpty(txt.Tag)).ToList.
                 ForEach(Sub(t) .Add(t.Tag, t.Text))
 
             Dim rdo = grpGender.Controls.OfType(Of RadioButton)().FirstOrDefault(Function(x) x.Checked)
@@ -961,9 +965,11 @@ Public Class frmMain
             '禁忌編號
             If String.IsNullOrEmpty(txtTaboo.Text) = False Then
                 Dim lst As New List(Of String)
+
                 For Each n In Split(txtTaboo.Text, ",")
                     lst.Add(SelectTable($"SELECT * FROM taboo WHERE tabo_name = '{n}'").Rows(0).Field(Of Integer)("tabo_id"))
                 Next
+
                 .Add("cus_tabo_id", String.Join(",", lst))
             End If
         End With
@@ -1032,8 +1038,8 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Function CheckTabooGroup() As Dictionary(Of String, String)
-        Dim dic As New Dictionary(Of String, String)
+    Private Function CheckTabooGroup() As Dictionary(Of String, Object)
+        Dim dic As New Dictionary(Of String, Object)
 
         Dim dicReq As New Dictionary(Of String, Object) From {
             {"群組名稱", txtTabooGroupName}
@@ -1118,8 +1124,8 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Function CheckTaboo() As Dictionary(Of String, String)
-        Dim dic As New Dictionary(Of String, String)
+    Private Function CheckTaboo() As Dictionary(Of String, Object)
+        Dim dic As New Dictionary(Of String, Object)
         Dim tgID = txtID_taboo_group.Text
 
         If String.IsNullOrEmpty(tgID) Then
@@ -1296,39 +1302,77 @@ Public Class frmMain
 
     'dgv點擊-配餐管理
     Private Sub dgvDistribute_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvDist.CellMouseClick
-        If dgvDist.SelectedRows.Count = 1 Then
-            ClearControls(tpDistribute)
+        'If dgvDist.SelectedRows.Count = 1 Then
+        '    ClearControls(tpDistribute)
 
-            '初始化目前選取早午晚餐的燈號
-            lblBreak_dist.BackColor = System.Drawing.Color.White
-            lblLunch_dist.BackColor = System.Drawing.Color.White
-            lblDinner_dist.BackColor = System.Drawing.Color.White
+        '    '初始化目前選取早午晚餐的燈號
+        '    lblBreak_dist.BackColor = System.Drawing.Color.White
+        '    lblLunch_dist.BackColor = System.Drawing.Color.White
+        '    lblDinner_dist.BackColor = System.Drawing.Color.White
 
-            InitDistribute()
-            '點dgv後將對象資料傳至各控制項
-            Dim dgvRow = dgvDist.SelectedRows(0)
-            Dim sql = "SELECT a.ord_id,a.ord_delivery,b.cus_name,b.cus_phone,c.prod_name,a.ord_delivery,a.ord_breakfast,a.ord_lunch,a.ord_dinner,d.dist_date" &
-                     " FROM orders a" &
-                     " LEFT JOIN customer b ON a.ord_cus_id=b.cus_id" &
-                     " LEFT JOIN product c ON a.ord_prod_id=c.prod_id" &
-                     " LEFT JOIN distribute d ON a.ord_id=d.dist_ord_id" &
-                    $" WHERE a.ord_id = '{dgvRow.Cells("ord_id").Value}'" &
-                     " ORDER BY dist_date"
+        'InitDistribute()
 
-            Dim rowData = SelectTable(sql).Rows(0)
-            GetDataToControls(dgvDist.Parent, rowData)
+        '點dgv後將對象資料傳至各控制項
+        Dim dgvRow = dgvDist.SelectedRows(0)
+        DataToControl_Distribute(dgvRow.Cells("ord_id").Value)
 
-            '設定最近訂餐日期到月曆日期
-            If Not IsDBNull(rowData("dist_date")) Then txtDistCalendar.Text = Date.Parse(rowData("dist_date")).ToString("Y")
+        'Dim sql = "SELECT a.ord_id,a.ord_delivery,b.cus_name,b.cus_phone,c.prod_name,a.ord_delivery,a.ord_breakfast,a.ord_lunch,a.ord_dinner,d.dist_date,d.dist_memo2" &
+        '         " FROM orders a" &
+        '         " LEFT JOIN customer b ON a.ord_cus_id=b.cus_id" &
+        '         " LEFT JOIN product c ON a.ord_prod_id=c.prod_id" &
+        '         " LEFT JOIN distribute d ON a.ord_id=d.dist_ord_id" &
+        '        $" WHERE a.ord_id = '{dgvRow.Cells("ord_id").Value}'" &
+        '         " ORDER BY dist_date"
 
-            '刷新月曆
-            SetCalender()
-            SetCalenderData()
-            CountNotConfigured()
-            btnDistInsert.Enabled = True
-            btnDistModify.Enabled = True
-            btnDistDel.Enabled = True
-        End If
+        'Dim rowData = SelectTable(Sql).Rows(0)
+
+        'GetDataToControls(dgvDist.Parent, rowData)
+
+        ''設定最近訂餐日期到月曆日期
+        'If Not IsDBNull(rowData("dist_date")) Then txtDistCalendar.Text = Date.Parse(rowData("dist_date")).ToString("Y")
+
+        ''刷新月曆
+        'SetCalender()
+        'SetCalenderData()
+        'CountNotConfigured()
+        'btnDistInsert.Enabled = True
+        'btnDistModify.Enabled = True
+        'btnDistDel.Enabled = True
+        'End If
+    End Sub
+
+    Private Sub DataToControl_Distribute(ordID As Integer)
+        ClearControls(tpDistribute)
+
+        '初始化目前選取早午晚餐的燈號
+        lblBreak_dist.BackColor = System.Drawing.Color.White
+        lblLunch_dist.BackColor = System.Drawing.Color.White
+        lblDinner_dist.BackColor = System.Drawing.Color.White
+
+        InitDistribute()
+
+        Dim dic = New Dictionary(Of String, Object) From {{"ord_id", ordID}}
+        Dim sql = "SELECT a.ord_id,a.ord_delivery,b.cus_name,b.cus_phone,c.prod_name,a.ord_delivery,a.ord_breakfast,a.ord_lunch,a.ord_dinner,d.dist_date,d.dist_memo2" &
+                    " FROM orders a" &
+                    " LEFT JOIN customer b ON a.ord_cus_id=b.cus_id" &
+                    " LEFT JOIN product c ON a.ord_prod_id=c.prod_id" &
+                    " LEFT JOIN distribute d ON a.ord_id=d.dist_ord_id" &
+                    " WHERE a.ord_id = @ord_id" &
+                    " ORDER BY dist_date"
+        Dim rowData = SelectTable(sql, dic).Rows(0)
+
+        GetDataToControls(dgvDist.Parent, rowData)
+
+        '設定最近訂餐日期到月曆日期
+        If Not IsDBNull(rowData("dist_date")) Then txtDistCalendar.Text = Date.Parse(rowData("dist_date")).ToString("Y")
+
+        '刷新月曆
+        SetCalender()
+        SetCalenderData()
+        CountNotConfigured()
+        btnDistInsert.Enabled = True
+        btnDistModify.Enabled = True
+        btnDistDel.Enabled = True
     End Sub
 
     'dgv點擊-系統設定-配餐參數管理
@@ -1377,94 +1421,6 @@ Public Class frmMain
         MsgBox("修改成功")
     End Sub
 
-    '修改-配餐管理
-    Private Sub btnDistModify_Click(sender As Object, e As EventArgs) Handles btnDistModify.Click
-#Region "取得資料"
-        'todo ui的地方都使用dictionary取資料後送到其他邏輯class處理
-        Dim dic As New Dictionary(Of String, Object)
-        '.Add("dist_ord_id", txtOrdID_dist.Text)
-        '.Add("dist_meal", tempDistDay.Text) '早午晚餐
-        With dic
-            For Each grp In flpDist.Controls.OfType(Of GroupBox)
-                Dim ctrls = grp.Controls.OfType(Of FlowLayoutPanel).First.Controls
-
-                Select Case grp.Text
-                    Case "湯盅"
-                        .Add("dist_soup", ctrls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault())
-                    Case "麻油"
-                        .Add("dist_oil", ctrls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault())
-                    Case "酒"
-                        .Add("dist_wine", ctrls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault())
-                    Case "素"
-                        .Add("dist_vege", ctrls.OfType(Of RadioButton).Where(Function(x) x.Checked = True).Select(Function(x) x.Text).FirstOrDefault())
-                    Case "其他"
-                        .Add("dist_other", String.Join(",", ctrls.OfType(Of CheckBox).Where(Function(x) x.Checked = True).Select(Function(x) x.Text)))
-                    Case "客製需求"
-                        .Add("dist_customized", String.Join(",", ctrls.OfType(Of CheckBox).Where(Function(x) x.Checked = True).Select(Function(x) x.Text)))
-                    Case "餐具"
-                        .Add("dist_tableware", String.Join(",", ctrls.OfType(Of CheckBox).Where(Function(x) x.Checked = True).Select(Function(x) x.Text)))
-                    Case "飲品需求"
-                        .Add("dist_drink", txtDrink.Text)
-                End Select
-            Next
-
-            '更新預設地址
-            Dim rowAddr As DataRow = Nothing
-            Dim city As String = ""
-            Dim area As String = ""
-            Dim address As String = ""
-
-            Select Case tempDistDay.Text
-                Case "早"
-                    '取得訂單預設地址
-                    rowAddr = SelectTable($"SELECT ord_break_city, ord_break_area, ord_break_addr FROM orders WHERE ord_id = {txtOrdID_dist.Text}").Rows(0)
-                    city = If(rowAddr.Field(Of String)("ord_break_city"), "")
-                    area = If(rowAddr.Field(Of String)("ord_break_area"), "")
-                    address = If(rowAddr.Field(Of String)("ord_break_addr"), "")
-
-                Case "午"
-                    '取得訂單預設地址
-                    rowAddr = SelectTable($"SELECT ord_lunch_ctiy, ord_lunch_area, ord_lunch_addr FROM orders WHERE ord_id = {txtOrdID_dist.Text}").Rows(0)
-                    city = If(rowAddr.Field(Of String)("ord_lunch_ctiy"), "")
-                    area = If(rowAddr.Field(Of String)("ord_lunch_area"), "")
-                    address = If(rowAddr.Field(Of String)("ord_lunch_addr"), "")
-
-                Case "晚"
-                    '取得訂單預設地址
-                    rowAddr = SelectTable($"SELECT ord_dinner_city, ord_dinner_area, ord_dinner_addr FROM orders WHERE ord_id = {txtOrdID_dist.Text}").Rows(0)
-                    city = If(rowAddr.Field(Of String)("ord_dinner_city"), "")
-                    area = If(rowAddr.Field(Of String)("ord_dinner_area"), "")
-                    address = If(rowAddr.Field(Of String)("ord_dinner_addr"), "")
-            End Select
-
-            .Add("dist_city", city)
-            .Add("dist_area", area)
-            .Add("dist_address", address)
-        End With
-#End Region
-        '兩天以前的訂單不能修改
-
-
-        Dim sign As String
-        sign = "="
-
-        'Dim table = "distribute"
-        'Dim rows = SelectTable($"SELECT dist_id FROM {table} WHERE dist_ord_id = '{txtOrdID_dist.Text}' AND dist_date {sign} '{Date.Parse(txtSelectDate.Text):yyyy-MM-dd}' AND dist_meal = '{tempDistDay.Text}'").Rows
-        'Dim dic As Dictionary(Of String, String) = BindData(table)
-        'dic.Add("dist_memo", $"'{dgvDist.SelectedRows(0).Cells("ord_memo").Value}'")
-
-        'For Each row In rows
-        '    If Not UpdateTable(table, dic, $"dist_id = '{row("dist_id")}'") Then Exit Sub
-        'Next
-
-        SetCalender()
-        SetCalenderData()
-        CountNotConfigured()
-        MsgBox("修改成功")
-
-
-    End Sub
-
     '修改-系統設定-商品群組管理
     Private Sub btnProdGrpModify_Click(btn As Button, e As EventArgs) Handles btnModify_prod_grp.Click
         Dim required As New Dictionary(Of String, Object) From {{"名稱", txtName_prod_grp}}
@@ -1495,8 +1451,8 @@ Public Class frmMain
     ''' <summary>
     ''' 繫結Table欄位與TextBox
     ''' </summary>
-    Public Function BindData(sTable As String) As Dictionary(Of String, String)
-        Dim dicData As New Dictionary(Of String, String)
+    Public Function BindData(sTable As String) As Dictionary(Of String, Object)
+        Dim dicData As New Dictionary(Of String, Object)
         Dim chk As IEnumerable(Of CheckBox)
         Dim list As New List(Of String)
 
@@ -1563,7 +1519,8 @@ Public Class frmMain
                                 chk = grp.Controls.OfType(Of FlowLayoutPanel).First.Controls.OfType(Of CheckBox).Where(Function(x) x.Checked = True)
                                 .Add("dist_tableware", String.Join(",", chk.Select(Function(x) x.Text)))
                             Case "飲品需求"
-                                .Add("dist_drink", txtDrink.Text)
+                                chk = grp.Controls.OfType(Of FlowLayoutPanel).First.Controls.OfType(Of CheckBox).Where(Function(x) x.Checked = True)
+                                .Add("dist_drink", String.Join(",", chk.Select(Function(x) x.Text)))
                         End Select
                     Next
 
@@ -1705,67 +1662,11 @@ Public Class frmMain
         ClearControls(tpConsult_cus)
     End Sub
 
-    'mark by v0.13-----
-    ''查詢-送餐管理
-    'Private Sub btnQuery_drive_Click(sender As Object, e As EventArgs) Handles btnQuery_drive.Click
-    '    btnClear_drive.PerformClick()
-
-    '    Dim sql = $"SELECT c.dist_line, c.dist_queue, c.dist_city, c.dist_area, c.dist_address, c.dist_memo, e.prod_grp_name, d.cus_name, d.cus_phone, a.ord_id, c.dist_id, c.dist_emp_id" +
-    '              " FROM orders a" +
-    '              " LEFT JOIN product b ON a.ord_prod_id = b.prod_id" +
-    '              " LEFT JOIN distribute c ON a.ord_id = c.dist_ord_id" +
-    '              " LEFT JOIN customer d ON a.ord_cus_id = d.cus_id" +
-    '              " LEFT JOIN product_group e ON b.prod_prod_grp_id = e.prod_grp_id" +
-    '             $" WHERE c.dist_date = '{dtpDrive.Value:d}'" +
-    '             $" AND c.dist_meal = '{grpMeal_drive.Controls.OfType(Of RadioButton).FirstOrDefault(Function(rdo) rdo.Checked = True).Text}'" +
-    '             $" ORDER BY c.dist_city, c.dist_area"
-    '    Dim dt = SelectTable(sql)
-    '    DataToDgv(dt, "orders,product_group,distribute,customer", dgvDrive)
-    '    '不顯示的欄位
-    '    dgvDrive.Columns("dist_id").Visible = False
-    '    dgvDrive.Columns("dist_emp_id").Visible = False
-    '    '客戶名稱,產品群組,客戶電話,訂單編號 不能編輯
-    '    Dim arr As String() = {"cus_name", "prod_grp_name", "cus_phone", "ord_id"}
-    '    arr.ToList.ForEach(Sub(a) dgvDrive.Columns(a).ReadOnly = True)
-    '    '禁用排序 不然列移動會失效
-    '    dgvDrive.Columns.Cast(Of DataGridViewColumn).ToList.ForEach(Sub(col) col.SortMode = DataGridViewColumnSortMode.NotSortable)
-    '    '將城市,鄉鎮市區塞到combobox       
-    '    Dim dic As New Dictionary(Of ComboBox, ComboBox) From {
-    '        {cmbLine1_city, cmbLine1_area},
-    '        {cmbLine2_city, cmbLine2_area},
-    '        {cmbLine3_city, cmbLine3_area},
-    '        {cmbLine4_city, cmbLine4_area},
-    '        {cmbLine5_city, cmbLine5_area}
-    '    }
-    '    For Each kvp In dic
-    '        kvp.Key.DataSource = dt.AsEnumerable.Select(Function(row) row.Field(Of String)($"dist_city")).Distinct.ToList
-    '        kvp.Key.SelectedIndex = -1
-    '        '鄉鎮市區 依照所選的縣市變化內容
-    '        AddHandler kvp.Key.SelectedIndexChanged, Sub(sen, ee)
-    '                                                     If kvp.Key.SelectedIndex = -1 Then
-    '                                                         kvp.Value.DataSource = Nothing
-    '                                                     Else
-    '                                                         kvp.Value.DataSource = dt.AsEnumerable.Where(Function(r1) r1.Field(Of String)("dist_city") = kvp.Key.SelectedItem) _
-    '                                                         .Select(Function(r2) r2.Field(Of String)("dist_area")).Distinct.ToList
-    '                                                     End If
-    '                                                 End Sub
-    '    Next
-    '    '取得送餐人員到對應控制項
-    '    For Each row As DataGridViewRow In dgvDrive.Rows
-    '        Dim cellLine = row.Cells("dist_line").Value
-    '        If Not IsDBNull(cellLine) Then
-    '            'grpDriver.Controls.OfType(Of ComboBox).Where(Function(cmb) cmb.Tag.ToString = cellLine).First.SelectedValue = row.Cells("dist_emp_id").Value
-    '            Dim cmb = grpDriver.Controls.OfType(Of ComboBox).FirstOrDefault(Function(c) c.Tag.ToString = cellLine)
-    '            If cmb IsNot Nothing Then cmb.SelectedValue = row.Cells("dist_emp_id").Value
-    '        End If
-    '    Next
-    'End Sub
-    '-----
-
     '查詢-配餐管理
     Private Sub btnDistQuery_Click(sender As Object, e As EventArgs) Handles btnDistQuery.Click
         Dim indexOrderBy = sqlDistribute.IndexOf("ORDER BY")
         Dim sql = sqlDistribute.Insert(indexOrderBy, $" WHERE b.cus_name Like '%{txtDistQuery.Text}%' OR b.cus_phone LIKE '%{txtDistQuery.Text}%' ")
+
         DataToDgv(sql, dgvDist)
     End Sub
 
@@ -1796,10 +1697,13 @@ Public Class frmMain
     '訂單管理-查詢
     Private Sub btnOrderQuery_Click(sender As Object, e As EventArgs) Handles btnOrderQuery.Click
         Cursor = Cursors.WaitCursor
-        Dim sql = sqlOrder & $" WHERE b.cus_name LIKE '%{txtOrdQuery.Text}%' OR b.cus_phone LIKE '%{txtOrdQuery.Text}%' ORDER BY a.ord_date DESC"
+
+        Dim sql = sqlOrder & $" WHERE b.cus_name Like '%{txtOrdQuery.Text}%' OR b.cus_phone LIKE '%{txtOrdQuery.Text}%' ORDER BY a.ord_date DESC"
+        Dim exception As New List(Of String) From {"txtOrdQuery"}
 
         DataToDgv(sql, dgvOrder)
-        ClearControls(tpOrder)
+        ClearControls(tpOrder, exception)
+
         Cursor = Cursors.Default
     End Sub
 
@@ -1934,10 +1838,10 @@ Public Class frmMain
     ''' 計算未配置餐
     ''' </summary>
     Private Sub CountNotConfigured()
-        '使用時機 dgv點取 新刪修後
-        '計算餐種的數量扣掉未配置餐
-        Dim dtOrder = SelectTable($"SELECT ord_breakfast, ord_lunch, ord_dinner FROM orders WHERE ord_id = '{txtOrdID_dist.Text}'")
-        Dim dtDist = SelectTable($"SELECT dist_meal FROM distribute WHERE dist_ord_id = '{txtOrdID_dist.Text}'")
+        Dim dic As New Dictionary(Of String, Object) From {{"ord_id", txtOrdID_dist.Text}}
+        Dim dtOrder = SelectTable("SELECT ord_breakfast, ord_lunch, ord_dinner FROM orders WHERE ord_id = @ord_id", dic)
+        Dim dtDist = SelectTable("SELECT dist_meal FROM distribute WHERE dist_ord_id = @ord_id", dic)
+
         txtBreak.Text = If(dtOrder.Rows(0)("ord_breakfast") > 0, dtOrder.Rows(0)("ord_breakfast") - dtDist.Select("dist_meal='早'").Count, 0)
         txtLunch.Text = If(dtOrder.Rows(0)("ord_lunch") > 0, dtOrder.Rows(0)("ord_lunch") - dtDist.Select("dist_meal='午'").Count, 0)
         txtDinner.Text = If(dtOrder.Rows(0)("ord_dinner") > 0, dtOrder.Rows(0)("ord_dinner") - dtDist.Select("dist_meal='晚'").Count, 0)
@@ -2039,23 +1943,22 @@ Public Class frmMain
         For Each kvp In dic
             Dim grp = flpDist.Controls.OfType(Of GroupBox)().FirstOrDefault(Function(x) x.Text = kvp.Value)
             If Not rowData.IsNull(kvp.Key) Then
-                If kvp.Value = "飲品需求" Then
-                    txtDrink.Text = rowData(kvp.Key)
-                Else
-                    Dim lst As List(Of String) = Split(rowData(kvp.Key), ",").ToList
-                    Dim flpCtrls = grp.Controls.OfType(Of FlowLayoutPanel).First.Controls
-                    For Each check In flpCtrls.OfType(Of CheckBox)
-                        If lst.Contains(check.Text) Then
-                            check.Checked = True
-                        End If
-                    Next
-                    For Each rdo In flpCtrls.OfType(Of RadioButton)
-                        If lst.Contains(rdo.Text) Then
-                            rdo.Checked = True
-                        End If
-                    Next
-                    lst.Clear()
-                End If
+                Dim lst As List(Of String) = Split(rowData(kvp.Key), ",").ToList
+                Dim flpCtrls = grp.Controls.OfType(Of FlowLayoutPanel).First.Controls
+
+                For Each check In flpCtrls.OfType(Of CheckBox)
+                    If lst.Contains(check.Text) Then
+                        check.Checked = True
+                    End If
+                Next
+
+                For Each rdo In flpCtrls.OfType(Of RadioButton)
+                    If lst.Contains(rdo.Text) Then
+                        rdo.Checked = True
+                    End If
+                Next
+
+                lst.Clear()
             End If
         Next
     End Sub
@@ -3107,7 +3010,7 @@ Finish:
         'insert到table
         For Each m In lstMenu1
             Dim table = "menu"
-            Dim dic As New Dictionary(Of String, String) From {
+            Dim dic As New Dictionary(Of String, Object) From {
                 {"me_date", m.MenuDate},
                 {"me_version", m.Version},
                 {"me_meal_id", m.Meal},
@@ -3179,7 +3082,7 @@ Finish:
         Cursor = Cursors.WaitCursor
 
         For Each txt In tpMenu.Controls.OfType(Of TextBox).Where(Function(x) String.IsNullOrEmpty(x.Text) = False)
-            Dim dic As New Dictionary(Of String, String)
+            Dim dic As New Dictionary(Of String, Object)
             With dic
                 .Add("me_date", dtMenu.Value)
 
@@ -3328,13 +3231,18 @@ Finish:
         Dim meal = grpMeal_delivery.Controls.OfType(Of RadioButton).First(Function(rdo) rdo.Checked).Text
 
         '取得明日要送的客戶
+        Dim dic As New Dictionary(Of String, Object) From {
+            {"dist_date", day},
+            {"dist_meal", meal}
+        }
+
         Dim newDelivery = SelectTable(
-            "SELECT '' AS no, c.cus_name, c.cus_phone, CONCAT(a.dist_city, a.dist_area, a.dist_address) AS address, a.dist_memo, '' AS line, a.dist_id, a.dist_date, b.ord_id " &
+            "SELECT '' AS no, c.cus_name, c.cus_phone, a.dist_address, a.dist_memo, '' AS line, a.dist_id, a.dist_date, b.ord_id " &
             "FROM distribute a " &
             "LEFT JOIN orders b ON a.dist_ord_id = b.ord_id " &
             "LEFT JOIN customer c ON b.ord_cus_id = c.cus_id " &
-            $"WHERE a.dist_date = '{day}'" &
-            $"AND a.dist_meal = '{meal}'")
+            "WHERE a.dist_date = @dist_date " &
+            "AND a.dist_meal = @dist_meal", dic)
 
         If newDelivery.Rows.Count = 0 Then
             MsgBox($"{day} 無送餐資訊")
@@ -3343,23 +3251,27 @@ Finish:
 
         grpDelivery.Text = $"編輯 {day} {meal}餐 送餐報表"
 
-        Dim delivery As New System.Data.DataTable
+        Dim delivery As New DataTable
+
         '找出上一次的報表
-        Dim lastReport = SelectTable($"SELECT * FROM delivery WHERE del_date < '{day}' ORDER BY del_date DESC")
+        Dim lastReport = SelectTable("SELECT * FROM delivery WHERE del_date < @dist_date ORDER BY del_date DESC", dic)
+
         If lastReport.Rows.Count > 0 Then
             day = lastReport.Rows(0)("del_date")
+            dic.Clear()
+            dic("dist_date") = day
 
-            Dim sql = "SELECT b.del_dtl_no, e.cus_name, e.cus_phone, CONCAT(c.dist_city, c.dist_area, c.dist_address) AS address, c.dist_memo, b.del_dtl_line, c.dist_id, c.dist_date, d.ord_id " &
+            Dim sql = "SELECT b.del_dtl_no, e.cus_name, e.cus_phone, c.dist_address, c.dist_memo, b.del_dtl_line, c.dist_id, c.dist_date, d.ord_id " &
                 "FROM delivery a " &
                 "LEFT JOIN delivery_detail b ON a.del_id = b.del_dtl_del_id " &
                 "LEFT JOIN distribute c ON b.del_dtl_dist_id = c.dist_id " &
                 "LEFT JOIN orders d ON c.dist_ord_id = d.ord_id " &
                 "LEFT JOIN customer e ON d.ord_cus_id = e.cus_id " &
-               $"WHERE a.del_date = '{day}' " &
-               $"AND a.del_meal = '{meal}'"
+                "WHERE a.del_date = @dist_date " &
+                "AND a.del_meal = @dist_meal"
 
             '讀取前天的報表
-            delivery = SelectTable(sql)
+            delivery = SelectTable(sql, dic)
         End If
 
         '刷新dgv
@@ -3377,13 +3289,14 @@ Finish:
                                         no = delRow("del_dtl_no"),
                                         name = newRow("cus_name"),
                                         phone = newRow("cus_phone"),
-                                        address = newRow("address"),
+                                        address = newRow("dist_address"),
                                         memo = newRow("dist_memo"),
                                         distID = newRow("dist_id"),
                                         distDate = newRow("dist_date"),
                                         ordID = newRow("ord_id"),
                                         line = delRow("del_dtl_line")
                                     Order By no
+
             '交集的資料放到dgv
             For Each row In intersectionQuery
                 Dim rowIndex = dgvDelivery_new.Rows.Add(row.no, row.name, row.phone, row.address, row.memo, row.line, row.distID, row.distDate, row.ordID)
@@ -3420,7 +3333,7 @@ Finish:
         End If
 
         If SelectTable($"SELECT * FROM delivery WHERE del_date = '{d}' AND del_meal = '{meal}'").Rows.Count = 0 Then
-            Dim dicDel = New Dictionary(Of String, String) From {
+            Dim dicDel = New Dictionary(Of String, Object) From {
                 {"del_date", d},
                 {"del_meal", meal}
             }
@@ -3433,7 +3346,7 @@ Finish:
 
         For i As Integer = 1 To rows.Count
             Dim row = rows(i - 1)
-            Dim dicDelDtl = New Dictionary(Of String, String) From {
+            Dim dicDelDtl = New Dictionary(Of String, Object) From {
                 {"del_dtl_del_id", delID},
                 {"del_dtl_no", i},
                 {"del_dtl_dist_id", row.Cells("配餐編號").Value},
@@ -3458,20 +3371,27 @@ Finish:
         Using ms = New MemoryStream
             bytes = File.ReadAllBytes(Path.Combine(Application.StartupPath, "Report", "送餐.xlsx"))
             ms.Write(bytes, 0, bytes.Length)
+
             Using exl = SpreadsheetDocument.Open(ms, True)
                 Dim wbPart = exl.WorkbookPart
                 Dim sstPart = wbPart.GetPartsOfType(Of SharedStringTablePart)().FirstOrDefault
                 Dim lst = New List(Of String)
-                lst.AddRange({"早", "午", "晚"})
 
+                lst.AddRange({"早", "午", "晚"})
 
                 '寫入每餐排的路線
                 For Each meal In lst
                     Dim wsPart As WorksheetPart = wbPart.GetPartById(GetSheetId(exl, meal))
                     Dim ws = wsPart.Worksheet
                     Dim sd = ws.GetFirstChild(Of SheetData)
+
                     '寫入日期
                     SetCellValue(ws, "A1", day + $" {meal} 送餐報表", sstPart)
+
+                    Dim dic As New Dictionary(Of String, Object) From {
+                        {"del_date", day},
+                        {"del_meal", meal}
+                    }
                     Dim rows = SelectTable("SELECT * " &
                                            "FROM delivery a " &
                                            "LEFT JOIN delivery_detail b ON a.del_id = b.del_dtl_del_id " &
@@ -3480,9 +3400,9 @@ Finish:
                                            "LEFT JOIN customer e ON d.ord_cus_id = e.cus_id " &
                                            "LEFT JOIN product f ON d.ord_prod_id = f.prod_id " &
                                            "LEFT JOIN product_group g ON f.prod_prod_grp_id	= g.prod_grp_id " &
-                                          $"WHERE a.del_date = '{day}' " &
-                                          $"AND a.del_meal = '{meal}' " &
-                                           "ORDER BY b.del_dtl_no").Rows
+                                           "WHERE a.del_date = @del_date " &
+                                           "AND a.del_meal = @del_meal " &
+                                           "ORDER BY b.del_dtl_no", dic).Rows
 
                     For i As Integer = 0 To rows.Count - 1
                         '編號
@@ -3494,29 +3414,34 @@ Finish:
                         '電話
                         SetCellValue(ws, "E" + (i + 3).ToString, rows(i)("cus_phone"), sstPart)
                         '送餐地址
-                        SetCellValue(ws, "F" + (i + 3).ToString, rows(i)("dist_city") & rows(i)("dist_area") & rows(i)("dist_address"), sstPart)
+                        SetCellValue(ws, "F" + (i + 3).ToString, rows(i)("dist_address"), sstPart)
                         '送餐注意事項
                         SetCellValue(ws, "G" + (i + 3).ToString, rows(i)("dist_memo"), sstPart)
                         '路線
                         SetCellValue(ws, "H" + (i + 3).ToString, If(IsDBNull(rows(i)("del_dtl_line")), "", rows(i)("del_dtl_line")), sstPart)
                     Next
                 Next
+
                 exl.Save()
             End Using
+
             bytes = ms.ToArray
         End Using
 
-        Dim saveFileDialog As New SaveFileDialog
-        saveFileDialog.Filter = "Excel檔 (*.xlsx)|*.xlsx"
-        saveFileDialog.Title = "選取存檔位置"
-        saveFileDialog.FileName = day & "送餐.xlsx"
+        Dim saveFileDialog As New SaveFileDialog With {
+            .Filter = "Excel檔 (*.xlsx)|*.xlsx",
+            .Title = "選取存檔位置",
+            .FileName = day & "送餐.xlsx"
+        }
+
         If saveFileDialog.ShowDialog = DialogResult.OK Then
             Try
                 File.WriteAllBytes(saveFileDialog.FileName, bytes)
             Catch ex As Exception
-                MsgBox(ex.Message, Title:=System.Reflection.MethodBase.GetCurrentMethod.Name)
+                MsgBox(ex.Message, Title:=Reflection.MethodBase.GetCurrentMethod.Name)
                 Exit Sub
             End Try
+
             MsgBox("報表建立成功!")
         End If
     End Sub
@@ -3524,6 +3449,7 @@ Finish:
     '報表管理-送餐報表-餐種-點擊餐種搜尋
     Private Sub SerchDelivery(sender As Object, e As EventArgs) Handles rdoBreakfast_delivery.CheckedChanged, rdoLunch_delivery.CheckedChanged, rdoDinner_delivery.CheckedChanged, dtpReport.ValueChanged
         Dim rdo As RadioButton
+
         If TypeOf sender Is RadioButton Then
             rdo = sender
 
@@ -3536,21 +3462,23 @@ Finish:
 
         Dim day = dtpReport.Value.ToString("yyyy-MM-dd")
         Dim meal = rdo.Text
+        Dim dic As New Dictionary(Of String, Object) From {
+            {"del_date", day},
+            {"del_meal", meal}
+        }
         Dim delivery = SelectTable(
-            "SELECT b.del_dtl_no, e.cus_name, e.cus_phone, CONCAT(c.dist_city, c.dist_area, c.dist_address) AS address, c.dist_memo, b.del_dtl_line, c.dist_id, c.dist_date, d.ord_id " &
+            "SELECT b.del_dtl_no, e.cus_name, e.cus_phone, c.dist_address, c.dist_memo, b.del_dtl_line, c.dist_id, c.dist_date, d.ord_id " &
             "FROM delivery a " &
             "LEFT JOIN delivery_detail b ON a.del_id = b.del_dtl_del_id " &
             "LEFT JOIN distribute c ON b.del_dtl_dist_id = c.dist_id " &
             "LEFT JOIN orders d ON c.dist_ord_id = d.ord_id " &
             "LEFT JOIN customer e ON d.ord_cus_id = e.cus_id " &
-           $"WHERE a.del_date = '{day}' " &
-           $"AND a.del_meal = '{meal}' " &
-            "ORDER BY b.del_dtl_no")
+            "WHERE a.del_date = @del_date " &
+            "AND a.del_meal = @del_meal " &
+            "ORDER BY b.del_dtl_no", dic)
 
         dgvDelivery_new.Rows.Clear()
-
         delivery.Rows.Cast(Of DataRow).ToList.ForEach(Sub(row) dgvDelivery_new.Rows.Add(row.ItemArray))
-
         grpDelivery.Text = $"{day} {meal}餐 送餐報表"
     End Sub
 
@@ -3561,6 +3489,7 @@ Finish:
     Private Sub DistReport(meal As String)
         Dim sheetName As String
         Dim sourceFileName As String
+
         Select Case meal
             Case "早"
                 sourceFileName = "隔天早寫單"
@@ -3574,10 +3503,13 @@ Finish:
             Case Else
                 Exit Sub
         End Select
+
         Dim bytes As Byte()
+
         Using ms = New MemoryStream
             bytes = File.ReadAllBytes(Application.StartupPath + $"\Report\{sourceFileName}.xlsx")
             ms.Write(bytes, 0, bytes.Length)
+
             Using exl = SpreadsheetDocument.Open(ms, True)
                 Dim wbPart = exl.WorkbookPart
                 Dim sstPart As SharedStringTablePart = wbPart.GetPartsOfType(Of SharedStringTablePart)().FirstOrDefault()
@@ -3585,24 +3517,31 @@ Finish:
                 Dim ws = wsPart.Worksheet
                 Dim sd = ws.GetFirstChild(Of SheetData)
                 Dim day = dtpReport.Value.ToString("d")
+
                 '寫入日期
                 SetCellValue(ws, "A1", day + $" {meal}餐 月子餐打餐報表", sstPart)
+
                 '找出當日所有配餐(禁忌要另外解析)
-                Dim rows = SelectTable("SELECT d.prod_grp_aka, e.cus_name, a.dist_customized, a.dist_drink, e.cus_tabo_id, a.dist_other" +
-                                          " FROM distribute a" +
-                                          " LEFT JOIN orders b ON a.dist_ord_id = b.ord_id" +
-                                          " LEFT JOIN product c ON b.ord_prod_id = c.prod_id" +
-                                          " LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id" +
-                                          " LEFT JOIN customer e ON e.cus_id = b.ord_cus_id " +
-                                          " LEFT JOIN taboo f ON f.tabo_id = e.cus_tabo_id" +
-                                         $" WHERE dist_date = '{day}'" +
-                                         $" AND dist_meal = '{meal}'" +
-                                          " ORDER BY d.prod_grp_aka DESC").Rows
+                Dim dic As New Dictionary(Of String, Object) From {
+                    {"dist_date", day},
+                    {"dist_meal", meal}
+                }
+                Dim rows = SelectTable("SELECT d.prod_grp_aka, e.cus_name, a.dist_customized, a.dist_drink, e.cus_tabo_id, a.dist_other, e.cus_plate " +
+                                       "FROM distribute a " +
+                                       "LEFT JOIN orders b ON a.dist_ord_id = b.ord_id " +
+                                       "LEFT JOIN product c ON b.ord_prod_id = c.prod_id " +
+                                       "LEFT JOIN product_group d ON c.prod_prod_grp_id = d.prod_grp_id " +
+                                       "LEFT JOIN customer e ON e.cus_id = b.ord_cus_id " +
+                                       "LEFT JOIN taboo f ON f.tabo_id = e.cus_tabo_id " +
+                                       "WHERE dist_date = @dist_date " +
+                                       "AND dist_meal = @dist_meal " +
+                                       "ORDER BY d.prod_grp_aka DESC", dic).Rows
+
                 For i As Integer = 0 To rows.Count - 1
                     '編號
                     SetCellValue(ws, "A" + (i + 3).ToString, i + 1, sstPart)
                     '產品簡稱
-                    SetCellValue(ws, "B" + (i + 3).ToString, rows(i)("prod_grp_aka"), sstPart)
+                    SetCellValue(ws, "B" + (i + 3).ToString, rows(i)("prod_grp_aka") + rows(i)("cus_plate"), sstPart)
                     '客戶姓名
                     SetCellValue(ws, "C" + (i + 3).ToString, rows(i)("cus_name"), sstPart)
                     '加減
@@ -3610,7 +3549,7 @@ Finish:
                     '飲品需求
                     SetCellValue(ws, "E" + (i + 3).ToString, rows(i)("dist_drink"), sstPart)
                     '禁忌
-                    SetCellValue(ws, "F" + (i + 3).ToString, GetTaboo(rows(i)("cus_tabo_id")), sstPart)
+                    SetCellValue(ws, "F" + (i + 3).ToString, GetTaboo(If(IsDBNull(rows(i)("cus_tabo_id")), "", rows(i)("cus_tabo_id"))), sstPart)
                     '備註
                     SetCellValue(ws, "G" + (i + 3).ToString, rows(i)("dist_other"), sstPart)
                 Next
@@ -3618,20 +3557,23 @@ Finish:
                 '重新計算公式
                 Dim wb = wbPart.Workbook
                 Dim cp = wb.CalculationProperties
+
                 cp.ForceFullCalculation = True
                 wb.Save()
-
                 exl.Save()
             End Using
+
             bytes = ms.ToArray()
         End Using
+
         '另存新檔
         SaveFileDialog1.FileName = dtpReport.Value.ToString("yyyy.MM.dd") + $"{meal}寫單.xlsx"
+
         If SaveFileDialog1.ShowDialog = DialogResult.OK Then
             Try
                 File.WriteAllBytes(SaveFileDialog1.FileName, bytes)
             Catch ex As Exception
-                MsgBox(ex.Message, Title:=System.Reflection.MethodBase.GetCurrentMethod.Name)
+                MsgBox(ex.Message, Title:=Reflection.MethodBase.GetCurrentMethod.Name)
                 Exit Sub
             End Try
             MsgBox("報表建立成功!")
@@ -3653,73 +3595,6 @@ Finish:
         Return String.Join(",", lstValue)
     End Function
 
-    '-----mark on v0.13-----
-    'Private Sub btnDriver_Click(sender As Object, e As EventArgs) Handles btnDriver.Click
-    '    Dim bytes As Byte()
-    '    Dim day = dtpReport.Value.ToString("yyyy-MM-dd")
-    '    Using ms = New MemoryStream
-    '        bytes = File.ReadAllBytes(Application.StartupPath + "\Report\送餐.xlsx")
-    '        ms.Write(bytes, 0, bytes.Length)
-    '        Using exl = SpreadsheetDocument.Open(ms, True)
-    '            Dim wbPart = exl.WorkbookPart
-    '            Dim sstPart As SharedStringTablePart = wbPart.GetPartsOfType(Of SharedStringTablePart)().FirstOrDefault()
-    '            Dim dic As New Dictionary(Of String, String) From {
-    '                {"早餐", "早"},
-    '                {"午餐", "午"},
-    '                {"晚餐", "晚"}
-    '            }
-    '            For Each kvp In dic
-    '                Dim wsPart As WorksheetPart = wbPart.GetPartById(GetSheetId(exl, kvp.Key))
-    '                Dim ws = wsPart.Worksheet
-    '                Dim sd = ws.GetFirstChild(Of SheetData)
-    '                '寫入日期
-    '                SetCellValue(ws, "A1", day + $" {kvp.Key} 送餐報表", sstPart)
-    '                '找出當日所有配餐
-    '                Dim rows = SelectTable("SELECT a.dist_queue, c.cus_name, e.prod_grp_name, c.cus_phone, a.dist_city, a.dist_area, a.dist_address, a.	dist_memo, f.emp_name" +
-    '                                          " FROM distribute a" +
-    '                                          " LEFT JOIN orders b ON a.dist_ord_id = b.ord_id" +
-    '                                          " LEFT JOIN customer c ON c.cus_id = b.ord_cus_id " +
-    '                                          " LEFT JOIN product d ON b.ord_prod_id = d.prod_id" +
-    '                                          " LEFT JOIN product_group e ON d.prod_prod_grp_id = e.prod_grp_id" +
-    '                                          " LEFT JOIN employee f ON f.emp_id = a.dist_emp_id" +
-    '                                         $" WHERE dist_date = '{day}'" +
-    '                                         $" AND dist_meal = '{kvp.Value}'" +
-    '                                          " ORDER BY a.dist_line, a.dist_queue").Rows
-    '                For i As Integer = 0 To rows.Count - 1
-    '                    '編號
-    '                    SetCellValue(ws, "A" + (i + 3).ToString, IIf(IsDBNull(rows(i)("dist_queue")), "", rows(i)("dist_queue")), sstPart)
-    '                    '姓名
-    '                    SetCellValue(ws, "B" + (i + 3).ToString, rows(i)("cus_name"), sstPart)
-    '                    '餐飲種類
-    '                    SetCellValue(ws, "D" + (i + 3).ToString, rows(i)("prod_grp_name"), sstPart)
-    '                    '電話
-    '                    SetCellValue(ws, "E" + (i + 3).ToString, rows(i)("cus_phone"), sstPart)
-    '                    '送餐地址
-    '                    SetCellValue(ws, "F" + (i + 3).ToString, rows(i)("dist_city") + rows(i)("dist_area") + rows(i)("dist_address"), sstPart)
-    '                    '送餐注意事項
-    '                    SetCellValue(ws, "G" + (i + 3).ToString, rows(i)("dist_memo"), sstPart)
-    '                    '路線
-    '                    SetCellValue(ws, "H" + (i + 3).ToString, If(IsDBNull(rows(i)("emp_name")), "", rows(i)("emp_name")), sstPart)
-    '                Next
-
-    '            Next
-    '            exl.Save()
-    '        End Using
-    '        bytes = ms.ToArray()
-    '    End Using
-    '    '另存新檔
-    '    SaveFileDialog1.FileName = day + "送餐.xlsx"
-    '    If SaveFileDialog1.ShowDialog = DialogResult.OK Then
-    '        Try
-    '            File.WriteAllBytes(SaveFileDialog1.FileName, bytes)
-    '        Catch ex As Exception
-    '            MsgBox(ex.Message, Title:=Reflection.MethodBase.GetCurrentMethod.Name)
-    '            Exit Sub
-    '        End Try
-    '        MsgBox("報表建立成功!")
-    '    End If
-    'End Sub
-
     Private Sub btnIngredients_Click(sender As Object, e As EventArgs) Handles btnIngredients.Click
         Dim frm As New frmTaboo
         If frm.ShowDialog = DialogResult.OK Then txtingredients.Text = frm.ReturnString
@@ -3734,7 +3609,7 @@ Finish:
     '菜品管理-新增
     Private Sub btnInsert_dish_Click(sender As Object, e As EventArgs) Handles btnInsert_dish.Click
         Dim tp As TabPage = CType(sender, Button).Parent
-        Dim dic As Dictionary(Of String, String) = CheckDishes(sender)
+        Dim dic As Dictionary(Of String, Object) = CheckDishes(sender)
         If dic Is Nothing Then Exit Sub
         If InserTable(tp.Tag, dic) Then
             tp.Controls.OfType(Of Button).First(Function(btn) btn.Text = "取  消").PerformClick()
@@ -3766,7 +3641,7 @@ Finish:
     '菜品管理-修改
     Private Sub btnModify_dish_Click(sender As Object, e As EventArgs) Handles btnModify_dish.Click
         Dim tp As TabPage = sender.Parent
-        Dim dic As Dictionary(Of String, String) = CheckDishes(sender)
+        Dim dic As Dictionary(Of String, Object) = CheckDishes(sender)
         If dic Is Nothing Then Exit Sub
         If UpdateTable(tp.Tag, dic, $"{txtDishes.Tag} = '{txtDishes.Text}'") Then
             tp.Controls.OfType(Of Button).First(Function(btn) btn.Text = "取  消").PerformClick()
@@ -3797,7 +3672,16 @@ Finish:
     End Sub
 
     Private Sub btnMealAdj_Click(sender As Object, e As EventArgs) Handles btnMealAdj.Click
-        frmMealAdjustments.Show()
+        If txtOrdID_dist.Text = "" Then
+            MsgBox("請選擇對象")
+            Exit Sub
+        End If
+
+        Using form As New frmMealAdjustments With {.OrderID = txtOrdID_dist.Text}
+            form.ShowDialog()
+            CountNotConfigured()
+        End Using
+
     End Sub
 
     Private Sub btnCancel_money_ord_Click(sender As Object, e As EventArgs) Handles btnCancel_money_ord.Click
@@ -3813,5 +3697,12 @@ Finish:
         txtAddrBreak.Text = txtAddressOne_cus.Text
         txtCusID_ord.Text = txtCusID.Text
         TabControl1.SelectedTab = tpOrder
+    End Sub
+
+    Private Sub txtCount_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCount.KeyPress
+        If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+            ' 取消此次鍵盤操作，以阻止非數字的輸入
+            e.Handled = True
+        End If
     End Sub
 End Class

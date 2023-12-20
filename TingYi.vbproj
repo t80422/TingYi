@@ -150,7 +150,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DistributeModel.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +187,7 @@
     <Compile Include="frmMealAdjustments.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="modDistribute.vb" />
     <Compile Include="modModel.vb" />
     <Compile Include="modOpenXml.vb" />
     <Compile Include="modUtility.vb" />

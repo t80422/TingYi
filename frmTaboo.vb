@@ -31,19 +31,25 @@
     Private Sub cmbType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbType.SelectedIndexChanged
         SaveCheck(dic)
         flpMain.Controls.Clear()
+
         Dim drs As DataRow()
+
         If sender.text = "全部" Then
             drs = dt.Select()
         Else
-            drs = dt.Select($"tabo_type = '{cmbType.Text}'")
+            Dim dic As New Dictionary(Of String, Object) From {{"tg_name", cmbType.Text}}
+            Dim row = SelectTable("SELECT tg_id FROM taboo_group WHERE tg_name = @tg_name", dic).Rows(0)
+            drs = dt.Select($"tabo_tg_id = '{row("tg_id")}'")
         End If
+
         For Each dr As DataRow In drs
             Dim chk As New CheckBox With {
                 .Text = dr.Field(Of String)("tabo_name"),
-                .Tag = dr.Field(Of Int32)("tabo_id")
+                .Tag = dr.Field(Of Integer)("tabo_id")
             }
             flpMain.Controls.Add(chk)
         Next
+
         '將先前勾選的選項勾回去
         For Each chk As CheckBox In flpMain.Controls
             chk.Checked = dic(chk.Tag)
@@ -74,4 +80,13 @@
             End If
         Next
     End Sub
+
+    Private Class ComboBoxItem
+        Public Property ID As String
+        Public Property Value As String
+
+        Public Overrides Function ToString() As String
+            Return Value
+        End Function
+    End Class
 End Class
