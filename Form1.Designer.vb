@@ -22,36 +22,36 @@ Partial Class frmMain
     '請勿使用程式碼編輯器進行修改。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle41 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle45 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle46 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle51 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle52 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle53 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle54 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle55 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle56 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle57 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle58 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle59 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle60 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.txtBraSta = New System.Windows.Forms.TextBox()
@@ -392,6 +392,9 @@ Partial Class frmMain
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.tpDistribute = New System.Windows.Forms.TabPage()
+        Me.btnTaboo_dist = New System.Windows.Forms.Button()
+        Me.txtTaboo_dist = New System.Windows.Forms.TextBox()
+        Me.Label156 = New System.Windows.Forms.Label()
         Me.txtMemo2_dist = New System.Windows.Forms.TextBox()
         Me.txtSelectDate = New System.Windows.Forms.TextBox()
         Me.txtOrdID_dist = New System.Windows.Forms.TextBox()
@@ -595,6 +598,14 @@ Partial Class frmMain
         Me.rdoSeniorHigh = New System.Windows.Forms.RadioButton()
         Me.rdoJuniorHigh = New System.Windows.Forms.RadioButton()
         Me.tpConsult_cus = New System.Windows.Forms.TabPage()
+        Me.grpConfLoca = New System.Windows.Forms.GroupBox()
+        Me.Label119 = New System.Windows.Forms.Label()
+        Me.Label46 = New System.Windows.Forms.Label()
+        Me.txtConfLoca = New System.Windows.Forms.TextBox()
+        Me.Label120 = New System.Windows.Forms.Label()
+        Me.txtConfDay = New System.Windows.Forms.TextBox()
+        Me.Label121 = New System.Windows.Forms.Label()
+        Me.txtConfBuy = New System.Windows.Forms.TextBox()
         Me.Label174 = New System.Windows.Forms.Label()
         Me.TextBox19 = New System.Windows.Forms.TextBox()
         Me.grpGetMsg = New System.Windows.Forms.GroupBox()
@@ -625,95 +636,93 @@ Partial Class frmMain
         Me.Label123 = New System.Windows.Forms.Label()
         Me.txtHeight = New System.Windows.Forms.TextBox()
         Me.Label122 = New System.Windows.Forms.Label()
-        Me.txtConfBuy = New System.Windows.Forms.TextBox()
-        Me.Label121 = New System.Windows.Forms.Label()
-        Me.txtConfDay = New System.Windows.Forms.TextBox()
-        Me.Label120 = New System.Windows.Forms.Label()
-        Me.txtConfLoca = New System.Windows.Forms.TextBox()
-        Me.Label119 = New System.Windows.Forms.Label()
         Me.txtManyChild = New System.Windows.Forms.TextBox()
         Me.Label118 = New System.Windows.Forms.Label()
         Me.txtDueDate = New System.Windows.Forms.TextBox()
         Me.txtHospital = New System.Windows.Forms.TextBox()
         Me.Label115 = New System.Windows.Forms.Label()
         Me.Label114 = New System.Windows.Forms.Label()
-        Me.btnTaboo = New System.Windows.Forms.Button()
-        Me.txtTaboo = New System.Windows.Forms.TextBox()
+        Me.btnTaboo_cus = New System.Windows.Forms.Button()
+        Me.txtTaboo_cus = New System.Windows.Forms.TextBox()
         Me.lblTaboo = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtMemo_cus = New System.Windows.Forms.TextBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.tpSystem.SuspendLayout()
-        Me.tcSystem.SuspendLayout()
-        Me.tpTaboo.SuspendLayout()
-        Me.grpTabooGroup.SuspendLayout()
-        CType(Me.dgvTabooGroup, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvTaboo, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tpPermissions.SuspendLayout()
-        Me.grpPosition.SuspendLayout()
-        CType(Me.dgvPermissions, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tpProdGroup.SuspendLayout()
-        CType(Me.dgvProdgroup, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tpDistSys.SuspendLayout()
-        CType(Me.dgvDistSys, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tpEmployee.SuspendLayout()
-        CType(Me.dgvEmployee, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tpMoney.SuspendLayout()
-        Me.grpOrder_money.SuspendLayout()
-        CType(Me.dgvOrder_money, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvMoney, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TP_Report.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
-        Me.GroupBox7.SuspendLayout()
-        Me.grpDelivery.SuspendLayout()
-        CType(Me.dgvDelivery_new, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox6.SuspendLayout()
-        CType(Me.dgvDelivery_old, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.grpMeal_delivery.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        Me.tpDishes.SuspendLayout()
-        CType(Me.dgvDishes, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tpMenu.SuspendLayout()
-        CType(Me.dgvMenu, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tpProduct.SuspendLayout()
-        Me.grpMeal.SuspendLayout()
-        CType(Me.dgvProduct, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tpDistribute.SuspendLayout()
-        CType(Me.dgvDist, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlCalendar.SuspendLayout()
-        Me.grpDateStrartEnd.SuspendLayout()
-        Me.flpDist.SuspendLayout()
-        Me.GroupBox24.SuspendLayout()
-        Me.GroupBox25.SuspendLayout()
-        Me.GroupBox26.SuspendLayout()
-        Me.GroupBox27.SuspendLayout()
-        Me.GroupBox28.SuspendLayout()
-        Me.GroupBox23.SuspendLayout()
-        Me.GroupBox29.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
-        Me.GroupBox10.SuspendLayout()
-        Me.tpOrder.SuspendLayout()
-        CType(Me.dgvOrder, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.grpEatType.SuspendLayout()
-        Me.grpMeal_order.SuspendLayout()
-        Me.tpCustomer.SuspendLayout()
-        Me.tcCustomer.SuspendLayout()
-        Me.tpBasic_cus.SuspendLayout()
-        Me.grpGender.SuspendLayout()
-        Me.GroupBox31.SuspendLayout()
-        CType(Me.dgvOrder_cus, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox30.SuspendLayout()
-        CType(Me.dgvCustomer, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.grpKind.SuspendLayout()
-        Me.grpMarriage.SuspendLayout()
-        Me.grpAcad_Qual.SuspendLayout()
-        Me.tpConsult_cus.SuspendLayout()
-        Me.grpGetMsg.SuspendLayout()
-        Me.grpDisease.SuspendLayout()
-        Me.TabControl1.SuspendLayout()
-        Me.SuspendLayout()
+        Me.txtCusID_dist = New System.Windows.Forms.TextBox()
+        Me.Label157 = New System.Windows.Forms.Label()
+        Me.chkDish = New System.Windows.Forms.CheckBox()
+        Me.tpSystem.SuspendLayout
+        Me.tcSystem.SuspendLayout
+        Me.tpTaboo.SuspendLayout
+        Me.grpTabooGroup.SuspendLayout
+        CType(Me.dgvTabooGroup, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dgvTaboo, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tpPermissions.SuspendLayout
+        Me.grpPosition.SuspendLayout
+        CType(Me.dgvPermissions, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tpProdGroup.SuspendLayout
+        CType(Me.dgvProdgroup, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tpDistSys.SuspendLayout
+        CType(Me.dgvDistSys, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tpEmployee.SuspendLayout
+        CType(Me.dgvEmployee, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tpMoney.SuspendLayout
+        Me.grpOrder_money.SuspendLayout
+        CType(Me.dgvOrder_money, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dgvMoney, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.TP_Report.SuspendLayout
+        Me.GroupBox5.SuspendLayout
+        Me.GroupBox4.SuspendLayout
+        Me.GroupBox2.SuspendLayout
+        Me.GroupBox7.SuspendLayout
+        Me.grpDelivery.SuspendLayout
+        CType(Me.dgvDelivery_new, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupBox6.SuspendLayout
+        CType(Me.dgvDelivery_old, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.grpMeal_delivery.SuspendLayout
+        Me.GroupBox3.SuspendLayout
+        Me.tpDishes.SuspendLayout
+        CType(Me.dgvDishes, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tpMenu.SuspendLayout
+        CType(Me.dgvMenu, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tpProduct.SuspendLayout
+        Me.grpMeal.SuspendLayout
+        CType(Me.dgvProduct, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tpDistribute.SuspendLayout
+        CType(Me.dgvDist, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.pnlCalendar.SuspendLayout
+        Me.grpDateStrartEnd.SuspendLayout
+        Me.flpDist.SuspendLayout
+        Me.GroupBox24.SuspendLayout
+        Me.GroupBox25.SuspendLayout
+        Me.GroupBox26.SuspendLayout
+        Me.GroupBox27.SuspendLayout
+        Me.GroupBox28.SuspendLayout
+        Me.GroupBox23.SuspendLayout
+        Me.GroupBox29.SuspendLayout
+        Me.GroupBox1.SuspendLayout
+        Me.GroupBox10.SuspendLayout
+        Me.tpOrder.SuspendLayout
+        CType(Me.dgvOrder, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.grpEatType.SuspendLayout
+        Me.grpMeal_order.SuspendLayout
+        Me.tpCustomer.SuspendLayout
+        Me.tcCustomer.SuspendLayout
+        Me.tpBasic_cus.SuspendLayout
+        Me.grpGender.SuspendLayout
+        Me.GroupBox31.SuspendLayout
+        CType(Me.dgvOrder_cus, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupBox30.SuspendLayout
+        CType(Me.dgvCustomer, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.grpKind.SuspendLayout
+        Me.grpMarriage.SuspendLayout
+        Me.grpAcad_Qual.SuspendLayout
+        Me.tpConsult_cus.SuspendLayout
+        Me.grpConfLoca.SuspendLayout
+        Me.grpGetMsg.SuspendLayout
+        Me.grpDisease.SuspendLayout
+        Me.TabControl1.SuspendLayout
+        Me.SuspendLayout
         '
         'OpenFileDialog1
         '
@@ -822,19 +831,19 @@ Partial Class frmMain
         '
         Me.dgvTabooGroup.AllowUserToAddRows = False
         Me.dgvTabooGroup.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvTabooGroup.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvTabooGroup.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle31
         Me.dgvTabooGroup.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.dgvTabooGroup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvTabooGroup.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle32.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvTabooGroup.DefaultCellStyle = DataGridViewCellStyle32
         Me.dgvTabooGroup.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.dgvTabooGroup.Location = New System.Drawing.Point(3, 136)
         Me.dgvTabooGroup.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
@@ -989,20 +998,20 @@ Partial Class frmMain
         '
         Me.dgvTaboo.AllowUserToAddRows = False
         Me.dgvTaboo.AllowUserToDeleteRows = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvTaboo.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvTaboo.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle33
         Me.dgvTaboo.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.dgvTaboo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvTaboo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvTaboo.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle34.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvTaboo.DefaultCellStyle = DataGridViewCellStyle34
         Me.dgvTaboo.Location = New System.Drawing.Point(609, 167)
         Me.dgvTaboo.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvTaboo.Name = "dgvTaboo"
@@ -1041,6 +1050,7 @@ Partial Class frmMain
         '
         'tpPermissions
         '
+        Me.tpPermissions.Controls.Add(Me.chkDish)
         Me.tpPermissions.Controls.Add(Me.txtPermName)
         Me.tpPermissions.Controls.Add(Me.grpPosition)
         Me.tpPermissions.Controls.Add(Me.txtId_perm)
@@ -1147,7 +1157,7 @@ Partial Class frmMain
         Me.chkSystem.Size = New System.Drawing.Size(121, 25)
         Me.chkSystem.TabIndex = 239
         Me.chkSystem.Tag = "perm_system"
-        Me.chkSystem.Text = "系統管理"
+        Me.chkSystem.Text = "系統設定"
         Me.chkSystem.UseVisualStyleBackColor = True
         '
         'chkEmployee
@@ -1271,19 +1281,19 @@ Partial Class frmMain
         '
         Me.dgvPermissions.AllowUserToAddRows = False
         Me.dgvPermissions.AllowUserToDeleteRows = False
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvPermissions.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle35.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvPermissions.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle35
         Me.dgvPermissions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvPermissions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPermissions.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle36.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPermissions.DefaultCellStyle = DataGridViewCellStyle36
         Me.dgvPermissions.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.dgvPermissions.Location = New System.Drawing.Point(3, 211)
         Me.dgvPermissions.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
@@ -1389,19 +1399,19 @@ Partial Class frmMain
         Me.dgvProdgroup.AllowUserToAddRows = False
         Me.dgvProdgroup.AllowUserToDeleteRows = False
         Me.dgvProdgroup.AllowUserToOrderColumns = True
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvProdgroup.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle37.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvProdgroup.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle37
         Me.dgvProdgroup.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvProdgroup.ColumnHeadersHeight = 25
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvProdgroup.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle38.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvProdgroup.DefaultCellStyle = DataGridViewCellStyle38
         Me.dgvProdgroup.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.dgvProdgroup.Location = New System.Drawing.Point(3, 124)
         Me.dgvProdgroup.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
@@ -1411,6 +1421,7 @@ Partial Class frmMain
         Me.dgvProdgroup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvProdgroup.Size = New System.Drawing.Size(1577, 591)
         Me.dgvProdgroup.TabIndex = 282
+        Me.dgvProdgroup.Tag = "product_group"
         '
         'Label107
         '
@@ -1528,21 +1539,21 @@ Partial Class frmMain
         Me.dgvDistSys.AllowUserToAddRows = False
         Me.dgvDistSys.AllowUserToDeleteRows = False
         Me.dgvDistSys.AllowUserToOrderColumns = True
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvDistSys.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle39.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvDistSys.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle39
         Me.dgvDistSys.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.dgvDistSys.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvDistSys.ColumnHeadersHeight = 25
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvDistSys.DefaultCellStyle = DataGridViewCellStyle10
-        Me.dgvDistSys.Location = New System.Drawing.Point(9, 159)
+        DataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle40.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle40.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvDistSys.DefaultCellStyle = DataGridViewCellStyle40
+        Me.dgvDistSys.Location = New System.Drawing.Point(9, 171)
         Me.dgvDistSys.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvDistSys.Name = "dgvDistSys"
         Me.dgvDistSys.ReadOnly = True
@@ -1892,21 +1903,21 @@ Partial Class frmMain
         '
         Me.dgvEmployee.AllowUserToAddRows = False
         Me.dgvEmployee.AllowUserToDeleteRows = False
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvEmployee.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvEmployee.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle41
         Me.dgvEmployee.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvEmployee.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle42.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle42.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvEmployee.DefaultCellStyle = DataGridViewCellStyle42
         Me.dgvEmployee.Location = New System.Drawing.Point(11, 214)
         Me.dgvEmployee.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvEmployee.Name = "dgvEmployee"
@@ -2152,19 +2163,19 @@ Partial Class frmMain
         '
         Me.dgvOrder_money.AllowUserToAddRows = False
         Me.dgvOrder_money.AllowUserToDeleteRows = False
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvOrder_money.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle45.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle45.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvOrder_money.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle45
         Me.dgvOrder_money.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvOrder_money.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("標楷體", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvOrder_money.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle46.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle46.Font = New System.Drawing.Font("標楷體", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        DataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle46.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvOrder_money.DefaultCellStyle = DataGridViewCellStyle46
         Me.dgvOrder_money.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.dgvOrder_money.Location = New System.Drawing.Point(3, 265)
         Me.dgvOrder_money.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
@@ -2328,7 +2339,6 @@ Partial Class frmMain
         '
         'dtMonDate
         '
-        Me.dtMonDate.Enabled = False
         Me.dtMonDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtMonDate.Location = New System.Drawing.Point(1117, 83)
         Me.dtMonDate.Name = "dtMonDate"
@@ -2467,19 +2477,19 @@ Partial Class frmMain
         '
         Me.dgvMoney.AllowUserToAddRows = False
         Me.dgvMoney.AllowUserToDeleteRows = False
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvMoney.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle43.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle43.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvMoney.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle43
         Me.dgvMoney.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvMoney.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvMoney.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle44.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle44.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvMoney.DefaultCellStyle = DataGridViewCellStyle44
         Me.dgvMoney.Location = New System.Drawing.Point(998, 268)
         Me.dgvMoney.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvMoney.Name = "dgvMoney"
@@ -2704,9 +2714,9 @@ Partial Class frmMain
         '
         '日期
         '
-        DataGridViewCellStyle17.Format = "d"
-        DataGridViewCellStyle17.NullValue = Nothing
-        Me.日期.DefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle47.Format = "d"
+        DataGridViewCellStyle47.NullValue = Nothing
+        Me.日期.DefaultCellStyle = DataGridViewCellStyle47
         Me.日期.HeaderText = "日期"
         Me.日期.Name = "日期"
         Me.日期.Visible = False
@@ -2796,9 +2806,9 @@ Partial Class frmMain
         '
         'DataGridViewTextBoxColumn8
         '
-        DataGridViewCellStyle18.Format = "d"
-        DataGridViewCellStyle18.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle48.Format = "d"
+        DataGridViewCellStyle48.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle48
         Me.DataGridViewTextBoxColumn8.HeaderText = "日期"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.Visible = False
@@ -4087,19 +4097,19 @@ Partial Class frmMain
         '
         Me.dgvMenu.AllowUserToAddRows = False
         Me.dgvMenu.AllowUserToDeleteRows = False
-        DataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvMenu.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle49.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle49.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvMenu.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle49
         Me.dgvMenu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle20.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvMenu.DefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle50.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle50.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle50.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle50.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle50.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvMenu.DefaultCellStyle = DataGridViewCellStyle50
         Me.dgvMenu.Location = New System.Drawing.Point(1158, 60)
         Me.dgvMenu.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvMenu.Name = "dgvMenu"
@@ -4279,21 +4289,21 @@ Partial Class frmMain
         '
         Me.dgvProduct.AllowUserToAddRows = False
         Me.dgvProduct.AllowUserToDeleteRows = False
-        DataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvProduct.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle51.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle51.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvProduct.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle51
         Me.dgvProduct.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvProduct.ColumnHeadersHeight = 25
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle22.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvProduct.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle52.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle52.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle52.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle52.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle52.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvProduct.DefaultCellStyle = DataGridViewCellStyle52
         Me.dgvProduct.Location = New System.Drawing.Point(9, 170)
         Me.dgvProduct.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvProduct.Name = "dgvProduct"
@@ -4446,6 +4456,11 @@ Partial Class frmMain
         '
         'tpDistribute
         '
+        Me.tpDistribute.Controls.Add(Me.txtCusID_dist)
+        Me.tpDistribute.Controls.Add(Me.Label157)
+        Me.tpDistribute.Controls.Add(Me.btnTaboo_dist)
+        Me.tpDistribute.Controls.Add(Me.txtTaboo_dist)
+        Me.tpDistribute.Controls.Add(Me.Label156)
         Me.tpDistribute.Controls.Add(Me.txtMemo2_dist)
         Me.tpDistribute.Controls.Add(Me.txtSelectDate)
         Me.tpDistribute.Controls.Add(Me.txtOrdID_dist)
@@ -4482,9 +4497,41 @@ Partial Class frmMain
         Me.tpDistribute.Text = "配餐管理"
         Me.tpDistribute.UseVisualStyleBackColor = True
         '
+        'btnTaboo_dist
+        '
+        Me.btnTaboo_dist.AutoSize = True
+        Me.btnTaboo_dist.BackColor = System.Drawing.Color.Yellow
+        Me.btnTaboo_dist.Location = New System.Drawing.Point(477, 656)
+        Me.btnTaboo_dist.Name = "btnTaboo_dist"
+        Me.btnTaboo_dist.Size = New System.Drawing.Size(75, 31)
+        Me.btnTaboo_dist.TabIndex = 294
+        Me.btnTaboo_dist.Tag = ""
+        Me.btnTaboo_dist.Text = "開啟"
+        Me.btnTaboo_dist.UseVisualStyleBackColor = False
+        '
+        'txtTaboo_dist
+        '
+        Me.txtTaboo_dist.Location = New System.Drawing.Point(586, 629)
+        Me.txtTaboo_dist.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.txtTaboo_dist.Multiline = True
+        Me.txtTaboo_dist.Name = "txtTaboo_dist"
+        Me.txtTaboo_dist.ReadOnly = True
+        Me.txtTaboo_dist.Size = New System.Drawing.Size(409, 58)
+        Me.txtTaboo_dist.TabIndex = 292
+        Me.txtTaboo_dist.Tag = ""
+        '
+        'Label156
+        '
+        Me.Label156.AutoSize = True
+        Me.Label156.Location = New System.Drawing.Point(473, 632)
+        Me.Label156.Name = "Label156"
+        Me.Label156.Size = New System.Drawing.Size(104, 21)
+        Me.Label156.TabIndex = 293
+        Me.Label156.Text = "禁    忌"
+        '
         'txtMemo2_dist
         '
-        Me.txtMemo2_dist.Location = New System.Drawing.Point(604, 586)
+        Me.txtMemo2_dist.Location = New System.Drawing.Point(586, 586)
         Me.txtMemo2_dist.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtMemo2_dist.Name = "txtMemo2_dist"
         Me.txtMemo2_dist.Size = New System.Drawing.Size(227, 33)
@@ -4504,7 +4551,7 @@ Partial Class frmMain
         '
         'txtOrdID_dist
         '
-        Me.txtOrdID_dist.Location = New System.Drawing.Point(121, 10)
+        Me.txtOrdID_dist.Location = New System.Drawing.Point(128, 10)
         Me.txtOrdID_dist.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtOrdID_dist.Name = "txtOrdID_dist"
         Me.txtOrdID_dist.ReadOnly = True
@@ -4517,31 +4564,31 @@ Partial Class frmMain
         Me.dgvDist.AllowUserToAddRows = False
         Me.dgvDist.AllowUserToDeleteRows = False
         Me.dgvDist.AllowUserToOrderColumns = True
-        DataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvDist.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle53.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle53.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvDist.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle53
         Me.dgvDist.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvDist.ColumnHeadersHeight = 25
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle24.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvDist.DefaultCellStyle = DataGridViewCellStyle24
-        Me.dgvDist.Location = New System.Drawing.Point(1009, 145)
+        DataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle54.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle54.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle54.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle54.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvDist.DefaultCellStyle = DataGridViewCellStyle54
+        Me.dgvDist.Location = New System.Drawing.Point(1009, 206)
         Me.dgvDist.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvDist.Name = "dgvDist"
         Me.dgvDist.ReadOnly = True
         Me.dgvDist.RowTemplate.Height = 24
         Me.dgvDist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvDist.Size = New System.Drawing.Size(573, 600)
+        Me.dgvDist.Size = New System.Drawing.Size(573, 539)
         Me.dgvDist.TabIndex = 272
         '
         'txtProdName_dist
         '
-        Me.txtProdName_dist.Location = New System.Drawing.Point(818, 10)
+        Me.txtProdName_dist.Location = New System.Drawing.Point(1086, 10)
         Me.txtProdName_dist.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtProdName_dist.Name = "txtProdName_dist"
         Me.txtProdName_dist.ReadOnly = True
@@ -4551,7 +4598,7 @@ Partial Class frmMain
         '
         'txtDistQuery
         '
-        Me.txtDistQuery.Location = New System.Drawing.Point(1273, 10)
+        Me.txtDistQuery.Location = New System.Drawing.Point(1275, 77)
         Me.txtDistQuery.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtDistQuery.Name = "txtDistQuery"
         Me.txtDistQuery.Size = New System.Drawing.Size(160, 33)
@@ -4706,7 +4753,7 @@ Partial Class frmMain
         '
         'txtPhone_dist
         '
-        Me.txtPhone_dist.Location = New System.Drawing.Point(497, 10)
+        Me.txtPhone_dist.Location = New System.Drawing.Point(759, 10)
         Me.txtPhone_dist.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtPhone_dist.Name = "txtPhone_dist"
         Me.txtPhone_dist.ReadOnly = True
@@ -4716,7 +4763,7 @@ Partial Class frmMain
         '
         'txtCusName_dist
         '
-        Me.txtCusName_dist.Location = New System.Drawing.Point(309, 10)
+        Me.txtCusName_dist.Location = New System.Drawing.Point(564, 10)
         Me.txtCusName_dist.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtCusName_dist.Name = "txtCusName_dist"
         Me.txtCusName_dist.ReadOnly = True
@@ -4727,7 +4774,7 @@ Partial Class frmMain
         'Label126
         '
         Me.Label126.AutoSize = True
-        Me.Label126.Location = New System.Drawing.Point(493, 589)
+        Me.Label126.Location = New System.Drawing.Point(473, 589)
         Me.Label126.Name = "Label126"
         Me.Label126.Size = New System.Drawing.Size(104, 21)
         Me.Label126.TabIndex = 290
@@ -5079,7 +5126,7 @@ Partial Class frmMain
         'Label111
         '
         Me.Label111.AutoSize = True
-        Me.Label111.Location = New System.Drawing.Point(707, 13)
+        Me.Label111.Location = New System.Drawing.Point(968, 13)
         Me.Label111.Name = "Label111"
         Me.Label111.Size = New System.Drawing.Size(102, 21)
         Me.Label111.TabIndex = 270
@@ -5169,7 +5216,7 @@ Partial Class frmMain
         'Label27
         '
         Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(432, 13)
+        Me.Label27.Location = New System.Drawing.Point(687, 13)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(56, 21)
         Me.Label27.TabIndex = 220
@@ -5178,7 +5225,7 @@ Partial Class frmMain
         'btnCancel_dist
         '
         Me.btnCancel_dist.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnCancel_dist.Location = New System.Drawing.Point(1442, 93)
+        Me.btnCancel_dist.Location = New System.Drawing.Point(1447, 127)
         Me.btnCancel_dist.Name = "btnCancel_dist"
         Me.btnCancel_dist.Size = New System.Drawing.Size(140, 44)
         Me.btnCancel_dist.TabIndex = 217
@@ -5189,7 +5236,7 @@ Partial Class frmMain
         '
         Me.btnDistDel.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.btnDistDel.Enabled = False
-        Me.btnDistDel.Location = New System.Drawing.Point(1296, 93)
+        Me.btnDistDel.Location = New System.Drawing.Point(1301, 127)
         Me.btnDistDel.Name = "btnDistDel"
         Me.btnDistDel.Size = New System.Drawing.Size(140, 44)
         Me.btnDistDel.TabIndex = 216
@@ -5200,7 +5247,7 @@ Partial Class frmMain
         '
         Me.btnDistModify.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.btnDistModify.Enabled = False
-        Me.btnDistModify.Location = New System.Drawing.Point(1150, 93)
+        Me.btnDistModify.Location = New System.Drawing.Point(1155, 127)
         Me.btnDistModify.Name = "btnDistModify"
         Me.btnDistModify.Size = New System.Drawing.Size(140, 44)
         Me.btnDistModify.TabIndex = 215
@@ -5211,7 +5258,7 @@ Partial Class frmMain
         '
         Me.btnDistInsert.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.btnDistInsert.Enabled = False
-        Me.btnDistInsert.Location = New System.Drawing.Point(1004, 93)
+        Me.btnDistInsert.Location = New System.Drawing.Point(1009, 127)
         Me.btnDistInsert.Name = "btnDistInsert"
         Me.btnDistInsert.Size = New System.Drawing.Size(140, 44)
         Me.btnDistInsert.TabIndex = 214
@@ -5221,7 +5268,7 @@ Partial Class frmMain
         'btnDistQuery
         '
         Me.btnDistQuery.BackColor = System.Drawing.Color.Lime
-        Me.btnDistQuery.Location = New System.Drawing.Point(1445, 10)
+        Me.btnDistQuery.Location = New System.Drawing.Point(1447, 77)
         Me.btnDistQuery.Name = "btnDistQuery"
         Me.btnDistQuery.Size = New System.Drawing.Size(140, 44)
         Me.btnDistQuery.TabIndex = 203
@@ -5231,7 +5278,7 @@ Partial Class frmMain
         'Label83
         '
         Me.Label83.AutoSize = True
-        Me.Label83.Location = New System.Drawing.Point(1160, 13)
+        Me.Label83.Location = New System.Drawing.Point(1162, 80)
         Me.Label83.Name = "Label83"
         Me.Label83.Size = New System.Drawing.Size(104, 21)
         Me.Label83.TabIndex = 196
@@ -5240,7 +5287,7 @@ Partial Class frmMain
         'Label82
         '
         Me.Label82.AutoSize = True
-        Me.Label82.Location = New System.Drawing.Point(244, 13)
+        Me.Label82.Location = New System.Drawing.Point(492, 13)
         Me.Label82.Name = "Label82"
         Me.Label82.Size = New System.Drawing.Size(56, 21)
         Me.Label82.TabIndex = 189
@@ -5514,20 +5561,20 @@ Partial Class frmMain
         '
         Me.dgvOrder.AllowUserToAddRows = False
         Me.dgvOrder.AllowUserToDeleteRows = False
-        DataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvOrder.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle55.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle55.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvOrder.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle55
         Me.dgvOrder.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgvOrder.ColumnHeadersHeight = 25
-        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle26.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvOrder.DefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle56.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle56.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle56.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle56.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle56.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle56.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvOrder.DefaultCellStyle = DataGridViewCellStyle56
         Me.dgvOrder.Location = New System.Drawing.Point(1005, 257)
         Me.dgvOrder.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.dgvOrder.Name = "dgvOrder"
@@ -6318,18 +6365,18 @@ Partial Class frmMain
         Me.dgvOrder_cus.AllowUserToAddRows = False
         Me.dgvOrder_cus.AllowUserToDeleteRows = False
         Me.dgvOrder_cus.AllowUserToOrderColumns = True
-        DataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvOrder_cus.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle27
+        DataGridViewCellStyle57.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle57.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvOrder_cus.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle57
         Me.dgvOrder_cus.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
-        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle28.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvOrder_cus.DefaultCellStyle = DataGridViewCellStyle28
+        DataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle58.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle58.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle58.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle58.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle58.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvOrder_cus.DefaultCellStyle = DataGridViewCellStyle58
         Me.dgvOrder_cus.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvOrder_cus.Location = New System.Drawing.Point(3, 29)
         Me.dgvOrder_cus.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
@@ -6355,18 +6402,18 @@ Partial Class frmMain
         Me.dgvCustomer.AllowUserToAddRows = False
         Me.dgvCustomer.AllowUserToDeleteRows = False
         Me.dgvCustomer.AllowUserToOrderColumns = True
-        DataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgvCustomer.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle29
+        DataGridViewCellStyle59.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle59.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgvCustomer.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle59
         Me.dgvCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
-        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle30.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvCustomer.DefaultCellStyle = DataGridViewCellStyle30
+        DataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle60.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle60.Font = New System.Drawing.Font("標楷體", 15.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle60.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle60.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle60.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvCustomer.DefaultCellStyle = DataGridViewCellStyle60
         Me.dgvCustomer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvCustomer.Location = New System.Drawing.Point(3, 29)
         Me.dgvCustomer.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
@@ -6717,6 +6764,7 @@ Partial Class frmMain
         '
         'tpConsult_cus
         '
+        Me.tpConsult_cus.Controls.Add(Me.grpConfLoca)
         Me.tpConsult_cus.Controls.Add(Me.Label174)
         Me.tpConsult_cus.Controls.Add(Me.TextBox19)
         Me.tpConsult_cus.Controls.Add(Me.grpGetMsg)
@@ -6733,20 +6781,14 @@ Partial Class frmMain
         Me.tpConsult_cus.Controls.Add(Me.Label123)
         Me.tpConsult_cus.Controls.Add(Me.txtHeight)
         Me.tpConsult_cus.Controls.Add(Me.Label122)
-        Me.tpConsult_cus.Controls.Add(Me.txtConfBuy)
-        Me.tpConsult_cus.Controls.Add(Me.Label121)
-        Me.tpConsult_cus.Controls.Add(Me.txtConfDay)
-        Me.tpConsult_cus.Controls.Add(Me.Label120)
-        Me.tpConsult_cus.Controls.Add(Me.txtConfLoca)
-        Me.tpConsult_cus.Controls.Add(Me.Label119)
         Me.tpConsult_cus.Controls.Add(Me.txtManyChild)
         Me.tpConsult_cus.Controls.Add(Me.Label118)
         Me.tpConsult_cus.Controls.Add(Me.txtDueDate)
         Me.tpConsult_cus.Controls.Add(Me.txtHospital)
         Me.tpConsult_cus.Controls.Add(Me.Label115)
         Me.tpConsult_cus.Controls.Add(Me.Label114)
-        Me.tpConsult_cus.Controls.Add(Me.btnTaboo)
-        Me.tpConsult_cus.Controls.Add(Me.txtTaboo)
+        Me.tpConsult_cus.Controls.Add(Me.btnTaboo_cus)
+        Me.tpConsult_cus.Controls.Add(Me.txtTaboo_cus)
         Me.tpConsult_cus.Controls.Add(Me.lblTaboo)
         Me.tpConsult_cus.Controls.Add(Me.Label12)
         Me.tpConsult_cus.Controls.Add(Me.txtMemo_cus)
@@ -6758,10 +6800,89 @@ Partial Class frmMain
         Me.tpConsult_cus.Text = "諮詢內容"
         Me.tpConsult_cus.UseVisualStyleBackColor = True
         '
+        'grpConfLoca
+        '
+        Me.grpConfLoca.Controls.Add(Me.Label119)
+        Me.grpConfLoca.Controls.Add(Me.Label46)
+        Me.grpConfLoca.Controls.Add(Me.txtConfLoca)
+        Me.grpConfLoca.Controls.Add(Me.Label120)
+        Me.grpConfLoca.Controls.Add(Me.txtConfDay)
+        Me.grpConfLoca.Controls.Add(Me.Label121)
+        Me.grpConfLoca.Controls.Add(Me.txtConfBuy)
+        Me.grpConfLoca.Location = New System.Drawing.Point(904, 231)
+        Me.grpConfLoca.Name = "grpConfLoca"
+        Me.grpConfLoca.Size = New System.Drawing.Size(589, 137)
+        Me.grpConfLoca.TabIndex = 289
+        Me.grpConfLoca.TabStop = False
+        Me.grpConfLoca.Text = "坐月子地點"
+        '
+        'Label119
+        '
+        Me.Label119.AutoSize = True
+        Me.Label119.Location = New System.Drawing.Point(292, 88)
+        Me.Label119.Name = "Label119"
+        Me.Label119.Size = New System.Drawing.Size(33, 21)
+        Me.Label119.TabIndex = 275
+        Me.Label119.Text = "天"
+        '
+        'Label46
+        '
+        Me.Label46.AutoSize = True
+        Me.Label46.Location = New System.Drawing.Point(175, 37)
+        Me.Label46.Name = "Label46"
+        Me.Label46.Size = New System.Drawing.Size(102, 21)
+        Me.Label46.TabIndex = 274
+        Me.Label46.Text = "月子中心"
+        '
+        'txtConfLoca
+        '
+        Me.txtConfLoca.Location = New System.Drawing.Point(9, 34)
+        Me.txtConfLoca.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.txtConfLoca.Name = "txtConfLoca"
+        Me.txtConfLoca.Size = New System.Drawing.Size(157, 33)
+        Me.txtConfLoca.TabIndex = 267
+        Me.txtConfLoca.Tag = "cus_conf_loca"
+        '
+        'Label120
+        '
+        Me.Label120.AutoSize = True
+        Me.Label120.Location = New System.Drawing.Point(452, 37)
+        Me.Label120.Name = "Label120"
+        Me.Label120.Size = New System.Drawing.Size(33, 21)
+        Me.Label120.TabIndex = 271
+        Me.Label120.Text = "天"
+        '
+        'txtConfDay
+        '
+        Me.txtConfDay.Location = New System.Drawing.Point(286, 34)
+        Me.txtConfDay.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.txtConfDay.Name = "txtConfDay"
+        Me.txtConfDay.Size = New System.Drawing.Size(157, 33)
+        Me.txtConfDay.TabIndex = 270
+        Me.txtConfDay.Tag = "cus_conf_day"
+        '
+        'Label121
+        '
+        Me.Label121.AutoSize = True
+        Me.Label121.Location = New System.Drawing.Point(6, 88)
+        Me.Label121.Name = "Label121"
+        Me.Label121.Size = New System.Drawing.Size(148, 21)
+        Me.Label121.TabIndex = 273
+        Me.Label121.Text = "欲購買月子餐"
+        '
+        'txtConfBuy
+        '
+        Me.txtConfBuy.Location = New System.Drawing.Point(163, 85)
+        Me.txtConfBuy.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.txtConfBuy.Name = "txtConfBuy"
+        Me.txtConfBuy.Size = New System.Drawing.Size(120, 33)
+        Me.txtConfBuy.TabIndex = 272
+        Me.txtConfBuy.Tag = "cus_conf_buy"
+        '
         'Label174
         '
         Me.Label174.AutoSize = True
-        Me.Label174.Location = New System.Drawing.Point(8, 274)
+        Me.Label174.Location = New System.Drawing.Point(8, 231)
         Me.Label174.Name = "Label174"
         Me.Label174.Size = New System.Drawing.Size(102, 21)
         Me.Label174.TabIndex = 288
@@ -6769,7 +6890,7 @@ Partial Class frmMain
         '
         'TextBox19
         '
-        Me.TextBox19.Location = New System.Drawing.Point(119, 266)
+        Me.TextBox19.Location = New System.Drawing.Point(119, 223)
         Me.TextBox19.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.TextBox19.Name = "TextBox19"
         Me.TextBox19.Size = New System.Drawing.Size(768, 33)
@@ -6863,7 +6984,7 @@ Partial Class frmMain
         '
         'txtNutrCons
         '
-        Me.txtNutrCons.Location = New System.Drawing.Point(119, 309)
+        Me.txtNutrCons.Location = New System.Drawing.Point(119, 266)
         Me.txtNutrCons.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtNutrCons.Name = "txtNutrCons"
         Me.txtNutrCons.Size = New System.Drawing.Size(157, 33)
@@ -6873,7 +6994,7 @@ Partial Class frmMain
         'Label35
         '
         Me.Label35.AutoSize = True
-        Me.Label35.Location = New System.Drawing.Point(8, 312)
+        Me.Label35.Location = New System.Drawing.Point(8, 269)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(102, 21)
         Me.Label35.TabIndex = 284
@@ -6882,7 +7003,7 @@ Partial Class frmMain
         'Label128
         '
         Me.Label128.AutoSize = True
-        Me.Label128.Location = New System.Drawing.Point(8, 183)
+        Me.Label128.Location = New System.Drawing.Point(8, 140)
         Me.Label128.Name = "Label128"
         Me.Label128.Size = New System.Drawing.Size(102, 21)
         Me.Label128.TabIndex = 283
@@ -6890,7 +7011,7 @@ Partial Class frmMain
         '
         'txtDietPerp
         '
-        Me.txtDietPerp.Location = New System.Drawing.Point(119, 180)
+        Me.txtDietPerp.Location = New System.Drawing.Point(119, 137)
         Me.txtDietPerp.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtDietPerp.Name = "txtDietPerp"
         Me.txtDietPerp.Size = New System.Drawing.Size(768, 33)
@@ -6900,7 +7021,7 @@ Partial Class frmMain
         'Label127
         '
         Me.Label127.AutoSize = True
-        Me.Label127.Location = New System.Drawing.Point(8, 140)
+        Me.Label127.Location = New System.Drawing.Point(8, 97)
         Me.Label127.Name = "Label127"
         Me.Label127.Size = New System.Drawing.Size(102, 21)
         Me.Label127.TabIndex = 281
@@ -6908,7 +7029,7 @@ Partial Class frmMain
         '
         'txtMealAdj
         '
-        Me.txtMealAdj.Location = New System.Drawing.Point(119, 137)
+        Me.txtMealAdj.Location = New System.Drawing.Point(119, 94)
         Me.txtMealAdj.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtMealAdj.Name = "txtMealAdj"
         Me.txtMealAdj.Size = New System.Drawing.Size(768, 33)
@@ -7002,7 +7123,7 @@ Partial Class frmMain
         '
         'txtWeight
         '
-        Me.txtWeight.Location = New System.Drawing.Point(675, 94)
+        Me.txtWeight.Location = New System.Drawing.Point(675, 51)
         Me.txtWeight.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtWeight.Name = "txtWeight"
         Me.txtWeight.Size = New System.Drawing.Size(212, 33)
@@ -7012,7 +7133,7 @@ Partial Class frmMain
         'Label124
         '
         Me.Label124.AutoSize = True
-        Me.Label124.Location = New System.Drawing.Point(564, 97)
+        Me.Label124.Location = New System.Drawing.Point(564, 54)
         Me.Label124.Name = "Label124"
         Me.Label124.Size = New System.Drawing.Size(102, 21)
         Me.Label124.TabIndex = 279
@@ -7020,7 +7141,7 @@ Partial Class frmMain
         '
         'txtBornWeight
         '
-        Me.txtBornWeight.Location = New System.Drawing.Point(398, 94)
+        Me.txtBornWeight.Location = New System.Drawing.Point(398, 51)
         Me.txtBornWeight.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtBornWeight.Name = "txtBornWeight"
         Me.txtBornWeight.Size = New System.Drawing.Size(159, 33)
@@ -7030,7 +7151,7 @@ Partial Class frmMain
         'Label123
         '
         Me.Label123.AutoSize = True
-        Me.Label123.Location = New System.Drawing.Point(285, 97)
+        Me.Label123.Location = New System.Drawing.Point(285, 54)
         Me.Label123.Name = "Label123"
         Me.Label123.Size = New System.Drawing.Size(102, 21)
         Me.Label123.TabIndex = 277
@@ -7038,7 +7159,7 @@ Partial Class frmMain
         '
         'txtHeight
         '
-        Me.txtHeight.Location = New System.Drawing.Point(119, 94)
+        Me.txtHeight.Location = New System.Drawing.Point(119, 51)
         Me.txtHeight.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtHeight.Name = "txtHeight"
         Me.txtHeight.Size = New System.Drawing.Size(157, 33)
@@ -7048,65 +7169,11 @@ Partial Class frmMain
         'Label122
         '
         Me.Label122.AutoSize = True
-        Me.Label122.Location = New System.Drawing.Point(8, 97)
+        Me.Label122.Location = New System.Drawing.Point(8, 54)
         Me.Label122.Name = "Label122"
         Me.Label122.Size = New System.Drawing.Size(104, 21)
         Me.Label122.TabIndex = 275
         Me.Label122.Text = "身    高"
-        '
-        'txtConfBuy
-        '
-        Me.txtConfBuy.Location = New System.Drawing.Point(767, 51)
-        Me.txtConfBuy.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
-        Me.txtConfBuy.Name = "txtConfBuy"
-        Me.txtConfBuy.Size = New System.Drawing.Size(120, 33)
-        Me.txtConfBuy.TabIndex = 272
-        Me.txtConfBuy.Tag = "cus_conf_buy"
-        '
-        'Label121
-        '
-        Me.Label121.AutoSize = True
-        Me.Label121.Location = New System.Drawing.Point(564, 54)
-        Me.Label121.Name = "Label121"
-        Me.Label121.Size = New System.Drawing.Size(194, 21)
-        Me.Label121.TabIndex = 273
-        Me.Label121.Text = "欲購買月子餐天數"
-        '
-        'txtConfDay
-        '
-        Me.txtConfDay.Location = New System.Drawing.Point(398, 51)
-        Me.txtConfDay.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
-        Me.txtConfDay.Name = "txtConfDay"
-        Me.txtConfDay.Size = New System.Drawing.Size(157, 33)
-        Me.txtConfDay.TabIndex = 270
-        Me.txtConfDay.Tag = "cus_conf_day"
-        '
-        'Label120
-        '
-        Me.Label120.AutoSize = True
-        Me.Label120.Location = New System.Drawing.Point(285, 54)
-        Me.Label120.Name = "Label120"
-        Me.Label120.Size = New System.Drawing.Size(102, 21)
-        Me.Label120.TabIndex = 271
-        Me.Label120.Text = "月子天數"
-        '
-        'txtConfLoca
-        '
-        Me.txtConfLoca.Location = New System.Drawing.Point(119, 51)
-        Me.txtConfLoca.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
-        Me.txtConfLoca.Name = "txtConfLoca"
-        Me.txtConfLoca.Size = New System.Drawing.Size(157, 33)
-        Me.txtConfLoca.TabIndex = 267
-        Me.txtConfLoca.Tag = "cus_conf_loca"
-        '
-        'Label119
-        '
-        Me.Label119.AutoSize = True
-        Me.Label119.Location = New System.Drawing.Point(8, 54)
-        Me.Label119.Name = "Label119"
-        Me.Label119.Size = New System.Drawing.Size(102, 21)
-        Me.Label119.TabIndex = 269
-        Me.Label119.Text = "月子地點"
         '
         'txtManyChild
         '
@@ -7162,33 +7229,33 @@ Partial Class frmMain
         Me.Label114.TabIndex = 261
         Me.Label114.Text = "預 產 期"
         '
-        'btnTaboo
+        'btnTaboo_cus
         '
-        Me.btnTaboo.AutoSize = True
-        Me.btnTaboo.BackColor = System.Drawing.Color.Yellow
-        Me.btnTaboo.Location = New System.Drawing.Point(910, 263)
-        Me.btnTaboo.Name = "btnTaboo"
-        Me.btnTaboo.Size = New System.Drawing.Size(75, 31)
-        Me.btnTaboo.TabIndex = 260
-        Me.btnTaboo.Tag = ""
-        Me.btnTaboo.Text = "開啟"
-        Me.btnTaboo.UseVisualStyleBackColor = False
+        Me.btnTaboo_cus.AutoSize = True
+        Me.btnTaboo_cus.BackColor = System.Drawing.Color.Yellow
+        Me.btnTaboo_cus.Location = New System.Drawing.Point(910, 403)
+        Me.btnTaboo_cus.Name = "btnTaboo_cus"
+        Me.btnTaboo_cus.Size = New System.Drawing.Size(75, 31)
+        Me.btnTaboo_cus.TabIndex = 260
+        Me.btnTaboo_cus.Tag = ""
+        Me.btnTaboo_cus.Text = "開啟"
+        Me.btnTaboo_cus.UseVisualStyleBackColor = False
         '
-        'txtTaboo
+        'txtTaboo_cus
         '
-        Me.txtTaboo.Location = New System.Drawing.Point(1019, 236)
-        Me.txtTaboo.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
-        Me.txtTaboo.Multiline = True
-        Me.txtTaboo.Name = "txtTaboo"
-        Me.txtTaboo.ReadOnly = True
-        Me.txtTaboo.Size = New System.Drawing.Size(474, 58)
-        Me.txtTaboo.TabIndex = 258
-        Me.txtTaboo.Tag = ""
+        Me.txtTaboo_cus.Location = New System.Drawing.Point(1019, 376)
+        Me.txtTaboo_cus.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.txtTaboo_cus.Multiline = True
+        Me.txtTaboo_cus.Name = "txtTaboo_cus"
+        Me.txtTaboo_cus.ReadOnly = True
+        Me.txtTaboo_cus.Size = New System.Drawing.Size(474, 58)
+        Me.txtTaboo_cus.TabIndex = 258
+        Me.txtTaboo_cus.Tag = ""
         '
         'lblTaboo
         '
         Me.lblTaboo.AutoSize = True
-        Me.lblTaboo.Location = New System.Drawing.Point(906, 239)
+        Me.lblTaboo.Location = New System.Drawing.Point(906, 379)
         Me.lblTaboo.Name = "lblTaboo"
         Me.lblTaboo.Size = New System.Drawing.Size(104, 21)
         Me.lblTaboo.TabIndex = 259
@@ -7197,7 +7264,7 @@ Partial Class frmMain
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(8, 231)
+        Me.Label12.Location = New System.Drawing.Point(8, 188)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(104, 21)
         Me.Label12.TabIndex = 257
@@ -7205,7 +7272,7 @@ Partial Class frmMain
         '
         'txtMemo_cus
         '
-        Me.txtMemo_cus.Location = New System.Drawing.Point(119, 223)
+        Me.txtMemo_cus.Location = New System.Drawing.Point(119, 180)
         Me.txtMemo_cus.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.txtMemo_cus.Name = "txtMemo_cus"
         Me.txtMemo_cus.Size = New System.Drawing.Size(768, 33)
@@ -7234,6 +7301,37 @@ Partial Class frmMain
         Me.TabControl1.Size = New System.Drawing.Size(1599, 788)
         Me.TabControl1.TabIndex = 0
         '
+        'txtCusID_dist
+        '
+        Me.txtCusID_dist.Location = New System.Drawing.Point(369, 10)
+        Me.txtCusID_dist.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
+        Me.txtCusID_dist.Name = "txtCusID_dist"
+        Me.txtCusID_dist.ReadOnly = True
+        Me.txtCusID_dist.Size = New System.Drawing.Size(107, 33)
+        Me.txtCusID_dist.TabIndex = 295
+        Me.txtCusID_dist.Tag = "cus_id"
+        '
+        'Label157
+        '
+        Me.Label157.AutoSize = True
+        Me.Label157.ForeColor = System.Drawing.Color.Black
+        Me.Label157.Location = New System.Drawing.Point(251, 13)
+        Me.Label157.Name = "Label157"
+        Me.Label157.Size = New System.Drawing.Size(102, 21)
+        Me.Label157.TabIndex = 296
+        Me.Label157.Text = "客戶編號"
+        '
+        'chkDish
+        '
+        Me.chkDish.AutoSize = True
+        Me.chkDish.Location = New System.Drawing.Point(677, 56)
+        Me.chkDish.Name = "chkDish"
+        Me.chkDish.Size = New System.Drawing.Size(121, 25)
+        Me.chkDish.TabIndex = 251
+        Me.chkDish.Tag = "perm_dish"
+        Me.chkDish.Text = "菜品管理"
+        Me.chkDish.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 21.0!)
@@ -7244,118 +7342,120 @@ Partial Class frmMain
         Me.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "挺益管理系統 v0.15"
+        Me.Text = "挺益管理系統 v0.16"
         Me.tpSystem.ResumeLayout(False)
         Me.tcSystem.ResumeLayout(False)
         Me.tpTaboo.ResumeLayout(False)
-        Me.tpTaboo.PerformLayout()
+        Me.tpTaboo.PerformLayout
         Me.grpTabooGroup.ResumeLayout(False)
-        Me.grpTabooGroup.PerformLayout()
-        CType(Me.dgvTabooGroup, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvTaboo, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpTabooGroup.PerformLayout
+        CType(Me.dgvTabooGroup, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dgvTaboo, System.ComponentModel.ISupportInitialize).EndInit
         Me.tpPermissions.ResumeLayout(False)
-        Me.tpPermissions.PerformLayout()
+        Me.tpPermissions.PerformLayout
         Me.grpPosition.ResumeLayout(False)
-        Me.grpPosition.PerformLayout()
-        CType(Me.dgvPermissions, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpPosition.PerformLayout
+        CType(Me.dgvPermissions, System.ComponentModel.ISupportInitialize).EndInit
         Me.tpProdGroup.ResumeLayout(False)
-        Me.tpProdGroup.PerformLayout()
-        CType(Me.dgvProdgroup, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tpProdGroup.PerformLayout
+        CType(Me.dgvProdgroup, System.ComponentModel.ISupportInitialize).EndInit
         Me.tpDistSys.ResumeLayout(False)
-        Me.tpDistSys.PerformLayout()
-        CType(Me.dgvDistSys, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tpDistSys.PerformLayout
+        CType(Me.dgvDistSys, System.ComponentModel.ISupportInitialize).EndInit
         Me.tpEmployee.ResumeLayout(False)
-        Me.tpEmployee.PerformLayout()
-        CType(Me.dgvEmployee, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tpEmployee.PerformLayout
+        CType(Me.dgvEmployee, System.ComponentModel.ISupportInitialize).EndInit
         Me.tpMoney.ResumeLayout(False)
-        Me.tpMoney.PerformLayout()
+        Me.tpMoney.PerformLayout
         Me.grpOrder_money.ResumeLayout(False)
-        Me.grpOrder_money.PerformLayout()
-        CType(Me.dgvOrder_money, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvMoney, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpOrder_money.PerformLayout
+        CType(Me.dgvOrder_money, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dgvMoney, System.ComponentModel.ISupportInitialize).EndInit
         Me.TP_Report.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
+        Me.GroupBox4.PerformLayout
         Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
+        Me.GroupBox2.PerformLayout
         Me.GroupBox7.ResumeLayout(False)
-        Me.GroupBox7.PerformLayout()
+        Me.GroupBox7.PerformLayout
         Me.grpDelivery.ResumeLayout(False)
-        CType(Me.dgvDelivery_new, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvDelivery_new, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupBox6.ResumeLayout(False)
-        CType(Me.dgvDelivery_old, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvDelivery_old, System.ComponentModel.ISupportInitialize).EndInit
         Me.grpMeal_delivery.ResumeLayout(False)
-        Me.grpMeal_delivery.PerformLayout()
+        Me.grpMeal_delivery.PerformLayout
         Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
+        Me.GroupBox3.PerformLayout
         Me.tpDishes.ResumeLayout(False)
-        Me.tpDishes.PerformLayout()
-        CType(Me.dgvDishes, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tpDishes.PerformLayout
+        CType(Me.dgvDishes, System.ComponentModel.ISupportInitialize).EndInit
         Me.tpMenu.ResumeLayout(False)
-        Me.tpMenu.PerformLayout()
-        CType(Me.dgvMenu, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tpMenu.PerformLayout
+        CType(Me.dgvMenu, System.ComponentModel.ISupportInitialize).EndInit
         Me.tpProduct.ResumeLayout(False)
-        Me.tpProduct.PerformLayout()
+        Me.tpProduct.PerformLayout
         Me.grpMeal.ResumeLayout(False)
-        Me.grpMeal.PerformLayout()
-        CType(Me.dgvProduct, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpMeal.PerformLayout
+        CType(Me.dgvProduct, System.ComponentModel.ISupportInitialize).EndInit
         Me.tpDistribute.ResumeLayout(False)
-        Me.tpDistribute.PerformLayout()
-        CType(Me.dgvDist, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tpDistribute.PerformLayout
+        CType(Me.dgvDist, System.ComponentModel.ISupportInitialize).EndInit
         Me.pnlCalendar.ResumeLayout(False)
-        Me.pnlCalendar.PerformLayout()
+        Me.pnlCalendar.PerformLayout
         Me.grpDateStrartEnd.ResumeLayout(False)
-        Me.grpDateStrartEnd.PerformLayout()
+        Me.grpDateStrartEnd.PerformLayout
         Me.flpDist.ResumeLayout(False)
-        Me.flpDist.PerformLayout()
+        Me.flpDist.PerformLayout
         Me.GroupBox24.ResumeLayout(False)
-        Me.GroupBox24.PerformLayout()
+        Me.GroupBox24.PerformLayout
         Me.GroupBox25.ResumeLayout(False)
-        Me.GroupBox25.PerformLayout()
+        Me.GroupBox25.PerformLayout
         Me.GroupBox26.ResumeLayout(False)
-        Me.GroupBox26.PerformLayout()
+        Me.GroupBox26.PerformLayout
         Me.GroupBox27.ResumeLayout(False)
-        Me.GroupBox27.PerformLayout()
+        Me.GroupBox27.PerformLayout
         Me.GroupBox28.ResumeLayout(False)
-        Me.GroupBox28.PerformLayout()
+        Me.GroupBox28.PerformLayout
         Me.GroupBox23.ResumeLayout(False)
-        Me.GroupBox23.PerformLayout()
+        Me.GroupBox23.PerformLayout
         Me.GroupBox29.ResumeLayout(False)
-        Me.GroupBox29.PerformLayout()
+        Me.GroupBox29.PerformLayout
         Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.GroupBox1.PerformLayout
         Me.GroupBox10.ResumeLayout(False)
-        Me.GroupBox10.PerformLayout()
+        Me.GroupBox10.PerformLayout
         Me.tpOrder.ResumeLayout(False)
-        Me.tpOrder.PerformLayout()
-        CType(Me.dgvOrder, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tpOrder.PerformLayout
+        CType(Me.dgvOrder, System.ComponentModel.ISupportInitialize).EndInit
         Me.grpEatType.ResumeLayout(False)
-        Me.grpEatType.PerformLayout()
+        Me.grpEatType.PerformLayout
         Me.grpMeal_order.ResumeLayout(False)
-        Me.grpMeal_order.PerformLayout()
+        Me.grpMeal_order.PerformLayout
         Me.tpCustomer.ResumeLayout(False)
         Me.tcCustomer.ResumeLayout(False)
         Me.tpBasic_cus.ResumeLayout(False)
-        Me.tpBasic_cus.PerformLayout()
+        Me.tpBasic_cus.PerformLayout
         Me.grpGender.ResumeLayout(False)
-        Me.grpGender.PerformLayout()
+        Me.grpGender.PerformLayout
         Me.GroupBox31.ResumeLayout(False)
-        CType(Me.dgvOrder_cus, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvOrder_cus, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupBox30.ResumeLayout(False)
-        CType(Me.dgvCustomer, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvCustomer, System.ComponentModel.ISupportInitialize).EndInit
         Me.grpKind.ResumeLayout(False)
-        Me.grpKind.PerformLayout()
+        Me.grpKind.PerformLayout
         Me.grpMarriage.ResumeLayout(False)
-        Me.grpMarriage.PerformLayout()
+        Me.grpMarriage.PerformLayout
         Me.grpAcad_Qual.ResumeLayout(False)
-        Me.grpAcad_Qual.PerformLayout()
+        Me.grpAcad_Qual.PerformLayout
         Me.tpConsult_cus.ResumeLayout(False)
-        Me.tpConsult_cus.PerformLayout()
+        Me.tpConsult_cus.PerformLayout
+        Me.grpConfLoca.ResumeLayout(False)
+        Me.grpConfLoca.PerformLayout
         Me.grpGetMsg.ResumeLayout(False)
-        Me.grpGetMsg.PerformLayout()
+        Me.grpGetMsg.PerformLayout
         Me.grpDisease.ResumeLayout(False)
-        Me.grpDisease.PerformLayout()
+        Me.grpDisease.PerformLayout
         Me.TabControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -7935,15 +8035,14 @@ Partial Class frmMain
     Friend WithEvents txtConfDay As TextBox
     Friend WithEvents Label120 As Label
     Friend WithEvents txtConfLoca As TextBox
-    Friend WithEvents Label119 As Label
     Friend WithEvents txtManyChild As TextBox
     Friend WithEvents Label118 As Label
     Friend WithEvents txtDueDate As TextBox
     Friend WithEvents txtHospital As TextBox
     Friend WithEvents Label115 As Label
     Friend WithEvents Label114 As Label
-    Friend WithEvents btnTaboo As Button
-    Friend WithEvents txtTaboo As TextBox
+    Friend WithEvents btnTaboo_cus As Button
+    Friend WithEvents txtTaboo_cus As TextBox
     Friend WithEvents lblTaboo As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents txtMemo_cus As TextBox
@@ -7951,4 +8050,13 @@ Partial Class frmMain
     Friend WithEvents txtCusID_ord As TextBox
     Friend WithEvents Label43 As Label
     Friend WithEvents FlowLayoutPanel8 As FlowLayoutPanel
+    Friend WithEvents grpConfLoca As GroupBox
+    Friend WithEvents Label46 As Label
+    Friend WithEvents Label119 As Label
+    Friend WithEvents btnTaboo_dist As Button
+    Friend WithEvents txtTaboo_dist As TextBox
+    Friend WithEvents Label156 As Label
+    Friend WithEvents txtCusID_dist As TextBox
+    Friend WithEvents Label157 As Label
+    Friend WithEvents chkDish As CheckBox
 End Class

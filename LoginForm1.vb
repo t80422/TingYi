@@ -24,6 +24,7 @@ Public Class LoginForm1
                     tp.Parent = frmMain.TabControl1
                 End If
             Next
+
             frmMain.TabControl1.SelectedIndex = 0
             Hide()
 

@@ -31,6 +31,8 @@ Module modUtility
     '配餐參數管理
     Friend sqlDistributeSystem As String = "Select * FROM distribute_system"
 
+    Public Sheets As String() = {"客戶管理", "訂單管理", "配餐管理", "商品管理", "菜單管理", "菜品管理", "報表管理", "財務管理", "員工管理", "系統設定"}
+
     '資料庫改變這也要改
     Public Enum Meal
         早餐 = 1

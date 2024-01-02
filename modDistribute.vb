@@ -1,7 +1,4 @@
-﻿Imports System.Security.AccessControl
-Imports System.Windows
-
-Module modDistribute
+﻿Module modDistribute
     Public Sub InsertDistribute(day As Date, orderID As Integer, meal As String, dicData As Dictionary(Of String, Object), ByRef count As Integer)
         Dim sDay = day.ToString("yyyy/MM/dd")
 

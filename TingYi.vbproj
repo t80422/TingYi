@@ -188,6 +188,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modDistribute.vb" />
+    <Compile Include="modDBService.vb" />
     <Compile Include="modModel.vb" />
     <Compile Include="modOpenXml.vb" />
     <Compile Include="modUtility.vb" />
